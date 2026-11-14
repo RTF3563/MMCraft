@@ -1,0 +1,55 @@
+# 모드 추가·삭제 (Actions 탭 → "모드 추가·삭제" → Run workflow)
+name: 모드 추가·삭제
+on:
+  workflow_dispatch:
+    inputs:
+      add:
+        description: "추가할 Modrinth 모드 (주소 또는 이름, 여러 개는 쉼표)"
+        required: false
+        default: ""
+      remove:
+        description: "삭제할 모드 (Modrinth 주소 이름, 여러 개는 쉼표)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pack
+  cancel-in-progress: false
+
+jobs:
+  manage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    outputs:
+      changed: ${{ steps.manage.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare
+      - name: 모드 반영 + 테스트
+        id: manage
+        env:
+          ADD_MODS: ${{ inputs.add }}
+          REMOVE_MODS: ${{ inputs.remove }}
+        run: xvfb-run -a -s "-screen 0 1280x720x24" node dist/ci/manage.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-logs
+          path: .ci-cache/runs/**
+          if-no-files-found: ignore
+      - name: 저장
+        if: steps.manage.outputs.changed == 'true'
+        run: |
+          git config user.name "mmcraft-bot"
+          git config user.email "mmcraft-bot@users.noreply.github.com"
+          git add pack
+          git commit -m "모드 추가·삭제: 팩 $(node -p "require('./pack/pack.json').version")"
+          git push
+
+  publish:
+    needs: manage
+    if: needs.manage.outputs.changed == 'true'
+    uses: ./.github/workflows/_publish.yml

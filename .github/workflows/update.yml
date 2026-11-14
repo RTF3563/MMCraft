@@ -1,0 +1,46 @@
+# 매일 자동: 모드 최신화 / 마크 버전 업 → 실행 테스트 → 통과한 것만 배포
+name: 자동 업데이트
+on:
+  schedule:
+    - cron: "17 18 * * *" # 매일 한국시간 새벽 3시 17분
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pack
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    outputs:
+      changed: ${{ steps.update.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare
+      - name: 업데이트 확인 + 테스트
+        id: update
+        run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:update
+      - name: 테스트 로그 보관 (실패 분석용)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs
+          path: .ci-cache/runs/**
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: 결과 저장
+        if: always()
+        run: |
+          git config user.name "mmcraft-bot"
+          git config user.email "mmcraft-bot@users.noreply.github.com"
+          git add pack
+          git diff --cached --quiet || (git commit -m "자동 업데이트: 팩 $(node -p "require('./pack/pack.json').version")" && git push)
+
+  publish:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    uses: ./.github/workflows/_publish.yml

@@ -1,0 +1,41 @@
+# pack/ 폴더를 직접 고쳐서 올렸을 때: 테스트 → 배포
+name: 팩 수정 배포
+on:
+  push:
+    branches: [main]
+    paths: ["pack/**"]
+  workflow_dispatch:
+    inputs:
+      skip_test:
+        description: "테스트 건너뛰기 (설정 파일만 바꿨을 때)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pack
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare
+        if: ${{ !inputs.skip_test }}
+      - name: 실행 테스트
+        if: ${{ !inputs.skip_test }}
+        run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-logs
+          path: .ci-cache/runs/**
+          if-no-files-found: ignore
+
+  publish:
+    needs: test
+    uses: ./.github/workflows/_publish.yml

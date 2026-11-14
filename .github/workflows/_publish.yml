@@ -1,0 +1,34 @@
+# 팩 배포: pack/ → pack-dist 브랜치의 index.json (런처가 읽는 파일)
+name: _publish
+on:
+  workflow_call:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: "1"
+      - run: npm run build
+      - name: index.json 만들기
+        run: PACK_COMMIT=$(git rev-parse HEAD) npm run ci:publish
+      - name: pack-dist 브랜치에 올리기
+        run: |
+          cd out/pack-dist
+          git init -q -b pack-dist
+          git config user.name "mmcraft-bot"
+          git config user.email "mmcraft-bot@users.noreply.github.com"
+          git add -A
+          git commit -q -m "팩 배포 $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" pack-dist

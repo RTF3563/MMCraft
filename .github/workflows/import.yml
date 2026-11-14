@@ -1,0 +1,43 @@
+# 처음 한 번: CurseForge 모드 목록 → Modrinth로 옮기기 → 테스트 → 배포
+name: CurseForge 가져오기
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pack
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    outputs:
+      ok: ${{ steps.test.outcome }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/prepare
+      - name: Modrinth에서 모드 찾기
+        run: npm run ci:import
+      - name: 저장
+        run: |
+          git config user.name "mmcraft-bot"
+          git config user.email "mmcraft-bot@users.noreply.github.com"
+          git add pack
+          git diff --cached --quiet || (git commit -m "CurseForge → Modrinth 가져오기" && git push)
+      - name: 실행 테스트
+        id: test
+        run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-logs
+          path: .ci-cache/runs/**
+          if-no-files-found: ignore
+
+  publish:
+    needs: import
+    if: needs.import.outputs.ok == 'success'
+    uses: ./.github/workflows/_publish.yml

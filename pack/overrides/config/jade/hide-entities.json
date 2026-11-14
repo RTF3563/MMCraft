@@ -1,0 +1,10 @@
+{
+  "__comment": "이곳은 Jade의 타겟 무시 목록입니다. \"values\" 목록에 레지스트리 ID를 추가할 수 있습니다.",
+  "values": [
+    "area_effect_cloud",
+    "firework_rocket",
+    "interaction",
+    "text_display",
+    "lightning_bolt"
+  ]
+}

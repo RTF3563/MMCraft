@@ -1,0 +1,27 @@
+# 런처 설치 파일 만들기: 태그 v1.0.0 처럼 올리면 Releases에 MMCraft-Setup-x.y.z.exe 생성
+# (설치된 런처는 이 Releases를 보고 스스로 업데이트)
+name: 런처 배포
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: 설치 파일 빌드 + Releases 업로드
+        run: npm run release:win
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MMCRAFT_AZURE_CLIENT_ID: ${{ vars.MMCRAFT_AZURE_CLIENT_ID }}

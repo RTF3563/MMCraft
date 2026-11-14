@@ -1,0 +1,9 @@
+{
+  "allowMovement": {
+    "net.minecraft.client.gui.screens.PauseScreen": true,
+    "de.maxhenkel.voicechat.gui.onboarding.IntroductionOnboardingScreen": true,
+    "de.maxhenkel.voicechat.gui.VoiceChatScreen": true,
+    "net.minecraft.client.gui.screens.friends.FriendsOverlayScreen": true
+  },
+  "hideBackground": {}
+}

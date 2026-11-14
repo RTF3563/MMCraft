@@ -1,0 +1,19 @@
+
+# The default difficulty selected for newly created worlds.
+defaultDifficulty = "normal"
+
+# Resource pack IDs to have enabled by default on the first run.
+defaultResourcePacks = [ 
+    "serilum_mod_translations", 
+    "vanilla", 
+    "file/SodiumTranslations.zip", 
+    "file/Chat Reporting Helper.zip", 
+    "file/Mod Menu Helper.zip", 
+    "continuity:glass_pane_culling_fix", 
+    "continuity:default", 
+    "file/VanillaTweaks_r839694_MC26.3.x.zip"
+]
+
+# Set to true if the difficulty for new world's should be locked to the specific default. This cannot be unlocked by players without external tools! Probably a bad idea. I don't recommend. Why am I adding this option?
+lockDifficulty = false
+

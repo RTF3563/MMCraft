@@ -1,0 +1,622 @@
+[
+  {
+    "name": "Polytone",
+    "author": "MehVahdJukaar",
+    "curseforgeSlug": "polytone"
+  },
+  {
+    "name": "Boat Item View",
+    "author": "50ap5ud5",
+    "curseforgeSlug": "boat-item-view"
+  },
+  {
+    "name": "Chat Heads",
+    "author": "dzwdz",
+    "curseforgeSlug": "chat-heads"
+  },
+  {
+    "name": "fix GPU memory leak",
+    "author": "someaddon",
+    "curseforgeSlug": "fix-gpu-memory-leak"
+  },
+  {
+    "name": "Debugify",
+    "author": "isXander",
+    "curseforgeSlug": "debugify"
+  },
+  {
+    "name": "Simple HUD Enhanced",
+    "author": "SoRadGaming",
+    "curseforgeSlug": "simple-hud-enhanced"
+  },
+  {
+    "name": "Get It Together, Drops!",
+    "author": "bl4ckscor3",
+    "curseforgeSlug": "get-it-together-drops"
+  },
+  {
+    "name": "Mouse Tweaks",
+    "author": "YaLTeR",
+    "curseforgeSlug": "mouse-tweaks"
+  },
+  {
+    "name": "Visual Workbench",
+    "author": "Fuzs",
+    "curseforgeSlug": "visual-workbench"
+  },
+  {
+    "name": "[EMF] Entity Model Features [Fabric & Forge]",
+    "author": "Traben",
+    "curseforgeSlug": "entity-model-features"
+  },
+  {
+    "name": "YetAnotherConfigLib",
+    "author": "isXander",
+    "curseforgeSlug": "yacl"
+  },
+  {
+    "name": "e4mc",
+    "author": "vgskye",
+    "curseforgeSlug": "e4mc"
+  },
+  {
+    "name": "CreativeCore",
+    "author": "CreativeMD",
+    "curseforgeSlug": "creativecore"
+  },
+  {
+    "name": "Jade 🔍",
+    "author": "Snownee",
+    "curseforgeSlug": "jade"
+  },
+  {
+    "name": "Particular ✨ Reforged",
+    "author": "Project8gbDeRam",
+    "curseforgeSlug": "particular-reforged"
+  },
+  {
+    "name": "LambDynamicLights",
+    "author": "LambdAurora",
+    "curseforgeSlug": "lambdynamiclights"
+  },
+  {
+    "name": "Freecam",
+    "author": "hashalite",
+    "curseforgeSlug": "free-cam"
+  },
+  {
+    "name": "Clickable advancements",
+    "author": "someaddon",
+    "curseforgeSlug": "clickable-advancements"
+  },
+  {
+    "name": "Carry On",
+    "author": "Tschipp",
+    "curseforgeSlug": "carry-on"
+  },
+  {
+    "name": "Client Tweaks",
+    "author": "BlayTheNinth",
+    "curseforgeSlug": "client-tweaks"
+  },
+  {
+    "name": "Remove Reloading Screen",
+    "author": "dima_dencep",
+    "curseforgeSlug": "rrls"
+  },
+  {
+    "name": "ImmediatelyFast",
+    "author": "RaphiMC",
+    "curseforgeSlug": "immediatelyfast"
+  },
+  {
+    "name": "Controlling",
+    "author": "Jaredlll08",
+    "curseforgeSlug": "controlling"
+  },
+  {
+    "name": "Smooth Swapping",
+    "author": "Schauweg",
+    "curseforgeSlug": "smooth-swapping"
+  },
+  {
+    "name": "Biome Music",
+    "author": "someaddon",
+    "curseforgeSlug": "biome-music"
+  },
+  {
+    "name": "Main Menu Credits",
+    "author": "isXander",
+    "curseforgeSlug": "main-menu-credits"
+  },
+  {
+    "name": "Skyboxify",
+    "author": "lowercasebtw",
+    "curseforgeSlug": "skyboxify"
+  },
+  {
+    "name": "Almanac Lib",
+    "author": "frikinjay",
+    "curseforgeSlug": "almanac-lib"
+  },
+  {
+    "name": "Crafting Tweaks",
+    "author": "BlayTheNinth",
+    "curseforgeSlug": "crafting-tweaks"
+  },
+  {
+    "name": "Better Advancements",
+    "author": "way2muchnoise",
+    "curseforgeSlug": "better-advancements"
+  },
+  {
+    "name": "BetterGrassify",
+    "author": "UltimatChamp",
+    "curseforgeSlug": "bettergrassify"
+  },
+  {
+    "name": "Subtle Effects",
+    "author": "MincraftEinstein",
+    "curseforgeSlug": "subtle-effects"
+  },
+  {
+    "name": "Cubes Without Borders",
+    "author": "Kira_NT",
+    "curseforgeSlug": "cubes-without-borders"
+  },
+  {
+    "name": "Let Me Despawn",
+    "author": "frikinjay",
+    "curseforgeSlug": "let-me-despawn"
+  },
+  {
+    "name": "Not Enough Animations",
+    "author": "tr7zw",
+    "curseforgeSlug": "not-enough-animations"
+  },
+  {
+    "name": "Bridging Mod",
+    "author": "CG360",
+    "curseforgeSlug": "bridging-mod"
+  },
+  {
+    "name": "Ixeris",
+    "author": "decce",
+    "curseforgeSlug": "ixeris"
+  },
+  {
+    "name": "Better Compatibility Checker",
+    "author": "Gaz_",
+    "curseforgeSlug": "better-compatibility-checker"
+  },
+  {
+    "name": "TerraBlender (Fabric)",
+    "author": "TheAdubbz",
+    "curseforgeSlug": "terrablender-fabric"
+  },
+  {
+    "name": "Sodium Shadowy Path Blocks (SSPB)",
+    "author": "Rynnavinx",
+    "curseforgeSlug": "sodium-shadowy-path-blocks"
+  },
+  {
+    "name": "Falling Leaves (Fabric)",
+    "author": "Fourmisain",
+    "curseforgeSlug": "falling-leaves-fabric"
+  },
+  {
+    "name": "Language Reload",
+    "author": "Jerozgen",
+    "curseforgeSlug": "language-reload"
+  },
+  {
+    "name": "NetherPortalFix",
+    "author": "BlayTheNinth",
+    "curseforgeSlug": "netherportalfix"
+  },
+  {
+    "name": "Better Mount HUD",
+    "author": "Lortseam_",
+    "curseforgeSlug": "better-mount-hud"
+  },
+  {
+    "name": "[ETF] Entity Texture Features - [Fabric & Forge]",
+    "author": "Traben",
+    "curseforgeSlug": "entity-texture-features-fabric"
+  },
+  {
+    "name": "Dynamic FPS",
+    "author": "juliand665",
+    "curseforgeSlug": "dynamic-fps"
+  },
+  {
+    "name": "RightClickHarvest",
+    "author": "jamalam360",
+    "curseforgeSlug": "rightclickharvest"
+  },
+  {
+    "name": "Iris Shaders",
+    "author": "coderbot",
+    "curseforgeSlug": "irisshaders"
+  },
+  {
+    "name": "MoreCulling",
+    "author": "FX_PR0CESS",
+    "curseforgeSlug": "moreculling"
+  },
+  {
+    "name": "Zoomify",
+    "author": "isXander",
+    "curseforgeSlug": "zoomify"
+  },
+  {
+    "name": "Structure Essentials",
+    "author": "someaddon",
+    "curseforgeSlug": "structure-essentials-forge-fabric"
+  },
+  {
+    "name": "Puzzles Lib",
+    "author": "Fuzs",
+    "curseforgeSlug": "puzzles-lib"
+  },
+  {
+    "name": "Visuality",
+    "author": "PinkGoosik",
+    "curseforgeSlug": "visuality"
+  },
+  {
+    "name": "Lithium (Fabric/NeoForge)",
+    "author": "JellySquid",
+    "curseforgeSlug": "lithium"
+  },
+  {
+    "name": "Balm",
+    "author": "BlayTheNinth",
+    "curseforgeSlug": "balm"
+  },
+  {
+    "name": "Cloth Config API (Fabric/Forge/NeoForge)",
+    "author": "shedaniel",
+    "curseforgeSlug": "cloth-config"
+  },
+  {
+    "name": "Presence Footsteps",
+    "author": "S0llace",
+    "curseforgeSlug": "presence-footsteps"
+  },
+  {
+    "name": "Better Days",
+    "author": "wendall911",
+    "curseforgeSlug": "betterdays"
+  },
+  {
+    "name": "Fzzy Config",
+    "author": "fzzyhmstrs",
+    "curseforgeSlug": "fzzy-config"
+  },
+  {
+    "name": "Cape Provider",
+    "author": "litetex",
+    "curseforgeSlug": "cape-provider"
+  },
+  {
+    "name": "Renice Shot",
+    "author": "Wechirok",
+    "curseforgeSlug": "renice-shot"
+  },
+  {
+    "name": "Double Doors",
+    "author": "Serilum",
+    "curseforgeSlug": "double-doors"
+  },
+  {
+    "name": "Trade Cycling",
+    "author": "henkelmax",
+    "curseforgeSlug": "trade-cycling"
+  },
+  {
+    "name": "Clumps",
+    "author": "Jaredlll08",
+    "curseforgeSlug": "clumps"
+  },
+  {
+    "name": "Chat Reporting Helper",
+    "author": "robotkoer",
+    "curseforgeSlug": "chat-reporting-helper"
+  },
+  {
+    "name": "Collective",
+    "author": "Serilum",
+    "curseforgeSlug": "collective"
+  },
+  {
+    "name": "Puzzle",
+    "author": "Motschen",
+    "curseforgeSlug": "puzzle"
+  },
+  {
+    "name": "JamLib",
+    "author": "jamalam360",
+    "curseforgeSlug": "jamlib"
+  },
+  {
+    "name": "OptiGUI",
+    "author": "opekope2",
+    "curseforgeSlug": "optigui"
+  },
+  {
+    "name": "Max Health Fix",
+    "author": "DarkhaxDev",
+    "curseforgeSlug": "max-health-fix"
+  },
+  {
+    "name": "Item Highlighter [Fabric]",
+    "author": "Grend_G",
+    "curseforgeSlug": "item-highlighter-fabric"
+  },
+  {
+    "name": "AppleSkin",
+    "author": "squeek502",
+    "curseforgeSlug": "appleskin"
+  },
+  {
+    "name": "More Chat History",
+    "author": "JackFred2",
+    "curseforgeSlug": "morechathistory"
+  },
+  {
+    "name": "Advancement Plaques [Fabric]",
+    "author": "Grend_G",
+    "curseforgeSlug": "advancement-plaques-fabric"
+  },
+  {
+    "name": "Reese's Sodium Options",
+    "author": "FlashyReese",
+    "curseforgeSlug": "reeses-sodium-options"
+  },
+  {
+    "name": "Default Options",
+    "author": "BlayTheNinth",
+    "curseforgeSlug": "default-options"
+  },
+  {
+    "name": "AmbientSounds 6",
+    "author": "CreativeMD",
+    "curseforgeSlug": "ambientsounds"
+  },
+  {
+    "name": "Server Performance - Smooth Chunk Save",
+    "author": "someaddon",
+    "curseforgeSlug": "smooth-chunk-save"
+  },
+  {
+    "name": "Skin Layers 3D",
+    "author": "tr7zw",
+    "curseforgeSlug": "skin-layers-3d"
+  },
+  {
+    "name": "Crash Assistant",
+    "author": "KostromDan",
+    "curseforgeSlug": "crash-assistant"
+  },
+  {
+    "name": "Easy Magic",
+    "author": "Fuzs",
+    "curseforgeSlug": "easy-magic"
+  },
+  {
+    "name": "Easy Anvils",
+    "author": "Fuzs",
+    "curseforgeSlug": "easy-anvils"
+  },
+  {
+    "name": "Fabric API",
+    "author": "modmuss50",
+    "curseforgeSlug": "fabric-api"
+  },
+  {
+    "name": "Sodium Extra",
+    "author": "FlashyReese",
+    "curseforgeSlug": "sodium-extra"
+  },
+  {
+    "name": "Enchantment Descriptions",
+    "author": "DarkhaxDev",
+    "curseforgeSlug": "enchantment-descriptions"
+  },
+  {
+    "name": "Better Block Entities",
+    "author": "cseden",
+    "curseforgeSlug": "better-block-entities"
+  },
+  {
+    "name": "FerriteCore (Fabric)",
+    "author": "malte0811",
+    "curseforgeSlug": "ferritecore-fabric"
+  },
+  {
+    "name": "Controlify (Controller support)",
+    "author": "isXander",
+    "curseforgeSlug": "controlify"
+  },
+  {
+    "name": "Better Climbing",
+    "author": "artemisSystem",
+    "curseforgeSlug": "better-climbing"
+  },
+  {
+    "name": "Cupboard",
+    "author": "someaddon",
+    "curseforgeSlug": "cupboard"
+  },
+  {
+    "name": "Client Sort",
+    "author": "NotRyken",
+    "curseforgeSlug": "clientsort"
+  },
+  {
+    "name": "Translations for Sodium",
+    "author": "robotkoer",
+    "curseforgeSlug": "translations-for-sodium"
+  },
+  {
+    "name": "Konkrete",
+    "author": "Keksuccino",
+    "curseforgeSlug": "konkrete"
+  },
+  {
+    "name": "Searchables",
+    "author": "Jaredlll08",
+    "curseforgeSlug": "searchables"
+  },
+  {
+    "name": "Forge Config API Port",
+    "author": "Fuzs",
+    "curseforgeSlug": "forge-config-api-port"
+  },
+  {
+    "name": "InvMove",
+    "author": "PieKing1215",
+    "curseforgeSlug": "invmove"
+  },
+  {
+    "name": "Fast Item Frames",
+    "author": "Fuzs",
+    "curseforgeSlug": "fast-item-frames"
+  },
+  {
+    "name": "MixinTrace Reborn",
+    "author": "IAFEnvoy",
+    "curseforgeSlug": "mixintrace-reborn"
+  },
+  {
+    "name": "Continuity",
+    "author": "Pepper_Bell",
+    "curseforgeSlug": "continuity"
+  },
+  {
+    "name": "BaguetteLib",
+    "author": "Project8gbDeRam",
+    "curseforgeSlug": "baguettelib"
+  },
+  {
+    "name": "TrashSlot",
+    "author": "BlayTheNinth",
+    "curseforgeSlug": "trashslot"
+  },
+  {
+    "name": "BadOptimizations",
+    "author": "thosea",
+    "curseforgeSlug": "badoptimizations"
+  },
+  {
+    "name": "Prism [Fabric]",
+    "author": "Grend_G",
+    "curseforgeSlug": "prism-fabric"
+  },
+  {
+    "name": "Iceberg [Fabric]",
+    "author": "Grend_G",
+    "curseforgeSlug": "iceberg-fabric"
+  },
+  {
+    "name": "Easy Shulker Boxes",
+    "author": "Fuzs",
+    "curseforgeSlug": "easy-shulker-boxes"
+  },
+  {
+    "name": "Prickle",
+    "author": "DarkhaxDev",
+    "curseforgeSlug": "prickle"
+  },
+  {
+    "name": "Animatica Refabricated",
+    "author": "Coredex",
+    "curseforgeSlug": "animatica-refabricated"
+  },
+  {
+    "name": "Simple Voice Chat",
+    "author": "henkelmax",
+    "curseforgeSlug": "simple-voice-chat"
+  },
+  {
+    "name": "ModernFix-mVUS",
+    "author": "Coredex",
+    "curseforgeSlug": "modernfix-mvus"
+  },
+  {
+    "name": "Sound Physics Remastered",
+    "author": "henkelmax",
+    "curseforgeSlug": "sound-physics-remastered"
+  },
+  {
+    "name": "Fabric Language Kotlin",
+    "author": "modmuss50",
+    "curseforgeSlug": "fabric-language-kotlin"
+  },
+  {
+    "name": "Sodium",
+    "author": "JellySquid",
+    "curseforgeSlug": "sodium"
+  },
+  {
+    "name": "Mod Menu",
+    "author": "Prospector",
+    "curseforgeSlug": "modmenu"
+  },
+  {
+    "name": "Text Placeholder API",
+    "author": "Patbox",
+    "curseforgeSlug": "text-placeholder-api"
+  },
+  {
+    "name": "spark",
+    "author": "Iucko",
+    "curseforgeSlug": "spark"
+  },
+  {
+    "name": "AttributeFix",
+    "author": "DarkhaxDev",
+    "curseforgeSlug": "attributefix"
+  },
+  {
+    "name": "Config Manager",
+    "author": "TheBossMagnus",
+    "curseforgeSlug": "configmanager"
+  },
+  {
+    "name": "FastQuit",
+    "author": "contaria",
+    "curseforgeSlug": "fastquit"
+  },
+  {
+    "name": "I'm Fast",
+    "author": "Bielhiss",
+    "curseforgeSlug": "im-fast"
+  },
+  {
+    "name": "Item Borders [Fabric]",
+    "author": "Grend_G",
+    "curseforgeSlug": "item-borders-fabric"
+  },
+  {
+    "name": "Lootr (Fabric)",
+    "author": "Noobanidus",
+    "curseforgeSlug": "lootr-fabric"
+  },
+  {
+    "name": "Entity Culling Fabric/Forge",
+    "author": "tr7zw",
+    "curseforgeSlug": "entityculling"
+  },
+  {
+    "name": "Client Crafting",
+    "author": "someaddon",
+    "curseforgeSlug": "client-crafting"
+  },
+  {
+    "name": "Better Than Mending",
+    "author": "legobmw99",
+    "curseforgeSlug": "better-than-mending"
+  }
+]

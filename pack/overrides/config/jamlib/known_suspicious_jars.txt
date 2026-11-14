@@ -1,0 +1,2 @@
+jamlib-fabric-2.3.2-26.3.x.jar (should be jamlib-fabric-2.3.2+26.3.x.jar)
+rightclickharvest-fabric-4.7.0-26.3.x.jar (should be rightclickharvest-fabric-4.7.0+26.3.x.jar)

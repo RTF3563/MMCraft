@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://mc-heads.net data:; style-src 'self'; font-src 'self'; script-src 'self'" />
+  <title>MMCraft</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="titlebar">
+    <span class="titlebar-name">MMCraft</span>
+    <div class="titlebar-buttons">
+      <button data-win="min" aria-label="최소화"><svg viewBox="0 0 10 10"><rect x="1" y="5" width="8" height="1"/></svg></button>
+      <button data-win="max" aria-label="최대화"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" fill="none" stroke="currentColor"/></svg></button>
+      <button data-win="close" class="close" aria-label="닫기"><svg viewBox="0 0 10 10"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    </div>
+  </header>
+
+  <div id="update-banner" class="banner" hidden>
+    <span>새 런처 버전 <b id="update-version"></b>을 받았습니다.</span>
+    <button id="update-restart" class="link">다시 시작해서 적용</button>
+  </div>
+
+  <main class="stage">
+    <section class="hero">
+      <h1 class="wordmark">MMCraft</h1>
+      <dl class="facts">
+        <div><dt>마인크래프트</dt><dd id="fact-mc">-</dd></div>
+        <div><dt>팩 버전</dt><dd id="fact-pack">-</dd></div>
+        <div><dt>모드</dt><dd id="fact-mods">-</dd></div>
+      </dl>
+      <p id="state-line" class="state-line">팩 정보를 확인하고 있습니다</p>
+      <p id="user-mods" class="note" hidden></p>
+    </section>
+
+    <aside class="ledger">
+      <h2>업데이트 기록</h2>
+      <ol id="changelog" class="changelog"><li class="muted">불러오는 중</li></ol>
+    </aside>
+  </main>
+
+  <footer class="dock">
+    <div class="who">
+      <img id="avatar" class="avatar" alt="" width="40" height="40" hidden />
+      <div class="who-text">
+        <span id="who-name" class="who-name">로그인 필요</span>
+        <button id="logout" class="link" hidden>로그아웃</button>
+      </div>
+    </div>
+
+    <div class="progress-area">
+      <div id="progress-text" class="progress-text">준비됨</div>
+      <div class="blocks" id="blocks" aria-hidden="true"></div>
+    </div>
+
+    <button id="settings-open" class="icon-btn" aria-label="설정">
+      <svg viewBox="0 0 16 16"><path fill="currentColor" d="M7 0h2v2.1a6 6 0 0 1 1.9.8l1.5-1.5 1.4 1.4-1.5 1.5c.4.6.6 1.2.8 1.9H16v2h-2.1a6 6 0 0 1-.8 1.9l1.5 1.5-1.4 1.4-1.5-1.5a6 6 0 0 1-1.9.8V16H7v-2.1a6 6 0 0 1-1.9-.8l-1.5 1.5-1.4-1.4 1.5-1.5a6 6 0 0 1-.8-1.9H0V7h2.1c.2-.7.4-1.3.8-1.9L1.4 3.6l1.4-1.4 1.5 1.5c.6-.4 1.2-.6 1.9-.8V0zm1 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+    </button>
+    <button id="play" class="play" disabled>플레이</button>
+  </footer>
+
+  <!-- 로그인 -->
+  <div id="login" class="overlay" hidden>
+    <div class="sheet">
+      <h2 class="sheet-title">Microsoft 계정으로 로그인</h2>
+      <p class="sheet-body">마인크래프트 자바 에디션을 구매한 계정이 필요합니다. 로그인 정보는 이 컴퓨터에만 암호화해 저장합니다.</p>
+      <p id="login-error" class="error" hidden></p>
+      <button id="login-btn" class="play wide">로그인</button>
+    </div>
+  </div>
+
+  <!-- 설정 -->
+  <div id="settings" class="drawer" hidden>
+    <div class="drawer-head">
+      <h2>설정</h2>
+      <button id="settings-close" class="icon-btn" aria-label="설정 닫기"><svg viewBox="0 0 10 10"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    </div>
+    <label class="field">
+      <span class="field-label">게임 메모리 <output id="mem-out"></output></span>
+      <input id="mem" type="range" min="2048" step="512" />
+      <span class="hint">모드가 많아서 6~8GB를 권장합니다. 컴퓨터 메모리의 절반을 넘기지 마세요.</span>
+    </label>
+    <label class="check">
+      <input id="hide" type="checkbox" />
+      <span>게임을 켜면 런처 숨기기</span>
+    </label>
+    <label class="field">
+      <span class="field-label">추가 Java 옵션</span>
+      <input id="jvm" type="text" spellcheck="false" placeholder="필요할 때만 입력" />
+    </label>
+    <div class="field">
+      <span class="field-label">폴더 열기</span>
+      <div class="folder-row">
+        <button class="ghost" data-open="saves">월드</button>
+        <button class="ghost" data-open="backups">월드 백업</button>
+        <button class="ghost" data-open="mods">모드</button>
+        <button class="ghost" data-open="game">게임 폴더</button>
+        <button class="ghost" data-open="logs">로그</button>
+      </div>
+    </div>
+    <button id="reinstall" class="ghost wide">파일 검사 후 다시 받기</button>
+    <p class="hint" id="launcher-version"></p>
+  </div>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

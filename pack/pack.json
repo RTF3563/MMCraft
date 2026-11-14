@@ -1,0 +1,11 @@
+{
+  "name": "MMCraft",
+  "version": "0.1.0",
+  "minecraft": "26.3",
+  "fabricLoader": "0.20.1",
+  "policy": {
+    "minStability": "beta",
+    "autoUpgradeMinecraft": true,
+    "maxBisectTests": 8
+  }
+}

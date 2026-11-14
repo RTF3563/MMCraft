@@ -1,0 +1,64 @@
+{
+  "name": "mmcraft-launcher",
+  "productName": "MMCraft",
+  "version": "1.0.0",
+  "description": "MMCraft 모드팩 전용 런처",
+  "author": "RTF3563",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "dist/launcher/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-renderer.mjs",
+    "test": "npm run build && node --test dist/test/*.test.js",
+    "start": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --win nsis --publish never",
+    "release:win": "npm run build && electron-builder --win nsis --publish always",
+    "ci:import": "node dist/ci/import-curseforge.js",
+    "ci:update": "node dist/ci/update.js",
+    "ci:test": "node dist/ci/test-pack.js",
+    "ci:publish": "node dist/ci/publish.js"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.0",
+    "electron-updater": "^6.8.11"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "electron": "^45.3.2",
+    "electron-builder": "^26.18.0",
+    "typescript": "^5.9.3"
+  },
+  "build": {
+    "appId": "com.rtf3563.mmcraft",
+    "productName": "MMCraft",
+    "artifactName": "MMCraft-Setup-${version}.${ext}",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/core/**",
+      "dist/launcher/**",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "MMCraft"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "RTF3563",
+        "repo": "MMCraft",
+        "releaseType": "release"
+      }
+    ]
+  }
+}
