@@ -1,4 +1,4 @@
-# pack/ 폴더를 직접 고쳐서 올렸을 때: 테스트 → 배포
+# pack/ 폴더를 고쳐서 올렸을 때: (필요하면 CurseForge 가져오기) → 실행 테스트 → 배포
 name: 팩 수정 배포
 on:
   push:
@@ -21,11 +21,21 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: ./.github/actions/prepare
-        if: ${{ !inputs.skip_test }}
+      - name: CurseForge 가져오기 (mods.json이 없거나 pack/import를 고쳤을 때)
+        run: |
+          if [ ! -f pack/mods.json ] || git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -q '^pack/import/'; then
+            npm run ci:import
+            git config user.name "mmcraft-bot"
+            git config user.email "mmcraft-bot@users.noreply.github.com"
+            git add pack
+            git diff --cached --quiet || (git commit -m "CurseForge → Modrinth 가져오기" && git push)
+          fi
       - name: 실행 테스트
         if: ${{ !inputs.skip_test }}
         run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:test
