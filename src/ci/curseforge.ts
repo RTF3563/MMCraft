@@ -215,8 +215,9 @@ export function withCurseForge(p: Provider, cfg: CurseForgeConfig, onNote?: (msg
       if (cfOk.length === 0) return base;
       const names = new Set(cfOk.map((f) => f.fileName.toLowerCase()));
       const hashes = new Set(cfOk.map((f) => f.sha1).filter(Boolean) as string[]);
+      const snapshotLike = /snapshot|[-+.]pre\d|[-+.]rc\d|\d\dw\d\d[a-z]/i;
       const extra = (await mrAll(id, loader)).filter(
-        (v) => !base.some((b) => b.id === v.id) &&
+        (v) => !base.some((b) => b.id === v.id) && !snapshotLike.test(v.version_number) &&
           v.files.some((f) => names.has(f.filename.toLowerCase()) || hashes.has(f.hashes.sha1)),
       );
       if (extra.length) onNote?.(`${proj!.title}: CurseForge 기준 ${mc} 지원 확인 (${extra.map((v) => v.version_number).join(", ")})`);
