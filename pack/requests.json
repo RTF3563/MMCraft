@@ -1,6 +1,4 @@
 {
-  "test": true,
-  "add": [
-    { "modrinth": "essential", "curseforge": "essential-mod" }
-  ]
+  "add": [],
+  "remove": []
 }
