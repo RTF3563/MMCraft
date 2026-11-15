@@ -8,7 +8,7 @@
 </head>
 <body>
   <header class="titlebar">
-    <span class="titlebar-name">MMCraft</span>
+    <span class="titlebar-name"><img src="icon.png" alt="" />MMCraft</span>
     <div class="titlebar-buttons">
       <button data-win="min" data-i18n-aria="win.min"><svg viewBox="0 0 10 10"><rect x="1" y="5" width="8" height="1"/></svg></button>
       <button data-win="max" data-i18n-aria="win.max"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" fill="none" stroke="currentColor"/></svg></button>
@@ -23,17 +23,26 @@
 
   <main class="stage">
     <section class="hero">
-      <h1 class="wordmark">MMCraft</h1>
-      <dl class="facts">
-        <div><dt data-i18n="fact.mc"></dt><dd id="fact-mc">-</dd></div>
-        <div><dt data-i18n="fact.pack"></dt><dd id="fact-pack">-</dd></div>
-        <div><dt data-i18n="fact.mods"></dt><dd id="fact-mods">-</dd></div>
-      </dl>
-      <p id="state-line" class="state-line" data-i18n="state.checking"></p>
-      <p id="user-mods" class="note" hidden></p>
+      <div class="logo">
+        <img class="logo-block" src="icon.png" alt="" />
+        <div class="logo-text">
+          <h1 class="wordmark">MMCraft</h1>
+          <p class="subtitle">More MineCraft</p>
+        </div>
+        <span class="splash" data-i18n="splash"></span>
+      </div>
+      <div class="info">
+        <dl class="facts">
+          <div><dt data-i18n="fact.mc"></dt><dd id="fact-mc">-</dd></div>
+          <div><dt data-i18n="fact.pack"></dt><dd id="fact-pack">-</dd></div>
+          <div><dt data-i18n="fact.mods"></dt><dd id="fact-mods">-</dd></div>
+        </dl>
+        <p id="state-line" class="state-line" data-i18n="state.checking"></p>
+        <p id="user-mods" class="note" hidden></p>
+      </div>
     </section>
 
-    <aside class="ledger">
+    <aside class="ledger panel">
       <h2 data-i18n="ledger.title"></h2>
       <ol id="changelog" class="changelog"><li class="muted" data-i18n="ledger.loading"></li></ol>
     </aside>
@@ -50,71 +59,67 @@
 
     <div class="progress-area">
       <div id="progress-text" class="progress-text"></div>
-      <div class="blocks" id="blocks" aria-hidden="true"></div>
+      <div class="bar" aria-hidden="true"><div class="bar-fill" id="bar-fill"></div></div>
     </div>
 
-    <button id="settings-open" class="icon-btn" data-i18n-aria="settings.open">
-      <svg viewBox="0 0 16 16"><path fill="currentColor" d="M7 0h2v2.1a6 6 0 0 1 1.9.8l1.5-1.5 1.4 1.4-1.5 1.5c.4.6.6 1.2.8 1.9H16v2h-2.1a6 6 0 0 1-.8 1.9l1.5 1.5-1.4 1.4-1.5-1.5a6 6 0 0 1-1.9.8V16H7v-2.1a6 6 0 0 1-1.9-.8l-1.5 1.5-1.4-1.4 1.5-1.5a6 6 0 0 1-.8-1.9H0V7h2.1c.2-.7.4-1.3.8-1.9L1.4 3.6l1.4-1.4 1.5 1.5c.6-.4 1.2-.6 1.9-.8V0zm1 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+    <button id="settings-open" class="mc-btn icon" data-i18n-aria="settings.open">
+      <svg viewBox="0 0 14 14" shape-rendering="crispEdges" fill="currentColor"><rect x="6" y="0" width="1" height="1"/><rect x="7" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="11" y="1" width="1" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/><rect x="8" y="2" width="1" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="11" y="2" width="1" height="1"/><rect x="12" y="2" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="9" y="3" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="11" y="3" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="10" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="9" y="5" width="1" height="1"/><rect x="10" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="12" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="11" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="13" y="6" width="1" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="3" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="12" y="7" width="1" height="1"/><rect x="13" y="7" width="1" height="1"/><rect x="1" y="8" width="1" height="1"/><rect x="2" y="8" width="1" height="1"/><rect x="3" y="8" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="9" y="8" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="12" y="8" width="1" height="1"/><rect x="3" y="9" width="1" height="1"/><rect x="4" y="9" width="1" height="1"/><rect x="5" y="9" width="1" height="1"/><rect x="8" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="2" y="10" width="1" height="1"/><rect x="3" y="10" width="1" height="1"/><rect x="4" y="10" width="1" height="1"/><rect x="5" y="10" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="7" y="10" width="1" height="1"/><rect x="8" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="11" y="10" width="1" height="1"/><rect x="1" y="11" width="1" height="1"/><rect x="2" y="11" width="1" height="1"/><rect x="3" y="11" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="6" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="8" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="11" y="11" width="1" height="1"/><rect x="12" y="11" width="1" height="1"/><rect x="2" y="12" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="1"/><rect x="11" y="12" width="1" height="1"/><rect x="6" y="13" width="1" height="1"/><rect x="7" y="13" width="1" height="1"/></svg>
     </button>
     <button id="play" class="play" disabled></button>
   </footer>
 
   <!-- 로그인 / Sign in -->
   <div id="login" class="overlay" hidden>
-    <div class="sheet">
-      <h2 class="sheet-title" data-i18n="login.title"></h2>
-      <p class="sheet-body" data-i18n="login.body"></p>
+    <div class="dialog panel">
+      <img class="dialog-icon" src="icon.png" alt="" />
+      <h2 class="dialog-title" data-i18n="login.title"></h2>
+      <p class="dialog-body" data-i18n="login.body"></p>
       <p id="login-error" class="error" hidden></p>
       <button id="login-btn" class="play wide" data-i18n="login.button"></button>
-      <div class="sheet-lang">
-        <button class="link" data-lang="ko">한국어</button>
-        <button class="link" data-lang="en">English</button>
+      <div class="dialog-lang">
+        <button class="mc-btn small" data-lang="ko">한국어</button>
+        <button class="mc-btn small" data-lang="en">English</button>
       </div>
     </div>
   </div>
 
-  <!-- 설정 / Settings -->
-  <div id="settings" class="drawer" hidden>
-    <div class="drawer-head">
-      <h2 data-i18n="settings.title"></h2>
-      <button id="settings-close" class="icon-btn" data-i18n-aria="settings.close"><svg viewBox="0 0 10 10"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.2"/></svg></button>
-    </div>
-    <label class="field">
-      <span class="field-label" data-i18n="settings.language"></span>
-      <select id="lang">
-        <option value="auto" data-i18n="settings.lang.auto"></option>
-        <option value="ko">한국어</option>
-        <option value="en">English</option>
-      </select>
-    </label>
-    <label class="field">
-      <span class="field-label"><span data-i18n="settings.memory"></span> <output id="mem-out"></output></span>
-      <input id="mem" type="range" min="2048" step="512" />
-      <span class="hint" data-i18n="settings.memoryHint"></span>
-    </label>
-    <label class="check">
-      <input id="hide" type="checkbox" />
-      <span data-i18n="settings.hide"></span>
-    </label>
-    <label class="field">
-      <span class="field-label" data-i18n="settings.jvm"></span>
-      <input id="jvm" type="text" spellcheck="false" data-i18n-placeholder="settings.jvmPlaceholder" />
-    </label>
-    <div class="field">
+  <!-- 설정 / Settings (마인크래프트 옵션 화면 방식) -->
+  <div id="settings" class="options" hidden>
+    <div class="options-inner">
+      <h2 class="options-title" data-i18n="settings.title"></h2>
+      <div class="options-grid">
+        <button id="lang-btn" class="mc-btn"></button>
+        <button id="hide-btn" class="mc-btn"></button>
+        <label class="slider mc-btn">
+          <input id="mem" type="range" min="2048" step="512" />
+          <span class="slider-label"><span data-i18n="settings.memory"></span>: <output id="mem-out"></output></span>
+        </label>
+        <button id="reinstall" class="mc-btn" data-i18n="settings.reinstall"></button>
+      </div>
+      <p class="hint" data-i18n="settings.memoryHint"></p>
+
+      <label class="field">
+        <span class="field-label" data-i18n="settings.jvm"></span>
+        <input id="jvm" class="mc-input" type="text" spellcheck="false" data-i18n-placeholder="settings.jvmPlaceholder" />
+      </label>
+
       <span class="field-label" data-i18n="settings.folders"></span>
       <div class="folder-row">
-        <button class="ghost" data-open="saves" data-i18n="folder.saves"></button>
-        <button class="ghost" data-open="backups" data-i18n="folder.backups"></button>
-        <button class="ghost" data-open="mods" data-i18n="folder.mods"></button>
-        <button class="ghost" data-open="game" data-i18n="folder.game"></button>
-        <button class="ghost" data-open="logs" data-i18n="folder.logs"></button>
+        <button class="mc-btn" data-open="saves" data-i18n="folder.saves"></button>
+        <button class="mc-btn" data-open="backups" data-i18n="folder.backups"></button>
+        <button class="mc-btn" data-open="mods" data-i18n="folder.mods"></button>
+        <button class="mc-btn" data-open="game" data-i18n="folder.game"></button>
+        <button class="mc-btn" data-open="logs" data-i18n="folder.logs"></button>
+      </div>
+
+      <div class="options-foot">
+        <span class="hint" id="launcher-version"></span>
+        <button id="settings-close" class="mc-btn done" data-i18n="settings.done"></button>
       </div>
     </div>
-    <button id="reinstall" class="ghost wide" data-i18n="settings.reinstall"></button>
-    <p class="hint" id="launcher-version"></p>
   </div>
 
-  <div id="toast" class="toast" role="status" hidden></div>
+  <div id="toast" class="toast panel" role="status" hidden></div>
   <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>

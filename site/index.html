@@ -15,202 +15,173 @@
 @font-face { font-family: "Pretendard"; src: url("fonts/Pretendard-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Pretendard"; src: url("fonts/Pretendard-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 
-/* 런처와 같은 재료: 심층암 바탕 + 산화 구리 */
+/* 런처와 같은 게임 메뉴 방식: 도트 글꼴 + 글자 그림자, 돌 타일, 입체 버튼, 초록 다운로드 버튼 */
 :root {
-  --deepslate: #24262c;
-  --deepslate-dark: #1a1c21;
-  --tuff: #3b3e45;
-  --tuff-line: #4a4e57;
-  --bone: #e9e4d8;
-  --bone-dim: #a9a59b;
-  --patina: #4fa38e;
-  --patina-deep: #2f7464;
-  --copper: #c9834f;
+  --ink: #fff; --ink-dim: #cfcfcf; --ink-muted: #9d9d9d;
+  --shadow-text: 2px 2px 0 #2a2a2a;
+  --yellow: #ffe45c;
+  --green: #3f8f2a; --green-hi: #5cb83c; --green-lo: #1f5214;
+  --btn: #747474; --btn-hi: #a9a9a9; --btn-lo: #3e3e3e;
+  --line: #101010;
+  --panel: rgba(16,16,18,.82);
   --pixel: "Galmuri11", "Pretendard", sans-serif;
   --text: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-  --wrap: min(1120px, calc(100% - 48px));
+  --wrap: min(1100px, calc(100% - 40px));
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  margin: 0;
-  font-family: var(--text);
-  font-size: 17px;
-  line-height: 1.6;
+  margin: 0; font-family: var(--text); font-size: 16px; line-height: 1.65; color: var(--ink);
   word-break: keep-all;
-  color: var(--bone);
-  background-color: var(--deepslate);
-  background-image:
-    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background: #26272b url("tile.png") repeat; background-size: 64px 64px; image-rendering: pixelated;
 }
+img { image-rendering: pixelated; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--patina); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
 .wrap { width: var(--wrap); margin: 0 auto; }
+.px { font-family: var(--pixel); text-shadow: var(--shadow-text); }
 
-/* 위쪽 */
-.top { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: var(--pixel); font-weight: 700; text-decoration: none; }
-.brand img { width: 28px; height: 28px; image-rendering: pixelated; }
-.top nav { display: flex; gap: 24px; align-items: center; font-size: 15px; }
-.top nav a { color: var(--bone-dim); text-decoration: none; }
-.top nav a:hover { color: var(--bone); }
-.lang { display: flex; gap: 4px; }
-.lang button {
-  font: inherit; font-size: 13px; color: var(--bone-dim); background: none; border: 2px solid transparent; padding: 2px 8px; cursor: pointer;
+/* 첫 화면: 직접 그린 도트 풍경 */
+.hero {
+  position: relative;
+  background: url("scene.png") center bottom / cover no-repeat;
+  border-bottom: 4px solid var(--line);
 }
-.lang button[aria-pressed="true"] { color: var(--bone); border-color: var(--tuff-line); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,0) 30%, rgba(0,0,0,.6)); pointer-events: none; }
+.hero > * { position: relative; z-index: 1; }
+.top { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; font-family: var(--pixel); text-shadow: var(--shadow-text); }
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; font-size: 12px; }
+.brand img { width: 24px; height: 24px; }
+.top nav { display: flex; gap: 8px; align-items: center; font-size: 12px; }
+.top nav a { text-decoration: none; padding: 6px 10px; }
+.top nav a:hover { background: rgba(0,0,0,.35); }
 
-/* 첫 화면: 글자를 풀어 쓴 MMCraft */
-.hero { padding: 72px 0 88px; }
-.mark {
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  column-gap: 0;
-  margin: 0 0 48px;
+.hero-body { padding: 64px 0 72px; }
+.logo { position: relative; display: inline-flex; align-items: center; gap: 22px; margin-bottom: 28px; }
+.logo img { width: clamp(88px, 12vw, 144px); height: auto; filter: drop-shadow(5px 5px 0 rgba(0,0,0,.35)); }
+.wordmark { margin: 0; font-family: var(--pixel); font-weight: 700; font-size: clamp(52px, 9vw, 108px); line-height: 1; text-shadow: .06em .06em 0 #3a3a3a; }
+.subtitle { margin: 8px 0 0; font-family: var(--pixel); font-size: clamp(18px, 2.4vw, 30px); text-shadow: var(--shadow-text); }
+.splash {
+  position: absolute; left: calc(100% - 30px); top: -14px; white-space: nowrap;
+  font-family: var(--pixel); font-weight: 700; font-size: clamp(16px, 2vw, 26px); color: var(--yellow);
+  text-shadow: 2px 2px 0 #3f3a12; transform: rotate(-16deg); transform-origin: 0 50%;
+  animation: splash .55s ease-in-out infinite alternate;
 }
-.mark .glyph {
-  font-family: var(--pixel);
-  font-weight: 700;
-  font-size: clamp(72px, 15vw, 184px);
-  line-height: .95;
-  color: var(--bone);
-  text-shadow: .045em .045em 0 var(--patina-deep);
-}
-.mark .word {
-  font-family: var(--pixel);
-  font-size: clamp(13px, 1.6vw, 18px);
-  color: var(--patina);
-  padding-top: 18px;
-  border-top: 2px solid var(--tuff);
-  margin-top: 22px;
-  margin-right: .8em;
-}
-.mark .word:last-child { margin-right: 0; }
-.hero h1 {
-  font-family: var(--text);
-  font-weight: 600;
-  font-size: clamp(28px, 3.6vw, 44px);
-  line-height: 1.25;
-  margin: 0 0 16px;
-  letter-spacing: -.01em;
-}
-.hero .lead { font-size: 19px; color: var(--bone-dim); margin: 0 0 40px; max-width: 34em; }
+@keyframes splash { to { transform: rotate(-16deg) scale(1.08); } }
+.tagline { display: inline-block; margin: 0 0 28px; padding: 10px 14px; background: var(--panel); border: 2px solid var(--line); font-size: 18px; max-width: 40em; }
 
-.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 20px; }
 .download {
-  display: inline-flex; align-items: center; gap: 14px;
-  padding: 18px 30px 22px;
-  font-family: var(--pixel); font-weight: 700; font-size: 22px;
-  color: #0f2a24; background: var(--patina); text-decoration: none;
-  box-shadow: inset 0 -6px 0 var(--patina-deep), inset 0 2px 0 rgba(255,255,255,.25), 6px 6px 0 var(--deepslate-dark);
+  display: inline-flex; align-items: center; gap: 12px;
+  height: 64px; padding: 0 28px;
+  font-family: var(--pixel); font-weight: 700; font-size: 24px; text-decoration: none;
+  color: #fff; text-shadow: 2px 2px 0 #1a3d10;
+  background: var(--green); border: 2px solid var(--line);
+  box-shadow: inset 2px 2px 0 var(--green-hi), inset -2px -6px 0 var(--green-lo);
 }
-.download:hover { background: #5cb59e; }
-.download:active { transform: translate(2px, 2px); box-shadow: inset 0 -3px 0 var(--patina-deep), 4px 4px 0 var(--deepslate-dark); }
-.download svg { width: 22px; height: 22px; }
-.cta-meta { font-size: 14px; color: var(--bone-dim); line-height: 1.5; }
-.cta-meta a { color: var(--bone-dim); }
+.download:hover { background: #4aa432; }
+.download:active { box-shadow: inset 2px 4px 0 var(--green-lo); padding-top: 4px; }
+.download svg { width: 20px; height: 20px; }
+.cta-meta { font-family: var(--pixel); font-size: 12px; text-shadow: var(--shadow-text); line-height: 1.8; }
+.cta-meta a { color: var(--ink-dim); }
+
+/* 입체 버튼 (언어 등) */
+.mc-btn {
+  font: inherit; font-family: var(--pixel); font-size: 12px; color: #fff; text-shadow: var(--shadow-text); cursor: pointer;
+  padding: 6px 10px; background: var(--btn); border: 2px solid var(--line);
+  box-shadow: inset 2px 2px 0 var(--btn-hi), inset -2px -3px 0 var(--btn-lo);
+}
+.mc-btn:hover { background: #7f8fb8; box-shadow: inset 2px 2px 0 #b8c6ee, inset -2px -3px 0 #45507a; }
+.mc-btn[aria-pressed="true"] { background: #4a4a4a; box-shadow: inset 2px 2px 0 #2a2a2a; color: var(--yellow); }
+
+.panel { background: var(--panel); border: 2px solid var(--line); box-shadow: inset 2px 2px 0 rgba(255,255,255,.07), inset -2px -2px 0 rgba(0,0,0,.4); }
 
 /* 지금 배포 중인 팩 */
-.ledger-strip { background: var(--deepslate-dark); border-top: 2px solid var(--tuff); border-bottom: 2px solid var(--tuff); }
-.ledger-strip dl { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0 auto; }
-.ledger-strip div { padding: 22px 0 22px 24px; border-left: 2px solid var(--tuff); }
-.ledger-strip div:first-child { border-left: 0; padding-left: 0; }
-.ledger-strip dt { font-size: 13px; color: var(--bone-dim); }
-.ledger-strip dd { margin: 4px 0 0; font-family: var(--pixel); font-size: 24px; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: -36px auto 0; position: relative; z-index: 2; }
+.facts div { padding: 14px 18px; margin-left: -2px; }
+.facts div:first-child { margin-left: 0; }
+.facts dt { font-family: var(--pixel); font-size: 12px; color: var(--ink-muted); text-shadow: var(--shadow-text); }
+.facts dd { margin: 4px 0 0; font-family: var(--pixel); font-weight: 700; font-size: 24px; text-shadow: var(--shadow-text); }
 
-section { padding: 96px 0 0; }
-h2 { font-size: 28px; font-weight: 600; margin: 0 0 32px; letter-spacing: -.01em; }
+section { padding: 72px 0 0; }
+h2 { margin: 0 0 20px; font-family: var(--pixel); font-weight: 700; font-size: 24px; text-shadow: var(--shadow-text); }
 
-/* 런처가 하는 일 */
-.duties { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--tuff); border: 2px solid var(--tuff); }
-.duty { background: var(--deepslate); padding: 28px 28px 32px; }
-.duty h3 { font-family: var(--pixel); font-size: 19px; margin: 0 0 10px; color: var(--bone); }
-.duty p { margin: 0; color: var(--bone-dim); font-size: 16px; }
+.duties { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.duty { padding: 20px 22px 24px; }
+.duty h3 { margin: 0 0 8px; font-family: var(--pixel); font-size: 12px; font-weight: 700; color: var(--yellow); text-shadow: var(--shadow-text); }
+.duty p { margin: 0; color: var(--ink-dim); font-size: 15px; }
 
-/* 설치 순서 */
-.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: step; }
-.steps li {
-  counter-increment: step;
-  display: grid; grid-template-columns: 64px 1fr; gap: 20px; align-items: start;
-  padding: 22px 0; border-top: 2px solid var(--tuff);
-}
-.steps li:last-child { border-bottom: 2px solid var(--tuff); }
-.steps li::before {
-  content: counter(step);
-  font-family: var(--pixel); font-weight: 700; font-size: 32px; line-height: 1; color: var(--patina);
-}
-.steps strong { display: block; font-weight: 600; margin-bottom: 4px; }
-.steps span { color: var(--bone-dim); font-size: 16px; }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start; padding: 16px 20px; }
+.steps li + li { border-top: 2px solid rgba(255,255,255,.06); }
+.steps li::before { content: counter(step); display: grid; place-items: center; width: 40px; height: 40px; font-family: var(--pixel); font-weight: 700; font-size: 24px; text-shadow: 2px 2px 0 #1a3d10; background: var(--green); border: 2px solid var(--line); box-shadow: inset 2px 2px 0 var(--green-hi), inset -2px -3px 0 var(--green-lo); }
+.steps strong { display: block; font-family: var(--pixel); font-size: 12px; margin-bottom: 4px; text-shadow: var(--shadow-text); }
+.steps span { color: var(--ink-dim); font-size: 15px; }
 
-/* 모드 목록 */
-.mods-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 20px; }
+.mods-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 12px; }
 .mods-head h2 { margin: 0; }
-.search {
-  width: min(320px, 100%); padding: 10px 14px; font: inherit; font-size: 15px;
-  color: var(--bone); background: var(--deepslate-dark); border: 2px solid var(--tuff);
-}
-.search::placeholder { color: var(--bone-dim); }
-.mod-list { list-style: none; margin: 0; padding: 0; columns: 3 260px; column-gap: 32px; }
-.mod-list li { break-inside: avoid; display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 15px; }
-.mod-list .v { color: var(--bone-dim); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
-.mod-list .from { color: var(--copper); font-size: 12px; margin-left: 6px; }
-.more { margin-top: 20px; font: inherit; font-size: 15px; color: var(--bone); background: none; border: 2px solid var(--tuff); padding: 8px 16px; cursor: pointer; }
-.more:hover { border-color: var(--tuff-line); }
-.muted { color: var(--bone-dim); }
+.search { width: min(300px, 100%); padding: 8px 10px; font: 12px var(--pixel); color: #fff; background: #000; border: 2px solid #a0a0a0; }
+.search:focus { border-color: #fff; outline: none; }
+.search::placeholder { color: #8a8a8a; }
+.mods-box { padding: 12px 18px 16px; }
+.mod-list { list-style: none; margin: 0; padding: 0; columns: 3 240px; column-gap: 28px; }
+.mod-list li { break-inside: avoid; display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 14px; }
+.mod-list .v { color: var(--ink-muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+.mod-list .from { color: var(--yellow); font-size: 11px; margin-left: 6px; }
+.more { margin-top: 14px; }
+.muted { color: var(--ink-muted); }
 
-/* 자주 묻는 것 */
-details { border-top: 2px solid var(--tuff); padding: 18px 0; }
-details:last-of-type { border-bottom: 2px solid var(--tuff); }
-summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-summary::after { content: "+"; font-family: var(--pixel); color: var(--patina); }
+.faq { padding: 4px 20px; }
+details { padding: 14px 0; }
+details + details { border-top: 2px solid rgba(255,255,255,.06); }
+summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; font-weight: 600; }
+summary::after { content: "+"; font-family: var(--pixel); color: var(--yellow); }
 details[open] summary::after { content: "−"; }
-details p { margin: 10px 0 0; color: var(--bone-dim); font-size: 16px; max-width: 46em; }
+details p { margin: 8px 0 0; color: var(--ink-dim); font-size: 15px; max-width: 46em; }
 
-footer { margin-top: 120px; padding: 32px 0 48px; border-top: 2px solid var(--tuff); font-size: 13px; color: var(--bone-dim); }
+footer { margin-top: 96px; padding: 24px 0 40px; background: rgba(0,0,0,.45); border-top: 2px solid var(--line); font-size: 13px; color: var(--ink-muted); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 
 @media (max-width: 760px) {
   .top nav a { display: none; }
-  .hero { padding: 40px 0 64px; }
-  .ledger-strip dl { grid-template-columns: repeat(2, 1fr); }
-  .ledger-strip div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .hero-body { padding: 32px 0 64px; }
+  .splash { display: none; }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .facts div:nth-child(3) { margin-left: 0; }
+  .facts div:nth-child(n+3) { margin-top: -2px; }
   .duties { grid-template-columns: 1fr; }
-  section { padding-top: 72px; }
+  section { padding-top: 56px; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .splash { animation: none; } }
 </style>
 </head>
 <body>
-<header class="wrap top">
-  <a class="brand" href="#"><img src="icon.png" alt="" />MMCraft</a>
-  <nav>
-    <a href="#duties" data-t="nav.what">런처 소개</a>
-    <a href="#install" data-t="nav.install">설치 방법</a>
-    <a href="#mods" data-t="nav.mods">모드 목록</a>
-    <div class="lang" role="group" aria-label="Language">
-      <button data-lang="ko" aria-pressed="true">한국어</button>
-      <button data-lang="en" aria-pressed="false">EN</button>
+<div class="hero">
+  <header class="wrap top">
+    <a class="brand" href="#"><img src="icon.png" alt="" />MMCraft</a>
+    <nav>
+      <a href="#duties" data-t="nav.what">런처 소개</a>
+      <a href="#install" data-t="nav.install">설치 방법</a>
+      <a href="#mods" data-t="nav.mods">모드 목록</a>
+      <span class="lang" role="group" aria-label="Language">
+        <button class="mc-btn" data-lang="ko" aria-pressed="true">한국어</button>
+        <button class="mc-btn" data-lang="en" aria-pressed="false">EN</button>
+      </span>
+    </nav>
+  </header>
+  <div class="wrap hero-body">
+    <div class="logo">
+      <img src="icon.png" alt="" />
+      <div>
+        <h1 class="wordmark">MMCraft</h1>
+        <p class="subtitle">More MineCraft</p>
+      </div>
+      <span class="splash" data-t="splash">조금 더!</span>
     </div>
-  </nav>
-</header>
-
-<main>
-  <div class="wrap hero">
-    <div class="mark" aria-label="MMCraft: More MineCraft">
-      <span class="glyph" aria-hidden="true">M</span>
-      <span class="glyph" aria-hidden="true">M</span>
-      <span class="glyph" aria-hidden="true">Craft</span>
-      <span class="word">More</span>
-      <span class="word">Mine</span>
-      <span class="word">Craft</span>
-    </div>
-    <h1 data-t="hero.title">알던 마인크래프트 그대로, 조금 더.</h1>
-    <p class="lead" data-t="hero.lead">최적화, 편의 기능, 분위기를 살리는 모드를 한 번에 담았습니다. 설치도 업데이트도 런처가 알아서 합니다.</p>
+    <div><p class="tagline" data-t="hero.title">알던 마인크래프트 그대로, 조금 더. 최적화·편의·분위기 모드를 한 번에, 설치와 업데이트는 런처가 알아서.</p></div>
     <div class="cta">
       <a id="dl" class="download" href="https://github.com/RTF3563/MMCraft/releases/latest">
-        <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M7 1h2v7h3l-4 5-4-5h3zM2 13h12v2H2z"/></svg>
+        <svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M3 0h2v4h2v1H6v1H5v1H3V6H2V5H1V4h2zM0 7h8v1H0z"/></svg>
         <span data-t="cta.download">Windows용 다운로드</span>
       </a>
       <div class="cta-meta">
@@ -219,28 +190,28 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
     </div>
   </div>
+</div>
 
-  <div class="ledger-strip">
-    <dl class="wrap">
-      <div><dt data-t="fact.mc">마인크래프트</dt><dd id="f-mc">26.3</dd></div>
-      <div><dt data-t="fact.pack">팩 버전</dt><dd id="f-pack">-</dd></div>
-      <div><dt data-t="fact.mods">모드</dt><dd id="f-mods">-</dd></div>
-      <div><dt data-t="fact.updated">마지막 업데이트</dt><dd id="f-date">-</dd></div>
-    </dl>
-  </div>
+<main>
+  <dl class="wrap facts">
+    <div class="panel"><dt data-t="fact.mc">마인크래프트</dt><dd id="f-mc">26.3</dd></div>
+    <div class="panel"><dt data-t="fact.pack">팩 버전</dt><dd id="f-pack">-</dd></div>
+    <div class="panel"><dt data-t="fact.mods">모드</dt><dd id="f-mods">-</dd></div>
+    <div class="panel"><dt data-t="fact.updated">마지막 업데이트</dt><dd id="f-date">-</dd></div>
+  </dl>
 
   <section id="duties" class="wrap">
     <h2 data-t="duties.title">런처가 대신 해 주는 것</h2>
     <div class="duties">
-      <div class="duty">
+      <div class="duty panel">
         <h3 data-t="d1.t">매일 자동 업데이트</h3>
         <p data-t="d1.p">새 모드 버전은 서버와 게임을 실제로 켜서 시험한 뒤, 문제없는 조합만 받습니다. 켤 때마다 최신 상태입니다.</p>
       </div>
-      <div class="duty">
+      <div class="duty panel">
         <h3 data-t="d2.t">월드는 그대로</h3>
         <p data-t="d2.p">마인크래프트 버전이 오를 때는 모든 모드가 준비된 뒤에만 올라가고, 그 전에 월드를 자동으로 백업합니다.</p>
       </div>
-      <div class="duty">
+      <div class="duty panel">
         <h3 data-t="d3.t">정품 계정으로 로그인</h3>
         <p data-t="d3.p">Microsoft 계정으로 로그인합니다. 로그인 정보는 내 컴퓨터에만 암호화해 저장합니다.</p>
       </div>
@@ -249,7 +220,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
   <section id="install" class="wrap">
     <h2 data-t="install.title">설치 방법</h2>
-    <ol class="steps">
+    <ol class="steps panel">
       <li><div><strong data-t="s1.t">설치 파일 받기</strong><span data-t="s1.p">위의 다운로드 버튼으로 MMCraft-Setup 파일을 받습니다.</span></div></li>
       <li><div><strong data-t="s2.t">설치하기</strong><span data-t="s2.p">"Windows의 PC 보호" 창이 뜨면 추가 정보 → 실행을 누릅니다. 개인이 만든 프로그램이라 처음 한 번 나오는 안내입니다.</span></div></li>
       <li><div><strong data-t="s3.t">로그인하고 플레이</strong><span data-t="s3.p">Microsoft 계정으로 로그인하면 게임과 모드를 자동으로 받습니다. 다 받으면 플레이를 누르세요.</span></div></li>
@@ -261,16 +232,20 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2 data-t="mods.title">들어 있는 모드</h2>
       <input id="q" class="search" type="search" data-tp="mods.search" placeholder="모드 이름으로 찾기" />
     </div>
-    <ul id="mod-list" class="mod-list"><li class="muted" data-t="mods.loading">불러오는 중</li></ul>
-    <button id="more" class="more" hidden></button>
+    <div class="mods-box panel">
+      <ul id="mod-list" class="mod-list"><li class="muted" data-t="mods.loading">불러오는 중</li></ul>
+      <button id="more" class="mc-btn more" hidden></button>
+    </div>
   </section>
 
   <section id="faq" class="wrap">
     <h2 data-t="faq.title">자주 묻는 것</h2>
+    <div class="faq panel">
     <details><summary data-t="q1">마인크래프트를 따로 사야 하나요?</summary><p data-t="a1">네. 마인크래프트 자바 에디션을 구매한 Microsoft 계정이 필요합니다. 게임 파일은 런처가 Mojang 공식 서버에서 받습니다.</p></details>
     <details><summary data-t="q2">원래 쓰던 마인크래프트 런처와 섞이나요?</summary><p data-t="a2">아니요. MMCraft는 별도 폴더(%APPDATA%\.mmcraft)를 써서 기존 마인크래프트 설치와 월드에 영향을 주지 않습니다.</p></details>
     <details><summary data-t="q3">모드를 직접 더 넣어도 되나요?</summary><p data-t="a3">설정 → 폴더 열기 → 모드에 넣으면 함께 실행됩니다. 다만 충돌이 날 수 있으니 문제가 생기면 그 모드를 빼 주세요.</p></details>
     <details><summary data-t="q4">맥이나 리눅스에서도 되나요?</summary><p data-t="a4">지금은 Windows만 지원합니다.</p></details>
+    </div>
   </section>
 </main>
 
@@ -288,8 +263,7 @@ const INDEX = `https://raw.githubusercontent.com/${REPO}/pack-dist/index.json`;
 const T = {
   en: {
     "nav.what": "The launcher", "nav.install": "Install", "nav.mods": "Mods",
-    "hero.title": "The Minecraft you know, just a little more.",
-    "hero.lead": "Performance, quality-of-life and atmosphere mods in one pack. The launcher installs and updates everything for you.",
+    "hero.title": "The Minecraft you know, just a little more. Performance, quality-of-life and atmosphere mods in one pack — the launcher installs and updates it all.", "splash": "A little more!",
     "cta.download": "Download for Windows", "cta.meta": "Free · Windows 10/11 (64-bit)", "cta.all": "Previous versions",
     "fact.mc": "Minecraft", "fact.pack": "Pack version", "fact.mods": "Mods", "fact.updated": "Last updated",
     "duties.title": "What the launcher does for you",

@@ -1,6 +1,5 @@
 "use strict";
 const $ = (id) => document.getElementById(id);
-const BLOCKS = 32;
 
 const ui = {
   account: null,
@@ -13,15 +12,10 @@ const ui = {
 };
 let loginNotConfigured = false;
 
-// 진행 막대 블럭
-const blocksEl = $("blocks");
-for (let i = 0; i < BLOCKS; i++) blocksEl.appendChild(document.createElement("i"));
 /** key: 번역 키 / raw: 이미 번역된 글자 (본체에서 온 진행 상황) */
 function setProgress(done, total, key, vars = {}, raw = null) {
   ui.progress = { done, total, key, vars, raw };
-  const n = total > 0 ? Math.round((done / total) * BLOCKS) : 0;
-  [...blocksEl.children].forEach((b, i) => b.classList.toggle("on", i < n));
-  blocksEl.classList.toggle("busy", total > 0 && done < total);
+  $("bar-fill").style.width = total > 0 ? `${Math.min(100, (done / total) * 100)}%` : "0%";
   $("progress-text").textContent = raw ?? t(key, vars);
 }
 
@@ -123,7 +117,8 @@ function fmtMem(mb) {
 function renderAll() {
   applyStatic();
   $("launcher-version").textContent = t("settings.version", { v: ui.launcherVersion });
-  $("mem-out").textContent = fmtMem(Number($("mem").value));
+  updateMem();
+  renderToggles();
   const p = ui.progress;
   setProgress(p.done, p.total, p.key, p.vars, p.raw);
   if (loginNotConfigured) $("login-error").textContent = t("login.notConfigured");
@@ -131,9 +126,22 @@ function renderAll() {
   renderStatus();
 }
 
+function updateMem() {
+  const m = $("mem");
+  $("mem-out").textContent = fmtMem(Number(m.value));
+  const pos = (Number(m.value) - Number(m.min)) / (Number(m.max) - Number(m.min) || 1);
+  m.parentElement.style.setProperty("--pos", String(pos));
+}
+
+/** 게임 옵션처럼 누를 때마다 값이 바뀌는 버튼 */
+function renderToggles() {
+  const langName = { auto: t("settings.lang.auto"), ko: "한국어", en: "English" }[ui.settings?.language ?? "auto"];
+  $("lang-btn").textContent = t("settings.langBtn", { v: langName });
+  $("hide-btn").textContent = t("settings.hideBtn", { v: ui.settings?.hideOnLaunch ? t("on") : t("off") });
+}
+
 async function changeLanguage(value) {
   ui.settings = { ...ui.settings, language: value };
-  $("lang").value = value;
   const r = await window.mmc.saveSettings(ui.settings);
   if (r.ok) setUiLang(r.data.lang);
   renderAll();
@@ -239,16 +247,23 @@ async function persist() {
   ui.settings = {
     ...ui.settings,
     memoryMb: Number($("mem").value),
-    hideOnLaunch: $("hide").checked,
     extraJvmArgs: $("jvm").value.trim(),
   };
   await window.mmc.saveSettings(ui.settings);
 }
-$("mem").addEventListener("input", () => ($("mem-out").textContent = fmtMem(Number($("mem").value))));
+$("mem").addEventListener("input", updateMem);
 $("mem").addEventListener("change", persist);
-$("hide").addEventListener("change", persist);
 $("jvm").addEventListener("change", persist);
-$("lang").addEventListener("change", () => changeLanguage($("lang").value));
+$("hide-btn").addEventListener("click", async () => {
+  ui.settings = { ...ui.settings, hideOnLaunch: !ui.settings.hideOnLaunch };
+  renderToggles();
+  await window.mmc.saveSettings(ui.settings);
+});
+$("lang-btn").addEventListener("click", () => {
+  const order = ["auto", "ko", "en"];
+  const cur = order.indexOf(ui.settings?.language ?? "auto");
+  changeLanguage(order[(cur + 1) % order.length]);
+});
 document.querySelectorAll("[data-open]").forEach((b) => b.addEventListener("click", () => window.mmc.open(b.dataset.open)));
 $("reinstall").addEventListener("click", async () => {
   $("settings").hidden = true;
@@ -277,9 +292,7 @@ document.addEventListener("keydown", (e) => {
   const mem = $("mem");
   mem.max = String(Math.max(4096, Math.floor((d.totalMemoryMb * 0.75) / 512) * 512));
   mem.value = String(d.settings.memoryMb);
-  $("hide").checked = d.settings.hideOnLaunch;
   $("jvm").value = d.settings.extraJvmArgs;
-  $("lang").value = d.settings.language ?? "auto";
   if (!d.loginConfigured) {
     loginNotConfigured = true;
     $("login-error").hidden = false;

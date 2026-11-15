@@ -11,7 +11,7 @@ const STRINGS = {
     "progress.ready": "준비됨", "progress.preparing": "준비 중", "progress.running": "게임 실행 중",
     "progress.checked": "파일 검사 완료",
     "settings.open": "설정", "settings.close": "설정 닫기", "settings.title": "설정",
-    "settings.language": "언어", "settings.lang.auto": "자동 (컴퓨터 언어)", "settings.lang.ko": "한국어", "settings.lang.en": "English",
+    "settings.language": "언어", "settings.lang.auto": "자동", "settings.lang.ko": "한국어", "settings.lang.en": "English",
     "settings.memory": "게임 메모리", "settings.memoryHint": "모드가 많아서 6~8GB를 권장합니다. 컴퓨터 메모리의 절반을 넘기지 마세요.",
     "settings.hide": "게임을 켜면 런처 숨기기",
     "settings.jvm": "추가 Java 옵션", "settings.jvmPlaceholder": "필요할 때만 입력",
@@ -45,6 +45,8 @@ const STRINGS = {
     "auto.error": "자동 업데이트 실패: {msg} (플레이를 누르면 다시 시도합니다)",
     "reinstall.done": "모든 파일을 확인했습니다.",
     "changelog.release": "팩 {v} · ",
+    "splash": "조금 더!", "settings.done": "완료", "on": "켜짐", "off": "꺼짐",
+    "settings.langBtn": "언어: {v}", "settings.hideBtn": "게임 중 런처 숨기기: {v}",
   },
   en: {
     "win.min": "Minimize", "win.max": "Maximize", "win.close": "Close",
@@ -56,7 +58,7 @@ const STRINGS = {
     "progress.ready": "Ready", "progress.preparing": "Preparing", "progress.running": "Game is running",
     "progress.checked": "File check complete",
     "settings.open": "Settings", "settings.close": "Close settings", "settings.title": "Settings",
-    "settings.language": "Language", "settings.lang.auto": "Automatic (computer language)", "settings.lang.ko": "한국어", "settings.lang.en": "English",
+    "settings.language": "Language", "settings.lang.auto": "Auto", "settings.lang.ko": "한국어", "settings.lang.en": "English",
     "settings.memory": "Game memory", "settings.memoryHint": "With this many mods, 6–8 GB is recommended. Don't use more than half of your computer's memory.",
     "settings.hide": "Hide the launcher while playing",
     "settings.jvm": "Extra Java options", "settings.jvmPlaceholder": "Only if you need them",
@@ -90,6 +92,8 @@ const STRINGS = {
     "auto.error": "Automatic update failed: {msg} (it will try again when you press Play)",
     "reinstall.done": "All files checked.",
     "changelog.release": "Pack {v} · ",
+    "splash": "A little more!", "settings.done": "Done", "on": "ON", "off": "OFF",
+    "settings.langBtn": "Language: {v}", "settings.hideBtn": "Hide launcher while playing: {v}",
   },
 };
 
