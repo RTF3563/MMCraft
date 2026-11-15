@@ -142,6 +142,7 @@ const CRASH_PATTERNS = [
   /MixinApplyError|InvalidInjectionException|Mixin apply .* failed/i,
   /net\.fabricmc\.loader\.impl\.FormattedException/,
   /Encountered an unexpected exception/,
+  /FATAL ERROR in native method/,
 ];
 
 function crashLine(line: string): string | undefined {
@@ -214,6 +215,8 @@ export async function clientTest(input: TestInput, workDir: string, prep: Awaite
     command: cmd.command,
     args: cmd.args,
     cwd: cmd.cwd,
+    // 가상 화면에서 소프트웨어 OpenGL 쓰기
+    env: { ...process.env, LIBGL_ALWAYS_SOFTWARE: "1", MESA_GL_VERSION_OVERRIDE: "4.6", MESA_GLSL_VERSION_OVERRIDE: "460", SDL_VIDEODRIVER: "x11", __GLX_VENDOR_LIBRARY_NAME: "mesa" },
     logFile,
     timeoutMs: 15 * 60_000,
     onLine: (line) => {

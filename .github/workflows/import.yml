@@ -36,7 +36,7 @@ jobs:
           git diff --cached --quiet || (git commit -m "CurseForge → Modrinth 가져오기" && git push)
       - name: 실행 테스트
         id: test
-        run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:test 2>&1 | tee -a ci-output.log
+        run: xvfb-run -a -s "-screen 0 1280x720x24 +extension GLX +extension RENDER +extension COMPOSITE -ac" npm run ci:test 2>&1 | tee -a ci-output.log
       - name: 실패 로그 올리기
         if: failure()
         uses: ./.github/actions/report-logs
