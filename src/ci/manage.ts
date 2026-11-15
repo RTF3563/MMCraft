@@ -6,7 +6,7 @@ import * as fs from "fs";
 import * as path from "path";
 import AdmZip from "adm-zip";
 import { downloadFile } from "../core/http";
-import { getProject, getVersions, loaderFor } from "../core/modrinth";
+import { getProject, getVersions, loaderFor, toPackMod } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan, withCompat } from "./resolve";
 import { testPack } from "./tester";
@@ -29,12 +29,13 @@ function parseList(s: string | undefined): string[] {
 type AddItem = string | { modrinth?: string; curseforge?: string };
 /** inspect: 모드 파일 안의 fabric.mod.json(필요·충돌 정보)을 결과 파일에 적음 (원인 분석용) */
 const REQUESTS = path.join(PACK_DIR, "requests.json");
-function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[]; test: boolean } {
+/** upgrade: 베타까지 허용해서 가장 새 버전으로 (다른 모드가 새 버전을 요구할 때) */
+function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[]; test: boolean; upgrade: string[] } {
   try {
     const r = JSON.parse(fs.readFileSync(REQUESTS, "utf8"));
-    return { add: r.add ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [], test: !!r.test };
+    return { add: r.add ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [], test: !!r.test, upgrade: r.upgrade ?? [] };
   } catch {
-    return { add: [], remove: [], inspect: [], test: false };
+    return { add: [], remove: [], inspect: [], test: false, upgrade: [] };
   }
 }
 
@@ -117,7 +118,20 @@ async function main() {
     const lines = fs.existsSync(log) ? fs.readFileSync(log, "utf8").split(/\r?\n/).map((l) => l.replace(/<\/?log4j:[^>]*>|<!\[CDATA\[|\]\]>/g, "").trimEnd()).filter((l) => /Loading|resolution|Reason|sodium|betterblock|Sodium|ERROR|WARN.*mod/i.test(l)).slice(0, 40) : ["(로그 없음)"];
     say([`### 현재 팩 테스트: ${r.ok ? "통과" : "실패"} (${r.stage}: ${r.reason})`, "```", ...lines.map((l) => l.slice(0, 300)), "```"]);
   }
-  const fromFile = req.add.length + req.remove.length > 0;
+  const fromFile = req.add.length + req.remove.length + req.upgrade.length > 0;
+  for (const slug of req.upgrade) {
+    const i = mods.findIndex((m) => m.slug === slug);
+    if (i < 0) { errors.push(`업그레이드할 '${slug}'가 팩에 없음`); continue; }
+    const m = mods[i];
+    const vs = (await provider.versions(m.projectId, pack.minecraft, loaderFor(m.kind)))
+      .filter((v) => v.version_type !== "alpha" && v.files.length > 0);
+    const best = vs[0];
+    const proj = await provider.project(m.projectId);
+    if (!best || !proj) { errors.push(`${m.name}: 받을 수 있는 새 버전 없음`); continue; }
+    if (best.id === m.versionId) { errors.push(`${m.name}: 이미 가장 새 버전`); continue; }
+    mods[i] = toPackMod(proj, best, m.dependencyOf);
+    lines.push(`${m.name} ${m.versionNumber} → ${best.version_number}`);
+  }
   const removeList = [...parseList(process.env.REMOVE_MODS), ...req.remove];
   const addList: { mr: string; cf?: string }[] = [
     ...parseList(process.env.ADD_MODS).map((x) => ({ mr: x })),

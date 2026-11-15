@@ -72,12 +72,18 @@ function allowedRank(policy: PackPolicy, current?: PackMod): number {
   return current ? Math.max(p, stabilityRank(current.versionType)) : p;
 }
 
+/** 같은 마크 버전 업데이트: 지금 쓰는 단계(정식/베타/알파)까지만, 그 안에서 가장 새 것 */
+function updateRank(current: PackMod): number {
+  return stabilityRank(current.versionType);
+}
+
 /** 금지 목록을 빼고, 허용된 안정 단계 안에서 가장 좋은 버전 */
-export function chooseVersion(versions: MrVersion[], maxRank: number, held?: Held[string]): MrVersion | null {
+export function chooseVersion(versions: MrVersion[], maxRank: number, held?: Held[string], newest = false): MrVersion | null {
   const bad = new Set((held?.badVersions ?? []).map((b) => b.versionId));
   const usable = versions
     .filter((v) => !bad.has(v.id) && v.files.length > 0 && stabilityRank(v.version_type) <= maxRank)
     .sort((a, b) => b.date_published.localeCompare(a.date_published));
+  if (newest) return usable[0] ?? null;
   for (let r = 0; r <= maxRank; r++) {
     const v = usable.find((x) => stabilityRank(x.version_type) === r);
     if (v) return v;
@@ -112,7 +118,15 @@ export async function plan(
   // 1) 직접 넣은 모드
   for (const m of topLevel) {
     const versions = await provider.versions(m.projectId, mc, loaderFor(m.kind));
-    const v = chooseVersion(versions, allowedRank(policy, m), held[m.projectId]);
+    // 같은 마크 버전에서는 지금 단계 안에서 가장 새 것 (베타를 쓰는 모드는 정식이 더 새로 나오면 정식으로)
+    let v = mode === "update" && m.versionId
+      ? chooseVersion(versions, updateRank(m), held[m.projectId], true)
+      : chooseVersion(versions, allowedRank(policy, m), held[m.projectId]);
+    // 지금 버전보다 옛날 것으로는 내리지 않음
+    if (v && mode === "update" && m.versionId && v.id !== m.versionId) {
+      const cur = versions.find((x) => x.id === m.versionId);
+      if (cur && cur.date_published > v.date_published) v = cur;
+    }
     if (!v) {
       if (mode === "update" && m.gameVersions.includes(mc)) {
         chosen.set(m.projectId, { mod: m, changed: false });
