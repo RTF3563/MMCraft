@@ -1,23 +1,172 @@
 # CurseForge → Modrinth 가져오기 결과
 
 - Minecraft 26.3 / Fabric · CurseForge 확인: 공식 API
-- CurseForge 모드 124개 → Modrinth로 찾음 **117개**, CurseForge 전용 **0개**, 못 찾음 **7개**, 제외 0개
+- CurseForge 모드 124개 → Modrinth로 찾음 **117개**, CurseForge 전용 **7개**, 못 찾음 **0개**, 제외 0개
 - 필요해서 자동 추가된 라이브러리 0개
 - 최종 모드 수 **117개**
 
-## ❗ 확인 필요 (못 찾은 모드)
+## CurseForge 전용 모드
 
-| CurseForge 모드 | 이유 |
-|---|---|
-| fix GPU memory leak (fix-gpu-memory-leak) | CurseForge 전용으로 지정, CurseForge에도 26.3 Fabric 파일 없음 |
-| Clickable advancements (clickable-advancements) | CurseForge 전용으로 지정, CurseForge에도 26.3 Fabric 파일 없음 |
-| Biome Music (biome-music) | CurseForge 전용으로 지정, CurseForge에도 26.3 Fabric 파일 없음 |
-| Structure Essentials (structure-essentials-forge-fabric) | CurseForge 전용으로 지정, CurseForge에도 26.3 Fabric 파일 없음 |
-| Server Performance - Smooth Chunk Save (smooth-chunk-save) | CurseForge 전용으로 지정, CurseForge에도 26.3 Fabric 파일 없음 |
-| Cupboard (cupboard) | CurseForge 전용으로 지정, CurseForge에도 26.3 Fabric 파일 없음 |
-| Client Crafting (client-crafting) | CurseForge 전용으로 지정, CurseForge에도 26.3 Fabric 파일 없음 |
+- fix GPU memory leak: ❌ 제작자가 외부 배포를 막음
+- Clickable advancements: ❌ 제작자가 외부 배포를 막음
+- Biome Music: ❌ 제작자가 외부 배포를 막음
+- Structure Essentials: ❌ 제작자가 외부 배포를 막음
+- Server Performance - Smooth Chunk Save: ❌ 제작자가 외부 배포를 막음
+- Cupboard: ❌ 제작자가 외부 배포를 막음
+- Client Crafting: ❌ 제작자가 외부 배포를 막음
 
-> `pack/import/mapping.json`에 `"CurseForge주소": "Modrinth주소"`를 적거나, 빼려면 `null`을 적고 다시 실행
+## ⚠ CurseForge 조회 문제
+
+- polytone: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=polytone: Forbidden: API Key missing or invalid
+- boat-item-view: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=boat-item-view: Forbidden: API Key missing or invalid
+- chat-heads: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=chat-heads: Forbidden: API Key missing or invalid
+- fix-gpu-memory-leak: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=fix-gpu-memory-leak: Forbidden: API Key missing or invalid
+- debugify: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=debugify: Forbidden: API Key missing or invalid
+- simple-hud-enhanced: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=simple-hud-enhanced: Forbidden: API Key missing or invalid
+- get-it-together-drops: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=get-it-together-drops: Forbidden: API Key missing or invalid
+- mouse-tweaks: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=mouse-tweaks: Forbidden: API Key missing or invalid
+- visual-workbench: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=visual-workbench: Forbidden: API Key missing or invalid
+- entity-model-features: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=entity-model-features: Forbidden: API Key missing or invalid
+- yacl: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=yacl: Forbidden: API Key missing or invalid
+- e4mc: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=e4mc: Forbidden: API Key missing or invalid
+- creativecore: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=creativecore: Forbidden: API Key missing or invalid
+- jade: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=jade: Forbidden: API Key missing or invalid
+- particular-reforged: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=particular-reforged: Forbidden: API Key missing or invalid
+- lambdynamiclights: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=lambdynamiclights: Forbidden: API Key missing or invalid
+- free-cam: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=free-cam: Forbidden: API Key missing or invalid
+- clickable-advancements: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=clickable-advancements: Forbidden: API Key missing or invalid
+- carry-on: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=carry-on: Forbidden: API Key missing or invalid
+- client-tweaks: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=client-tweaks: Forbidden: API Key missing or invalid
+- rrls: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=rrls: Forbidden: API Key missing or invalid
+- immediatelyfast: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=immediatelyfast: Forbidden: API Key missing or invalid
+- controlling: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=controlling: Forbidden: API Key missing or invalid
+- smooth-swapping: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=smooth-swapping: Forbidden: API Key missing or invalid
+- biome-music: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=biome-music: Forbidden: API Key missing or invalid
+- main-menu-credits: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=main-menu-credits: Forbidden: API Key missing or invalid
+- skyboxify: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=skyboxify: Forbidden: API Key missing or invalid
+- almanac-lib: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=almanac-lib: Forbidden: API Key missing or invalid
+- crafting-tweaks: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=crafting-tweaks: Forbidden: API Key missing or invalid
+- better-advancements: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=better-advancements: Forbidden: API Key missing or invalid
+- bettergrassify: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=bettergrassify: Forbidden: API Key missing or invalid
+- subtle-effects: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=subtle-effects: Forbidden: API Key missing or invalid
+- cubes-without-borders: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=cubes-without-borders: Forbidden: API Key missing or invalid
+- let-me-despawn: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=let-me-despawn: Forbidden: API Key missing or invalid
+- not-enough-animations: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=not-enough-animations: Forbidden: API Key missing or invalid
+- not-enough-animations: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/not-enough-animations
+- bridging-mod: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=bridging-mod: Forbidden: API Key missing or invalid
+- ixeris: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=ixeris: Forbidden: API Key missing or invalid
+- better-compatibility-checker: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=better-compatibility-checker: Forbidden: API Key missing or invalid
+- terrablender-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=terrablender-fabric: Forbidden: API Key missing or invalid
+- terrablender-fabric: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/terrablender-fabric
+- sodium-shadowy-path-blocks: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=sodium-shadowy-path-blocks: Forbidden: API Key missing or invalid
+- falling-leaves-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=falling-leaves-fabric: Forbidden: API Key missing or invalid
+- language-reload: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=language-reload: Forbidden: API Key missing or invalid
+- netherportalfix: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=netherportalfix: Forbidden: API Key missing or invalid
+- better-mount-hud: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=better-mount-hud: Forbidden: API Key missing or invalid
+- better-mount-hud: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/better-mount-hud
+- entity-texture-features-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=entity-texture-features-fabric: Forbidden: API Key missing or invalid
+- dynamic-fps: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=dynamic-fps: Forbidden: API Key missing or invalid
+- rightclickharvest: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=rightclickharvest: Forbidden: API Key missing or invalid
+- rightclickharvest: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/rightclickharvest
+- irisshaders: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=irisshaders: Forbidden: API Key missing or invalid
+- irisshaders: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/irisshaders
+- moreculling: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=moreculling: Forbidden: API Key missing or invalid
+- zoomify: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=zoomify: Forbidden: API Key missing or invalid
+- structure-essentials-forge-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=structure-essentials-forge-fabric: Forbidden: API Key missing or invalid
+- puzzles-lib: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=puzzles-lib: Forbidden: API Key missing or invalid
+- visuality: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=visuality: Forbidden: API Key missing or invalid
+- lithium: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=lithium: Forbidden: API Key missing or invalid
+- balm: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=balm: Forbidden: API Key missing or invalid
+- balm: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/balm
+- cloth-config: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=cloth-config: Forbidden: API Key missing or invalid
+- presence-footsteps: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=presence-footsteps: Forbidden: API Key missing or invalid
+- betterdays: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=betterdays: Forbidden: API Key missing or invalid
+- fzzy-config: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=fzzy-config: Forbidden: API Key missing or invalid
+- cape-provider: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=cape-provider: Forbidden: API Key missing or invalid
+- renice-shot: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=renice-shot: Forbidden: API Key missing or invalid
+- double-doors: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=double-doors: Forbidden: API Key missing or invalid
+- trade-cycling: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=trade-cycling: Forbidden: API Key missing or invalid
+- clumps: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=clumps: Forbidden: API Key missing or invalid
+- collective: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=collective: Forbidden: API Key missing or invalid
+- puzzle: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=puzzle: Forbidden: API Key missing or invalid
+- jamlib: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=jamlib: Forbidden: API Key missing or invalid
+- optigui: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=optigui: Forbidden: API Key missing or invalid
+- max-health-fix: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=max-health-fix: Forbidden: API Key missing or invalid
+- item-highlighter-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=item-highlighter-fabric: Forbidden: API Key missing or invalid
+- appleskin: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=appleskin: Forbidden: API Key missing or invalid
+- morechathistory: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=morechathistory: Forbidden: API Key missing or invalid
+- advancement-plaques-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=advancement-plaques-fabric: Forbidden: API Key missing or invalid
+- reeses-sodium-options: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=reeses-sodium-options: Forbidden: API Key missing or invalid
+- default-options: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=default-options: Forbidden: API Key missing or invalid
+- ambientsounds: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=ambientsounds: Forbidden: API Key missing or invalid
+- smooth-chunk-save: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=smooth-chunk-save: Forbidden: API Key missing or invalid
+- skin-layers-3d: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=skin-layers-3d: Forbidden: API Key missing or invalid
+- skin-layers-3d: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/skin-layers-3d
+- crash-assistant: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=crash-assistant: Forbidden: API Key missing or invalid
+- easy-magic: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=easy-magic: Forbidden: API Key missing or invalid
+- easy-magic: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/easy-magic
+- easy-anvils: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=easy-anvils: Forbidden: API Key missing or invalid
+- fabric-api: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=fabric-api: Forbidden: API Key missing or invalid
+- sodium-extra: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=sodium-extra: Forbidden: API Key missing or invalid
+- sodium-extra: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/sodium-extra
+- enchantment-descriptions: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=enchantment-descriptions: Forbidden: API Key missing or invalid
+- better-block-entities: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=better-block-entities: Forbidden: API Key missing or invalid
+- ferritecore-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=ferritecore-fabric: Forbidden: API Key missing or invalid
+- ferritecore-fabric: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/ferritecore-fabric
+- controlify: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=controlify: Forbidden: API Key missing or invalid
+- better-climbing: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=better-climbing: Forbidden: API Key missing or invalid
+- cupboard: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=cupboard: Forbidden: API Key missing or invalid
+- clientsort: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=clientsort: Forbidden: API Key missing or invalid
+- konkrete: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=konkrete: Forbidden: API Key missing or invalid
+- searchables: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=searchables: Forbidden: API Key missing or invalid
+- forge-config-api-port: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=forge-config-api-port: Forbidden: API Key missing or invalid
+- forge-config-api-port: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/forge-config-api-port
+- invmove: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=invmove: Forbidden: API Key missing or invalid
+- fast-item-frames: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=fast-item-frames: Forbidden: API Key missing or invalid
+- mixintrace-reborn: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=mixintrace-reborn: Forbidden: API Key missing or invalid
+- continuity: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=continuity: Forbidden: API Key missing or invalid
+- baguettelib: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=baguettelib: Forbidden: API Key missing or invalid
+- trashslot: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=trashslot: Forbidden: API Key missing or invalid
+- badoptimizations: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=badoptimizations: Forbidden: API Key missing or invalid
+- prism-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=prism-fabric: Forbidden: API Key missing or invalid
+- iceberg-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=iceberg-fabric: Forbidden: API Key missing or invalid
+- easy-shulker-boxes: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=easy-shulker-boxes: Forbidden: API Key missing or invalid
+- prickle: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=prickle: Forbidden: API Key missing or invalid
+- animatica-refabricated: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=animatica-refabricated: Forbidden: API Key missing or invalid
+- simple-voice-chat: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=simple-voice-chat: Forbidden: API Key missing or invalid
+- simple-voice-chat: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/simple-voice-chat
+- modernfix-mvus: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=modernfix-mvus: Forbidden: API Key missing or invalid
+- sound-physics-remastered: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=sound-physics-remastered: Forbidden: API Key missing or invalid
+- fabric-language-kotlin: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=fabric-language-kotlin: Forbidden: API Key missing or invalid
+- sodium: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=sodium: Forbidden: API Key missing or invalid
+- modmenu: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=modmenu: Forbidden: API Key missing or invalid
+- text-placeholder-api: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=text-placeholder-api: Forbidden: API Key missing or invalid
+- spark: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=spark: Forbidden: API Key missing or invalid
+- attributefix: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=attributefix: Forbidden: API Key missing or invalid
+- configmanager: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=configmanager: Forbidden: API Key missing or invalid
+- fastquit: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=fastquit: Forbidden: API Key missing or invalid
+- im-fast: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=im-fast: Forbidden: API Key missing or invalid
+- item-borders-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=item-borders-fabric: Forbidden: API Key missing or invalid
+- lootr-fabric: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=lootr-fabric: Forbidden: API Key missing or invalid
+- entityculling: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=entityculling: Forbidden: API Key missing or invalid
+- entityculling: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/entityculling
+- client-crafting: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=client-crafting: Forbidden: API Key missing or invalid
+- better-than-mending: 공식 API 오류 HTTP 403 https://api.curseforge.com/v1/mods/search?gameId=432&classId=6&slug=better-than-mending: Forbidden: API Key missing or invalid
+
+## CurseForge 정보로 보완
+
+- Animatica Refabricated: CurseForge 기준 26.3 지원 확인 (0.6.2+26.3)
+- ModernFix-mVUS: CurseForge 기준 26.3 지원 확인 (5.27.20-build.2)
+
+## ❗ 의존성 문제
+
+- fix GPU memory leak: 26.3용 Fabric 버전 없음
+- Clickable advancements: 26.3용 Fabric 버전 없음
+- Biome Music: 26.3용 Fabric 버전 없음
+- Structure Essentials: 26.3용 Fabric 버전 없음
+- Server Performance - Smooth Chunk Save: 26.3용 Fabric 버전 없음
+- Cupboard: 26.3용 Fabric 버전 없음
+- Client Crafting: 26.3용 Fabric 버전 없음
 
 ## 연결된 모드
 
