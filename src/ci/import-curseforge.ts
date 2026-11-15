@@ -7,7 +7,7 @@ import * as path from "path";
 import { getProject, getVersions, loaderFor, searchMods, MrProject } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan, Provider, withCompat } from "./resolve";
-import { PACK_DIR, readCompat, readHeld, readPack, writeMods } from "./source";
+import { addChangelog, bumpVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
 
 interface CfEntry {
   name: string;
@@ -122,6 +122,16 @@ async function main() {
   }));
   const provider: Provider = withCompat(cached({ project: getProject, versions: getVersions }), readCompat());
   const result = await plan(mc, seeds, provider, pack.policy, readHeld(), "upgrade");
+  // 이미 배포된 목록과 다르면 팩 버전을 올려서 플레이어 런처가 업데이트하게 함
+  const before = readMods();
+  const key = (ms: PackMod[]) => ms.map((m) => m.versionId).sort().join(",");
+  if (before.length > 0 && key(before) !== key(result.mods)) {
+    pack.version = bumpVersion(pack.version, "patch");
+    writePack(pack);
+    const added = result.mods.filter((m) => !before.some((b) => b.projectId === m.projectId)).map((m) => `새 모드: ${m.name}`);
+    const removed = before.filter((b) => !result.mods.some((m) => m.projectId === b.projectId)).map((m) => `제거: ${m.name}`);
+    addChangelog({ version: pack.version, minecraft: mc, date: new Date().toISOString().slice(0, 10), lines: [...added, ...removed, "모드 목록 다시 가져오기"] });
+  }
   writeMods(result.mods);
 
   const r: string[] = [];
