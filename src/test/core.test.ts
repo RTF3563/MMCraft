@@ -142,7 +142,7 @@ const sha1 = (s: string) => crypto.createHash("sha1").update(s).digest("hex");
 test("팩 동기화: 모드 교체 · 설정 보존 · 월드 유지 · 백업", async () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "mmc-"));
   const layout = new Layout(root);
-  const srv = await serve({ "/a1.jar": "A1", "/a2.jar": "A2", "/b.jar": "B", "/cfg1": "x=1", "/cfg2": "x=2", "/opt": "o" });
+  const srv = await serve({ "/a1.jar": "A1", "/a2.jar": "A2", "/b.jar": "B", "/srv.jar": "S", "/Pack.zip": "R", "/cfg1": "x=1", "/cfg2": "x=2", "/opt": "o" });
   const mod = (name: string, file: string, body: string, client = "required") => ({
     projectId: name, slug: name, name, versionId: file, versionNumber: file, versionType: "release" as const, gameVersions: ["26.3"],
     fileName: file, url: `${srv.url}/${file}`, sha1: sha1(body), sha512: "", size: body.length, client: client as any, server: "optional" as const,
@@ -151,11 +151,12 @@ test("팩 동기화: 모드 교체 · 설정 보존 · 월드 유지 · 백업",
   try {
     const v1: PackIndex = {
       formatVersion: 1, name: "t", packVersion: "0.1.0", minecraft: "26.3", fabricLoader: "0.20.1", publishedAt: "", changelog: [],
-      mods: [mod("a", "a1.jar", "A1"), mod("b", "b.jar", "B"), mod("srv", "srv.jar", "S", "unsupported")],
+      mods: [mod("a", "a1.jar", "A1"), mod("b", "b.jar", "B"), mod("srv", "srv.jar", "S", "unsupported"), { ...mod("rp", "Pack.zip", "R"), kind: "resourcepack" as const }],
       overrides: [ov("config/x.toml", "/cfg1", "x=1"), ov("config/old.toml", "/opt", "o")],
     };
     let state = await syncPack(layout, v1, emptyState());
-    assert.deepEqual(fs.readdirSync(layout.mods).sort(), ["a1.jar", "b.jar"], "서버 전용 모드는 안 받음");
+    assert.deepEqual(fs.readdirSync(layout.mods).sort(), ["a1.jar", "b.jar", "srv.jar"], "싱글플레이용으로 전부 설치");
+    assert.equal(fs.readFileSync(path.join(layout.game, "resourcepacks", "Pack.zip"), "utf8"), "R", "리소스팩은 resourcepacks 폴더");
     assert.equal(fs.readFileSync(path.join(layout.game, "config/x.toml"), "utf8"), "x=1");
 
     // 플레이어가 설정을 바꾸고, 월드와 직접 넣은 모드가 있음
@@ -167,7 +168,8 @@ test("팩 동기화: 모드 교체 · 설정 보존 · 월드 유지 · 백업",
     // 같은 설정 파일 그대로 → 사용자 설정 유지
     const v2: PackIndex = { ...v1, packVersion: "0.1.1", mods: [mod("a", "a2.jar", "A2"), mod("b", "b.jar", "B")], overrides: [ov("config/x.toml", "/cfg1", "x=1")] };
     state = await syncPack(layout, v2, state);
-    assert.deepEqual(fs.readdirSync(layout.mods).sort(), ["a2.jar", "b.jar", "user.jar"], "옛 버전 삭제, 직접 넣은 모드 유지");
+    assert.deepEqual(fs.readdirSync(layout.mods).sort(), ["a2.jar", "b.jar", "user.jar"], "옛 버전·빠진 모드 삭제, 직접 넣은 모드 유지");
+    assert.equal(fs.existsSync(path.join(layout.game, "resourcepacks", "Pack.zip")), false, "빠진 리소스팩 삭제");
     assert.equal(fs.readFileSync(path.join(layout.game, "config/x.toml"), "utf8"), "x=사용자", "팩이 안 바꾼 설정은 유지");
     assert.equal(fs.existsSync(path.join(layout.game, "config/old.toml")), false, "팩에서 빠진 설정 삭제");
 

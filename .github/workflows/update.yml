@@ -23,7 +23,12 @@ jobs:
       - uses: ./.github/actions/prepare
       - name: 업데이트 확인 + 테스트
         id: update
-        run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:update
+        run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:update 2>&1 | tee -a ci-output.log
+      - name: 실패 로그 올리기
+        if: failure()
+        uses: ./.github/actions/report-logs
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: 테스트 로그 보관 (실패 분석용)
         if: always()
         uses: actions/upload-artifact@v4

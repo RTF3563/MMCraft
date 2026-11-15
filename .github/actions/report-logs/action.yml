@@ -1,0 +1,36 @@
+name: report-logs
+description: 실패한 실행의 로그를 ci-logs 브랜치에 올림 (로그인 없이 확인 가능)
+inputs:
+  token:
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        OUT="$RUNNER_TEMP/ci-logs"
+        rm -rf "$OUT" && mkdir -p "$OUT"
+        {
+          echo "# $GITHUB_WORKFLOW 실패 ($(date -u +%Y-%m-%dT%H:%MZ))"
+          echo "run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "commit: $GITHUB_SHA"
+        } > "$OUT/README.md"
+        [ -f ci-output.log ] && tail -n 600 ci-output.log > "$OUT/ci-output.log" || true
+        if [ -d .ci-cache/runs ]; then
+          for d in .ci-cache/runs/*/; do
+            n=$(basename "$d")
+            mkdir -p "$OUT/runs/$n"
+            for f in "$d"*.log; do [ -f "$f" ] && tail -n 400 "$f" > "$OUT/runs/$n/$(basename "$f")"; done
+            [ -f "$d/crash-report.txt" ] && head -n 300 "$d/crash-report.txt" > "$OUT/runs/$n/crash-report.txt"
+            ls "$d"client/crash-reports/*.txt >/dev/null 2>&1 && head -n 300 "$(ls "$d"client/crash-reports/*.txt | head -1)" > "$OUT/runs/$n/client-crash.txt"
+            [ -f "$d/client/logs/latest.log" ] && tail -n 400 "$d/client/logs/latest.log" > "$OUT/runs/$n/client-latest.log"
+            [ -f "$d/server/logs/latest.log" ] && tail -n 400 "$d/server/logs/latest.log" > "$OUT/runs/$n/server-latest.log"
+          done
+        fi
+        cd "$OUT"
+        git init -q -b ci-logs
+        git config user.name "mmcraft-bot"
+        git config user.email "mmcraft-bot@users.noreply.github.com"
+        git add -A
+        git commit -q -m "실패 로그: $GITHUB_WORKFLOW #$GITHUB_RUN_NUMBER"
+        git push -f "https://x-access-token:${{ inputs.token }}@github.com/$GITHUB_REPOSITORY.git" ci-logs

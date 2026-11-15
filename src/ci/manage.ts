@@ -3,7 +3,7 @@
  * ADD_MODS="sodium-extra, https://modrinth.com/mod/xaeros-minimap"  REMOVE_MODS="freecam"
  */
 import * as fs from "fs";
-import { getProject, getVersions } from "../core/modrinth";
+import { getProject, getVersions, loaderFor } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan } from "./resolve";
 import { testPack } from "./tester";
@@ -12,7 +12,7 @@ import { addChangelog, bumpVersion, readHeld, readMods, readPack, writeMods, wri
 function parseList(s: string | undefined): string[] {
   return (s ?? "")
     .split(/[,\s]+/)
-    .map((x) => x.trim().replace(/^https?:\/\/modrinth\.com\/(mod|plugin|datapack)\//, "").replace(/\/.*$/, ""))
+    .map((x) => x.trim().replace(/^https?:\/\/modrinth\.com\/(mod|plugin|datapack|resourcepack)\//, "").replace(/\/.*$/, ""))
     .filter(Boolean);
 }
 
@@ -40,10 +40,12 @@ async function main() {
     const p = await getProject(slug);
     if (!p) { errors.push(`Modrinth에 '${slug}' 모드가 없음`); continue; }
     if (mods.some((m) => m.projectId === p.id)) { errors.push(`${p.title}는 이미 팩에 있음`); continue; }
-    if ((await getVersions(p.id, pack.minecraft)).length === 0) { errors.push(`${p.title}: ${pack.minecraft} Fabric 버전 없음`); continue; }
+    const kind = p.project_type === "resourcepack" ? "resourcepack" : "mod";
+    if ((await getVersions(p.id, pack.minecraft, loaderFor(kind))).length === 0) { errors.push(`${p.title}: ${pack.minecraft}용 버전 없음`); continue; }
     mods.push({
       projectId: p.id, slug: p.slug, name: p.title, versionId: "", versionNumber: "", versionType: "release",
       gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: p.client_side, server: p.server_side,
+      ...(kind === "resourcepack" ? { kind } : {}),
     } as PackMod);
     lines.push(`새 모드: ${p.title}`);
   }

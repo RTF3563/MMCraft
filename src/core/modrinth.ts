@@ -62,6 +62,11 @@ export async function getProjects(ids: string[]): Promise<MrProject[]> {
 }
 
 /** 특정 게임 버전 + Fabric용 버전 목록 (최신순) */
+/** 리소스팩은 Modrinth에서 로더 이름이 "minecraft" */
+export function loaderFor(kind?: string) {
+  return kind === "resourcepack" ? "minecraft" : "fabric";
+}
+
 export async function getVersions(projectId: string, gameVersion: string, loader = "fabric"): Promise<MrVersion[]> {
   const list = await getJson<MrVersion[]>(
     `${MODRINTH_API}/project/${projectId}/version?loaders=${q([loader])}&game_versions=${q([gameVersion])}`,
@@ -118,5 +123,6 @@ export function toPackMod(project: MrProject, v: MrVersion, dependencyOf?: strin
     client: project.client_side,
     server: project.server_side,
     ...(dependencyOf && dependencyOf.length ? { dependencyOf } : {}),
+    ...(project.project_type === "resourcepack" ? { kind: "resourcepack" as const } : {}),
   };
 }

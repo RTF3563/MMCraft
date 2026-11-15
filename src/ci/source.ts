@@ -59,7 +59,14 @@ export const files = {
   changelog: () => path.join(PACK_DIR, "changelog.json"),
   upgrade: () => path.join(PACK_DIR, "upgrade-status.json"),
   overrides: () => path.join(PACK_DIR, "overrides"),
+  installNames: () => path.join(PACK_DIR, "install-names.json"),
 };
+
+/** 설치 파일 이름 고정 (예: 기본 설정이 "file/Chat Reporting Helper.zip"을 켜도록 되어 있을 때) */
+export function applyInstallNames(mods: PackMod[]): PackMod[] {
+  const names = readJson<Record<string, string>>(files.installNames(), {});
+  return mods.map((m) => (names[m.slug] ? { ...m, fileName: names[m.slug] } : m));
+}
 
 export const readPack = () => readJson<PackSource>(files.pack(), null as any);
 export const writePack = (p: PackSource) => writeJson(files.pack(), p);

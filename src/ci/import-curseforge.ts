@@ -4,7 +4,7 @@
  */
 import * as fs from "fs";
 import * as path from "path";
-import { getProject, getVersions, searchMods, MrProject } from "../core/modrinth";
+import { getProject, getVersions, loaderFor, searchMods, MrProject } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan, Provider } from "./resolve";
 import { PACK_DIR, readHeld, readPack, writeMods } from "./source";
@@ -35,7 +35,7 @@ const KNOWN: Record<string, string[]> = {
   "text-placeholder-api": ["placeholder-api"],
   morechathistory: ["morechathistory", "more-chat-history"],
   betterdays: ["better-days", "betterdays"],
-  configmanager: ["config-manager", "configmanager"],
+  configmanager: ["configmanager"],
   "sodium-shadowy-path-blocks": ["sodium-shadowy-path-blocks", "sspb"],
   "particular-reforged": ["particular-reforged", "particular"],
   "almanac-lib": ["almanac", "almanac-lib"],
@@ -43,6 +43,12 @@ const KNOWN: Record<string, string[]> = {
 };
 
 const MAPPING_FILE = path.join(PACK_DIR, "import", "mapping.json"); // 사람이 직접 고칠 수 있는 매핑
+/** 정식·베타가 없을 때 알파 버전도 허용할 모드 (CurseForge 주소 이름) */
+const ALLOW_ALPHA_FILE = path.join(PACK_DIR, "import", "allow-alpha.json");
+
+const isUsable = (p: MrProject) =>
+  (p.project_type === "mod" && p.loaders.includes("fabric")) || p.project_type === "resourcepack";
+const kindOf = (p: MrProject) => (p.project_type === "resourcepack" ? "resourcepack" : "mod");
 
 function normalize(s: string) {
   return s
@@ -63,6 +69,7 @@ async function main() {
   const mc = pack.minecraft;
   const list: CfEntry[] = JSON.parse(fs.readFileSync(path.join(PACK_DIR, "import", "curseforge-modlist.json"), "utf8"));
   const manual: Record<string, string | null> = fs.existsSync(MAPPING_FILE) ? JSON.parse(fs.readFileSync(MAPPING_FILE, "utf8")) : {};
+  const allowAlpha: string[] = fs.existsSync(ALLOW_ALPHA_FILE) ? JSON.parse(fs.readFileSync(ALLOW_ALPHA_FILE, "utf8")) : [];
 
   const found: { e: CfEntry; p: MrProject; how: string }[] = [];
   const failed: { e: CfEntry; reason: string }[] = [];
@@ -77,7 +84,7 @@ async function main() {
     let how = "";
     for (const c of candidates(e, manual)) {
       const p = await getProject(c);
-      if (p && p.project_type === "mod" && p.loaders.includes("fabric")) {
+      if (p && isUsable(p)) {
         project = p;
         how = c === e.curseforgeSlug ? "같은 주소" : `주소 '${c}'`;
         break;
@@ -96,9 +103,9 @@ async function main() {
       continue;
     }
     if (found.some((f) => f.p.id === project!.id)) continue;
-    const versions = await getVersions(project.id, mc);
+    const versions = await getVersions(project.id, mc, loaderFor(kindOf(project)));
     if (versions.length === 0) {
-      failed.push({ e, reason: `Modrinth에는 있지만 ${mc} Fabric 버전이 없음 (${project.slug})` });
+      failed.push({ e, reason: `Modrinth에는 있지만 ${mc}${kindOf(project) === "mod" ? " Fabric" : ""} 버전이 없음 (${project.slug})` });
       continue;
     }
     found.push({ e, p: project, how });
@@ -106,9 +113,11 @@ async function main() {
   }
 
   // 각 모드의 최신 버전 + 필요한 라이브러리 자동 추가
-  const seeds: PackMod[] = found.map(({ p }) => ({
-    projectId: p.id, slug: p.slug, name: p.title, versionId: "", versionNumber: "", versionType: "release",
+  const seeds: PackMod[] = found.map(({ e, p }) => ({
+    projectId: p.id, slug: p.slug, name: p.title, versionId: "", versionNumber: "",
+    versionType: allowAlpha.includes(e.curseforgeSlug) || allowAlpha.includes(p.slug) ? "alpha" : "release",
     gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: p.client_side, server: p.server_side,
+    ...(kindOf(p) === "resourcepack" ? { kind: "resourcepack" as const } : {}),
   }));
   const provider: Provider = cached({ project: getProject, versions: getVersions });
   const result = await plan(mc, seeds, provider, pack.policy, readHeld(), "upgrade");
@@ -129,10 +138,16 @@ async function main() {
     for (const c of result.conflicts) r.push(`- 충돌: ${c.a} ↔ ${c.b}`);
     r.push(``);
   }
-  r.push(`## 연결된 모드`, ``, `| CurseForge | Modrinth | 찾은 방법 | 버전 |`, `|---|---|---|---|`);
+  if (skipped.length) {
+    r.push(`## 제외한 모드 (mapping.json에서 null)`, ``);
+    for (const e of skipped) r.push(`- ${e.name}`);
+    r.push(``);
+  }
+  r.push(`## 연결된 모드`, ``, `| CurseForge | Modrinth | 종류 | 찾은 방법 | 버전 |`, `|---|---|---|---|---|`);
   for (const f of found) {
     const m = result.mods.find((x) => x.projectId === f.p.id);
-    r.push(`| ${f.e.name} | [${f.p.title}](https://modrinth.com/mod/${f.p.slug}) | ${f.how} | ${m?.versionNumber ?? "-"} |`);
+    const k = kindOf(f.p);
+    r.push(`| ${f.e.name} | [${f.p.title}](https://modrinth.com/${k}/${f.p.slug}) | ${k === "mod" ? "모드" : "리소스팩"} | ${f.how} | ${m ? `${m.versionNumber} (${m.versionType})` : "❌ 빠짐"} |`);
   }
   if (added.length) {
     r.push(``, `## 자동 추가된 라이브러리`, ``);

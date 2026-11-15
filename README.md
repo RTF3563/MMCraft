@@ -25,7 +25,7 @@ MMCraft 모드팩 전용 Windows 런처 + 모드 자동 업데이트 시스템.
 | 지금 바로 업데이트 확인 | **자동 업데이트** → Run workflow (평소엔 매일 자동) |
 | 모드 추가·삭제 | **모드 추가·삭제** → Modrinth 주소/이름 입력 (테스트 통과 시 배포) |
 | 설정 파일만 고쳐서 배포 | `pack/overrides` 수정 후 push → **팩 수정 배포** 자동 실행 |
-| 런처 새 버전 | `package.json` version 올리고 `v1.0.1` 태그 push → **런처 배포** |
+| 런처 새 버전 | `package.json` version 올려서 push → **런처 배포** 자동 실행 |
 
 정책(`pack/pack.json` → `policy`)
 - `minStability`: 정식 버전이 없을 때 허용할 단계 (`beta` 기본)

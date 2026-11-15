@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
       - name: Modrinth에서 모드 찾기
-        run: npm run ci:import
+        run: npm run ci:import 2>&1 | tee -a ci-output.log
       - name: 저장
         run: |
           git config user.name "mmcraft-bot"
@@ -29,7 +29,12 @@ jobs:
           git diff --cached --quiet || (git commit -m "CurseForge → Modrinth 가져오기" && git push)
       - name: 실행 테스트
         id: test
-        run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:test
+        run: xvfb-run -a -s "-screen 0 1280x720x24" npm run ci:test 2>&1 | tee -a ci-output.log
+      - name: 실패 로그 올리기
+        if: failure()
+        uses: ./.github/actions/report-logs
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

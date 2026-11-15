@@ -7,8 +7,8 @@ import { currentPlatform } from "../core/rules";
 import { FABRIC_META, getVersionManifest, installVersion, resolveVersion, VersionManifest } from "../core/minecraft";
 import { ensureJava, javaExecutable } from "../core/java";
 import { buildLaunchCommand } from "../core/launch";
-import { PackMod } from "../core/pack";
-import { files } from "./source";
+import { installPath, PackMod } from "../core/pack";
+import { applyInstallNames, files } from "./source";
 
 export const CI_HOME = path.resolve(process.env.MMCRAFT_CI_HOME ?? ".ci-cache");
 
@@ -37,14 +37,19 @@ async function copyDir(src: string, dest: string) {
   if (fs.existsSync(src)) await fs.promises.cp(src, dest, { recursive: true });
 }
 
+/** dir 아래에 mods/…, resourcepacks/… 로 설치 */
 async function putMods(dir: string, mods: PackMod[]) {
-  await fs.promises.mkdir(dir, { recursive: true });
+  mods = applyInstallNames(mods);
   await downloadAll(
     mods.map((m) => ({ url: m.url, dest: path.join(CI_HOME, "mod-cache", m.sha1, m.fileName), sha1: m.sha1, size: m.size })),
     undefined,
     8,
   );
-  for (const m of mods) await fs.promises.copyFile(path.join(CI_HOME, "mod-cache", m.sha1, m.fileName), path.join(dir, m.fileName));
+  for (const m of mods) {
+    const dest = path.join(dir, ...installPath(m).split("/"));
+    await fs.promises.mkdir(path.dirname(dest), { recursive: true });
+    await fs.promises.copyFile(path.join(CI_HOME, "mod-cache", m.sha1, m.fileName), dest);
+  }
 }
 
 interface WatchOptions {
@@ -158,7 +163,7 @@ export async function serverTest(input: TestInput, workDir: string, javaExe: str
     url: `${FABRIC_META}/versions/loader/${input.minecraft}/${input.fabricLoader}/${installer}/server/jar`,
     dest: jar,
   });
-  await putMods(path.join(dir, "mods"), input.mods.filter((m) => m.server !== "unsupported"));
+  await putMods(dir, input.mods.filter((m) => m.server !== "unsupported" && m.kind !== "resourcepack"));
   await copyDir(path.join(files.overrides(), "config"), path.join(dir, "config"));
   await fs.promises.writeFile(path.join(dir, "eula.txt"), "eula=true\n");
   await fs.promises.writeFile(
@@ -184,7 +189,7 @@ export async function clientTest(input: TestInput, workDir: string, prep: Awaite
   const gameDir = path.join(workDir, "client");
   const layout = new Layout(CI_HOME, gameDir);
   await installVersion(layout, prep.resolved);
-  await putMods(path.join(gameDir, "mods"), input.mods.filter((m) => m.client !== "unsupported"));
+  await putMods(gameDir, input.mods);
   await copyDir(files.overrides(), gameDir);
   const javaExe = javaExecutable(path.dirname(path.dirname(prep.javaExe)), prep.platform, false);
   // CI 검사 전용 오프라인 실행 (실제 런처에서는 Microsoft 로그인만 사용)

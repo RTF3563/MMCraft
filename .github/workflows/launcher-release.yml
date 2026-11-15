@@ -1,8 +1,10 @@
-# 런처 설치 파일 만들기: 태그 v1.0.0 처럼 올리면 Releases에 MMCraft-Setup-x.y.z.exe 생성
+# 런처 설치 파일 만들기: package.json의 version을 올려서 push하면 Releases에 MMCraft-Setup-x.y.z.exe 생성
 # (설치된 런처는 이 Releases를 보고 스스로 업데이트)
 name: 런처 배포
 on:
   push:
+    branches: [main]
+    paths: ["package.json"]
     tags: ["v*"]
   workflow_dispatch:
 
@@ -18,10 +20,18 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm test
+      - run: npm ci 2>&1 | tee -a ci-output.log
+        shell: bash
+      - run: npm test 2>&1 | tee -a ci-output.log
+        shell: bash
       - name: 설치 파일 빌드 + Releases 업로드
-        run: npm run release:win
+        shell: bash
+        run: npm run release:win 2>&1 | tee -a ci-output.log
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MMCRAFT_AZURE_CLIENT_ID: ${{ vars.MMCRAFT_AZURE_CLIENT_ID }}
+      - name: 실패 로그 올리기
+        if: failure()
+        uses: ./.github/actions/report-logs
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

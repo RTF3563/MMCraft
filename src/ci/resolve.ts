@@ -1,11 +1,11 @@
 import { PackMod } from "../core/pack";
-import { MrProject, MrVersion, stabilityRank, toPackMod } from "../core/modrinth";
+import { loaderFor, MrProject, MrVersion, stabilityRank, toPackMod } from "../core/modrinth";
 import { Held, PackPolicy } from "./source";
 
 /** Modrinth 조회를 바꿔 끼울 수 있게 (테스트에서는 가짜 데이터) */
 export interface Provider {
   project(id: string): Promise<MrProject | null>;
-  versions(projectId: string, mc: string): Promise<MrVersion[]>;
+  versions(projectId: string, mc: string, loader?: string): Promise<MrVersion[]>;
 }
 
 /** 캐시를 붙인 Provider */
@@ -17,9 +17,9 @@ export function cached(p: Provider): Provider {
       if (!pc.has(id)) pc.set(id, p.project(id));
       return pc.get(id)!;
     },
-    versions: (id, mc) => {
-      const k = id + "@" + mc;
-      if (!vc.has(k)) vc.set(k, p.versions(id, mc));
+    versions: (id, mc, loader = "fabric") => {
+      const k = `${id}@${mc}@${loader}`;
+      if (!vc.has(k)) vc.set(k, p.versions(id, mc, loader));
       return vc.get(k)!;
     },
   };
@@ -89,7 +89,7 @@ export async function plan(
 
   // 1) 직접 넣은 모드
   for (const m of topLevel) {
-    const versions = await provider.versions(m.projectId, mc);
+    const versions = await provider.versions(m.projectId, mc, loaderFor(m.kind));
     const v = chooseVersion(versions, allowedRank(policy, m), held[m.projectId]);
     if (!v) {
       if (mode === "update" && m.gameVersions.includes(mc)) {
@@ -122,14 +122,15 @@ export async function plan(
       if (d.dependency_type !== "required") continue;
       // 여러 로더용 파일에 붙은 NeoForge/Forge 전용 의존성은 무시 (예: KotlinLangForge)
       const depProject = await provider.project(d.project_id);
-      if (depProject && !depProject.loaders.includes("fabric") && !depProject.loaders.includes("quilt")) continue;
+      const depKind = depProject?.project_type === "resourcepack" ? "resourcepack" : "mod";
+      if (depProject && depKind === "mod" && !depProject.loaders.includes("fabric") && !depProject.loaders.includes("quilt")) continue;
       if (!requiredBy.has(d.project_id)) requiredBy.set(d.project_id, new Set());
       requiredBy.get(d.project_id)!.add(entry.mod.name);
       if (chosen.has(d.project_id)) continue;
       const existing = byId.get(d.project_id);
-      const versions = await provider.versions(d.project_id, mc);
+      const versions = await provider.versions(d.project_id, mc, loaderFor(depKind));
       const v = chooseVersion(versions, allowedRank(policy, existing), held[d.project_id]);
-      const project = await provider.project(d.project_id);
+      const project = depProject;
       if (!v || !project) {
         if (mode === "update" && existing && existing.gameVersions.includes(mc)) {
           chosen.set(d.project_id, { mod: existing, changed: false });

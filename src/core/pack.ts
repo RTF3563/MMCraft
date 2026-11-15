@@ -26,6 +26,13 @@ export interface PackMod {
   server: Side;
   /** 다른 모드가 필요로 해서 자동으로 들어온 경우 */
   dependencyOf?: string[];
+  /** 모드(jar) 또는 리소스팩(zip). 없으면 모드 */
+  kind?: "mod" | "resourcepack";
+}
+
+/** game 폴더 기준 설치 위치 ("mods/x.jar", "resourcepacks/y.zip") */
+export function installPath(m: PackMod): string {
+  return `${m.kind === "resourcepack" ? "resourcepacks" : "mods"}/${m.fileName}`;
 }
 
 export interface PackOverride {
@@ -51,7 +58,7 @@ export interface InstallState {
   packVersion?: string;
   minecraft?: string;
   fabricLoader?: string;
-  mods: Record<string, string>; // 파일명 → sha1 (런처가 관리하는 모드)
+  mods: Record<string, string>; // "mods/파일명" → sha1 (런처가 관리하는 모드·리소스팩)
   overrides: Record<string, string>; // 경로 → 마지막으로 설치한 팩 파일 sha1
 }
 
@@ -80,8 +87,14 @@ export async function fetchPackIndex(url = PACK_INDEX_URL): Promise<PackIndex> {
   return index;
 }
 
+/** 플레이어 PC에 설치할 것: 모드·리소스팩 전부 (싱글플레이는 내장 서버도 돌리므로 서버용 모드도 필요) */
 export function clientMods(index: PackIndex): PackMod[] {
-  return index.mods.filter((m) => m.client !== "unsupported");
+  return index.mods;
+}
+
+/** 예전 상태 파일은 키가 파일명만 있음 → mods/ 로 간주 */
+function stateKey(k: string) {
+  return k.includes("/") ? k : `mods/${k}`;
 }
 
 export type UpdateKind = "none" | "install" | "update" | "minecraft-upgrade" | "downgrade";
@@ -113,18 +126,18 @@ export async function syncPack(layout: Layout, index: PackIndex, state: InstallS
 
   const downloads: DownloadItem[] = mods.map((m) => ({
     url: m.url,
-    dest: safeJoin(layout.mods, m.fileName),
+    dest: safeJoin(layout.game, installPath(m)),
     sha1: m.sha1,
     size: m.size,
   }));
   await downloadAll(downloads, onProgress, 8, "모드");
 
-  const wanted = new Set(mods.map((m) => m.fileName));
-  for (const file of Object.keys(state.mods)) {
-    if (!wanted.has(file)) await fs.promises.rm(safeJoin(layout.mods, file), { force: true });
+  const wanted = new Set(mods.map(installPath));
+  for (const key of Object.keys(state.mods).map(stateKey)) {
+    if (!wanted.has(key)) await fs.promises.rm(safeJoin(layout.game, key), { force: true });
   }
   const newMods: Record<string, string> = {};
-  for (const m of mods) newMods[m.fileName] = m.sha1;
+  for (const m of mods) newMods[installPath(m)] = m.sha1;
 
   // 설정·리소스팩 등
   const newOverrides: Record<string, string> = {};
@@ -161,7 +174,8 @@ export async function syncPack(layout: Layout, index: PackIndex, state: InstallS
 export async function unmanagedMods(layout: Layout, state: InstallState): Promise<string[]> {
   try {
     const files = await fs.promises.readdir(layout.mods);
-    return files.filter((f) => f.endsWith(".jar") && !(f in state.mods));
+    const managed = new Set(Object.keys(state.mods).map(stateKey));
+    return files.filter((f) => f.endsWith(".jar") && !managed.has(`mods/${f}`));
   } catch {
     return [];
   }

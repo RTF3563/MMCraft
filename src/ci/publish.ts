@@ -4,7 +4,7 @@ import * as path from "path";
 import { execSync } from "child_process";
 import { hashFile } from "../core/http";
 import { PackIndex, PackOverride } from "../core/pack";
-import { files, readChangelog, readMods, readPack } from "./source";
+import { applyInstallNames, files, readChangelog, readMods, readPack } from "./source";
 
 const REPO = process.env.GITHUB_REPOSITORY ?? "RTF3563/MMCraft";
 
@@ -21,7 +21,7 @@ async function walk(dir: string, base = dir): Promise<string[]> {
 async function main() {
   const sha = process.env.PACK_COMMIT ?? execSync("git rev-parse HEAD").toString().trim();
   const pack = readPack();
-  const mods = readMods();
+  const mods = applyInstallNames(readMods());
   const overrides: PackOverride[] = [];
   const root = files.overrides();
   for (const rel of await walk(root)) {
