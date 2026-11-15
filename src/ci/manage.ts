@@ -116,7 +116,7 @@ async function main() {
     // 지금 팩 그대로 실행해 보고 로그 앞부분을 기록
     const r = await testPack({ minecraft: pack.minecraft, fabricLoader: pack.fabricLoader, mods: readMods(), label: "check" });
     const log = r.logFile && fs.existsSync(r.logFile) ? r.logFile : path.join(process.env.MMCRAFT_CI_HOME ?? ".ci-cache", "last-client.log");
-    const lines = fs.existsSync(log) ? fs.readFileSync(log, "utf8").split(/\r?\n/).map((l) => l.replace(/<\/?log4j:[^>]*>|<!\[CDATA\[|\]\]>/g, "").trimEnd()).filter((l) => /Loading|resolution|Reason|sodium|betterblock|Sodium|ERROR|WARN.*mod/i.test(l)).slice(0, 40) : ["(로그 없음)"];
+    const lines = fs.existsSync(log) ? fs.readFileSync(log, "utf8").split(/\r?\n/).map((l) => l.replace(/<\/?log4j:[^>]*>|<!\[CDATA\[|\]\]>/g, "").trimEnd()).filter((l) => /Loading \d+ mods|resolution|Reason|Backend library|OpenGL|GL_RENDERER|Renderer|Created: .*atlas|Sound engine|FATAL|Crash|Stopping/i.test(l)).slice(0, 40) : ["(로그 없음)"];
     say([`### 현재 팩 테스트: ${r.ok ? "통과" : "실패"} (${r.stage}: ${r.reason})`, "```", ...lines.map((l) => l.slice(0, 300)), "```"]);
   }
   const fromFile = req.add.length + req.remove.length + req.upgrade.length + Object.keys(req.use).length > 0;
