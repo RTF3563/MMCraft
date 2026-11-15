@@ -3,6 +3,7 @@
  * ADD_MODS="sodium-extra, https://modrinth.com/mod/xaeros-minimap"  REMOVE_MODS="freecam"
  */
 import * as fs from "fs";
+import * as path from "path";
 import { getProject, getVersions, loaderFor } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan, withCompat } from "./resolve";
@@ -10,13 +11,28 @@ import { testPack } from "./tester";
 import { cfProjectId, getCfMod, hasCfKey, readCurseForge, withCurseForge, writeCurseForge } from "./curseforge";
 
 const norm = (x: string) => x.toLowerCase().replace(/\[[^\]]*\]|\([^)]*\)/g, "").replace(/[^\p{L}\p{N}]+/gu, "");
-import { addChangelog, bumpVersion, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
+import { addChangelog, bumpVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
 
 function parseList(s: string | undefined): string[] {
   return (s ?? "")
     .split(/[,\s]+/)
     .map((x) => x.trim().replace(/^https?:\/\/modrinth\.com\/(mod|plugin|datapack|resourcepack)\//, "").replace(/\/.*$/, ""))
     .filter(Boolean);
+}
+
+/**
+ * pack/requests.json 으로도 요청 가능 (push하면 자동 처리 후 비워짐)
+ * { "add": ["sodium-extra", { "modrinth": "essential", "curseforge": "essential-mod" }], "remove": ["freecam"] }
+ */
+type AddItem = string | { modrinth?: string; curseforge?: string };
+const REQUESTS = path.join(PACK_DIR, "requests.json");
+function readRequests(): { add: AddItem[]; remove: string[] } {
+  try {
+    const r = JSON.parse(fs.readFileSync(REQUESTS, "utf8"));
+    return { add: r.add ?? [], remove: r.remove ?? [] };
+  } catch {
+    return { add: [], remove: [] };
+  }
 }
 
 function out(key: string, value: string) {
@@ -36,22 +52,30 @@ async function main() {
   const notes = new Set<string>();
   const provider = cached(withCurseForge(withCompat(cached({ project: getProject, versions: getVersions }), readCompat()), cfg, (n) => notes.add(n)));
 
-  for (const slug of parseList(process.env.REMOVE_MODS)) {
+  const req = readRequests();
+  const fromFile = req.add.length + req.remove.length > 0;
+  const removeList = [...parseList(process.env.REMOVE_MODS), ...req.remove];
+  const addList: { mr: string; cf?: string }[] = [
+    ...parseList(process.env.ADD_MODS).map((x) => ({ mr: x })),
+    ...req.add.map((a) => (typeof a === "string" ? { mr: a } : { mr: a.modrinth ?? a.curseforge ?? "", cf: a.curseforge })),
+  ].filter((a) => a.mr);
+
+  for (const slug of removeList) {
     const m = mods.find((x) => x.slug === slug || x.projectId === slug || x.name.toLowerCase() === slug.toLowerCase());
     if (!m) { errors.push(`삭제할 모드 '${slug}'가 팩에 없음`); continue; }
     mods = mods.filter((x) => x !== m);
     if (m.slug.startsWith("cf-")) cfg.only = cfg.only.filter((x) => x !== m.slug.slice(3));
     lines.push(`제거: ${m.name}`);
   }
-  for (const slug of parseList(process.env.ADD_MODS)) {
+  for (const { mr: slug, cf: cfSlug } of addList) {
     const p = await getProject(slug);
     if (!p) {
       // Modrinth에 없으면 CurseForge 전용으로
-      const cf = await getCfMod(slug);
+      const cf = await getCfMod(cfSlug ?? slug);
       if (!cf) { errors.push(`'${slug}' 모드를 Modrinth와 CurseForge 모두에서 찾지 못함`); continue; }
       if (!hasCfKey()) { errors.push(`${cf.name}: CurseForge 전용 모드라 CurseForge API 키(CF_API_KEY) 등록 후 추가 가능`); continue; }
       if (mods.some((m) => m.projectId === cfProjectId(cf.id))) { errors.push(`${cf.name}는 이미 팩에 있음`); continue; }
-      cfg.only.push(slug);
+      cfg.only.push(cfSlug ?? slug);
       mods.push({
         projectId: cfProjectId(cf.id), slug: `cf-${cf.slug}`, name: cf.name, versionId: "", versionNumber: "", versionType: "release",
         gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: "optional", server: "optional",
@@ -60,8 +84,8 @@ async function main() {
       continue;
     }
     // CurseForge에도 같은 모드가 있으면 지원 버전 정보를 함께 확인
-    const cfSame = await getCfMod(slug);
-    if (cfSame && norm(cfSame.name) === norm(p.title)) cfg.map[p.slug] = slug;
+    const cfSame = await getCfMod(cfSlug ?? slug);
+    if (cfSame && (cfSlug || norm(cfSame.name) === norm(p.title))) cfg.map[p.slug] = cfSlug ?? slug;
     if (mods.some((m) => m.projectId === p.id)) { errors.push(`${p.title}는 이미 팩에 있음`); continue; }
     const kind = p.project_type === "resourcepack" ? "resourcepack" : "mod";
     if ((await provider.versions(p.id, pack.minecraft, loaderFor(kind))).length === 0) { errors.push(`${p.title}: ${pack.minecraft}용 버전 없음`); continue; }
@@ -99,6 +123,7 @@ async function main() {
   writePack(pack);
   writeMods(finalMods);
   addChangelog({ version: pack.version, minecraft: pack.minecraft, date: new Date().toISOString().slice(0, 10), lines });
+  if (fromFile) fs.writeFileSync(REQUESTS, JSON.stringify({ add: [], remove: [] }, null, 2) + "\n");
   say([`## ✅ 팩 ${pack.version}`, ...lines.map((l) => `- ${l}`), ...[...notes].map((n) => `- (CurseForge) ${n}`)]);
   out("changed", "true");
 }

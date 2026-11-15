@@ -1,0 +1,6 @@
+{
+  "add": [
+    { "modrinth": "essential", "curseforge": "essential-mod" }
+  ],
+  "remove": []
+}

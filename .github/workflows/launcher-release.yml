@@ -34,6 +34,8 @@ jobs:
         shell: bash
         run: |
           V="v$(node -p "require('./package.json').version")"
+          cp "release/MMCraft-Setup-${V#v}.exe" release/MMCraft-Setup.exe
+          gh release upload "$V" release/MMCraft-Setup.exe --clobber 2>&1 | tee -a ci-output.log
           gh release edit "$V" --draft=false --latest --title "MMCraft 런처 $V" 2>&1 | tee -a ci-output.log
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

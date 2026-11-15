@@ -28,7 +28,7 @@ https://mmcraft.dpdns.org/ (`site/`, GitHub Pages + 무료 도메인 DigitalPlat
 |---|---|
 | 처음 한 번: CurseForge 목록 → Modrinth로 옮기기 | **CurseForge 가져오기** → Run workflow. 결과: `pack/import/import-report.md` |
 | 지금 바로 업데이트 확인 | **자동 업데이트** → Run workflow (평소엔 매일 자동) |
-| 모드 추가·삭제 | **모드 추가·삭제** → Modrinth 주소/이름 입력 (테스트 통과 시 배포) |
+| 모드 추가·삭제 | **모드 추가·삭제** → Modrinth/CurseForge 주소 입력, 또는 `pack/requests.json`에 적어 push (테스트 통과 시 배포, 처리 후 비워짐) |
 | 설정 파일만 고쳐서 배포 | `pack/overrides` 수정 후 push → **팩 수정 배포** 자동 실행 |
 | 런처 새 버전 | `package.json` version 올려서 push → **런처 배포** 자동 실행 |
 
