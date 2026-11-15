@@ -3,6 +3,7 @@ import * as path from "path";
 import { DownloadItem, downloadAll, getJson, hashFile, Progress } from "./http";
 import { Layout } from "./paths";
 import { compareMcVersions } from "./minecraft";
+import { tr } from "./i18n";
 
 export const PACK_INDEX_URL = "https://raw.githubusercontent.com/RTF3563/MMCraft/pack-dist/index.json";
 
@@ -83,7 +84,7 @@ export async function saveState(layout: Layout, state: InstallState) {
 
 export async function fetchPackIndex(url = PACK_INDEX_URL): Promise<PackIndex> {
   const index = await getJson<PackIndex>(`${url}?t=${Date.now()}`, { headers: { "Cache-Control": "no-cache" } });
-  if (index.formatVersion !== 1) throw new Error("런처가 오래되어 새 팩 형식을 읽을 수 없습니다. 런처를 업데이트해 주세요.");
+  if (index.formatVersion !== 1) throw new Error(tr("err.oldLauncher"));
   return index;
 }
 
@@ -110,7 +111,7 @@ export function classifyUpdate(state: InstallState, index: PackIndex): UpdateKin
 
 function safeJoin(root: string, rel: string): string {
   const dest = path.resolve(root, ...rel.split("/"));
-  if (!dest.startsWith(path.resolve(root) + path.sep)) throw new Error(`잘못된 경로: ${rel}`);
+  if (!dest.startsWith(path.resolve(root) + path.sep)) throw new Error(tr("err.badPath", { path: rel }));
   return dest;
 }
 
@@ -130,7 +131,7 @@ export async function syncPack(layout: Layout, index: PackIndex, state: InstallS
     sha1: m.sha1,
     size: m.size,
   }));
-  await downloadAll(downloads, onProgress, 8, "모드");
+  await downloadAll(downloads, onProgress, 8, tr("label.mods"));
 
   const wanted = new Set(mods.map(installPath));
   for (const key of Object.keys(state.mods).map(stateKey)) {
@@ -152,7 +153,7 @@ export async function syncPack(layout: Layout, index: PackIndex, state: InstallS
       toFetch.push({ url: o.url, dest, sha1: o.sha1, size: o.size });
     }
   }
-  await downloadAll(toFetch, onProgress, 8, "설정 파일");
+  await downloadAll(toFetch, onProgress, 8, tr("label.configs"));
 
   // 팩에서 빠진 설정 파일: 플레이어가 안 바꿨으면 삭제
   for (const [rel, oldSha] of Object.entries(state.overrides)) {

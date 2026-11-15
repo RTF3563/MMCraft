@@ -3,6 +3,7 @@ import * as path from "path";
 import * as crypto from "crypto";
 import { Readable } from "stream";
 import { pipeline } from "stream/promises";
+import { tr } from "./i18n";
 
 export const USER_AGENT = "RTF3563/MMCraft-Launcher (github.com/RTF3563/MMCraft)";
 
@@ -96,7 +97,7 @@ export async function downloadFile(item: DownloadItem, retries = 3): Promise<voi
       if (!res.ok || !res.body) throw new HttpError(res.status, item.url, "");
       await pipeline(Readable.fromWeb(res.body as any), fs.createWriteStream(tmp));
       const check = { ...item, dest: tmp };
-      if (!(await isValid(check))) throw new Error(`파일 검증 실패: ${item.url}`);
+      if (!(await isValid(check))) throw new Error(tr("err.verify", { url: item.url }));
       await fs.promises.rename(tmp, item.dest);
       return;
     } catch (e) {

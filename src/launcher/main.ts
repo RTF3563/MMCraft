@@ -5,6 +5,7 @@ import { autoUpdater } from "electron-updater";
 import { Layout } from "../core/paths";
 import { Account, ensureFresh, loadAccount, login, saveAccount } from "./auth";
 import { getStatus, isRunning, loadSettings, play, prepare, saveSettings, Settings } from "./game";
+import { getLang, Lang, setLang, tr } from "../core/i18n";
 
 /** 지금 진행 중인 팩 설치·업데이트 (자동 업데이트와 플레이 버튼이 겹치지 않게) */
 let preparing: Promise<void> | null = null;
@@ -14,6 +15,12 @@ const RECHECK_MS = 30 * 60_000;
 const layout = Layout.default();
 let win: BrowserWindow | null = null;
 let account: Account | null = null;
+
+/** 설정 언어 → 실제 언어 (자동이면 Windows 언어가 한국어일 때만 한국어) */
+function resolveLang(s: Settings): Lang {
+  if (s.language === "ko" || s.language === "en") return s.language;
+  return app.getLocale().toLowerCase().startsWith("ko") ? "ko" : "en";
+}
 
 function config(): { azureClientId: string } {
   try {
@@ -68,6 +75,7 @@ ipcMain.handle("init", wrap(async () => ({
   account: account ? { name: account.name, uuid: account.uuid } : null,
   loginConfigured: !!config().azureClientId,
   settings: loadSettings(layout),
+  lang: getLang(),
   totalMemoryMb: Math.floor(require("os").totalmem() / 1024 / 1024),
   gameDir: layout.game,
 })));
@@ -76,7 +84,7 @@ ipcMain.handle("status", wrap(() => getStatus(layout)));
 
 ipcMain.handle("login", wrap(async () => {
   const id = config().azureClientId;
-  if (!id) throw new Error("런처에 로그인 설정(Azure Client ID)이 아직 없습니다.");
+  if (!id) throw new Error(tr("err.noClientId"));
   account = await login(id, win ?? undefined);
   saveAccount(layout.account, account);
   return { name: account.name, uuid: account.uuid };
@@ -89,7 +97,8 @@ ipcMain.handle("logout", wrap(() => {
 
 ipcMain.handle("settings", wrap((s: Settings) => {
   saveSettings(layout, s);
-  return s;
+  setLang(resolveLang(s));
+  return { lang: getLang() };
 }));
 
 function runPrepare(): Promise<void> {
@@ -124,7 +133,7 @@ function setupLauncherUpdater() {
   autoUpdater.autoDownload = true;
   autoUpdater.autoInstallOnAppQuit = true;
   autoUpdater.on("update-available", (i) => send("launcher-update", { state: "downloading", version: i.version }));
-  autoUpdater.on("download-progress", (p) => progress({ label: "런처 업데이트", done: Math.round(p.percent), total: 100 }));
+  autoUpdater.on("download-progress", (p) => progress({ label: tr("label.launcherUpdate"), done: Math.round(p.percent), total: 100 }));
   autoUpdater.on("update-not-available", () => autoUpdatePack());
   autoUpdater.on("error", () => autoUpdatePack());
   autoUpdater.on("update-downloaded", (i) => {
@@ -145,8 +154,8 @@ ipcMain.handle("install", wrap(async () => {
 }));
 
 ipcMain.handle("play", wrap(async () => {
-  if (!account) throw new Error("먼저 로그인하세요.");
-  if (isRunning()) throw new Error("이미 게임이 실행 중입니다.");
+  if (!account) throw new Error(tr("err.loginFirst"));
+  if (isRunning()) throw new Error(tr("err.running"));
   if (preparing) await preparing.catch(() => {}); // 자동 업데이트가 끝날 때까지 기다림
   const id = config().azureClientId;
   account = await ensureFresh(id, account);
@@ -175,6 +184,7 @@ ipcMain.handle("open", wrap(async (what: "game" | "saves" | "backups" | "logs" |
 ipcMain.handle("restart-update", () => autoUpdater.quitAndInstall());
 
 app.whenReady().then(() => {
+  setLang(resolveLang(loadSettings(layout)));
   account = loadAccount(layout.account);
   createWindow();
   if (app.isPackaged) setupLauncherUpdater();

@@ -10,32 +10,32 @@
   <header class="titlebar">
     <span class="titlebar-name">MMCraft</span>
     <div class="titlebar-buttons">
-      <button data-win="min" aria-label="최소화"><svg viewBox="0 0 10 10"><rect x="1" y="5" width="8" height="1"/></svg></button>
-      <button data-win="max" aria-label="최대화"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" fill="none" stroke="currentColor"/></svg></button>
-      <button data-win="close" class="close" aria-label="닫기"><svg viewBox="0 0 10 10"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      <button data-win="min" data-i18n-aria="win.min"><svg viewBox="0 0 10 10"><rect x="1" y="5" width="8" height="1"/></svg></button>
+      <button data-win="max" data-i18n-aria="win.max"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" fill="none" stroke="currentColor"/></svg></button>
+      <button data-win="close" class="close" data-i18n-aria="win.close"><svg viewBox="0 0 10 10"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.2"/></svg></button>
     </div>
   </header>
 
   <div id="update-banner" class="banner" hidden>
     <span id="update-text"></span>
-    <button id="update-restart" class="link" hidden>지금 다시 시작해서 적용</button>
+    <button id="update-restart" class="link" data-i18n="launcher.restart" hidden></button>
   </div>
 
   <main class="stage">
     <section class="hero">
       <h1 class="wordmark">MMCraft</h1>
       <dl class="facts">
-        <div><dt>마인크래프트</dt><dd id="fact-mc">-</dd></div>
-        <div><dt>팩 버전</dt><dd id="fact-pack">-</dd></div>
-        <div><dt>모드</dt><dd id="fact-mods">-</dd></div>
+        <div><dt data-i18n="fact.mc"></dt><dd id="fact-mc">-</dd></div>
+        <div><dt data-i18n="fact.pack"></dt><dd id="fact-pack">-</dd></div>
+        <div><dt data-i18n="fact.mods"></dt><dd id="fact-mods">-</dd></div>
       </dl>
-      <p id="state-line" class="state-line">팩 정보를 확인하고 있습니다</p>
+      <p id="state-line" class="state-line" data-i18n="state.checking"></p>
       <p id="user-mods" class="note" hidden></p>
     </section>
 
     <aside class="ledger">
-      <h2>업데이트 기록</h2>
-      <ol id="changelog" class="changelog"><li class="muted">불러오는 중</li></ol>
+      <h2 data-i18n="ledger.title"></h2>
+      <ol id="changelog" class="changelog"><li class="muted" data-i18n="ledger.loading"></li></ol>
     </aside>
   </main>
 
@@ -43,66 +43,79 @@
     <div class="who">
       <img id="avatar" class="avatar" alt="" width="40" height="40" hidden />
       <div class="who-text">
-        <span id="who-name" class="who-name">로그인 필요</span>
-        <button id="logout" class="link" hidden>로그아웃</button>
+        <span id="who-name" class="who-name"></span>
+        <button id="logout" class="link" data-i18n="who.logout" hidden></button>
       </div>
     </div>
 
     <div class="progress-area">
-      <div id="progress-text" class="progress-text">준비됨</div>
+      <div id="progress-text" class="progress-text"></div>
       <div class="blocks" id="blocks" aria-hidden="true"></div>
     </div>
 
-    <button id="settings-open" class="icon-btn" aria-label="설정">
+    <button id="settings-open" class="icon-btn" data-i18n-aria="settings.open">
       <svg viewBox="0 0 16 16"><path fill="currentColor" d="M7 0h2v2.1a6 6 0 0 1 1.9.8l1.5-1.5 1.4 1.4-1.5 1.5c.4.6.6 1.2.8 1.9H16v2h-2.1a6 6 0 0 1-.8 1.9l1.5 1.5-1.4 1.4-1.5-1.5a6 6 0 0 1-1.9.8V16H7v-2.1a6 6 0 0 1-1.9-.8l-1.5 1.5-1.4-1.4 1.5-1.5a6 6 0 0 1-.8-1.9H0V7h2.1c.2-.7.4-1.3.8-1.9L1.4 3.6l1.4-1.4 1.5 1.5c.6-.4 1.2-.6 1.9-.8V0zm1 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
     </button>
-    <button id="play" class="play" disabled>플레이</button>
+    <button id="play" class="play" disabled></button>
   </footer>
 
-  <!-- 로그인 -->
+  <!-- 로그인 / Sign in -->
   <div id="login" class="overlay" hidden>
     <div class="sheet">
-      <h2 class="sheet-title">Microsoft 계정으로 로그인</h2>
-      <p class="sheet-body">마인크래프트 자바 에디션을 구매한 계정이 필요합니다. 로그인 정보는 이 컴퓨터에만 암호화해 저장합니다.</p>
+      <h2 class="sheet-title" data-i18n="login.title"></h2>
+      <p class="sheet-body" data-i18n="login.body"></p>
       <p id="login-error" class="error" hidden></p>
-      <button id="login-btn" class="play wide">로그인</button>
+      <button id="login-btn" class="play wide" data-i18n="login.button"></button>
+      <div class="sheet-lang">
+        <button class="link" data-lang="ko">한국어</button>
+        <button class="link" data-lang="en">English</button>
+      </div>
     </div>
   </div>
 
-  <!-- 설정 -->
+  <!-- 설정 / Settings -->
   <div id="settings" class="drawer" hidden>
     <div class="drawer-head">
-      <h2>설정</h2>
-      <button id="settings-close" class="icon-btn" aria-label="설정 닫기"><svg viewBox="0 0 10 10"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      <h2 data-i18n="settings.title"></h2>
+      <button id="settings-close" class="icon-btn" data-i18n-aria="settings.close"><svg viewBox="0 0 10 10"><path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.2"/></svg></button>
     </div>
     <label class="field">
-      <span class="field-label">게임 메모리 <output id="mem-out"></output></span>
+      <span class="field-label" data-i18n="settings.language"></span>
+      <select id="lang">
+        <option value="auto" data-i18n="settings.lang.auto"></option>
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+    <label class="field">
+      <span class="field-label"><span data-i18n="settings.memory"></span> <output id="mem-out"></output></span>
       <input id="mem" type="range" min="2048" step="512" />
-      <span class="hint">모드가 많아서 6~8GB를 권장합니다. 컴퓨터 메모리의 절반을 넘기지 마세요.</span>
+      <span class="hint" data-i18n="settings.memoryHint"></span>
     </label>
     <label class="check">
       <input id="hide" type="checkbox" />
-      <span>게임을 켜면 런처 숨기기</span>
+      <span data-i18n="settings.hide"></span>
     </label>
     <label class="field">
-      <span class="field-label">추가 Java 옵션</span>
-      <input id="jvm" type="text" spellcheck="false" placeholder="필요할 때만 입력" />
+      <span class="field-label" data-i18n="settings.jvm"></span>
+      <input id="jvm" type="text" spellcheck="false" data-i18n-placeholder="settings.jvmPlaceholder" />
     </label>
     <div class="field">
-      <span class="field-label">폴더 열기</span>
+      <span class="field-label" data-i18n="settings.folders"></span>
       <div class="folder-row">
-        <button class="ghost" data-open="saves">월드</button>
-        <button class="ghost" data-open="backups">월드 백업</button>
-        <button class="ghost" data-open="mods">모드</button>
-        <button class="ghost" data-open="game">게임 폴더</button>
-        <button class="ghost" data-open="logs">로그</button>
+        <button class="ghost" data-open="saves" data-i18n="folder.saves"></button>
+        <button class="ghost" data-open="backups" data-i18n="folder.backups"></button>
+        <button class="ghost" data-open="mods" data-i18n="folder.mods"></button>
+        <button class="ghost" data-open="game" data-i18n="folder.game"></button>
+        <button class="ghost" data-open="logs" data-i18n="folder.logs"></button>
       </div>
     </div>
-    <button id="reinstall" class="ghost wide">파일 검사 후 다시 받기</button>
+    <button id="reinstall" class="ghost wide" data-i18n="settings.reinstall"></button>
     <p class="hint" id="launcher-version"></p>
   </div>
 
   <div id="toast" class="toast" role="status" hidden></div>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

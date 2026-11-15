@@ -220,3 +220,11 @@ input[type="text"] {
 .banner { grid-row: 2; }
 .stage { grid-row: 3; }
 .dock { grid-row: 4; }
+
+/* 언어 선택 */
+select {
+  background: var(--deepslate); border: 2px solid var(--tuff); color: var(--bone);
+  padding: 7px 10px; font: inherit; font-size: 14px;
+}
+select:hover { border-color: var(--tuff-line); }
+.sheet-lang { display: flex; gap: 16px; justify-content: center; margin-top: 16px; }

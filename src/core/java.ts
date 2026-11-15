@@ -3,6 +3,7 @@ import * as path from "path";
 import { DownloadItem, downloadAll, getJson, Progress } from "./http";
 import { Layout } from "./paths";
 import { Platform } from "./rules";
+import { tr } from "./i18n";
 
 /** Mojang이 공식 런처용으로 제공하는 Java 런타임 목록 */
 export const JAVA_RUNTIME_INDEX =
@@ -29,7 +30,7 @@ export async function ensureJava(layout: Layout, component: string, p: Platform,
 
   const all = await getJson<any>(JAVA_RUNTIME_INDEX);
   const entries = all[runtimePlatformKey(p)]?.[component];
-  if (!entries || entries.length === 0) throw new Error(`이 컴퓨터용 Java(${component})를 찾을 수 없습니다`);
+  if (!entries || entries.length === 0) throw new Error(tr("err.noJava", { component }));
   const manifest = await getJson<any>(entries[0].manifest.url);
 
   const items: DownloadItem[] = [];
@@ -47,7 +48,7 @@ export async function ensureJava(layout: Layout, component: string, p: Platform,
       links.push([dest, info.target]);
     }
   }
-  await downloadAll(items, onProgress, 16, "Java");
+  await downloadAll(items, onProgress, 16, tr("label.java"));
   if (p.os !== "windows") {
     for (const f of executables) await fs.promises.chmod(f, 0o755);
     for (const [dest, target] of links) {

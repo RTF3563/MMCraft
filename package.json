@@ -1,7 +1,7 @@
 {
   "name": "mmcraft-launcher",
   "productName": "MMCraft",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MMCraft 모드팩 전용 런처",
   "author": "RTF3563",
   "license": "UNLICENSED",
@@ -50,7 +50,13 @@
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "shortcutName": "MMCraft"
+      "shortcutName": "MMCraft",
+      "multiLanguageInstaller": true,
+      "installerLanguages": [
+        "ko_KR",
+        "en_US"
+      ],
+      "language": "1042"
     },
     "publish": [
       {

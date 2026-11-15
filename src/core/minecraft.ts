@@ -4,6 +4,7 @@ import AdmZip from "adm-zip";
 import { DownloadItem, downloadAll, downloadFile, getJson, Progress } from "./http";
 import { Layout, mavenPath } from "./paths";
 import { Platform, Rule, isAllowed, nativeClassifierMatches } from "./rules";
+import { tr } from "./i18n";
 
 export const VERSION_MANIFEST = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json";
 export const FABRIC_META = "https://meta.fabricmc.net/v2";
@@ -82,7 +83,7 @@ export async function fetchVanillaJson(layout: Layout, mc: string, manifest?: Ve
   }
   const m = manifest ?? (await getVersionManifest());
   const entry = m.versions.find((v) => v.id === mc);
-  if (!entry) throw new Error(`Minecraft ${mc} 버전을 찾을 수 없습니다`);
+  if (!entry) throw new Error(tr("err.noVersion", { mc }));
   return readOrFetchJson(file, entry.url, entry.sha1);
 }
 
@@ -239,7 +240,7 @@ export async function installVersion(layout: Layout, v: ResolvedVersion, onProgr
   const items: DownloadItem[] = [v.clientJar];
   for (const lib of v.libraries) if (lib.download) items.push(lib.download);
   if (v.logging) items.push(v.logging.file);
-  await downloadAll(items, onProgress, 16, "라이브러리");
+  await downloadAll(items, onProgress, 16, tr("label.libraries"));
 
   // 에셋
   const indexFile = path.join(layout.assets, "indexes", `${v.assetIndex.id}.json`);
@@ -267,7 +268,7 @@ export async function installVersion(layout: Layout, v: ResolvedVersion, onProgr
     } catch {}
     missing.push(a);
   }
-  await downloadAll(missing, onProgress, 24, "게임 리소스");
+  await downloadAll(missing, onProgress, 24, tr("label.assets"));
 
   await extractNatives(layout, v);
 }

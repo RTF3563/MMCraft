@@ -13,8 +13,11 @@ import {
 } from "../core/pack";
 import { backupSaves } from "../core/backup";
 import { Account } from "./auth";
+import { tr } from "../core/i18n";
 
 export interface Settings {
+  /** auto = 컴퓨터 언어를 따름 */
+  language: "auto" | "ko" | "en";
   memoryMb: number;
   hideOnLaunch: boolean;
   extraJvmArgs: string;
@@ -25,7 +28,7 @@ export interface Settings {
 export function defaultSettings(): Settings {
   const totalMb = Math.floor(os.totalmem() / 1024 / 1024);
   const mem = Math.max(4096, Math.min(8192, Math.floor(totalMb / 2 / 512) * 512));
-  return { memoryMb: mem, hideOnLaunch: true, extraJvmArgs: "", width: 1280, height: 720 };
+  return { language: "auto", memoryMb: mem, hideOnLaunch: true, extraJvmArgs: "", width: 1280, height: 720 };
 }
 
 export function loadSettings(layout: Layout): Settings {
@@ -89,23 +92,23 @@ export const isRunning = () => running !== null;
 export async function prepare(layout: Layout, onProgress: ProgressFn, onInfo: (msg: string) => void) {
   const platform = currentPlatform();
   const { index, online } = await getIndex(layout);
-  if (!index) throw new Error("팩 정보를 받을 수 없습니다. 인터넷 연결을 확인하세요.");
+  if (!index) throw new Error(tr("err.noIndex"));
   let state = await loadState(layout);
   const kind = online ? classifyUpdate(state, index) : "none";
 
   if (kind === "downgrade") {
-    throw new Error(`배포된 팩(${index.minecraft})이 설치된 버전(${state.minecraft})보다 낮습니다. 월드 보호를 위해 실행하지 않습니다.`);
+    throw new Error(tr("err.downgrade", { to: index.minecraft, from: state.minecraft ?? "?" }));
   }
   if (kind === "minecraft-upgrade") {
-    onInfo(`Minecraft ${state.minecraft} → ${index.minecraft} 버전 업: 월드를 먼저 백업합니다`);
-    onProgress({ label: "월드 백업", done: 0, total: 1 });
+    onInfo(tr("info.upgradeBackup", { from: state.minecraft ?? "?", to: index.minecraft }));
+    onProgress({ label: tr("label.backup"), done: 0, total: 1 });
     const where = await backupSaves(layout, `${state.minecraft}-before-${index.minecraft}`);
-    if (where) onInfo(`월드 백업 완료: ${where}`);
-    onProgress({ label: "월드 백업", done: 1, total: 1 });
+    if (where) onInfo(tr("info.backupDone", { path: where }));
+    onProgress({ label: tr("label.backup"), done: 1, total: 1 });
   }
 
-  const p = (done: number, total: number, label?: string) => onProgress({ label: label ?? "다운로드", done, total });
-  onProgress({ label: "게임 정보 확인", done: 0, total: 1 });
+  const p = (done: number, total: number, label?: string) => onProgress({ label: label ?? tr("label.download"), done, total });
+  onProgress({ label: tr("label.checkGame"), done: 0, total: 1 });
   const resolved = await resolveVersion(layout, index.minecraft, index.fabricLoader, platform);
   const javaExe = await ensureJava(layout, resolved.javaComponent, platform, p);
   await installVersion(layout, resolved, p);
@@ -123,7 +126,7 @@ export async function play(
   onInfo: (msg: string) => void,
   onExit: (code: number | null, crashReport: string | null) => void,
 ) {
-  if (running) throw new Error("이미 게임이 실행 중입니다.");
+  if (running) throw new Error(tr("err.running"));
   const { resolved, javaExe, platform } = await prepare(layout, onProgress, onInfo);
   const cmd = buildLaunchCommand(
     layout,
@@ -151,7 +154,7 @@ export async function play(
   });
   running.on("error", (e) => {
     running = null;
-    onInfo(`실행 실패: ${e.message}`);
+    onInfo(tr("err.launch", { msg: e.message }));
     onExit(-1, null);
   });
 }
