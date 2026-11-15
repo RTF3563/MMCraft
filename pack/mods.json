@@ -374,6 +374,24 @@
     "server": "unsupported"
   },
   {
+    "projectId": "cf:840873",
+    "slug": "cf-biome-music",
+    "name": "Biome Music",
+    "versionId": "cf:8906107",
+    "versionNumber": "biomemusic-fabric-26.3-4.3",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "biomemusic-fabric-26.3-4.3.jar",
+    "url": "https://edge.forgecdn.net/files/8906/107/biomemusic-fabric-26.3-4.3.jar",
+    "sha1": "32f3c21d2505b1c3e82cc10b4c49cb27640ffb90",
+    "sha512": "",
+    "size": 46305,
+    "client": "optional",
+    "server": "optional"
+  },
+  {
     "projectId": "BdKIyOLe",
     "slug": "boat-item-view",
     "name": "Boat Item View",

@@ -1,5 +1,14 @@
 [
   {
+    "version": "0.1.2",
+    "minecraft": "26.3",
+    "date": "2026-11-15",
+    "lines": [
+      "새 모드: Biome Music",
+      "모드 목록 다시 가져오기"
+    ]
+  },
+  {
     "version": "0.1.1",
     "minecraft": "26.3",
     "date": "2026-11-15",
