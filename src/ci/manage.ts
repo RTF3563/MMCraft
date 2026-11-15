@@ -86,7 +86,7 @@ function logExcerpt(file?: string): string[] {
   if (!file || !fs.existsSync(file)) return ["(로그 없음)"];
   const lines = fs.readFileSync(file, "utf8").split(/\r?\n/).map((l) => l.replace(/<\/?log4j:[^>]*>|<!\[CDATA\[|\]\]>/g, "").trimEnd()).filter((l) => l.trim());
   const i = lines.findIndex((l) => /resolution failed|Incompatible mod|Crash Report|Exception/i.test(l));
-  return (i >= 0 ? lines.slice(Math.max(0, i - 5), i + 60) : lines.slice(-60)).map((l) => l.slice(0, 300));
+  return (i >= 0 ? lines.slice(i, i + 80) : lines.slice(-80)).filter((l) => !/SemVer is recommended/.test(l)).map((l) => l.slice(0, 300));
 }
 
 function out(key: string, value: string) {

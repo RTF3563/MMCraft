@@ -81,6 +81,7 @@ function watchProcess(o: WatchOptions): Promise<{ ok: boolean; reason: string }>
     let exited = false;
     let markerAt: number | null = null;
     let verdict: { ok: boolean; reason: string } | null = null;
+    let failing = false;
     const close = () => {
       out.end();
       resolve(verdict!);
@@ -105,7 +106,11 @@ function watchProcess(o: WatchOptions): Promise<{ ok: boolean; reason: string }>
         const r = o.onLine?.(line, Date.now() - start);
         if (r === "marker") markerAt = Date.now();
         else if (r === "pass") finish(true, "통과");
-        else if (r?.startsWith("fail:")) finish(false, r.slice(5));
+        else if (r?.startsWith("fail:") && !failing) {
+          // 원인 설명이 이어서 나오므로 잠깐 더 받은 뒤 끝냄
+          failing = true;
+          setTimeout(() => finish(false, r.slice(5)), 10_000);
+        }
       }
     };
     child.stdout.on("data", handle);
