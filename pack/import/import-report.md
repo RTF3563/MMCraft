@@ -1,15 +1,28 @@
 # CurseForge → Modrinth 가져오기 결과
 
-- Minecraft 26.3 / Fabric
-- CurseForge 모드 124개 → Modrinth로 찾음 **117개**, 못 찾음 **0개**, 제외 7개
+- Minecraft 26.3 / Fabric · CurseForge 확인: CFWidget (API 키 없음)
+- CurseForge 모드 124개 → Modrinth로 찾음 **117개**, CurseForge 전용 **1개**, 못 찾음 **0개**, 제외 6개
 - 필요해서 자동 추가된 라이브러리 0개
 - 최종 모드 수 **117개**
+
+## CurseForge 전용 모드
+
+- Biome Music: ⏳ CurseForge API 키(CF_API_KEY)를 등록하면 설치됨
+
+## CurseForge 정보로 보완
+
+- Animatica Refabricated: CurseForge 기준 26.3 지원 확인 (0.6.2+26.3)
+- ModernFix-mVUS: CurseForge 기준 26.3 지원 확인 (5.27.20-build.2, 5.27.20+mc26.4-snapshot-1)
+- Biome Music: CurseForge 전용 모드라 CurseForge API 키(CF_API_KEY)가 있어야 받을 수 있음
+
+## ❗ 의존성 문제
+
+- Biome Music: 26.3용 Fabric 버전 없음
 
 ## 제외한 모드 (mapping.json에서 null)
 
 - fix GPU memory leak
 - Clickable advancements
-- Biome Music
 - Structure Essentials
 - Server Performance - Smooth Chunk Save
 - Cupboard
