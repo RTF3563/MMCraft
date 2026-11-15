@@ -1,9 +1,9 @@
 {
- "add": [
-  {
-   "modrinth": "essential",
-   "curseforge": "essential-mod"
-  }
- ],
- "remove": []
+  "add": [
+    {
+      "modrinth": "essential",
+      "curseforge": "essential-mod"
+    }
+  ],
+  "remove": []
 }

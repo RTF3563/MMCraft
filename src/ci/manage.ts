@@ -35,6 +35,14 @@ function readRequests(): { add: AddItem[]; remove: string[] } {
   }
 }
 
+/** 실패 원인이 적힌 로그 부분 (Fabric 의존성 오류 목록 등) */
+function logExcerpt(file?: string): string[] {
+  if (!file || !fs.existsSync(file)) return ["(로그 없음)"];
+  const lines = fs.readFileSync(file, "utf8").split(/\r?\n/).map((l) => l.replace(/<\/?log4j:[^>]*>|<!\[CDATA\[|\]\]>/g, "").trimEnd()).filter((l) => l.trim());
+  const i = lines.findIndex((l) => /resolution failed|Incompatible mod|Crash Report|Exception/i.test(l));
+  return (i >= 0 ? lines.slice(Math.max(0, i - 5), i + 60) : lines.slice(-60)).map((l) => l.slice(0, 300));
+}
+
 function out(key: string, value: string) {
   if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `${key}=${value}\n`);
 }
@@ -117,7 +125,7 @@ async function main() {
   }
   const r = await testPack({ minecraft: pack.minecraft, fabricLoader: pack.fabricLoader, mods: finalMods, label: "manage" });
   if (!r.ok) {
-    say([`## ❌ 실행 테스트 실패 → 반영 안 함`, `- ${r.stage}: ${r.reason}`]);
+    say([`## ❌ 실행 테스트 실패 → 반영 안 함`, `- ${r.stage}: ${r.reason}`, "", "```", ...logExcerpt(r.logFile), "```"]);
     out("changed", "false");
     process.exit(1);
   }
