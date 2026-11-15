@@ -504,6 +504,46 @@
     "kind": "resourcepack"
   },
   {
+    "projectId": "cf:511733",
+    "slug": "cf-clickable-advancements",
+    "name": "Clickable advancements",
+    "versionId": "cf:8929530",
+    "versionNumber": "clickadv-fabric-26.3-3.9",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "clickadv-fabric-26.3-3.9.jar",
+    "url": "https://edge.forgecdn.net/files/8929/530/clickadv-fabric-26.3-3.9.jar",
+    "sha1": "74691f87629f601c3eee78cb4dc9f601b12c19fc",
+    "sha512": "",
+    "size": 22408,
+    "client": "optional",
+    "server": "optional"
+  },
+  {
+    "projectId": "cf:888790",
+    "slug": "cf-client-crafting",
+    "name": "Client Crafting",
+    "versionId": "cf:8002356",
+    "versionNumber": "clientcrafting-fabric-26.1-2.1",
+    "versionType": "release",
+    "gameVersions": [
+      "26.1",
+      "26.1.1",
+      "26.1.2",
+      "26.2",
+      "26.3"
+    ],
+    "fileName": "clientcrafting-fabric-26.1-2.1.jar",
+    "url": "https://edge.forgecdn.net/files/8002/356/clientcrafting-fabric-26.1-2.1.jar",
+    "sha1": "1f7fc7da3ef84e954f81afa4e0fa6f46714a7f2c",
+    "sha512": "",
+    "size": 11422,
+    "client": "optional",
+    "server": "optional"
+  },
+  {
     "projectId": "K0AkAin6",
     "slug": "clientsort",
     "name": "Client Sort",
@@ -741,6 +781,24 @@
     "size": 95121,
     "client": "required",
     "server": "unsupported"
+  },
+  {
+    "projectId": "cf:326652",
+    "slug": "cf-cupboard",
+    "name": "Cupboard",
+    "versionId": "cf:8890593",
+    "versionNumber": "cupboard-fabric-26.3-4.2",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "cupboard-fabric-26.3-4.2.jar",
+    "url": "https://edge.forgecdn.net/files/8890/593/cupboard-fabric-26.3-4.2.jar",
+    "sha1": "a3d53b259c44513fd27d1a1ccc998824c574c0c2",
+    "sha512": "",
+    "size": 38725,
+    "client": "optional",
+    "server": "optional"
   },
   {
     "projectId": "QwxR6Gcd",
@@ -1083,6 +1141,24 @@
     "sha1": "eac76ff0f3753422c61b2c44487d0d195d88d4bc",
     "sha512": "d81fa97e11784c19d42f89c2f433831d007603dd7193cee45fa177e4a6a9c52b384b198586e04a0f7f63cd996fed713322578bde9a8db57e1188854ae5cbe584",
     "size": 72677,
+    "client": "optional",
+    "server": "optional"
+  },
+  {
+    "projectId": "cf:882495",
+    "slug": "cf-fix-gpu-memory-leak",
+    "name": "fix GPU memory leak",
+    "versionId": "cf:8910991",
+    "versionNumber": "gpumemleakfix-fabric-26.3-1.9",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "gpumemleakfix-fabric-26.3-1.9.jar",
+    "url": "https://edge.forgecdn.net/files/8910/991/gpumemleakfix-fabric-26.3-1.9.jar",
+    "sha1": "f5ba48d34bc369083e9271dcb9201df130580e7c",
+    "sha512": "",
+    "size": 6246,
     "client": "optional",
     "server": "optional"
   },
@@ -1886,6 +1962,28 @@
     "server": "unsupported"
   },
   {
+    "projectId": "cf:582327",
+    "slug": "cf-smooth-chunk-save",
+    "name": "Server Performance - Smooth Chunk Save",
+    "versionId": "cf:9255078",
+    "versionNumber": "smoothchunk-fabric-26.1-4.4",
+    "versionType": "release",
+    "gameVersions": [
+      "26.1",
+      "26.1.1",
+      "26.1.2",
+      "26.2",
+      "26.3"
+    ],
+    "fileName": "smoothchunk-fabric-26.1-4.4.jar",
+    "url": "https://edge.forgecdn.net/files/9255/78/smoothchunk-fabric-26.1-4.4.jar",
+    "sha1": "f8837e2fb93ce5da656092ae967148976498ed3a",
+    "sha512": "",
+    "size": 16975,
+    "client": "optional",
+    "server": "optional"
+  },
+  {
     "projectId": "PE656UHx",
     "slug": "simple-hud-enhanced",
     "name": "Simple HUD Enhanced",
@@ -2048,6 +2146,24 @@
     "sha1": "0940b4089affdfca37d6b6d0ea5ecae4dbd8fe98",
     "sha512": "c74bf5d5a16b2445ec6ea717eac756412b272a8015e91f91a7bf5a27e6f2f99c4a11878d434510f941f37b0344b3a7d1ba0dd6c34e80642762c48fb6e9a93894",
     "size": 3838499,
+    "client": "optional",
+    "server": "optional"
+  },
+  {
+    "projectId": "cf:832882",
+    "slug": "cf-structure-essentials-forge-fabric",
+    "name": "Structure Essentials",
+    "versionId": "cf:9278616",
+    "versionNumber": "structureessentials-fabric-26.3-5.1",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "structureessentials-fabric-26.3-5.1.jar",
+    "url": "https://edge.forgecdn.net/files/9278/616/structureessentials-fabric-26.3-5.1.jar",
+    "sha1": "7f3fbd1c82766656e92ae463e1a8638f7548c483",
+    "sha512": "",
+    "size": 60104,
     "client": "optional",
     "server": "optional"
   },

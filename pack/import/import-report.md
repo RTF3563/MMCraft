@@ -3,56 +3,34 @@
 - Minecraft 26.3 / Fabric · CurseForge 확인: 공식 API
 - CurseForge 모드 124개 → Modrinth로 찾음 **117개**, CurseForge 전용 **7개**, 못 찾음 **0개**, 제외 0개
 - 필요해서 자동 추가된 라이브러리 0개
-- 최종 모드 수 **117개**
+- 최종 모드 수 **123개**
 
 ## CurseForge 전용 모드
 
-- fix GPU memory leak: ⚠ API 키가 작동하지 않아 확인 못 함 (아래 'CurseForge 조회 문제')
-- Clickable advancements: ⚠ API 키가 작동하지 않아 확인 못 함 (아래 'CurseForge 조회 문제')
+- fix GPU memory leak: ✅ 설치 (CurseForge에서 받음)
+- Clickable advancements: ✅ 설치 (CurseForge에서 받음)
 - Biome Music: ⚠ API 키가 작동하지 않아 확인 못 함 (아래 'CurseForge 조회 문제')
-- Structure Essentials: ⚠ API 키가 작동하지 않아 확인 못 함 (아래 'CurseForge 조회 문제')
-- Server Performance - Smooth Chunk Save: ⚠ API 키가 작동하지 않아 확인 못 함 (아래 'CurseForge 조회 문제')
-- Cupboard: ⚠ API 키가 작동하지 않아 확인 못 함 (아래 'CurseForge 조회 문제')
-- Client Crafting: ⚠ API 키가 작동하지 않아 확인 못 함 (아래 'CurseForge 조회 문제')
+- Structure Essentials: ✅ 설치 (CurseForge에서 받음)
+- Server Performance - Smooth Chunk Save: ✅ 설치 (CurseForge에서 받음)
+- Cupboard: ✅ 설치 (CurseForge에서 받음)
+- Client Crafting: ✅ 설치 (CurseForge에서 받음)
 
 ## ⚠ CurseForge 조회 문제
 
-- **CurseForge가 API 키를 거부함** (403 "API Key missing or invalid", 122건) → GitHub Secrets의 CF_API_KEY 값을 확인하세요. 그동안은 CFWidget으로 정보만 확인
+- **CurseForge가 API 키를 거부함** (403 "API Key missing or invalid", 27건) → GitHub Secrets의 CF_API_KEY 값을 확인하세요. 그동안은 CFWidget으로 정보만 확인
 - not-enough-animations: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/not-enough-animations
-- terrablender-fabric: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/terrablender-fabric
-- better-mount-hud: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/better-mount-hud
 - rightclickharvest: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/rightclickharvest
-- irisshaders: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/irisshaders
 - balm: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/balm
-- skin-layers-3d: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/skin-layers-3d
-- easy-magic: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/easy-magic
-- sodium-extra: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/sodium-extra
-- ferritecore-fabric: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/ferritecore-fabric
-- forge-config-api-port: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/forge-config-api-port
-- simple-voice-chat: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/simple-voice-chat
-- entityculling: CFWidget 오류 HTTP 404 https://api.cfwidget.com/minecraft/mc-mods/entityculling
 
 ## CurseForge 정보로 보완
 
 - Animatica Refabricated: CurseForge 기준 26.3 지원 확인 (0.6.2+26.3)
 - ModernFix-mVUS: CurseForge 기준 26.3 지원 확인 (5.27.20-build.2)
-- fix GPU memory leak: CurseForge API 키가 작동하지 않아 다운로드 정보를 받지 못함
-- Clickable advancements: CurseForge API 키가 작동하지 않아 다운로드 정보를 받지 못함
 - Biome Music: CurseForge API 키가 작동하지 않아 다운로드 정보를 받지 못함
-- Structure Essentials: CurseForge API 키가 작동하지 않아 다운로드 정보를 받지 못함
-- Server Performance - Smooth Chunk Save: CurseForge API 키가 작동하지 않아 다운로드 정보를 받지 못함
-- Cupboard: CurseForge API 키가 작동하지 않아 다운로드 정보를 받지 못함
-- Client Crafting: CurseForge API 키가 작동하지 않아 다운로드 정보를 받지 못함
 
 ## ❗ 의존성 문제
 
-- fix GPU memory leak: 26.3용 Fabric 버전 없음
-- Clickable advancements: 26.3용 Fabric 버전 없음
 - Biome Music: 26.3용 Fabric 버전 없음
-- Structure Essentials: 26.3용 Fabric 버전 없음
-- Server Performance - Smooth Chunk Save: 26.3용 Fabric 버전 없음
-- Cupboard: 26.3용 Fabric 버전 없음
-- Client Crafting: 26.3용 Fabric 버전 없음
 
 ## 연결된 모드
 
