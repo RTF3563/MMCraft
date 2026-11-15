@@ -120,6 +120,9 @@ export async function plan(
         continue;
       }
       if (d.dependency_type !== "required") continue;
+      // 여러 로더용 파일에 붙은 NeoForge/Forge 전용 의존성은 무시 (예: KotlinLangForge)
+      const depProject = await provider.project(d.project_id);
+      if (depProject && !depProject.loaders.includes("fabric") && !depProject.loaders.includes("quilt")) continue;
       if (!requiredBy.has(d.project_id)) requiredBy.set(d.project_id, new Set());
       requiredBy.get(d.project_id)!.add(entry.mod.name);
       if (chosen.has(d.project_id)) continue;

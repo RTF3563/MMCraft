@@ -21,7 +21,7 @@ const inc = (id: string) => ({ project_id: id, version_id: null, file_name: null
 
 function provider(all: MrVersion[]): Provider {
   return {
-    project: async (id) => ({ id, slug: id, title: id.toUpperCase(), project_type: "mod", client_side: "required", server_side: "optional", loaders: ["fabric"], game_versions: [] } as MrProject),
+    project: async (id) => ({ id, slug: id, title: id.toUpperCase(), project_type: "mod", client_side: "required", server_side: "optional", loaders: id.startsWith("forge") ? ["neoforge"] : ["fabric"], game_versions: [] } as MrProject),
     versions: async (id, mc) => all.filter((v) => v.project_id === id && v.game_versions.includes(mc)).sort((a, b) => b.date_published.localeCompare(a.date_published)),
   };
 }
@@ -109,6 +109,13 @@ test("원인 모드 찾기 (반씩 나눠 시험)", async () => {
 
   const none = await findCulprits(base, changes, testFn, { left: 1 });
   assert.equal(none, null, "시험 횟수 부족하면 포기");
+});
+
+test("NeoForge 전용 의존성은 무시", async () => {
+  const z = ver("zoom", "1.0", ["26.3"], "release", [req("forgekotlin")]);
+  const p = await plan("26.3", [packMod(z)], provider([z]), policy, {}, "update");
+  assert.equal(p.ok, true);
+  assert.deepEqual(p.missing, []);
 });
 
 test("팩 버전 올리기", () => {
