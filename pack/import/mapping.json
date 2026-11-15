@@ -1,11 +1,11 @@
 {
   "translations-for-sodium": "translations-for-sodium",
   "chat-reporting-helper": "chat-reporting-helper",
-  "fix-gpu-memory-leak": null,
-  "clickable-advancements": null,
-  "structure-essentials-forge-fabric": null,
-  "smooth-chunk-save": null,
-  "cupboard": null,
-  "client-crafting": null,
+  "fix-gpu-memory-leak": "curseforge",
+  "clickable-advancements": "curseforge",
+  "structure-essentials-forge-fabric": "curseforge",
+  "smooth-chunk-save": "curseforge",
+  "cupboard": "curseforge",
+  "client-crafting": "curseforge",
   "biome-music": "curseforge"
 }
