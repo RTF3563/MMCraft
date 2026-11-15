@@ -176,12 +176,21 @@ async function main() {
     r.push(`## CurseForge 전용 모드`, ``);
     for (const { mod } of cfOnly) {
       const inPack = result.mods.some((m) => m.projectId === cfProjectId(mod.id));
-      r.push(`- ${mod.name}: ${inPack ? "✅ 설치 (CurseForge에서 받음)" : hasCfKey() ? "❌ 제작자가 외부 배포를 막음" : "⏳ CurseForge API 키(CF_API_KEY)를 등록하면 설치됨"}`);
+      const why = inPack ? "✅ 설치 (CurseForge에서 받음)"
+        : !hasCfKey() ? "⏳ CurseForge API 키(CF_API_KEY)를 등록하면 설치됨"
+        : mod.allowDistribution === false ? "❌ 제작자가 외부 배포를 막음 (CurseForge 앱에서만 받을 수 있음)"
+        : mod.allowDistribution === null ? "⚠ API 키가 작동하지 않아 확인 못 함 (아래 'CurseForge 조회 문제')"
+        : "❌ 26.3 Fabric 파일을 받을 수 없음";
+      r.push(`- ${mod.name}: ${why}`);
     }
     r.push(``);
   }
   if (cfProblems.length) {
-    r.push(`## ⚠ CurseForge 조회 문제`, ``, ...cfProblems.map((n) => `- ${n}`), ``);
+    const keyBad = cfProblems.filter((p) => /403|API Key missing or invalid/i.test(p)).length;
+    const others = cfProblems.filter((p) => !/403|API Key missing or invalid/i.test(p));
+    r.push(`## ⚠ CurseForge 조회 문제`, ``);
+    if (keyBad) r.push(`- **CurseForge가 API 키를 거부함** (403 "API Key missing or invalid", ${keyBad}건) → GitHub Secrets의 CF_API_KEY 값을 확인하세요. 그동안은 CFWidget으로 정보만 확인`);
+    r.push(...others.map((n) => `- ${n}`), ``);
   }
   if (cfNotes.size) {
     r.push(`## CurseForge 정보로 보완`, ``, ...[...cfNotes].map((n) => `- ${n}`), ``);

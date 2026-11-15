@@ -14,7 +14,7 @@ const CF_API = "https://api.curseforge.com/v1";
 const MINECRAFT = 432;
 const MC_MODS = 6;
 const FABRIC = 4;
-const KEY = process.env.CF_API_KEY ?? "";
+const KEY = (process.env.CF_API_KEY ?? "").trim();
 
 export const hasCfKey = () => KEY.length > 0;
 
@@ -220,6 +220,10 @@ export function withCurseForge(p: Provider, cfg: CurseForgeConfig, onNote?: (msg
         }
         if (mod.allowDistribution === false) {
           onNote?.(`${mod.name}: 제작자가 외부 프로그램 배포를 막아 둠 (CurseForge 앱에서만 받을 수 있음)`);
+          return [];
+        }
+        if (mod.allowDistribution === null) {
+          onNote?.(`${mod.name}: CurseForge API 키가 작동하지 않아 다운로드 정보를 받지 못함`);
           return [];
         }
         return cfFilesFor(mod, mc).map((f) => cfVersion(mod, f)).filter((v) => v.files.length > 0);
