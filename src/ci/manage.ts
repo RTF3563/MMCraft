@@ -38,8 +38,10 @@ function readRequests(): { add: AddItem[]; remove: string[] } {
 function out(key: string, value: string) {
   if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `${key}=${value}\n`);
 }
+const RESULT = path.join(PACK_DIR, "requests-result.md");
 function say(lines: string[]) {
   console.log(lines.join("\n"));
+  fs.appendFileSync(RESULT, lines.join("\n") + "\n");
   if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n");
 }
 
@@ -52,6 +54,7 @@ async function main() {
   const notes = new Set<string>();
   const provider = cached(withCurseForge(withCompat(cached({ project: getProject, versions: getVersions }), readCompat()), cfg, (n) => notes.add(n)));
 
+  fs.writeFileSync(RESULT, `# 모드 추가·삭제 결과 (${new Date().toISOString().slice(0, 16).replace("T", " ")} UTC)\n\n`);
   const req = readRequests();
   const fromFile = req.add.length + req.remove.length > 0;
   const removeList = [...parseList(process.env.REMOVE_MODS), ...req.remove];
