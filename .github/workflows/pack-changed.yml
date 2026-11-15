@@ -18,6 +18,11 @@ concurrency:
   group: pack
   cancel-in-progress: false
 
+# 파이프(| tee)를 써도 실패가 실패로 잡히도록 (bash -eo pipefail)
+defaults:
+  run:
+    shell: bash
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -33,7 +38,7 @@ jobs:
         id: req
         run: |
           set -o pipefail
-          if [ -f pack/requests.json ] && node -e "const r=require('./pack/requests.json');process.exit((r.add||[]).length+(r.remove||[]).length+(r.inspect||[]).length+(r.test?1:0)?0:1)"; then
+          if [ -f pack/requests.json ] && node -e "const r=require('./pack/requests.json');process.exit((r.add||[]).length+(r.remove||[]).length+(r.inspect||[]).length+(r.upgrade||[]).length+(r.test?1:0)?0:1)"; then
             STATUS=0
             xvfb-run -a -s "-screen 0 1280x720x24" node dist/ci/manage.js 2>&1 | tee -a ci-output.log || STATUS=$?
             git config user.name "mmcraft-bot"

@@ -6,6 +6,11 @@ on:
 permissions:
   contents: write
 
+# 파이프(| tee)를 써도 실패가 실패로 잡히도록 (bash -eo pipefail)
+defaults:
+  run:
+    shell: bash
+
 jobs:
   publish:
     runs-on: ubuntu-latest

@@ -1,5 +1,7 @@
 {
-  "add": [],
-  "remove": [],
-  "upgrade": ["sodium"]
+ "add": [],
+ "remove": [],
+ "upgrade": [
+  "sodium"
+ ]
 }

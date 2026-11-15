@@ -10,6 +10,11 @@ concurrency:
   group: pack
   cancel-in-progress: false
 
+# 파이프(| tee)를 써도 실패가 실패로 잡히도록 (bash -eo pipefail)
+defaults:
+  run:
+    shell: bash
+
 jobs:
   import:
     runs-on: ubuntu-latest
