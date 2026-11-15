@@ -216,20 +216,21 @@ export async function clientTest(input: TestInput, workDir: string, prep: Awaite
     args: cmd.args,
     cwd: cmd.cwd,
     // 가상 화면에서 소프트웨어 OpenGL 쓰기
-    env: { ...process.env, LIBGL_ALWAYS_SOFTWARE: "1", MESA_GL_VERSION_OVERRIDE: "4.6", MESA_GLSL_VERSION_OVERRIDE: "460", SDL_VIDEODRIVER: "x11", __GLX_VENDOR_LIBRARY_NAME: "mesa" },
+    env: { ...process.env, LIBGL_ALWAYS_SOFTWARE: "1", MESA_GL_VERSION_OVERRIDE: "4.6", MESA_GLSL_VERSION_OVERRIDE: "460", SDL_VIDEODRIVER: "x11", SDL_VIDEO_FORCE_EGL: "1", SDL_VIDEO_X11_FORCE_EGL: "1", __GLX_VENDOR_LIBRARY_NAME: "mesa", __EGL_VENDOR_LIBRARY_FILENAMES: "/usr/share/glvnd/egl_vendor.d/50_mesa.json" },
     logFile,
     timeoutMs: 15 * 60_000,
     onLine: (line) => {
       const c = crashLine(line);
       if (c) return c;
       // 리소스를 다 읽고 화면을 그리기 시작했다는 표시
-      if (/Created: \d+x\d+x\d+ .*atlas/.test(line) || /Sound engine started/.test(line)) return "marker";
+      if (/Reloading ResourceManager|Created: \d+x\d+x\d+ .*atlas|Sound engine started/.test(line)) return "marker";
       return undefined;
     },
     onTick: (elapsed, sinceMarker) => {
       if (crashReportExists(gameDir)) return "fail:크래시 리포트 생성됨";
       if (sinceMarker !== null && sinceMarker > PASS_AFTER_MARKER) return "pass";
-      if (elapsed > PASS_WITHOUT_MARKER) return "pass";
+      // 화면(렌더러)이 끝내 안 만들어지면 통과로 치지 않음
+      if (sinceMarker === null && elapsed > PASS_WITHOUT_MARKER) return "fail:게임 화면을 만들지 못함 (렌더러 초기화 안 됨)";
       return undefined;
     },
   });
