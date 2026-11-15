@@ -1,5 +1,15 @@
 [
   {
+    "version": "0.1.5",
+    "minecraft": "26.3",
+    "date": "2026-11-15",
+    "lines": [
+      "Collective 26.3.0-8.86-fabric+forge+neo → 26.3.0-8.87-fabric+forge+neo",
+      "JamLib 2.3.2+26.3.x → 2.3.3+26.3.x",
+      "RightClickHarvest 4.7.0+26.3.x → 4.7.1+26.3.x"
+    ]
+  },
+  {
     "version": "0.1.4",
     "minecraft": "26.3",
     "date": "2026-11-15",

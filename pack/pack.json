@@ -1,6 +1,6 @@
 {
   "name": "MMCraft",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "minecraft": "26.3",
   "fabricLoader": "0.20.1",
   "policy": {
