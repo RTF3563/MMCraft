@@ -1,4 +1,5 @@
 {
   "add": [],
-  "remove": []
+  "remove": [],
+  "inspect": ["essential", "better-block-entities", "sodium"]
 }

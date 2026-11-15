@@ -33,7 +33,7 @@ jobs:
         id: req
         run: |
           set -o pipefail
-          if [ -f pack/requests.json ] && node -e "const r=require('./pack/requests.json');process.exit((r.add||[]).length+(r.remove||[]).length?0:1)"; then
+          if [ -f pack/requests.json ] && node -e "const r=require('./pack/requests.json');process.exit((r.add||[]).length+(r.remove||[]).length+(r.inspect||[]).length?0:1)"; then
             STATUS=0
             xvfb-run -a -s "-screen 0 1280x720x24" node dist/ci/manage.js 2>&1 | tee -a ci-output.log || STATUS=$?
             git config user.name "mmcraft-bot"

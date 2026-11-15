@@ -4,6 +4,8 @@
  */
 import * as fs from "fs";
 import * as path from "path";
+import AdmZip from "adm-zip";
+import { downloadFile } from "../core/http";
 import { getProject, getVersions, loaderFor } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan, withCompat } from "./resolve";
@@ -25,14 +27,45 @@ function parseList(s: string | undefined): string[] {
  * { "add": ["sodium-extra", { "modrinth": "essential", "curseforge": "essential-mod" }], "remove": ["freecam"] }
  */
 type AddItem = string | { modrinth?: string; curseforge?: string };
+/** inspect: 모드 파일 안의 fabric.mod.json(필요·충돌 정보)을 결과 파일에 적음 (원인 분석용) */
 const REQUESTS = path.join(PACK_DIR, "requests.json");
-function readRequests(): { add: AddItem[]; remove: string[] } {
+function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[] } {
   try {
     const r = JSON.parse(fs.readFileSync(REQUESTS, "utf8"));
-    return { add: r.add ?? [], remove: r.remove ?? [] };
+    return { add: r.add ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [] };
   } catch {
-    return { add: [], remove: [] };
+    return { add: [], remove: [], inspect: [] };
   }
+}
+
+async function inspectMod(slug: string, mc: string): Promise<string[]> {
+  const p = await getProject(slug);
+  if (!p) return [`- ${slug}: Modrinth에 없음`];
+  const v = (await getVersions(p.id, mc))[0];
+  if (!v) return [`- ${p.title}: ${mc} Fabric 버전 없음`];
+  const f = v.files.find((x) => x.primary) ?? v.files[0];
+  const dest = path.join(process.env.MMCRAFT_CI_HOME ?? ".ci-cache", "inspect", f.filename);
+  await downloadFile({ url: f.url, dest, sha1: f.hashes.sha1 });
+  const out: string[] = [`### ${p.title} ${v.version_number} (${f.filename})`, "```"];
+  const walk = (zip: AdmZip, depth: number) => {
+    const meta = zip.getEntry("fabric.mod.json");
+    if (meta) {
+      try {
+        const j = JSON.parse(meta.getData().toString("utf8"));
+        out.push(`${"  ".repeat(depth)}${j.id} ${j.version}` +
+          (j.depends ? ` depends=${JSON.stringify(j.depends)}` : "") +
+          (j.breaks ? ` breaks=${JSON.stringify(j.breaks)}` : "") +
+          (j.conflicts ? ` conflicts=${JSON.stringify(j.conflicts)}` : "") +
+          (j.provides ? ` provides=${JSON.stringify(j.provides)}` : ""));
+      } catch { out.push(`${"  ".repeat(depth)}(fabric.mod.json 읽기 실패)`); }
+    }
+    for (const e of zip.getEntries()) {
+      if (depth < 2 && e.entryName.endsWith(".jar")) walk(new AdmZip(e.getData()), depth + 1);
+    }
+  };
+  walk(new AdmZip(dest), 0);
+  out.push("```");
+  return out;
 }
 
 /** 실패 원인이 적힌 로그 부분 (Fabric 의존성 오류 목록 등) */
@@ -64,6 +97,7 @@ async function main() {
 
   fs.writeFileSync(RESULT, `# 모드 추가·삭제 결과 (${new Date().toISOString().slice(0, 16).replace("T", " ")} UTC)\n\n`);
   const req = readRequests();
+  for (const slug of req.inspect) say(await inspectMod(slug, pack.minecraft));
   const fromFile = req.add.length + req.remove.length > 0;
   const removeList = [...parseList(process.env.REMOVE_MODS), ...req.remove];
   const addList: { mr: string; cf?: string }[] = [
@@ -134,7 +168,7 @@ async function main() {
   writePack(pack);
   writeMods(finalMods);
   addChangelog({ version: pack.version, minecraft: pack.minecraft, date: new Date().toISOString().slice(0, 10), lines });
-  if (fromFile) fs.writeFileSync(REQUESTS, JSON.stringify({ add: [], remove: [] }, null, 2) + "\n");
+  if (fromFile) fs.writeFileSync(REQUESTS, JSON.stringify({ add: [], remove: [], inspect: [] }, null, 2) + "\n");
   say([`## ✅ 팩 ${pack.version}`, ...lines.map((l) => `- ${l}`), ...[...notes].map((n) => `- (CurseForge) ${n}`)]);
   out("changed", "true");
 }
