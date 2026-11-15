@@ -1,9 +1,9 @@
 # CurseForge → Modrinth 가져오기 결과
 
 - Minecraft 26.3 / Fabric
-- CurseForge 모드 124개 → Modrinth로 찾음 **116개**, 못 찾음 **0개**, 제외 8개
+- CurseForge 모드 124개 → Modrinth로 찾음 **117개**, 못 찾음 **0개**, 제외 7개
 - 필요해서 자동 추가된 라이브러리 0개
-- 최종 모드 수 **116개**
+- 최종 모드 수 **117개**
 
 ## 제외한 모드 (mapping.json에서 null)
 
@@ -13,7 +13,6 @@
 - Structure Essentials
 - Server Performance - Smooth Chunk Save
 - Cupboard
-- MixinTrace Reborn
 - Client Crafting
 
 ## 연결된 모드
@@ -111,6 +110,7 @@
 | Forge Config API Port | [Forge Config API Port](https://modrinth.com/mod/forge-config-api-port) | 모드 | 같은 주소 | 26.3.1 (release) |
 | InvMove | [InvMove](https://modrinth.com/mod/invmove) | 모드 | 같은 주소 | 0.9.6+26.3-fabric (beta) |
 | Fast Item Frames | [Fast Item Frames](https://modrinth.com/mod/fast-item-frames) | 모드 | 같은 주소 | 26.3.0 (release) |
+| MixinTrace Reborn | [MixinTrace Reborn](https://modrinth.com/mod/mixintrace-reborn) | 모드 | 같은 주소 | 1.0-26.1 (release) |
 | Continuity | [Continuity](https://modrinth.com/mod/continuity) | 모드 | 같은 주소 | 3.0.1+26.3 (release) |
 | BaguetteLib | [BaguetteLib](https://modrinth.com/mod/baguettelib) | 모드 | 같은 주소 | 2.0.8 (release) |
 | TrashSlot | [TrashSlot](https://modrinth.com/mod/trashslot) | 모드 | 같은 주소 | 26.3.0.2+fabric-26.3 (release) |

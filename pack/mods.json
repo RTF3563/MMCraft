@@ -1501,6 +1501,26 @@
     "server": "required"
   },
   {
+    "projectId": "Ok6FyXJ9",
+    "slug": "mixintrace-reborn",
+    "name": "MixinTrace Reborn",
+    "versionId": "j3SeQVjR",
+    "versionNumber": "1.0-26.1",
+    "versionType": "release",
+    "gameVersions": [
+      "26.1",
+      "26.1.1",
+      "26.1.2"
+    ],
+    "fileName": "mixintrace-1.0-26.1-universal.jar",
+    "url": "https://cdn.modrinth.com/data/Ok6FyXJ9/versions/j3SeQVjR/mixintrace-1.0-26.1-universal.jar",
+    "sha1": "3b270bf23ffec81086c23a78dd473608640b0a96",
+    "sha512": "d1b4762208b4d056b1a4313dbf661a5116d5614c3d8f90ff64c1977a7581a438067869688b34bca6e1f8068ca47abddc599dcbd64760e30a7b33bf6f4b5b220c",
+    "size": 7167,
+    "client": "optional",
+    "server": "optional"
+  },
+  {
     "projectId": "mOgUt4GM",
     "slug": "modmenu",
     "name": "Mod Menu",
