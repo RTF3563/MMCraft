@@ -44,6 +44,7 @@ async function main() {
     changelog: changelog.slice(0, 10).flatMap((c) => [`[${c.version}] ${c.date} · Minecraft ${c.minecraft}`, ...c.lines.map((l) => `  · ${l}`)]),
     mods,
     overrides,
+    ...(pack.jvmArgs?.length ? { jvmArgs: pack.jvmArgs } : {}),
   };
   const outDir = path.resolve("out", "pack-dist");
   await fs.promises.mkdir(outDir, { recursive: true });

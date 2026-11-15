@@ -127,7 +127,7 @@ export async function play(
   onExit: (code: number | null, crashReport: string | null) => void,
 ) {
   if (running) throw new Error(tr("err.running"));
-  const { resolved, javaExe, platform } = await prepare(layout, onProgress, onInfo);
+  const { resolved, javaExe, platform, index } = await prepare(layout, onProgress, onInfo);
   const cmd = buildLaunchCommand(
     layout,
     resolved,
@@ -135,7 +135,7 @@ export async function play(
     { name: account.name, uuid: account.uuid, accessToken: account.mcToken, xuid: account.xuid, userType: "msa" },
     {
       maxMemoryMb: settings.memoryMb,
-      extraJvmArgs: settings.extraJvmArgs.split(/\s+/).filter(Boolean),
+      extraJvmArgs: [...(index.jvmArgs ?? []), ...settings.extraJvmArgs.split(/\s+/).filter(Boolean)],
       width: settings.width,
       height: settings.height,
       launcherVersion,

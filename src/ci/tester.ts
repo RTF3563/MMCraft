@@ -8,7 +8,7 @@ import { FABRIC_META, getVersionManifest, installVersion, resolveVersion, Versio
 import { ensureJava, javaExecutable } from "../core/java";
 import { buildLaunchCommand } from "../core/launch";
 import { installPath, PackMod } from "../core/pack";
-import { applyInstallNames, files } from "./source";
+import { applyInstallNames, files, readPack } from "./source";
 
 export const CI_HOME = path.resolve(process.env.MMCRAFT_CI_HOME ?? ".ci-cache");
 
@@ -198,7 +198,7 @@ export async function clientTest(input: TestInput, workDir: string, prep: Awaite
     prep.resolved,
     javaExe,
     { name: "MMCraftCI", uuid: "00000000000000000000000000000000", accessToken: "0", userType: "legacy" },
-    { maxMemoryMb: 4096, width: 1280, height: 720 },
+    { maxMemoryMb: 4096, width: 1280, height: 720, extraJvmArgs: readPack().jvmArgs ?? [] },
     prep.platform,
   );
   const logFile = path.join(workDir, "client.log");

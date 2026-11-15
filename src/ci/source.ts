@@ -20,6 +20,8 @@ export interface PackSource {
   minecraft: string;
   fabricLoader: string;
   policy: PackPolicy;
+  /** 게임 실행 때 꼭 넣을 Java 옵션 (예: Essential 재실행 끄기) */
+  jvmArgs?: string[];
 }
 
 export interface HeldEntry {

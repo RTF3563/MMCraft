@@ -1,5 +1,7 @@
 {
-  "add": [],
+  "add": [
+    { "modrinth": "essential", "curseforge": "essential-mod" }
+  ],
   "remove": [],
-  "inspect": ["essential", "better-block-entities", "sodium"]
+  "inspect": []
 }

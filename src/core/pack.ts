@@ -53,6 +53,8 @@ export interface PackIndex {
   changelog: string[];
   mods: PackMod[];
   overrides: PackOverride[];
+  /** 게임 실행 때 꼭 넣어야 하는 Java 옵션 (모드 호환용) */
+  jvmArgs?: string[];
 }
 
 export interface InstallState {
