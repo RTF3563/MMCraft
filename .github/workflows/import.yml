@@ -13,6 +13,8 @@ concurrency:
 jobs:
   import:
     runs-on: ubuntu-latest
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
     timeout-minutes: 90
     outputs:
       ok: ${{ steps.test.outcome }}

@@ -21,6 +21,8 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4

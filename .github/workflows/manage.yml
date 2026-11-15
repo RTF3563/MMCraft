@@ -22,6 +22,8 @@ concurrency:
 jobs:
   manage:
     runs-on: ubuntu-latest
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
     timeout-minutes: 90
     outputs:
       changed: ${{ steps.manage.outputs.changed }}

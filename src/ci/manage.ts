@@ -7,6 +7,9 @@ import { getProject, getVersions, loaderFor } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan, withCompat } from "./resolve";
 import { testPack } from "./tester";
+import { cfProjectId, getCfMod, hasCfKey, readCurseForge, withCurseForge, writeCurseForge } from "./curseforge";
+
+const norm = (x: string) => x.toLowerCase().replace(/\[[^\]]*\]|\([^)]*\)/g, "").replace(/[^\p{L}\p{N}]+/gu, "");
 import { addChangelog, bumpVersion, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
 
 function parseList(s: string | undefined): string[] {
@@ -29,17 +32,36 @@ async function main() {
   let mods = readMods();
   const lines: string[] = [];
   const errors: string[] = [];
-  const provider = withCompat(cached({ project: getProject, versions: getVersions }), readCompat());
+  const cfg = readCurseForge();
+  const notes = new Set<string>();
+  const provider = cached(withCurseForge(withCompat(cached({ project: getProject, versions: getVersions }), readCompat()), cfg, (n) => notes.add(n)));
 
   for (const slug of parseList(process.env.REMOVE_MODS)) {
     const m = mods.find((x) => x.slug === slug || x.projectId === slug || x.name.toLowerCase() === slug.toLowerCase());
     if (!m) { errors.push(`삭제할 모드 '${slug}'가 팩에 없음`); continue; }
     mods = mods.filter((x) => x !== m);
+    if (m.slug.startsWith("cf-")) cfg.only = cfg.only.filter((x) => x !== m.slug.slice(3));
     lines.push(`제거: ${m.name}`);
   }
   for (const slug of parseList(process.env.ADD_MODS)) {
     const p = await getProject(slug);
-    if (!p) { errors.push(`Modrinth에 '${slug}' 모드가 없음`); continue; }
+    if (!p) {
+      // Modrinth에 없으면 CurseForge 전용으로
+      const cf = await getCfMod(slug);
+      if (!cf) { errors.push(`'${slug}' 모드를 Modrinth와 CurseForge 모두에서 찾지 못함`); continue; }
+      if (!hasCfKey()) { errors.push(`${cf.name}: CurseForge 전용 모드라 CurseForge API 키(CF_API_KEY) 등록 후 추가 가능`); continue; }
+      if (mods.some((m) => m.projectId === cfProjectId(cf.id))) { errors.push(`${cf.name}는 이미 팩에 있음`); continue; }
+      cfg.only.push(slug);
+      mods.push({
+        projectId: cfProjectId(cf.id), slug: `cf-${cf.slug}`, name: cf.name, versionId: "", versionNumber: "", versionType: "release",
+        gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: "optional", server: "optional",
+      } as PackMod);
+      lines.push(`새 모드: ${cf.name} (CurseForge)`);
+      continue;
+    }
+    // CurseForge에도 같은 모드가 있으면 지원 버전 정보를 함께 확인
+    const cfSame = await getCfMod(slug);
+    if (cfSame && norm(cfSame.name) === norm(p.title)) cfg.map[p.slug] = slug;
     if (mods.some((m) => m.projectId === p.id)) { errors.push(`${p.title}는 이미 팩에 있음`); continue; }
     const kind = p.project_type === "resourcepack" ? "resourcepack" : "mod";
     if ((await provider.versions(p.id, pack.minecraft, loaderFor(kind))).length === 0) { errors.push(`${p.title}: ${pack.minecraft}용 버전 없음`); continue; }
@@ -51,6 +73,7 @@ async function main() {
     lines.push(`새 모드: ${p.title}`);
   }
   if (errors.length) say(["## ⚠ 확인 필요", ...errors.map((e) => `- ${e}`)]);
+  writeCurseForge(cfg);
   if (lines.length === 0) { out("changed", "false"); return; }
 
   // 새로 넣은 모드의 버전 고르기 + 필요 라이브러리 정리 (기존 모드 버전은 그대로)
@@ -76,7 +99,7 @@ async function main() {
   writePack(pack);
   writeMods(finalMods);
   addChangelog({ version: pack.version, minecraft: pack.minecraft, date: new Date().toISOString().slice(0, 10), lines });
-  say([`## ✅ 팩 ${pack.version}`, ...lines.map((l) => `- ${l}`)]);
+  say([`## ✅ 팩 ${pack.version}`, ...lines.map((l) => `- ${l}`), ...[...notes].map((n) => `- (CurseForge) ${n}`)]);
   out("changed", "true");
 }
 

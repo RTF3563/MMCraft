@@ -4,6 +4,7 @@ import { MrProject, MrVersion } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { applyChanges, chooseVersion, findCulprits, plan, Provider, withCompat } from "../ci/resolve";
 import { bumpVersion, PackPolicy } from "../ci/source";
+import { CfMod, withCurseForge } from "../ci/curseforge";
 
 const policy: PackPolicy = { minStability: "beta", autoUpgradeMinecraft: true, maxBisectTests: 8 };
 
@@ -126,6 +127,36 @@ test("호환 예외: 26.1용 파일을 26.3에서 사용 (26.4는 예외 없음)
   assert.equal(p.mods[0].versionId, "mixintrace-1.0");
   const p4 = await plan("26.4", [packMod(m)], prov, policy, {}, "upgrade");
   assert.equal(p4.ok, false, "26.4는 따로 확인해야 함");
+});
+
+test("CurseForge: 26.3 지원 표시된 같은 파일을 Modrinth에서 사용 + CurseForge 전용 모드", async () => {
+  const mr = ver("mixin", "1.0", ["26.1.2"]); // Modrinth엔 26.1.2만
+  const cfMods: Record<string, CfMod> = {
+    "mixin-cf": { id: 1, slug: "mixin-cf", name: "Mixin", allowDistribution: true, files: [
+      { fileId: 10, fileName: mr.files[0].filename, display: "x", gameVersions: ["Fabric", "26.3"], releaseType: "release", date: "2026-01-01" }] },
+    "biome-music": { id: 840873, slug: "biome-music", name: "Biome Music", allowDistribution: true, files: [
+      { fileId: 8906107, fileName: "biomemusic-fabric-26.3-4.3.jar", display: "biomemusic-fabric-26.3-4.3.jar", gameVersions: ["Client", "Fabric", "26.3"], releaseType: "release", date: "2026-02-01", sha1: "abc", size: 5, downloadUrl: "https://edge.forgecdn.net/files/8906/107/biomemusic-fabric-26.3-4.3.jar" },
+      { fileId: 8906023, fileName: "biomemusic-26.3-4.3.jar", display: "neo", gameVersions: ["Client", "NeoForge", "26.3"], releaseType: "release", date: "2026-02-01", sha1: "def", size: 5, downloadUrl: "https://x" }] },
+  };
+  const notes: string[] = [];
+  const make = (key: boolean) => withCurseForge(provider([mr]), { map: { mixin: "mixin-cf" }, only: ["biome-music"] }, (n) => notes.push(n), {
+    getCf: async (s) => cfMods[s] ?? null,
+    mrAllVersions: async (id) => (id === "mixin" ? [mr] : []),
+    hasKey: () => key,
+  });
+  const seed = { ...packMod(mr), versionId: "" };
+  const cfSeed = { ...packMod(ver("x", "0", [])), projectId: "cf:840873", slug: "cf-biome-music", name: "Biome Music", versionId: "" };
+
+  const withKey = await plan("26.3", [seed, cfSeed], make(true), policy, {}, "upgrade");
+  assert.equal(withKey.ok, true);
+  assert.equal(withKey.mods.find((m) => m.projectId === "mixin")!.versionId, "mixin-1.0", "CurseForge 확인으로 Modrinth 파일 사용");
+  const bm = withKey.mods.find((m) => m.projectId === "cf:840873")!;
+  assert.equal(bm.fileName, "biomemusic-fabric-26.3-4.3.jar", "Fabric 파일만");
+  assert.ok(bm.url.startsWith("https://edge.forgecdn.net/"));
+
+  const noKey = await plan("26.3", [seed, cfSeed], make(false), policy, {}, "upgrade");
+  assert.deepEqual(noKey.missing.map((m) => m.name), ["Biome Music"], "키 없으면 CurseForge 전용은 대기");
+  assert.ok(notes.some((n) => n.includes("API 키")));
 });
 
 test("팩 버전 올리기", () => {

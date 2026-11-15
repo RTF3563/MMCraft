@@ -9,6 +9,7 @@ import { compareMcVersions, fabricSupportsGame, getVersionManifest, latestFabric
 import { PackMod } from "../core/pack";
 import { applyChanges, cached, Change, findCulprits, plan, Provider, withCompat } from "./resolve";
 import { testPack, TestResult } from "./tester";
+import { hasCfKey, readCurseForge, withCurseForge } from "./curseforge";
 import {
   addChangelog, bumpVersion, Held, readCompat, readHeld, readMods, readPack, UpgradeStatus,
   writeHeld, writeMods, writePack, writeUpgradeStatus,
@@ -24,13 +25,16 @@ function summary(lines: string[]) {
   if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n");
 }
 
+const cfNotes = new Set<string>();
+
 async function makeProvider(mods: PackMod[]): Promise<Provider> {
   const known = new Map<string, MrProject>();
-  for (const p of await getProjects(mods.map((m) => m.projectId))) known.set(p.id, p);
-  return withCompat(cached({
+  for (const p of await getProjects(mods.map((m) => m.projectId).filter((id) => !id.startsWith("cf:")))) known.set(p.id, p);
+  const base = withCompat(cached({
     project: async (id) => known.get(id) ?? getProject(id),
     versions: getVersions,
   }), readCompat());
+  return cached(withCurseForge(base, readCurseForge(), (n) => cfNotes.add(n)));
 }
 
 function changeLines(changes: Change[], removed: PackMod[]): string[] {
@@ -206,6 +210,7 @@ async function updateMods(): Promise<boolean> {
 async function main() {
   const upgraded = await tryUpgrade();
   const updated = upgraded ? false : await updateMods();
+  summary([`## CurseForge 확인 (${hasCfKey() ? "공식 API" : "CFWidget, API 키 없음"})`, ...(cfNotes.size ? [...cfNotes].map((n) => `- ${n}`) : ["- 특이사항 없음"])]);
   output("changed", String(upgraded || updated));
   output("version", readPack().version);
 }

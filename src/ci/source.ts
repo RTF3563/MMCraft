@@ -61,6 +61,7 @@ export const files = {
   overrides: () => path.join(PACK_DIR, "overrides"),
   installNames: () => path.join(PACK_DIR, "install-names.json"),
   compat: () => path.join(PACK_DIR, "compat.json"),
+  curseforge: () => path.join(PACK_DIR, "curseforge.json"),
 };
 
 /** pack/compat.json (설명용 "_설명" 키는 무시) */

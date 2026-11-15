@@ -7,6 +7,7 @@ import * as path from "path";
 import { getProject, getVersions, loaderFor, searchMods, MrProject } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan, Provider, withCompat } from "./resolve";
+import { cfFilesFor, cfProjectId, CfMod, getCfMod, hasCfKey, readCurseForge, withCurseForge, writeCurseForge } from "./curseforge";
 import { addChangelog, bumpVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
 
 interface CfEntry {
@@ -71,14 +72,33 @@ async function main() {
   const manual: Record<string, string | null> = fs.existsSync(MAPPING_FILE) ? JSON.parse(fs.readFileSync(MAPPING_FILE, "utf8")) : {};
   const allowAlpha: string[] = fs.existsSync(ALLOW_ALPHA_FILE) ? JSON.parse(fs.readFileSync(ALLOW_ALPHA_FILE, "utf8")) : [];
 
-  const compatProvider = withCompat(cached({ project: getProject, versions: getVersions }), readCompat());
+  const cfg = readCurseForge();
+  const cfNotes = new Set<string>();
+  const provider: Provider = cached(withCurseForge(withCompat(cached({ project: getProject, versions: getVersions }), readCompat()), cfg, (n) => cfNotes.add(n)));
   const found: { e: CfEntry; p: MrProject; how: string }[] = [];
+  const cfOnly: { e: CfEntry; mod: CfMod }[] = [];
   const failed: { e: CfEntry; reason: string }[] = [];
   const skipped: CfEntry[] = [];
+
+  /** Modrinth에 없을 때 CurseForge 전용으로 넣을 수 있는지 */
+  async function tryCurseForge(e: CfEntry, why: string) {
+    const mod = await getCfMod(e.curseforgeSlug);
+    if (mod && cfFilesFor(mod, mc).length > 0) {
+      cfOnly.push({ e, mod });
+      cfg.only.push(e.curseforgeSlug);
+      console.log(`✓ ${e.name} → CurseForge 전용 (${why})`);
+    } else {
+      failed.push({ e, reason: `${why}, CurseForge에도 ${mc} Fabric 파일 없음` });
+    }
+  }
 
   for (const e of list) {
     if (manual[e.curseforgeSlug] === null) {
       skipped.push(e);
+      continue;
+    }
+    if (manual[e.curseforgeSlug] === "curseforge") {
+      await tryCurseForge(e, "CurseForge 전용으로 지정");
       continue;
     }
     let project: MrProject | null = null;
@@ -100,13 +120,15 @@ async function main() {
       }
     }
     if (!project) {
-      failed.push({ e, reason: "Modrinth에서 찾지 못함" });
+      await tryCurseForge(e, "Modrinth에 없음");
       continue;
     }
     if (found.some((f) => f.p.id === project!.id)) continue;
-    const versions = await compatProvider.versions(project.id, mc, loaderFor(kindOf(project)));
+    if (kindOf(project) === "mod") cfg.map[project.slug] = e.curseforgeSlug; // CurseForge 지원 버전 정보도 함께 확인
+    const versions = await provider.versions(project.id, mc, loaderFor(kindOf(project)));
     if (versions.length === 0) {
-      failed.push({ e, reason: `Modrinth에는 있지만 ${mc}${kindOf(project) === "mod" ? " Fabric" : ""} 버전이 없음 (${project.slug})` });
+      delete cfg.map[project.slug];
+      await tryCurseForge(e, `Modrinth(${project.slug})에 ${mc}${kindOf(project) === "mod" ? " Fabric" : ""} 버전 없음`);
       continue;
     }
     found.push({ e, p: project, how });
@@ -120,7 +142,14 @@ async function main() {
     gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: p.client_side, server: p.server_side,
     ...(kindOf(p) === "resourcepack" ? { kind: "resourcepack" as const } : {}),
   }));
-  const provider: Provider = withCompat(cached({ project: getProject, versions: getVersions }), readCompat());
+  for (const { e, mod } of cfOnly) {
+    seeds.push({
+      projectId: cfProjectId(mod.id), slug: `cf-${mod.slug}`, name: mod.name, versionId: "", versionNumber: "",
+      versionType: allowAlpha.includes(e.curseforgeSlug) ? "alpha" : "release",
+      gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: "optional", server: "optional",
+    });
+  }
+  writeCurseForge(cfg);
   const result = await plan(mc, seeds, provider, pack.policy, readHeld(), "upgrade");
   // 이미 배포된 목록과 다르면 팩 버전을 올려서 플레이어 런처가 업데이트하게 함
   const before = readMods();
@@ -135,13 +164,24 @@ async function main() {
   writeMods(result.mods);
 
   const r: string[] = [];
-  r.push(`# CurseForge → Modrinth 가져오기 결과`, ``, `- Minecraft ${mc} / Fabric`, `- CurseForge 모드 ${list.length}개 → Modrinth로 찾음 **${found.length}개**, 못 찾음 **${failed.length}개**, 제외 ${skipped.length}개`);
+  r.push(`# CurseForge → Modrinth 가져오기 결과`, ``, `- Minecraft ${mc} / Fabric · CurseForge 확인: ${hasCfKey() ? "공식 API" : "CFWidget (API 키 없음)"}`, `- CurseForge 모드 ${list.length}개 → Modrinth로 찾음 **${found.length}개**, CurseForge 전용 **${cfOnly.length}개**, 못 찾음 **${failed.length}개**, 제외 ${skipped.length}개`);
   const added = result.mods.filter((m) => m.dependencyOf?.length);
   r.push(`- 필요해서 자동 추가된 라이브러리 ${added.length}개`, `- 최종 모드 수 **${result.mods.length}개**`, ``);
   if (failed.length) {
     r.push(`## ❗ 확인 필요 (못 찾은 모드)`, ``, `| CurseForge 모드 | 이유 |`, `|---|---|`);
     for (const f of failed) r.push(`| ${f.e.name} (${f.e.curseforgeSlug}) | ${f.reason} |`);
     r.push(``, `> \`pack/import/mapping.json\`에 \`"CurseForge주소": "Modrinth주소"\`를 적거나, 빼려면 \`null\`을 적고 다시 실행`, ``);
+  }
+  if (cfOnly.length) {
+    r.push(`## CurseForge 전용 모드`, ``);
+    for (const { mod } of cfOnly) {
+      const inPack = result.mods.some((m) => m.projectId === cfProjectId(mod.id));
+      r.push(`- ${mod.name}: ${inPack ? "✅ 설치 (CurseForge에서 받음)" : hasCfKey() ? "❌ 제작자가 외부 배포를 막음" : "⏳ CurseForge API 키(CF_API_KEY)를 등록하면 설치됨"}`);
+    }
+    r.push(``);
+  }
+  if (cfNotes.size) {
+    r.push(`## CurseForge 정보로 보완`, ``, ...[...cfNotes].map((n) => `- ${n}`), ``);
   }
   if (result.missing.length || result.conflicts.length) {
     r.push(`## ❗ 의존성 문제`, ``);
