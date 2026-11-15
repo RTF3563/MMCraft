@@ -1,8 +1,8 @@
-# 모드 추가·삭제 결과 (2026-11-15 10:51 UTC)
+# 모드 추가·삭제 결과 (2026-11-15 11:06 UTC)
 
 ### 현재 팩 테스트: 통과 (done: 서버·클라이언트 모두 통과)
 ```
-    Loading 234 mods:
+    Loading 236 mods:
 	- crash_assistant 1.11.14
 	   |-- fabric-crash-report-info-v1 1.0.7+fcdff87f5d
 	   |-- fabric-renderer-api-v1 17.0.19+79385d0b5d
@@ -18,14 +18,28 @@
     Sodium has applied one or more workarounds to prevent crashes or other issues on your system: [NO_ERROR_CONTEXT_UNSUPPORTED]
     Registering alt renderers via each collected entrypoint...
     Backend library: LWJGL version 3.4.3-snapshot
-    Failed to create backend OpenGL
-    com.mojang.renderpearl.api.device.BackendCreationException: Failed to create window for OpenGL context: Couldn't find matching GLX visual
-	at knot//com.mojang.renderpearl.backend.opengl.GlDevice.<init>(GlDevice.java:83)
-	at knot//com.mojang.renderpearl.backend.opengl.GlBackend.createDevice(GlBackend.java:68)
+    OpenGL 4.5 detected, enabling DSA.
+    Initializing ImmediatelyFast 1.17.1+26.3 on llvmpipe (LLVM 21.1.8, 256 bits) (Mesa) with OpenGL 4.6 (Core Profile) Mesa 26.0.8-1ubuntu0.3
+    Using graphics backend OpenGL, using drivers: 4.6 (Core Profile) Mesa 26.0.8-1ubuntu0.3
+    GPU: llvmpipe (LLVM 21.1.8, 256 bits) (Supports OpenGL 4.6 (Core Profile) Mesa 26.0.8-1ubuntu0.3)
+    Reloading ResourceManager: vanilla, vanilla, advancementplaques, ambientsounds, animatica, appleskin, badoptimizations, baguettelib, balm, bcc, betteradvancements, betterblockentities, betterdays, bettergrass, bettermounthud, biomemusic, boatiview, bridgingmod, cape-provider, carryon, chat_heads
+    OpenGL Vendor: Mesa
+    OpenGL Renderer: llvmpipe (LLVM 21.1.8, 256 bits)
+    OpenGL Version: 4.6 (Core Profile) Mesa 26.0.8-1ubuntu0.3
+    Sound engine started
+    Created: 1024x512x0 minecraft:textures/atlas/particles.png-atlas
+    Created: 256x128x0 minecraft:textures/atlas/celestials.png-atlas
+    Created: 256x128x0 minecraft:textures/atlas/decorated_pot.png-atlas
+    Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+    Created: 1024x512x0 minecraft:textures/atlas/shield_patterns.png-atlas
+    Created: 1024x512x0 minecraft:textures/atlas/banner_patterns.png-atlas
+    Created: 2048x1024x2 minecraft:textures/atlas/blocks.png-atlas
+    Created: 1024x512x0 minecraft:textures/atlas/items.png-atlas
+    Created: 2048x1024x0 minecraft:textures/atlas/gui.png-atlas
+    Created: 128x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+    Created: 512x512x0 minecraft:textures/atlas/chest.png-atlas
+    Created: 512x512x0 minecraft:textures/atlas/shulker_boxes.png-atlas
+    Reloading ResourceManager: vanilla, vanilla, advancementplaques, ambientsounds, animatica, appleskin, badoptimizations, baguettelib, balm, bcc, betteradvancements, betterblockentities, betterdays, bettergrass, bettermounthud, biomemusic, boatiview, bridgingmod, cape-provider, carryon, chat_heads
+    Sound engine started
+    Created: 1024x512x0 minecraft:textures/atlas/particles.png-atlas
 ```
-### 테스트할 변경
-- Essential Mod: (새로) → 1.5.2
-## ✅ 팩 0.1.4
-- 새 모드: Essential Mod
-- (CurseForge) Animatica Refabricated: CurseForge 기준 26.3 지원 확인 (0.6.2+26.3)
-- (CurseForge) ModernFix-mVUS: CurseForge 기준 26.3 지원 확인 (5.27.20-build.2)
