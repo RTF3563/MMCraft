@@ -1,4 +1,4 @@
-# 런처 다운로드 사이트 → https://rtf3563.github.io/MMCraft/
+# 런처 다운로드 사이트 → https://mmcraft.dpdns.org/
 name: 다운로드 사이트
 on:
   push:

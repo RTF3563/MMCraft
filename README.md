@@ -14,7 +14,7 @@ MMCraft 모드팩 전용 Windows 런처 + 모드 자동 업데이트 시스템.
 | 팩 자동 업데이트 | 런처를 켜면 새 팩을 바로 확인하고 **플레이를 누르지 않아도 미리 받아 둠** (마크 버전 업이면 월드 백업 먼저) |
 
 ## 다운로드 사이트
-https://rtf3563.github.io/MMCraft/ (`site/`). 최신 런처 설치 파일·팩 정보·모드 목록을 자동으로 불러옴. `site/` 수정 후 push하면 다시 배포.
+https://mmcraft.dpdns.org/ (`site/`, GitHub Pages + 무료 도메인 DigitalPlat. 예전 주소 rtf3563.github.io/MMCraft 도 새 주소로 연결됨). 최신 런처 설치 파일·팩 정보·모드 목록을 자동으로 불러옴. `site/` 수정 후 push하면 다시 배포.
 
 ## 폴더
 - `pack/` 팩 원본: `pack.json`(버전·정책), `mods.json`(모드 목록, 자동 관리), `held.json`(문제 있어 보류한 버전), `changelog.json`, `overrides/`(config·리소스팩·셰이더)
