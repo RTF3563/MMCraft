@@ -12,7 +12,7 @@ contextBridge.exposeInMainWorld("mmc", {
   window: (action: string) => ipcRenderer.invoke("window", action),
   restartUpdate: () => ipcRenderer.invoke("restart-update"),
   on: (channel: string, fn: (data: unknown) => void) => {
-    const allowed = ["progress", "info", "exited", "launched", "launcher-update"];
+    const allowed = ["progress", "info", "exited", "launched", "launcher-update", "auto-update"];
     if (allowed.includes(channel)) ipcRenderer.on(channel, (_e, d) => fn(d));
   },
 });

@@ -30,8 +30,8 @@ function toast(msg, ms = 6000) {
 }
 
 const KIND_TEXT = {
-  install: { line: "처음 실행이라 게임과 모드를 받아야 합니다.", button: "설치하고 플레이" },
-  update: { line: "새 팩 버전이 있습니다. 플레이를 누르면 바뀐 모드만 받습니다.", button: "업데이트" },
+  install: { line: "처음 실행이라 게임과 모드를 받는 중입니다.", button: "설치하고 플레이" },
+  update: { line: "새 팩 버전을 자동으로 받는 중입니다.", button: "업데이트" },
   "minecraft-upgrade": { line: "마인크래프트 버전이 올라갑니다. 월드는 자동으로 백업한 뒤 업데이트합니다.", button: "업데이트" },
   downgrade: { line: "배포된 팩이 설치된 버전보다 낮아 실행할 수 없습니다. 런처 제작자에게 알려 주세요.", button: "플레이" },
   none: { line: "최신 버전입니다.", button: "플레이" },
@@ -50,9 +50,9 @@ function renderStatus() {
   const k = KIND_TEXT[s.updateKind] ?? KIND_TEXT.none;
   let line = k.line;
   if (s.updateKind === "minecraft-upgrade" && installed && latest) {
-    line = `마인크래프트 ${installed.minecraft} → ${latest.minecraft}로 올라갑니다. 월드는 자동으로 백업한 뒤 업데이트합니다.`;
+    line = `마인크래프트 ${installed.minecraft} → ${latest.minecraft}로 올라갑니다. 월드를 먼저 백업한 뒤 자동으로 업데이트합니다.`;
   } else if (s.updateKind === "update" && installed) {
-    line = `팩 ${installed.packVersion} → ${latest.packVersion}. 플레이를 누르면 바뀐 모드만 받습니다.`;
+    line = `팩 ${installed.packVersion} → ${latest.packVersion}. 바뀐 모드만 자동으로 받습니다.`;
   } else if (s.updateKind === "offline" && !installed) {
     line = "인터넷에 연결할 수 없습니다. 처음 설치에는 인터넷이 필요합니다.";
   }
@@ -169,9 +169,36 @@ window.mmc.on("exited", (e) => {
     toast(e.crash ? `게임이 비정상 종료되었습니다. 크래시 보고서: ${e.crash}` : `게임이 비정상 종료되었습니다 (코드 ${e.code}). 설정 → 로그 폴더를 확인하세요.`, 0);
   }
 });
-window.mmc.on("launcher-update", (v) => {
-  $("update-version").textContent = v;
+window.mmc.on("launcher-update", (u) => {
+  const v = u.version ? `v${u.version}` : "새 버전";
+  const text = {
+    downloading: `새 런처 ${v}을 받고 있습니다.`,
+    installing: `런처를 ${v}로 업데이트하고 다시 시작합니다.`,
+    waiting: `런처 ${v}을 받았습니다. 게임을 끄면 자동으로 업데이트됩니다.`,
+  }[u.state];
+  if (!text) return;
+  $("update-text").textContent = text;
+  $("update-restart").hidden = u.state !== "waiting";
   $("update-banner").hidden = false;
+});
+window.mmc.on("auto-update", (a) => {
+  if (a.state === "start") {
+    ui.busy = true;
+    renderPlay();
+    const what = a.kind === "install" ? "게임과 모드를 처음 받는 중" : a.kind === "minecraft-upgrade" ? "마인크래프트 버전 업데이트 중" : `팩 ${a.to}로 업데이트 중`;
+    setProgress(0, 1, what);
+  } else if (a.state === "done") {
+    ui.busy = false;
+    setProgress(1, 1, a.kind === "install" ? "설치 완료" : `팩 ${a.to} 업데이트 완료`);
+    toast(a.kind === "install" ? "설치를 마쳤습니다. 바로 플레이할 수 있습니다." : `팩을 ${a.from ?? ""} → ${a.to}로 자동 업데이트했습니다.`);
+    renderPlay();
+    refreshStatus();
+  } else if (a.state === "error") {
+    ui.busy = false;
+    setProgress(0, 0, "준비됨");
+    toast(`자동 업데이트 실패: ${a.message} (플레이를 누르면 다시 시도합니다)`, 0);
+    renderPlay();
+  }
 });
 $("update-restart").addEventListener("click", () => window.mmc.restartUpdate());
 

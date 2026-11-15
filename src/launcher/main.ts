@@ -6,6 +6,11 @@ import { Layout } from "../core/paths";
 import { Account, ensureFresh, loadAccount, login, saveAccount } from "./auth";
 import { getStatus, isRunning, loadSettings, play, prepare, saveSettings, Settings } from "./game";
 
+/** 지금 진행 중인 팩 설치·업데이트 (자동 업데이트와 플레이 버튼이 겹치지 않게) */
+let preparing: Promise<void> | null = null;
+let launcherUpdatePending = false;
+const RECHECK_MS = 30 * 60_000;
+
 const layout = Layout.default();
 let win: BrowserWindow | null = null;
 let account: Account | null = null;
@@ -87,14 +92,62 @@ ipcMain.handle("settings", wrap((s: Settings) => {
   return s;
 }));
 
+function runPrepare(): Promise<void> {
+  if (!preparing) {
+    preparing = prepare(layout, progress, info).then(() => undefined).finally(() => { preparing = null; });
+  }
+  return preparing;
+}
+
+/** 팩에 새 버전이 있으면 플레이를 누르지 않아도 미리 받아 둠 */
+async function autoUpdatePack() {
+  if (isRunning() || preparing) return;
+  try {
+    const st = await getStatus(layout);
+    if (!st.online || !["install", "update", "minecraft-upgrade"].includes(st.updateKind)) return;
+    const from = st.installed?.packVersion;
+    send("auto-update", { state: "start", kind: st.updateKind, from, to: st.latest?.packVersion });
+    await runPrepare();
+    send("auto-update", { state: "done", kind: st.updateKind, from, to: st.latest?.packVersion });
+  } catch (e: any) {
+    send("auto-update", { state: "error", message: e?.message ?? String(e) });
+  }
+}
+
+/** 런처 자체 업데이트 확인 → 없으면(또는 실패하면) 팩 업데이트 확인 */
+function checkEverything() {
+  if (!app.isPackaged) return void autoUpdatePack();
+  autoUpdater.checkForUpdates().catch(() => autoUpdatePack());
+}
+
+function setupLauncherUpdater() {
+  autoUpdater.autoDownload = true;
+  autoUpdater.autoInstallOnAppQuit = true;
+  autoUpdater.on("update-available", (i) => send("launcher-update", { state: "downloading", version: i.version }));
+  autoUpdater.on("download-progress", (p) => progress({ label: "런처 업데이트", done: Math.round(p.percent), total: 100 }));
+  autoUpdater.on("update-not-available", () => autoUpdatePack());
+  autoUpdater.on("error", () => autoUpdatePack());
+  autoUpdater.on("update-downloaded", (i) => {
+    if (isRunning() || preparing) {
+      // 게임 중이면 게임을 끈 뒤에 설치
+      launcherUpdatePending = true;
+      send("launcher-update", { state: "waiting", version: i.version });
+      return;
+    }
+    send("launcher-update", { state: "installing", version: i.version });
+    setTimeout(() => autoUpdater.quitAndInstall(true, true), 2000);
+  });
+}
+
 ipcMain.handle("install", wrap(async () => {
-  await prepare(layout, progress, info);
+  await runPrepare();
   return getStatus(layout);
 }));
 
 ipcMain.handle("play", wrap(async () => {
   if (!account) throw new Error("먼저 로그인하세요.");
   if (isRunning()) throw new Error("이미 게임이 실행 중입니다.");
+  if (preparing) await preparing.catch(() => {}); // 자동 업데이트가 끝날 때까지 기다림
   const id = config().azureClientId;
   account = await ensureFresh(id, account);
   saveAccount(layout.account, account);
@@ -102,6 +155,10 @@ ipcMain.handle("play", wrap(async () => {
   await play(layout, account, settings, app.getVersion(), progress, info, (code, crash) => {
     win?.show();
     send("exited", { code, crash });
+    if (launcherUpdatePending) {
+      send("launcher-update", { state: "installing" });
+      setTimeout(() => autoUpdater.quitAndInstall(true, true), 2000);
+    }
   });
   send("launched");
   if (settings.hideOnLaunch) setTimeout(() => win?.hide(), 3000);
@@ -120,10 +177,10 @@ ipcMain.handle("restart-update", () => autoUpdater.quitAndInstall());
 app.whenReady().then(() => {
   account = loadAccount(layout.account);
   createWindow();
-  if (app.isPackaged) {
-    autoUpdater.on("update-downloaded", (i) => send("launcher-update", i.version));
-    autoUpdater.checkForUpdates().catch(() => {});
-  }
+  if (app.isPackaged) setupLauncherUpdater();
+  // 화면이 뜬 뒤 바로 확인, 켜 둔 동안 30분마다 다시 확인
+  win!.webContents.once("did-finish-load", () => checkEverything());
+  setInterval(() => { if (!isRunning() && !preparing) checkEverything(); }, RECHECK_MS);
 });
 
 app.on("second-instance", () => {
