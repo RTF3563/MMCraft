@@ -39,6 +39,14 @@ function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[] }
 }
 
 async function inspectMod(slug: string, mc: string): Promise<string[]> {
+  if (slug.startsWith("pack:")) {
+    // 지금 팩에 들어 있는 파일 그대로 확인
+    const m = readMods().find((x) => x.slug === slug.slice(5));
+    if (!m) return [`- ${slug}: 팩에 없음`];
+    const dest = path.join(process.env.MMCRAFT_CI_HOME ?? ".ci-cache", "inspect", m.fileName);
+    await downloadFile({ url: m.url, dest, sha1: m.sha1 });
+    return describeJar(`${m.name} ${m.versionNumber} (팩에 들어 있는 파일)`, dest);
+  }
   const p = await getProject(slug);
   if (!p) return [`- ${slug}: Modrinth에 없음`];
   const v = (await getVersions(p.id, mc))[0];
@@ -46,7 +54,11 @@ async function inspectMod(slug: string, mc: string): Promise<string[]> {
   const f = v.files.find((x) => x.primary) ?? v.files[0];
   const dest = path.join(process.env.MMCRAFT_CI_HOME ?? ".ci-cache", "inspect", f.filename);
   await downloadFile({ url: f.url, dest, sha1: f.hashes.sha1 });
-  const out: string[] = [`### ${p.title} ${v.version_number} (${f.filename})`, "```"];
+  return describeJar(`${p.title} ${v.version_number} (${f.filename})`, dest);
+}
+
+function describeJar(title: string, dest: string): string[] {
+  const out: string[] = [`### ${title}`, "```"];
   const walk = (zip: AdmZip, depth: number) => {
     const meta = zip.getEntry("fabric.mod.json");
     if (meta) {
@@ -157,6 +169,9 @@ async function main() {
     out("changed", "false");
     process.exit(1);
   }
+  const before = new Map(readMods().map((m) => [m.projectId, m.versionNumber]));
+  const diff = finalMods.filter((m) => before.get(m.projectId) !== m.versionNumber).map((m) => `- ${m.name}: ${before.get(m.projectId) ?? "(새로)"} → ${m.versionNumber}`);
+  say(["### 테스트할 변경", ...diff]);
   const r = await testPack({ minecraft: pack.minecraft, fabricLoader: pack.fabricLoader, mods: finalMods, label: "manage" });
   if (!r.ok) {
     say([`## ❌ 실행 테스트 실패 → 반영 안 함`, `- ${r.stage}: ${r.reason}`, "", "```", ...logExcerpt(r.logFile), "```"]);

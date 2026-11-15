@@ -3,5 +3,5 @@
     { "modrinth": "essential", "curseforge": "essential-mod" }
   ],
   "remove": [],
-  "inspect": []
+  "inspect": ["pack:sodium"]
 }
