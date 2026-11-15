@@ -1,7 +1,6 @@
 {
-  "add": [
-    { "modrinth": "essential", "curseforge": "essential-mod" }
-  ],
+  "add": [],
   "remove": [],
-  "inspect": ["pack:sodium"]
+  "inspect": [],
+  "test": true
 }

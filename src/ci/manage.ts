@@ -29,12 +29,12 @@ function parseList(s: string | undefined): string[] {
 type AddItem = string | { modrinth?: string; curseforge?: string };
 /** inspect: 모드 파일 안의 fabric.mod.json(필요·충돌 정보)을 결과 파일에 적음 (원인 분석용) */
 const REQUESTS = path.join(PACK_DIR, "requests.json");
-function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[] } {
+function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[]; test: boolean } {
   try {
     const r = JSON.parse(fs.readFileSync(REQUESTS, "utf8"));
-    return { add: r.add ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [] };
+    return { add: r.add ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [], test: !!r.test };
   } catch {
-    return { add: [], remove: [], inspect: [] };
+    return { add: [], remove: [], inspect: [], test: false };
   }
 }
 
@@ -110,6 +110,13 @@ async function main() {
   fs.writeFileSync(RESULT, `# 모드 추가·삭제 결과 (${new Date().toISOString().slice(0, 16).replace("T", " ")} UTC)\n\n`);
   const req = readRequests();
   for (const slug of req.inspect) say(await inspectMod(slug, pack.minecraft));
+  if (req.test) {
+    // 지금 팩 그대로 실행해 보고 로그 앞부분을 기록
+    const r = await testPack({ minecraft: pack.minecraft, fabricLoader: pack.fabricLoader, mods: readMods(), label: "check" });
+    const log = r.logFile && fs.existsSync(r.logFile) ? r.logFile : path.join(process.env.MMCRAFT_CI_HOME ?? ".ci-cache", "last-client.log");
+    const lines = fs.existsSync(log) ? fs.readFileSync(log, "utf8").split(/\r?\n/).map((l) => l.replace(/<\/?log4j:[^>]*>|<!\[CDATA\[|\]\]>/g, "").trimEnd()).filter((l) => /Loading|resolution|Reason|sodium|betterblock|Sodium|ERROR|WARN.*mod/i.test(l)).slice(0, 40) : ["(로그 없음)"];
+    say([`### 현재 팩 테스트: ${r.ok ? "통과" : "실패"} (${r.stage}: ${r.reason})`, "```", ...lines.map((l) => l.slice(0, 300)), "```"]);
+  }
   const fromFile = req.add.length + req.remove.length > 0;
   const removeList = [...parseList(process.env.REMOVE_MODS), ...req.remove];
   const addList: { mr: string; cf?: string }[] = [

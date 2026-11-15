@@ -250,6 +250,7 @@ export async function testPack(input: TestInput): Promise<TestResult> {
   log(`클라이언트: ${client.ok ? "통과" : "실패 - " + client.reason}`);
   if (!client.ok) return client;
   // 통과한 실행 폴더는 지움 (실패한 것은 로그 확인용으로 남김)
+  if (client.logFile) await fs.promises.copyFile(client.logFile, path.join(CI_HOME, "last-client.log")).catch(() => {});
   await fs.promises.rm(workDir, { recursive: true, force: true });
   return { ok: true, stage: "done", reason: "서버·클라이언트 모두 통과" };
 }
