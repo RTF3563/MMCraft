@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { MrProject, MrVersion } from "../core/modrinth";
 import { PackMod } from "../core/pack";
-import { applyChanges, chooseVersion, findCulprits, plan, Provider } from "../ci/resolve";
+import { applyChanges, chooseVersion, findCulprits, plan, Provider, withCompat } from "../ci/resolve";
 import { bumpVersion, PackPolicy } from "../ci/source";
 
 const policy: PackPolicy = { minStability: "beta", autoUpgradeMinecraft: true, maxBisectTests: 8 };
@@ -116,6 +116,16 @@ test("NeoForge 전용 의존성은 무시", async () => {
   const p = await plan("26.3", [packMod(z)], provider([z]), policy, {}, "update");
   assert.equal(p.ok, true);
   assert.deepEqual(p.missing, []);
+});
+
+test("호환 예외: 26.1용 파일을 26.3에서 사용 (26.4는 예외 없음)", async () => {
+  const m = ver("mixintrace", "1.0", ["26.1", "26.1.1", "26.1.2"]);
+  const prov = withCompat(provider([m]), { mixintrace: { "26.3": ["26.1", "26.1.1", "26.1.2"] } });
+  const p = await plan("26.3", [packMod(m)], prov, policy, {}, "upgrade");
+  assert.equal(p.ok, true);
+  assert.equal(p.mods[0].versionId, "mixintrace-1.0");
+  const p4 = await plan("26.4", [packMod(m)], prov, policy, {}, "upgrade");
+  assert.equal(p4.ok, false, "26.4는 따로 확인해야 함");
 });
 
 test("팩 버전 올리기", () => {

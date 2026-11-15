@@ -25,6 +25,28 @@ export function cached(p: Provider): Provider {
   };
 }
 
+/**
+ * 호환 예외: Modrinth에는 옛 버전용으로만 표시돼 있지만 실제로 새 버전에서도 되는 모드.
+ * compat = { "모드주소": { "26.3": ["26.1", "26.1.1", "26.1.2"] } }
+ * → 26.3을 찾을 때 26.1.x용 파일도 후보로 넣음 (실행 테스트로 확인)
+ */
+export function withCompat(p: Provider, compat: Record<string, Record<string, string[]>>): Provider {
+  return {
+    project: p.project,
+    versions: async (id, mc, loader) => {
+      const base = await p.versions(id, mc, loader);
+      const proj = await p.project(id);
+      const extra = (proj && compat[proj.slug]?.[mc]) || [];
+      if (extra.length === 0) return base;
+      const all = [...base, ...(await Promise.all(extra.map((g) => p.versions(id, g, loader)))).flat()];
+      const seen = new Set<string>();
+      return all
+        .filter((v) => (seen.has(v.id) ? false : (seen.add(v.id), true)))
+        .sort((a, b) => b.date_published.localeCompare(a.date_published));
+    },
+  };
+}
+
 export interface Change {
   projectId: string;
   name: string;

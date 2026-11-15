@@ -6,8 +6,8 @@ import * as fs from "fs";
 import * as path from "path";
 import { getProject, getVersions, loaderFor, searchMods, MrProject } from "../core/modrinth";
 import { PackMod } from "../core/pack";
-import { cached, plan, Provider } from "./resolve";
-import { PACK_DIR, readHeld, readPack, writeMods } from "./source";
+import { cached, plan, Provider, withCompat } from "./resolve";
+import { PACK_DIR, readCompat, readHeld, readPack, writeMods } from "./source";
 
 interface CfEntry {
   name: string;
@@ -71,6 +71,7 @@ async function main() {
   const manual: Record<string, string | null> = fs.existsSync(MAPPING_FILE) ? JSON.parse(fs.readFileSync(MAPPING_FILE, "utf8")) : {};
   const allowAlpha: string[] = fs.existsSync(ALLOW_ALPHA_FILE) ? JSON.parse(fs.readFileSync(ALLOW_ALPHA_FILE, "utf8")) : [];
 
+  const compatProvider = withCompat(cached({ project: getProject, versions: getVersions }), readCompat());
   const found: { e: CfEntry; p: MrProject; how: string }[] = [];
   const failed: { e: CfEntry; reason: string }[] = [];
   const skipped: CfEntry[] = [];
@@ -103,7 +104,7 @@ async function main() {
       continue;
     }
     if (found.some((f) => f.p.id === project!.id)) continue;
-    const versions = await getVersions(project.id, mc, loaderFor(kindOf(project)));
+    const versions = await compatProvider.versions(project.id, mc, loaderFor(kindOf(project)));
     if (versions.length === 0) {
       failed.push({ e, reason: `Modrinth에는 있지만 ${mc}${kindOf(project) === "mod" ? " Fabric" : ""} 버전이 없음 (${project.slug})` });
       continue;
@@ -119,7 +120,7 @@ async function main() {
     gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: p.client_side, server: p.server_side,
     ...(kindOf(p) === "resourcepack" ? { kind: "resourcepack" as const } : {}),
   }));
-  const provider: Provider = cached({ project: getProject, versions: getVersions });
+  const provider: Provider = withCompat(cached({ project: getProject, versions: getVersions }), readCompat());
   const result = await plan(mc, seeds, provider, pack.policy, readHeld(), "upgrade");
   writeMods(result.mods);
 

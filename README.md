@@ -27,6 +27,8 @@ MMCraft 모드팩 전용 Windows 런처 + 모드 자동 업데이트 시스템.
 | 설정 파일만 고쳐서 배포 | `pack/overrides` 수정 후 push → **팩 수정 배포** 자동 실행 |
 | 런처 새 버전 | `package.json` version 올려서 push → **런처 배포** 자동 실행 |
 
+호환 예외(`pack/compat.json`): Modrinth엔 옛 버전용으로만 표시됐지만 CurseForge 등에서 새 버전 지원이 확인된 모드 (예: MixinTrace Reborn 26.1용 파일을 26.3에서 사용). 실행 테스트를 통과해야 배포됨.
+
 정책(`pack/pack.json` → `policy`)
 - `minStability`: 정식 버전이 없을 때 허용할 단계 (`beta` 기본)
 - `autoUpgradeMinecraft`: 마크 자동 버전 업 (`true`)

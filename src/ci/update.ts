@@ -7,10 +7,10 @@ import * as fs from "fs";
 import { getProject, getProjects, getVersions, MrProject } from "../core/modrinth";
 import { compareMcVersions, fabricSupportsGame, getVersionManifest, latestFabricLoader, releaseVersions } from "../core/minecraft";
 import { PackMod } from "../core/pack";
-import { applyChanges, cached, Change, findCulprits, plan, Provider } from "./resolve";
+import { applyChanges, cached, Change, findCulprits, plan, Provider, withCompat } from "./resolve";
 import { testPack, TestResult } from "./tester";
 import {
-  addChangelog, bumpVersion, Held, readHeld, readMods, readPack, UpgradeStatus,
+  addChangelog, bumpVersion, Held, readCompat, readHeld, readMods, readPack, UpgradeStatus,
   writeHeld, writeMods, writePack, writeUpgradeStatus,
 } from "./source";
 
@@ -27,10 +27,10 @@ function summary(lines: string[]) {
 async function makeProvider(mods: PackMod[]): Promise<Provider> {
   const known = new Map<string, MrProject>();
   for (const p of await getProjects(mods.map((m) => m.projectId))) known.set(p.id, p);
-  return cached({
+  return withCompat(cached({
     project: async (id) => known.get(id) ?? getProject(id),
     versions: getVersions,
-  });
+  }), readCompat());
 }
 
 function changeLines(changes: Change[], removed: PackMod[]): string[] {

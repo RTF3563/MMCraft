@@ -5,9 +5,9 @@
 import * as fs from "fs";
 import { getProject, getVersions, loaderFor } from "../core/modrinth";
 import { PackMod } from "../core/pack";
-import { cached, plan } from "./resolve";
+import { cached, plan, withCompat } from "./resolve";
 import { testPack } from "./tester";
-import { addChangelog, bumpVersion, readHeld, readMods, readPack, writeMods, writePack } from "./source";
+import { addChangelog, bumpVersion, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
 
 function parseList(s: string | undefined): string[] {
   return (s ?? "")
@@ -29,6 +29,7 @@ async function main() {
   let mods = readMods();
   const lines: string[] = [];
   const errors: string[] = [];
+  const provider = withCompat(cached({ project: getProject, versions: getVersions }), readCompat());
 
   for (const slug of parseList(process.env.REMOVE_MODS)) {
     const m = mods.find((x) => x.slug === slug || x.projectId === slug || x.name.toLowerCase() === slug.toLowerCase());
@@ -41,7 +42,7 @@ async function main() {
     if (!p) { errors.push(`Modrinth에 '${slug}' 모드가 없음`); continue; }
     if (mods.some((m) => m.projectId === p.id)) { errors.push(`${p.title}는 이미 팩에 있음`); continue; }
     const kind = p.project_type === "resourcepack" ? "resourcepack" : "mod";
-    if ((await getVersions(p.id, pack.minecraft, loaderFor(kind))).length === 0) { errors.push(`${p.title}: ${pack.minecraft}용 버전 없음`); continue; }
+    if ((await provider.versions(p.id, pack.minecraft, loaderFor(kind))).length === 0) { errors.push(`${p.title}: ${pack.minecraft}용 버전 없음`); continue; }
     mods.push({
       projectId: p.id, slug: p.slug, name: p.title, versionId: "", versionNumber: "", versionType: "release",
       gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: p.client_side, server: p.server_side,
@@ -53,7 +54,6 @@ async function main() {
   if (lines.length === 0) { out("changed", "false"); return; }
 
   // 새로 넣은 모드의 버전 고르기 + 필요 라이브러리 정리 (기존 모드 버전은 그대로)
-  const provider = cached({ project: getProject, versions: getVersions });
   const p = await plan(pack.minecraft, mods, provider, pack.policy, readHeld(), "update");
   const keep = new Map(mods.filter((m) => m.versionId).map((m) => [m.projectId, m]));
   const finalMods = p.mods.map((m) => {

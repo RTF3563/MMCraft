@@ -60,7 +60,14 @@ export const files = {
   upgrade: () => path.join(PACK_DIR, "upgrade-status.json"),
   overrides: () => path.join(PACK_DIR, "overrides"),
   installNames: () => path.join(PACK_DIR, "install-names.json"),
+  compat: () => path.join(PACK_DIR, "compat.json"),
 };
+
+/** pack/compat.json (설명용 "_설명" 키는 무시) */
+export function readCompat(): Record<string, Record<string, string[]>> {
+  const raw = readJson<Record<string, any>>(files.compat(), {});
+  return Object.fromEntries(Object.entries(raw).filter(([k]) => !k.startsWith("_")));
+}
 
 /** 설치 파일 이름 고정 (예: 기본 설정이 "file/Chat Reporting Helper.zip"을 켜도록 되어 있을 때) */
 export function applyInstallNames(mods: PackMod[]): PackMod[] {
