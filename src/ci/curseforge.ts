@@ -72,14 +72,29 @@ export function writeCurseForge(c: CurseForgeConfig) {
 
 const cache = new Map<string, Promise<CfMod | null>>();
 
-async function fetchOfficial(slug: string): Promise<CfMod | null> {
+/** CurseForge는 요청이 몰리면 403을 돌려줄 때가 있어서, 403도 잠시 기다렸다 다시 시도 */
+async function cfGet<T = any>(url: string): Promise<T> {
   const h = { headers: { "x-api-key": KEY, Accept: "application/json" } };
-  const s = await getJson<any>(`${CF_API}/mods/search?gameId=${MINECRAFT}&classId=${MC_MODS}&slug=${encodeURIComponent(slug)}`, h);
+  let last: unknown;
+  for (let i = 0; i < 5; i++) {
+    try {
+      return await getJson<T>(url, h);
+    } catch (e: any) {
+      last = e;
+      if (e?.status !== 403) throw e;
+      await new Promise((r) => setTimeout(r, 3000 * 2 ** i));
+    }
+  }
+  throw last;
+}
+
+async function fetchOfficial(slug: string): Promise<CfMod | null> {
+  const s = await cfGet<any>(`${CF_API}/mods/search?gameId=${MINECRAFT}&classId=${MC_MODS}&slug=${encodeURIComponent(slug)}`);
   const mod = s.data?.[0];
   if (!mod) return null;
   const out: CfFile[] = [];
   for (let index = 0; index < 200; index += 50) {
-    const r = await getJson<any>(`${CF_API}/mods/${mod.id}/files?modLoaderType=${FABRIC}&pageSize=50&index=${index}`, h);
+    const r = await cfGet<any>(`${CF_API}/mods/${mod.id}/files?modLoaderType=${FABRIC}&pageSize=50&index=${index}`);
     for (const f of r.data ?? []) {
       if (f.isAvailable === false) continue;
       out.push({
