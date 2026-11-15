@@ -9,7 +9,7 @@ import { compareMcVersions, fabricSupportsGame, getVersionManifest, latestFabric
 import { PackMod } from "../core/pack";
 import { applyChanges, cached, Change, findCulprits, plan, Provider, withCompat } from "./resolve";
 import { testPack, TestResult } from "./tester";
-import { hasCfKey, readCurseForge, withCurseForge } from "./curseforge";
+import { cfProblems, hasCfKey, readCurseForge, withCurseForge } from "./curseforge";
 import {
   addChangelog, bumpVersion, Held, readCompat, readHeld, readMods, readPack, UpgradeStatus,
   writeHeld, writeMods, writePack, writeUpgradeStatus,
@@ -210,7 +210,7 @@ async function updateMods(): Promise<boolean> {
 async function main() {
   const upgraded = await tryUpgrade();
   const updated = upgraded ? false : await updateMods();
-  summary([`## CurseForge 확인 (${hasCfKey() ? "공식 API" : "CFWidget, API 키 없음"})`, ...(cfNotes.size ? [...cfNotes].map((n) => `- ${n}`) : ["- 특이사항 없음"])]);
+  summary([`## CurseForge 확인 (${hasCfKey() ? "공식 API" : "CFWidget, API 키 없음"})`, ...(cfNotes.size ? [...cfNotes].map((n) => `- ${n}`) : ["- 특이사항 없음"]), ...cfProblems.map((p) => `- ⚠ ${p}`)]);
   output("changed", String(upgraded || updated));
   output("version", readPack().version);
 }

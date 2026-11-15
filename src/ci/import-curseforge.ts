@@ -7,7 +7,7 @@ import * as path from "path";
 import { getProject, getVersions, loaderFor, searchMods, MrProject } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { cached, plan, Provider, withCompat } from "./resolve";
-import { cfFilesFor, cfProjectId, CfMod, getCfMod, hasCfKey, readCurseForge, withCurseForge, writeCurseForge } from "./curseforge";
+import { cfFilesFor, cfProblems, cfProjectId, CfMod, getCfMod, hasCfKey, readCurseForge, withCurseForge, writeCurseForge } from "./curseforge";
 import { addChangelog, bumpVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
 
 interface CfEntry {
@@ -88,7 +88,7 @@ async function main() {
       cfg.only.push(e.curseforgeSlug);
       console.log(`✓ ${e.name} → CurseForge 전용 (${why})`);
     } else {
-      failed.push({ e, reason: `${why}, CurseForge에도 ${mc} Fabric 파일 없음` });
+      failed.push({ e, reason: mod ? `${why}, CurseForge에 ${mc} Fabric 파일 없음 (받은 파일 ${mod.files.length}개)` : `${why}, CurseForge 조회 실패` });
     }
   }
 
@@ -179,6 +179,9 @@ async function main() {
       r.push(`- ${mod.name}: ${inPack ? "✅ 설치 (CurseForge에서 받음)" : hasCfKey() ? "❌ 제작자가 외부 배포를 막음" : "⏳ CurseForge API 키(CF_API_KEY)를 등록하면 설치됨"}`);
     }
     r.push(``);
+  }
+  if (cfProblems.length) {
+    r.push(`## ⚠ CurseForge 조회 문제`, ``, ...cfProblems.map((n) => `- ${n}`), ``);
   }
   if (cfNotes.size) {
     r.push(`## CurseForge 정보로 보완`, ``, ...[...cfNotes].map((n) => `- ${n}`), ``);

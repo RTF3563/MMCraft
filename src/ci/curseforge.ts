@@ -119,12 +119,32 @@ async function fetchWidget(slug: string): Promise<CfMod | null> {
 }
 
 /** CurseForge 모드 정보 (실패하면 null — CurseForge 확인은 보조 정보라 업데이트를 막지 않음) */
+/** 조회 중 생긴 문제 (보고서에 표시) */
+export const cfProblems: string[] = [];
+
 export function getCfMod(slug: string): Promise<CfMod | null> {
   if (!cache.has(slug)) {
-    cache.set(slug, (hasCfKey() ? fetchOfficial(slug) : fetchWidget(slug)).catch((e) => {
-      console.log(`[curseforge] ${slug} 정보 확인 실패: ${e.message ?? e}`);
-      return null;
-    }));
+    cache.set(slug, (async () => {
+      if (hasCfKey()) {
+        try {
+          const m = await fetchOfficial(slug);
+          if (m) {
+            const fab = m.files.filter((f) => f.gameVersions.includes("Fabric")).length;
+            console.log(`[curseforge] ${slug}: 공식 API, 파일 ${m.files.length}개 (Fabric ${fab}), 외부 배포 ${m.allowDistribution}`);
+            return m;
+          }
+          cfProblems.push(`${slug}: 공식 API 검색 결과 없음`);
+        } catch (e: any) {
+          cfProblems.push(`${slug}: 공식 API 오류 ${String(e.message ?? e).slice(0, 200)}`);
+        }
+      }
+      try {
+        return await fetchWidget(slug);
+      } catch (e: any) {
+        cfProblems.push(`${slug}: CFWidget 오류 ${String(e.message ?? e).slice(0, 200)}`);
+        return null;
+      }
+    })());
   }
   return cache.get(slug)!;
 }
