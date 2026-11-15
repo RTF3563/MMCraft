@@ -30,6 +30,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MMCRAFT_AZURE_CLIENT_ID: ${{ vars.MMCRAFT_AZURE_CLIENT_ID }}
+      - name: Releases 공개 (초안 → 공개)
+        shell: bash
+        run: |
+          V="v$(node -p "require('./package.json').version")"
+          gh release edit "$V" --draft=false --latest --title "MMCraft 런처 $V" 2>&1 | tee -a ci-output.log
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 실패 로그 올리기
         if: failure()
         uses: ./.github/actions/report-logs

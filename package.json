@@ -1,7 +1,7 @@
 {
   "name": "mmcraft-launcher",
   "productName": "MMCraft",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MMCraft 모드팩 전용 런처",
   "author": "RTF3563",
   "license": "UNLICENSED",
@@ -57,7 +57,7 @@
         "provider": "github",
         "owner": "RTF3563",
         "repo": "MMCraft",
-        "releaseType": "release"
+        "releaseType": "draft"
       }
     ]
   }
