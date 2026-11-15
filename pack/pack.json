@@ -7,8 +7,5 @@
     "minStability": "beta",
     "autoUpgradeMinecraft": true,
     "maxBisectTests": 8
-  },
-  "jvmArgs": [
-    "-Dessential.loader.relaunch=false"
-  ]
+  }
 }
