@@ -13,7 +13,7 @@ import { testPack } from "./tester";
 import { cfProjectId, getCfMod, hasCfKey, readCurseForge, withCurseForge, writeCurseForge } from "./curseforge";
 
 const norm = (x: string) => x.toLowerCase().replace(/\[[^\]]*\]|\([^)]*\)/g, "").replace(/[^\p{L}\p{N}]+/gu, "");
-import { addChangelog, bumpVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
+import { addChangelog, bumpVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeHeld, writeMods, writePack } from "./source";
 
 function parseList(s: string | undefined): string[] {
   return (s ?? "")
@@ -30,12 +30,13 @@ type AddItem = string | { modrinth?: string; curseforge?: string };
 /** inspect: 모드 파일 안의 fabric.mod.json(필요·충돌 정보)을 결과 파일에 적음 (원인 분석용) */
 const REQUESTS = path.join(PACK_DIR, "requests.json");
 /** upgrade: 베타까지 허용해서 가장 새 버전으로 (다른 모드가 새 버전을 요구할 때) */
-function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[]; test: boolean; upgrade: string[] } {
+/** use: {"모드주소": "previous" 또는 "버전 번호"} → 그 버전으로 바꾸고, 지금 버전은 보류 목록에 (자동 업데이트가 다시 올리지 않게) */
+function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[]; test: boolean; upgrade: string[]; use: Record<string, string>; reason: string } {
   try {
     const r = JSON.parse(fs.readFileSync(REQUESTS, "utf8"));
-    return { add: r.add ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [], test: !!r.test, upgrade: r.upgrade ?? [] };
+    return { add: r.add ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [], test: !!r.test, upgrade: r.upgrade ?? [], use: r.use ?? {}, reason: r.reason ?? "" };
   } catch {
-    return { add: [], remove: [], inspect: [], test: false, upgrade: [] };
+    return { add: [], remove: [], inspect: [], test: false, upgrade: [], use: {}, reason: "" };
   }
 }
 
@@ -118,7 +119,24 @@ async function main() {
     const lines = fs.existsSync(log) ? fs.readFileSync(log, "utf8").split(/\r?\n/).map((l) => l.replace(/<\/?log4j:[^>]*>|<!\[CDATA\[|\]\]>/g, "").trimEnd()).filter((l) => /Loading|resolution|Reason|sodium|betterblock|Sodium|ERROR|WARN.*mod/i.test(l)).slice(0, 40) : ["(로그 없음)"];
     say([`### 현재 팩 테스트: ${r.ok ? "통과" : "실패"} (${r.stage}: ${r.reason})`, "```", ...lines.map((l) => l.slice(0, 300)), "```"]);
   }
-  const fromFile = req.add.length + req.remove.length + req.upgrade.length > 0;
+  const fromFile = req.add.length + req.remove.length + req.upgrade.length + Object.keys(req.use).length > 0;
+  const held = readHeld();
+  for (const [slug, want] of Object.entries(req.use)) {
+    const i = mods.findIndex((m) => m.slug === slug);
+    if (i < 0) { errors.push(`'${slug}'가 팩에 없음`); continue; }
+    const m = mods[i];
+    const vs = (await provider.versions(m.projectId, pack.minecraft, loaderFor(m.kind))).filter((v) => v.files.length > 0);
+    const cur = vs.findIndex((v) => v.id === m.versionId);
+    const pick = want === "previous" ? vs.slice(cur + 1).find((v) => v.version_type !== "alpha") : vs.find((v) => v.version_number === want);
+    const proj = await provider.project(m.projectId);
+    if (!pick || !proj) { errors.push(`${m.name}: '${want}' 버전을 찾지 못함`); continue; }
+    const entry = (held[m.projectId] ??= { name: m.name, badVersions: [] });
+    if (!entry.badVersions.some((b) => b.versionId === m.versionId)) {
+      entry.badVersions.push({ versionId: m.versionId, versionNumber: m.versionNumber, minecraft: pack.minecraft, reason: req.reason || "직접 보류", date: new Date().toISOString().slice(0, 10) });
+    }
+    mods[i] = toPackMod(proj, pick, m.dependencyOf);
+    lines.push(`${m.name} ${m.versionNumber} → ${pick.version_number} (${req.reason || "직접 지정"})`);
+  }
   for (const slug of req.upgrade) {
     const i = mods.findIndex((m) => m.slug === slug);
     if (i < 0) { errors.push(`업그레이드할 '${slug}'가 팩에 없음`); continue; }
@@ -179,7 +197,7 @@ async function main() {
   if (lines.length === 0) { out("changed", "false"); return; }
 
   // 새로 넣은 모드의 버전 고르기 + 필요 라이브러리 정리 (기존 모드 버전은 그대로)
-  const p = await plan(pack.minecraft, mods, provider, pack.policy, readHeld(), "update");
+  const p = await plan(pack.minecraft, mods, provider, pack.policy, held, "update");
   const keep = new Map(mods.filter((m) => m.versionId).map((m) => [m.projectId, m]));
   const finalMods = p.mods.map((m) => {
     const old = keep.get(m.projectId);
@@ -203,8 +221,9 @@ async function main() {
   pack.version = bumpVersion(pack.version, "patch");
   writePack(pack);
   writeMods(finalMods);
+  writeHeld(held);
   addChangelog({ version: pack.version, minecraft: pack.minecraft, date: new Date().toISOString().slice(0, 10), lines });
-  if (fromFile) fs.writeFileSync(REQUESTS, JSON.stringify({ add: [], remove: [], inspect: [] }, null, 2) + "\n");
+  if (fromFile) fs.writeFileSync(REQUESTS, JSON.stringify({ add: [], remove: [] }, null, 2) + "\n");
   say([`## ✅ 팩 ${pack.version}`, ...lines.map((l) => `- ${l}`), ...[...notes].map((n) => `- (CurseForge) ${n}`)]);
   out("changed", "true");
 }
