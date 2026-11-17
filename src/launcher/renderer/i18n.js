@@ -125,6 +125,7 @@ const CHANGELOG_EN = [
   [/^보류\(문제 발견\): (.+)$/, "On hold (problem found): $1"],
   [/^모드 목록 다시 가져오기$/, "Mod list re-imported"],
   [/^Minecraft (.+) → (.+)$/, "Minecraft $1 → $2"],
+  [/^팩 버전 표기 변경: (.+?) → (.+?) \(.*\)$/, "Pack version format changed: $1 → $2 (Minecraft.additions/removals.updates)"],
   [/^첫 실행 시 Fabulously Optimized 환영 화면 표시 안 함$/, "Fabulously Optimized welcome screen no longer shows on first launch"],
 ];
 function translateChangelog(line) {

@@ -11,7 +11,7 @@ import { applyChanges, cached, Change, findCulprits, plan, Provider, withCompat 
 import { testPack, TestResult } from "./tester";
 import { cfProblems, hasCfKey, readCurseForge, withCurseForge } from "./curseforge";
 import {
-  addChangelog, bumpVersion, Held, readCompat, readHeld, readMods, readPack, UpgradeStatus,
+  addChangelog, nextPackVersion, Held, readCompat, readHeld, readMods, readPack, UpgradeStatus,
   writeHeld, writeMods, writePack, writeUpgradeStatus,
 } from "./source";
 
@@ -111,7 +111,7 @@ async function tryUpgrade(): Promise<boolean> {
     const from = pack.minecraft;
     pack.minecraft = target;
     pack.fabricLoader = loader;
-    pack.version = bumpVersion(pack.version, "minor");
+    pack.version = nextPackVersion(pack.version, target, [], []);
     writePack(pack);
     writeMods(p.mods);
     const lines = [`Minecraft ${from} → ${target}`, `Fabric Loader → ${loader}`, ...changeLines(p.changes, p.removed)];
@@ -197,7 +197,7 @@ async function updateMods(): Promise<boolean> {
     return false;
   }
   pack.fabricLoader = loader;
-  pack.version = bumpVersion(pack.version, "patch");
+  pack.version = nextPackVersion(pack.version, mc, mods, finalMods);
   writePack(pack);
   writeMods(finalMods);
   writeHeld(held);

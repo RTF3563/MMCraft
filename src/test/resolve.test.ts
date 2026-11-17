@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { MrProject, MrVersion } from "../core/modrinth";
 import { PackMod } from "../core/pack";
 import { applyChanges, chooseVersion, findCulprits, plan, Provider, withCompat } from "../ci/resolve";
-import { bumpVersion, PackPolicy } from "../ci/source";
+import { nextPackVersion, PackPolicy } from "../ci/source";
 import { CfMod, withCurseForge } from "../ci/curseforge";
 
 const policy: PackPolicy = { minStability: "beta", autoUpgradeMinecraft: true, maxBisectTests: 8 };
@@ -160,6 +160,11 @@ test("CurseForge: 26.3 지원 표시된 같은 파일을 Modrinth에서 사용 +
 });
 
 test("팩 버전 올리기", () => {
-  assert.equal(bumpVersion("0.1.0", "patch"), "0.1.1");
-  assert.equal(bumpVersion("0.1.9", "minor"), "0.2.0");
+  const A = { projectId: "a" }, B = { projectId: "b" };
+  assert.equal(nextPackVersion("0.1.6", "26.3", [A], [A]), "26.3.0.0"); // 예전 형식 → 새 형식
+  assert.equal(nextPackVersion("26.3.0.0", "26.3", [A], [A]), "26.3.0.1"); // 업데이트만
+  assert.equal(nextPackVersion("26.3.2.5", "26.3", [A], [A, B]), "26.3.3.0"); // 추가
+  assert.equal(nextPackVersion("26.3.2.5", "26.3", [A, B], [A]), "26.3.3.0"); // 삭제
+  assert.equal(nextPackVersion("26.3.2.5", "26.4", [A], [A]), "26.4.0.0"); // 마크 버전 업
+  assert.equal(nextPackVersion("26.4.0.0", "26.4.1", [A], [A]), "26.4.1.0.0");
 });

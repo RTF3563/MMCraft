@@ -8,7 +8,7 @@ import { getProject, getVersions, loaderFor, searchMods, MrProject } from "../co
 import { PackMod } from "../core/pack";
 import { cached, plan, Provider, withCompat } from "./resolve";
 import { cfFilesFor, cfProblems, cfProjectId, CfMod, getCfMod, hasCfKey, readCurseForge, withCurseForge, writeCurseForge } from "./curseforge";
-import { addChangelog, bumpVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
+import { addChangelog, nextPackVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeMods, writePack } from "./source";
 
 interface CfEntry {
   name: string;
@@ -155,7 +155,7 @@ async function main() {
   const before = readMods();
   const key = (ms: PackMod[]) => ms.map((m) => m.versionId).sort().join(",");
   if (before.length > 0 && key(before) !== key(result.mods)) {
-    pack.version = bumpVersion(pack.version, "patch");
+    pack.version = nextPackVersion(pack.version, mc, before, result.mods);
     writePack(pack);
     const added = result.mods.filter((m) => !before.some((b) => b.projectId === m.projectId)).map((m) => `새 모드: ${m.name}`);
     const removed = before.filter((b) => !result.mods.some((m) => m.projectId === b.projectId)).map((m) => `제거: ${m.name}`);

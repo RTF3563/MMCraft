@@ -100,8 +100,23 @@ export function addChangelog(e: ChangelogEntry) {
   writeJson(files.changelog(), all.slice(0, 50));
 }
 
-/** 0.1.3 → 0.1.4 (patch) / 0.2.0 (minor) */
-export function bumpVersion(v: string, kind: "patch" | "minor"): string {
-  const [a, b, c] = v.split(".").map((x) => parseInt(x, 10) || 0);
-  return kind === "minor" ? `${a}.${b + 1}.0` : `${a}.${b}.${c + 1}`;
+/**
+ * 팩 버전 = <마크 버전>.<모드 추가·삭제>.<모드 업데이트>  (예: 26.3.0.0)
+ * - 마크 버전이 바뀌면 → 26.4.0.0
+ * - 모드(라이브러리 포함)가 추가·삭제되면 → 26.3.1.0
+ * - 모드 버전만 바뀌면(설정 파일 변경 포함) → 26.3.0.1
+ */
+export function parsePackVersion(v: string): { mc: string; added: number; updated: number } {
+  const parts = v.split(".");
+  if (parts.length < 4) return { mc: "", added: 0, updated: 0 }; // 예전 형식(0.1.x)
+  return { mc: parts.slice(0, -2).join("."), added: parseInt(parts[parts.length - 2], 10) || 0, updated: parseInt(parts[parts.length - 1], 10) || 0 };
+}
+
+export function nextPackVersion(current: string, mc: string, before: { projectId: string }[], after: { projectId: string }[]): string {
+  const p = parsePackVersion(current);
+  if (p.mc !== mc) return `${mc}.0.0`;
+  const b = new Set(before.map((m) => m.projectId));
+  const a = new Set(after.map((m) => m.projectId));
+  const addedOrRemoved = a.size !== b.size || [...a].some((id) => !b.has(id));
+  return addedOrRemoved ? `${mc}.${p.added + 1}.0` : `${mc}.${p.added}.${p.updated + 1}`;
 }

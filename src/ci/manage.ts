@@ -13,7 +13,7 @@ import { testPack } from "./tester";
 import { cfProjectId, getCfMod, hasCfKey, readCurseForge, withCurseForge, writeCurseForge } from "./curseforge";
 
 const norm = (x: string) => x.toLowerCase().replace(/\[[^\]]*\]|\([^)]*\)/g, "").replace(/[^\p{L}\p{N}]+/gu, "");
-import { addChangelog, bumpVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeHeld, writeMods, writePack } from "./source";
+import { addChangelog, nextPackVersion, PACK_DIR, readCompat, readHeld, readMods, readPack, writeHeld, writeMods, writePack } from "./source";
 
 function parseList(s: string | undefined): string[] {
   return (s ?? "")
@@ -218,7 +218,7 @@ async function main() {
     process.exit(1);
   }
   for (const m of finalMods) if (m.dependencyOf?.length && !mods.some((x) => x.projectId === m.projectId)) lines.push(`새 라이브러리: ${m.name}`);
-  pack.version = bumpVersion(pack.version, "patch");
+  pack.version = nextPackVersion(pack.version, pack.minecraft, readMods(), finalMods);
   writePack(pack);
   writeMods(finalMods);
   writeHeld(held);
