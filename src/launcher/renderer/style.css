@@ -242,4 +242,4 @@ button:disabled { cursor: default; }
 /* 겹침 순서 */
 .overlay, .options { z-index: 100; }
 .toast { z-index: 110; }
-.splash { left: calc(100% - 20px); right: auto; top: -10px; transform-origin: 0 50%; }
+.splash { left: calc(100% + 18px); right: auto; top: 46px; transform-origin: 0 100%; }

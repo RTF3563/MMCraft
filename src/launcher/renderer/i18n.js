@@ -126,6 +126,7 @@ const CHANGELOG_EN = [
 ];
 function translateChangelog(line) {
   if (LANG !== "en") return line;
-  for (const [re, rep] of CHANGELOG_EN) if (re.test(line)) return line.replace(re, rep);
-  return line;
+  for (const [re, rep] of CHANGELOG_EN) if (re.test(line)) { line = line.replace(re, rep); break; }
+  // 영어 화면에서는 한국어 설명(괄호)을 뺌
+  return line.replace(/\s*\([^)]*[\uAC00-\uD7A3][^)]*\)/g, "");
 }
