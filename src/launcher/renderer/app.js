@@ -138,6 +138,8 @@ function renderToggles() {
   const langName = { auto: t("settings.lang.auto"), ko: "한국어", en: "English" }[ui.settings?.language ?? "auto"];
   $("lang-btn").textContent = t("settings.langBtn", { v: langName });
   $("hide-btn").textContent = t("settings.hideBtn", { v: ui.settings?.hideOnLaunch ? t("on") : t("off") });
+  const s = ui.settings;
+  $("size-btn").textContent = t("settings.sizeBtn", { v: !s ? "" : s.fullscreen ? t("settings.fullscreen") : `${s.width}×${s.height}` });
 }
 
 async function changeLanguage(value) {
@@ -259,6 +261,16 @@ $("hide-btn").addEventListener("click", async () => {
   renderToggles();
   await window.mmc.saveSettings(ui.settings);
 });
+// 창 크기: 화면에 맞는 16:9 크기들 → 전체 화면 → 처음으로
+$("size-btn").addEventListener("click", async () => {
+  const s = ui.settings;
+  const opts = [...ui.windowSizes.map(([w, h]) => ({ w, h, fs: false })), { w: s.width, h: s.height, fs: true }];
+  let cur = s.fullscreen ? opts.length - 1 : opts.findIndex((o) => !o.fs && o.w === s.width && o.h === s.height);
+  const next = opts[(cur + 1) % opts.length];
+  ui.settings = { ...s, width: next.w, height: next.h, fullscreen: next.fs };
+  renderToggles();
+  await window.mmc.saveSettings(ui.settings);
+});
 $("lang-btn").addEventListener("click", () => {
   const order = ["auto", "ko", "en"];
   const cur = order.indexOf(ui.settings?.language ?? "auto");
@@ -289,6 +301,7 @@ document.addEventListener("keydown", (e) => {
   ui.account = d.account;
   ui.settings = d.settings;
   ui.launcherVersion = d.launcherVersion;
+  ui.windowSizes = d.windowSizes?.length ? d.windowSizes : [[1280, 720]];
   const mem = $("mem");
   mem.max = String(Math.max(4096, Math.floor((d.totalMemoryMb * 0.75) / 512) * 512));
   mem.value = String(d.settings.memoryMb);

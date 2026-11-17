@@ -17,7 +17,7 @@ advancedItemTooltips:true
 darkMojangStudiosBackground:true
 guiScale:3
 joinedFirstServer:true
-onboardAccessibility:true
+onboardAccessibility:false
 operatorItemsTab:true
 resourcePacks:["vanilla","file/SodiumTranslations.zip","file/Chat Reporting Helper.zip","file/Mod Menu Helper.zip","continuity:glass_pane_culling_fix","continuity:default"]
 incompatibleResourcePacks:[]

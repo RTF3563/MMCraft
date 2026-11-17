@@ -16,6 +16,7 @@ export interface LaunchOptions {
   extraJvmArgs?: string[];
   width?: number;
   height?: number;
+  fullscreen?: boolean;
   launcherVersion?: string;
 }
 
@@ -110,6 +111,7 @@ export function buildLaunchCommand(
   const game = v.legacyGameArgs
     ? v.legacyGameArgs.split(" ").map((a) => substitute(a, vars))
     : expandArgs(v.gameArgs, platform, features).map((a) => substitute(a, vars));
+  if (opts.fullscreen) game.push("--fullscreen");
 
   // Fabric jvm 인자 중 빈칸이 포함된 것 정리 ("-DFabricMcEmu= net.minecraft...")
   const cleanJvm = jvm.map((a) => a.trim()).filter((a) => a.length > 0);

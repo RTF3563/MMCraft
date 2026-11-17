@@ -21,14 +21,17 @@ export interface Settings {
   memoryMb: number;
   hideOnLaunch: boolean;
   extraJvmArgs: string;
+  /** 게임 창 크기 (16:9) */
   width: number;
   height: number;
+  /** 전체 화면으로 시작 */
+  fullscreen: boolean;
 }
 
 export function defaultSettings(): Settings {
   const totalMb = Math.floor(os.totalmem() / 1024 / 1024);
   const mem = Math.max(4096, Math.min(8192, Math.floor(totalMb / 2 / 512) * 512));
-  return { language: "auto", memoryMb: mem, hideOnLaunch: true, extraJvmArgs: "", width: 1280, height: 720 };
+  return { language: "auto", memoryMb: mem, hideOnLaunch: true, extraJvmArgs: "", width: 1280, height: 720, fullscreen: false };
 }
 
 export function loadSettings(layout: Layout): Settings {
@@ -138,10 +141,12 @@ export async function play(
       extraJvmArgs: [...(index.jvmArgs ?? []), ...settings.extraJvmArgs.split(/\s+/).filter(Boolean)],
       width: settings.width,
       height: settings.height,
+      fullscreen: settings.fullscreen,
       launcherVersion,
     },
     platform,
   );
+  skipWelcomeScreen(layout);
   fs.mkdirSync(layout.logs, { recursive: true });
   const logFile = path.join(layout.logs, "launcher-game.log");
   const out = fs.openSync(logFile, "w");
@@ -157,6 +162,19 @@ export async function play(
     onInfo(tr("err.launch", { msg: e.message }));
     onExit(-1, null);
   });
+}
+
+/** Fabulously Optimized 환영(접근성 안내) 화면이 뜨지 않게 options.txt를 고침 */
+function skipWelcomeScreen(layout: Layout) {
+  const f = path.join(layout.game, "options.txt");
+  try {
+    const text = fs.readFileSync(f, "utf8");
+    if (/^onboardAccessibility:true\r?$/m.test(text)) {
+      fs.writeFileSync(f, text.replace(/^onboardAccessibility:true(\r?)$/m, "onboardAccessibility:false$1"));
+    }
+  } catch {
+    // 첫 실행이면 아직 파일이 없음 → 팩 기본 설정(false)이 적용됨
+  }
 }
 
 function newestCrashReport(layout: Layout, since: number): string | null {

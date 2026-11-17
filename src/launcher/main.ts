@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { app, BrowserWindow, ipcMain, shell } from "electron";
+import { app, BrowserWindow, ipcMain, screen, shell } from "electron";
 import { autoUpdater } from "electron-updater";
 import { Layout } from "../core/paths";
 import { Account, ensureFresh, loadAccount, login, saveAccount } from "./auth";
@@ -70,6 +70,25 @@ ipcMain.handle("window", (_e, action: "min" | "max" | "close") => {
   else win.close();
 });
 
+/** 16:9 창 크기 후보 */
+const WINDOW_SIZES: [number, number][] = [[1280, 720], [1600, 900], [1920, 1080], [2560, 1440], [3200, 1800], [3840, 2160]];
+
+/** 모니터 작업 영역(작업 표시줄 제외, 실제 픽셀)에 들어가는 크기만. 1280×720은 항상 포함 */
+function fittingWindowSizes(): [number, number][] {
+  const d = screen.getPrimaryDisplay();
+  const w = Math.round(d.workArea.width * d.scaleFactor);
+  const h = Math.round(d.workArea.height * d.scaleFactor) - 40; // 제목 표시줄
+  const fit = WINDOW_SIZES.filter(([sw, sh]) => sw <= w && sh <= h);
+  return fit.length ? fit : [WINDOW_SIZES[0]];
+}
+
+/** 처음 켰을 때는 화면에 맞는 가장 큰 창 크기로 */
+function firstRunSettings() {
+  if (fs.existsSync(layout.settings)) return;
+  const [w, h] = fittingWindowSizes().slice(-1)[0];
+  saveSettings(layout, { ...loadSettings(layout), width: w, height: h });
+}
+
 ipcMain.handle("init", wrap(async () => ({
   launcherVersion: app.getVersion(),
   account: account ? { name: account.name, uuid: account.uuid } : null,
@@ -77,6 +96,7 @@ ipcMain.handle("init", wrap(async () => ({
   settings: loadSettings(layout),
   lang: getLang(),
   totalMemoryMb: Math.floor(require("os").totalmem() / 1024 / 1024),
+  windowSizes: fittingWindowSizes(),
   gameDir: layout.game,
 })));
 
@@ -184,6 +204,7 @@ ipcMain.handle("open", wrap(async (what: "game" | "saves" | "backups" | "logs" |
 ipcMain.handle("restart-update", () => autoUpdater.quitAndInstall());
 
 app.whenReady().then(() => {
+  firstRunSettings();
   setLang(resolveLang(loadSettings(layout)));
   account = loadAccount(layout.account);
   createWindow();

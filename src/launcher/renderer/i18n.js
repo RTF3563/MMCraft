@@ -47,6 +47,7 @@ const STRINGS = {
     "changelog.release": "팩 {v} · ",
     "splash": "조금 더!", "settings.done": "완료", "on": "켜짐", "off": "꺼짐",
     "settings.langBtn": "언어: {v}", "settings.hideBtn": "게임 중 런처 숨기기: {v}",
+    "settings.sizeBtn": "창 크기: {v}", "settings.fullscreen": "전체 화면",
   },
   en: {
     "win.min": "Minimize", "win.max": "Maximize", "win.close": "Close",
@@ -94,6 +95,7 @@ const STRINGS = {
     "changelog.release": "Pack {v} · ",
     "splash": "A little more!", "settings.done": "Done", "on": "ON", "off": "OFF",
     "settings.langBtn": "Language: {v}", "settings.hideBtn": "Hide launcher while playing: {v}",
+    "settings.sizeBtn": "Window size: {v}", "settings.fullscreen": "Fullscreen",
   },
 };
 
@@ -123,6 +125,7 @@ const CHANGELOG_EN = [
   [/^보류\(문제 발견\): (.+)$/, "On hold (problem found): $1"],
   [/^모드 목록 다시 가져오기$/, "Mod list re-imported"],
   [/^Minecraft (.+) → (.+)$/, "Minecraft $1 → $2"],
+  [/^첫 실행 시 Fabulously Optimized 환영 화면 표시 안 함$/, "Fabulously Optimized welcome screen no longer shows on first launch"],
 ];
 function translateChangelog(line) {
   if (LANG !== "en") return line;
