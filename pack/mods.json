@@ -1001,24 +1001,6 @@
     "server": "unsupported"
   },
   {
-    "projectId": "k2ZPuTBm",
-    "slug": "essential",
-    "name": "Essential Mod",
-    "versionId": "zwAMiQ2J",
-    "versionNumber": "1.5.2",
-    "versionType": "release",
-    "gameVersions": [
-      "26.3"
-    ],
-    "fileName": "Essential_1-5-2_fabric_26-3.jar",
-    "url": "https://cdn.modrinth.com/data/k2ZPuTBm/versions/zwAMiQ2J/Essential_1-5-2_fabric_26-3.jar",
-    "sha1": "237dfb76c44d98a2adc163e2fce3c48b491da31f",
-    "sha512": "f08d074c85958654182d4de0bbb8ad250f7fe4bb1808015799745e9257104f4a0e64d9a844dd0bbc0269d0a86adf462e94c3e7634438b5aa0f34642ce0ada02a",
-    "size": 51945163,
-    "client": "required",
-    "server": "unsupported"
-  },
-  {
     "projectId": "P7dR8mSH",
     "slug": "fabric-api",
     "name": "Fabric API",

@@ -1,4 +1,4 @@
 {
-  "remove": ["essential"],
-  "reason": "마크 자체 친구 추가·서버 초대 기능으로 충분"
+  "add": [],
+  "remove": []
 }
