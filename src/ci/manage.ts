@@ -161,6 +161,7 @@ async function main() {
     if (!m) { errors.push(`삭제할 모드 '${slug}'가 팩에 없음`); continue; }
     mods = mods.filter((x) => x !== m);
     if (m.slug.startsWith("cf-")) cfg.only = cfg.only.filter((x) => x !== m.slug.slice(3));
+    delete cfg.map[m.slug]; // CurseForge 연결 정보도 정리
     lines.push(`제거: ${m.name}`);
   }
   for (const { mr: slug, cf: cfSlug } of addList) {
