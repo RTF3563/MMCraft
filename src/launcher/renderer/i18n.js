@@ -129,6 +129,9 @@ const CHANGELOG_EN = [
   [/^첫 실행 시 Fabulously Optimized 환영 화면 표시 안 함$/, "Fabulously Optimized welcome screen no longer shows on first launch"],
 ];
 function translateChangelog(line) {
+  // "한국어 || English" 형식이면 언어에 맞는 쪽만
+  const pair = line.split(" || ");
+  if (pair.length === 2) return LANG === "en" ? pair[1] : pair[0];
   if (LANG !== "en") return line;
   for (const [re, rep] of CHANGELOG_EN) if (re.test(line)) { line = line.replace(re, rep); break; }
   // 영어 화면에서는 한국어 설명(괄호)을 뺌

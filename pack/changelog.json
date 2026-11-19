@@ -1,5 +1,13 @@
 [
   {
+    "version": "26.3.1.2",
+    "minecraft": "26.3",
+    "date": "2026-11-19",
+    "lines": [
+      "Carry On: 주민만 들 수 있음 (가축·골렘·알레이 등은 끈으로 옮기기) || Carry On: only villagers can be picked up (move other mobs with a lead)"
+    ]
+  },
+  {
     "version": "26.3.1.1",
     "minecraft": "26.3",
     "date": "2026-11-19",
