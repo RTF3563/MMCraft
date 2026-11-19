@@ -1,5 +1,13 @@
 [
   {
+    "version": "26.3.1.1",
+    "minecraft": "26.3",
+    "date": "2026-11-19",
+    "lines": [
+      "Sound Physics Remastered fabric-1.5.2+26.3 → fabric-1.5.4+26.3"
+    ]
+  },
+  {
     "version": "26.3.1.0",
     "minecraft": "26.3",
     "date": "2026-11-18",
