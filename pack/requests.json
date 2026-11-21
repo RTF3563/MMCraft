@@ -1,15 +1,36 @@
 {
   "add": [
-    { "modrinth": "packet-fixer", "curseforge": "packet-fixer" },
-    { "modrinth": "neruina", "curseforge": "neruina" },
-    { "modrinth": "structure-layout-optimizer", "curseforge": "structure-layout-optimizer" },
-    { "modrinth": "krypton", "curseforge": "krypton" },
-    { "modrinth": "alternate-current", "curseforge": "alternate-current" }
+    {
+      "modrinth": "packet-fixer",
+      "curseforge": "packet-fixer"
+    },
+    {
+      "modrinth": "neruina",
+      "curseforge": "neruina"
+    },
+    {
+      "modrinth": "structure-layout-optimizer",
+      "curseforge": "structure-layout-optimizer"
+    },
+    {
+      "modrinth": "alternate-current",
+      "curseforge": "alternate-current"
+    }
   ],
   "serverAdd": [
-    { "modrinth": "chunky", "curseforge": "chunky-pregenerator" },
-    { "modrinth": "servercore", "curseforge": "servercore" },
-    { "modrinth": "fastback", "curseforge": "fastback" }
+    {
+      "modrinth": "chunky",
+      "curseforge": "chunky-pregenerator"
+    },
+    {
+      "modrinth": "servercore",
+      "curseforge": "servercore"
+    },
+    {
+      "modrinth": "fastback",
+      "curseforge": "fastback"
+    }
   ],
-  "remove": []
+  "remove": [],
+  "reason": "Krypton 0.3.2: 26.3 서버에서 Mixin 주입 실패(ServerLoginPacketListenerImpl)로 제외"
 }
