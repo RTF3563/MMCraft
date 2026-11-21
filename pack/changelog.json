@@ -1,5 +1,18 @@
 [
   {
+    "version": "26.3.1.5",
+    "minecraft": "26.3",
+    "date": "2026-11-21",
+    "lines": [
+      "Chat Reporting Helper 6.2 → 7.0",
+      "Polytone 26.3-6.8.6-alpha → 26.3-6.9.0",
+      "Translations for Sodium v8.24.0 → v9.0.0",
+      "보류(문제 발견): Reese's Sodium Options mc26.3-2.2.6+fabric",
+      "보류(문제 발견): Sodium mc26.3-0.9.3-fabric",
+      "보류(문제 발견): Sodium Extra mc26.3-0.9.6+fabric"
+    ]
+  },
+  {
     "version": "26.3.1.4",
     "minecraft": "26.3",
     "date": "2026-11-21",

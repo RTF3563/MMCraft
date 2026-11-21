@@ -10,5 +10,41 @@
         "date": "2026-11-15"
       }
     ]
+  },
+  "Bh37bMuy": {
+    "name": "Reese's Sodium Options",
+    "badVersions": [
+      {
+        "versionId": "VqOzCvaS",
+        "versionNumber": "mc26.3-2.2.6+fabric",
+        "minecraft": "26.3",
+        "reason": "클라이언트 실행 실패: 게임이 중간에 종료됨 (코드 1)",
+        "date": "2026-11-21"
+      }
+    ]
+  },
+  "AANobbMI": {
+    "name": "Sodium",
+    "badVersions": [
+      {
+        "versionId": "tFcTKXDx",
+        "versionNumber": "mc26.3-0.9.3-fabric",
+        "minecraft": "26.3",
+        "reason": "클라이언트 실행 실패: 게임이 중간에 종료됨 (코드 1)",
+        "date": "2026-11-21"
+      }
+    ]
+  },
+  "PtjYWJkn": {
+    "name": "Sodium Extra",
+    "badVersions": [
+      {
+        "versionId": "OoLJ6law",
+        "versionNumber": "mc26.3-0.9.6+fabric",
+        "minecraft": "26.3",
+        "reason": "클라이언트 실행 실패: 게임이 중간에 종료됨 (코드 1)",
+        "date": "2026-11-21"
+      }
+    ]
   }
 }
