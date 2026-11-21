@@ -1,0 +1,345 @@
+Downloading Minecraft server
+Installing Fabric Loader 0.20.1(26.3) on the server
+Downloading required files
+Downloading library org.ow2.asm:asm:9.10.1
+Downloading library org.ow2.asm:asm-analysis:9.10.1
+Downloading library org.ow2.asm:asm-commons:9.10.1
+Downloading library org.ow2.asm:asm-tree:9.10.1
+Downloading library org.ow2.asm:asm-util:9.10.1
+Downloading library net.fabricmc:sponge-mixin:0.17.5+mixin.0.8.7
+Downloading library net.fabricmc:fabric-loader:0.20.1
+Generating server launch JAR
+Unpacking 26.3/server-26.3.jar (versions:26.3) to versions/26.3/server-26.3.jar
+Unpacking at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar (libraries:at.yawk.lz4:lz4-java:1.10.1) to libraries/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar
+Unpacking com/azure/azure-json/1.4.0/azure-json-1.4.0.jar (libraries:com.azure:azure-json:1.4.0) to libraries/com/azure/azure-json/1.4.0/azure-json-1.4.0.jar
+Unpacking com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar (libraries:com.github.oshi:oshi-core:6.9.0) to libraries/com/github/oshi/oshi-core/6.9.0/oshi-core-6.9.0.jar
+Unpacking com/google/code/gson/gson/2.14.0/gson-2.14.0.jar (libraries:com.google.code.gson:gson:2.14.0) to libraries/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar
+Unpacking com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar (libraries:com.google.guava:failureaccess:1.0.3) to libraries/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar
+Unpacking com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar (libraries:com.google.guava:guava:33.6.0-jre) to libraries/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar
+Unpacking com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar (libraries:com.microsoft.azure:msal4j:1.24.1) to libraries/com/microsoft/azure/msal4j/1.24.1/msal4j-1.24.1.jar
+Unpacking com/mojang/authlib/10.0.77/authlib-10.0.77.jar (libraries:com.mojang:authlib:10.0.77) to libraries/com/mojang/authlib/10.0.77/authlib-10.0.77.jar
+Unpacking com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar (libraries:com.mojang:brigadier:1.3.11) to libraries/com/mojang/brigadier/1.3.11/brigadier-1.3.11.jar
+Unpacking com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar (libraries:com.mojang:datafixerupper:10.0.21) to libraries/com/mojang/datafixerupper/10.0.21/datafixerupper-10.0.21.jar
+Unpacking com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar (libraries:com.mojang:jtracy:1.14.38) to libraries/com/mojang/jtracy/1.14.38/jtracy-1.14.38.jar
+Unpacking com/mojang/logging/1.7.12/logging-1.7.12.jar (libraries:com.mojang:logging:1.7.12) to libraries/com/mojang/logging/1.7.12/logging-1.7.12.jar
+Unpacking commons-io/commons-io/2.20.0/commons-io-2.20.0.jar (libraries:commons-io:commons-io:2.20.0) to libraries/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar
+Unpacking io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar (libraries:io.netty:netty-buffer:4.2.16.Final) to libraries/io/netty/netty-buffer/4.2.16.Final/netty-buffer-4.2.16.Final.jar
+Unpacking io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar (libraries:io.netty:netty-codec-base:4.2.16.Final) to libraries/io/netty/netty-codec-base/4.2.16.Final/netty-codec-base-4.2.16.Final.jar
+Unpacking io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar (libraries:io.netty:netty-codec-compression:4.2.16.Final) to libraries/io/netty/netty-codec-compression/4.2.16.Final/netty-codec-compression-4.2.16.Final.jar
+Unpacking io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar (libraries:io.netty:netty-codec-http:4.2.16.Final) to libraries/io/netty/netty-codec-http/4.2.16.Final/netty-codec-http-4.2.16.Final.jar
+Unpacking io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar (libraries:io.netty:netty-common:4.2.16.Final) to libraries/io/netty/netty-common/4.2.16.Final/netty-common-4.2.16.Final.jar
+Unpacking io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar (libraries:io.netty:netty-handler:4.2.16.Final) to libraries/io/netty/netty-handler/4.2.16.Final/netty-handler-4.2.16.Final.jar
+Unpacking io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar (libraries:io.netty:netty-resolver:4.2.16.Final) to libraries/io/netty/netty-resolver/4.2.16.Final/netty-resolver-4.2.16.Final.jar
+Unpacking io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar (libraries:io.netty:netty-transport:4.2.16.Final) to libraries/io/netty/netty-transport/4.2.16.Final/netty-transport-4.2.16.Final.jar
+Unpacking io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar (libraries:io.netty:netty-transport-classes-epoll:4.2.16.Final) to libraries/io/netty/netty-transport-classes-epoll/4.2.16.Final/netty-transport-classes-epoll-4.2.16.Final.jar
+Unpacking io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar (libraries:io.netty:netty-transport-classes-kqueue:4.2.16.Final) to libraries/io/netty/netty-transport-classes-kqueue/4.2.16.Final/netty-transport-classes-kqueue-4.2.16.Final.jar
+Unpacking io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar (libraries:io.netty:netty-transport-native-epoll:4.2.16.Final:linux-x86_64) to libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-x86_64.jar
+Unpacking io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar (libraries:io.netty:netty-transport-native-epoll:4.2.16.Final:linux-aarch_64) to libraries/io/netty/netty-transport-native-epoll/4.2.16.Final/netty-transport-native-epoll-4.2.16.Final-linux-aarch_64.jar
+Unpacking io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar (libraries:io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-x86_64) to libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-x86_64.jar
+Unpacking io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar (libraries:io.netty:netty-transport-native-kqueue:4.2.16.Final:osx-aarch_64) to libraries/io/netty/netty-transport-native-kqueue/4.2.16.Final/netty-transport-native-kqueue-4.2.16.Final-osx-aarch_64.jar
+Unpacking io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar (libraries:io.netty:netty-transport-native-unix-common:4.2.16.Final) to libraries/io/netty/netty-transport-native-unix-common/4.2.16.Final/netty-transport-native-unix-common-4.2.16.Final.jar
+Unpacking it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar (libraries:it.unimi.dsi:fastutil:8.5.18) to libraries/it/unimi/dsi/fastutil/8.5.18/fastutil-8.5.18.jar
+Unpacking net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar (libraries:net.java.dev.jna:jna:5.17.0) to libraries/net/java/dev/jna/jna/5.17.0/jna-5.17.0.jar
+Unpacking net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar (libraries:net.java.dev.jna:jna-platform:5.17.0) to libraries/net/java/dev/jna/jna-platform/5.17.0/jna-platform-5.17.0.jar
+Unpacking net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar (libraries:net.sf.jopt-simple:jopt-simple:5.0.4) to libraries/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar
+Unpacking org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar (libraries:org.apache.commons:commons-lang3:3.20.0) to libraries/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar
+Unpacking org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar (libraries:org.apache.logging.log4j:log4j-api:2.26.0) to libraries/org/apache/logging/log4j/log4j-api/2.26.0/log4j-api-2.26.0.jar
+Unpacking org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar (libraries:org.apache.logging.log4j:log4j-core:2.26.0) to libraries/org/apache/logging/log4j/log4j-core/2.26.0/log4j-core-2.26.0.jar
+Unpacking org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar (libraries:org.apache.logging.log4j:log4j-slf4j2-impl:2.26.0) to libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.26.0/log4j-slf4j2-impl-2.26.0.jar
+Unpacking org/joml/joml/1.10.9/joml-1.10.9.jar (libraries:org.joml:joml:1.10.9) to libraries/org/joml/joml/1.10.9/joml-1.10.9.jar
+Unpacking org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar (libraries:org.jspecify:jspecify:1.0.0) to libraries/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar
+Unpacking org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar (libraries:org.slf4j:slf4j-api:2.0.17) to libraries/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar
+Starting net.fabricmc.loader.impl.game.minecraft.BundlerClassPathCapture
+[13:34:40] [main/INFO]: Loading Minecraft 26.3 with Fabric Loader 0.20.1
+[13:34:40] [main/INFO]: Mappings not present!
+[13:34:40] [ForkJoinPool-1-worker-3/WARN]: Mod dev_isxander_sdl_sdl-api uses the version release-3.4.14-7 which isn't compatible with Loader's extended semantic version format (Could not parse version number component 'release'!), SemVer is recommended for reliably evaluating dependencies and prioritizing newer version
+[13:34:40] [ForkJoinPool-1-worker-3/WARN]: Mod dev_isxander_sdl_sdl-backend-ffm uses the version release-3.4.14-7 which isn't compatible with Loader's extended semantic version format (Could not parse version number component 'release'!), SemVer is recommended for reliably evaluating dependencies and prioritizing newer version
+[13:34:40] [ForkJoinPool-1-worker-3/WARN]: Mod org_eclipse_jgit_org_eclipse_jgit_ssh_apache uses the version 7.4.0.202509020913-r which isn't compatible with Loader's extended semantic version format (Could not parse version number component '202509020913'!), SemVer is recommended for reliably evaluating dependencies and prioritizing newer version
+[13:34:40] [ForkJoinPool-1-worker-4/WARN]: Mod org_eclipse_jgit_org_eclipse_jgit uses the version 7.4.0.202509020913-r which isn't compatible with Loader's extended semantic version format (Could not parse version number component '202509020913'!), SemVer is recommended for reliably evaluating dependencies and prioritizing newer version
+[13:34:40] [main/INFO]: Dependencies overridden for minecraft, polytone
+[13:34:40] [main/WARN]: Warnings were found!
+ - Mod 'ClientSort' (clientsort) 3.104.1 recommends version 21.0.0-beta.1 or later of modmenu, which is missing!
+	 - You should install version 21.0.0-beta.1 or later of modmenu for the optimal experience.
+ - Mod 'Forge Config API Port' (forgeconfigapiport) 26.3.1 recommends any version of modmenu, which is missing!
+	 - You should install any version of modmenu for the optimal experience.
+ - 'Minecraft' (minecraft) 26.3 recommends any version after 15.0.0-beta.3 of Fabulously Optimized, which is missing!
+	 - You should install any version after 15.0.0-beta.3 of Fabulously Optimized for the optimal experience.
+[13:34:40] [main/INFO]: Loading 166 mods:
+	- almanac 1.26.11.1
+	   \-- dungeonconfig 1.26.11.1
+	- alternate-current 1.9.0
+	- appleskin 3.0.10+mc26.3
+	- attributefix 26.3.0.1
+	- baguettelib 2.0.8
+	- balm 26.3.0.3
+	   \-- kuma_api 26.3.0.1
+	- bcc 26.3.0.1
+	- betterdays 4.1.1.7
+	   \-- whitenoise 2.2.1
+	        |-- com_electronwill_night-config_core 3.8.4
+	        \-- com_electronwill_night-config_toml 3.8.4
+	- betterthanmending 2.3.0
+	- biomemusic 26.3-4.3
+	- carryon 2.12.2
+	- chunky 1.5.66
+	- clickadv 26.3-3.9
+	- clientcrafting 26.1-2.1
+	- clientsort 3.104.1
+	- cloth-config 26.3.159
+	   \-- cloth-basic-math 0.6.1
+	- clumps 26.3.2
+	- collective 8.87
+	- config_manager 1.1.4
+	- configurable 3.5.3
+	   |-- com_google_auto_service_auto-service 1.0
+	   |-- org_quiltmc_parsers_gson 0.3.1
+	   \-- org_quiltmc_parsers_json 0.3.1
+	- controlify 3.5.3+mc26.3
+	   |-- dev_isxander_sdl_sdl-api release-3.4.14-7
+	   |-- dev_isxander_sdl_sdl-backend-ffm release-3.4.14-7
+	   \-- dev_isxander_steamdeck4j 1.1.7
+	- craftingtweaks 26.3.0.2
+	- creativecore 2.14.25
+	   \-- net_neoforged_bus 7.2.0
+	- cupboard 26.3-4.2
+	- debugify 26.3.0.0
+	- doubledoors 7.5
+	- e4mc 6.2.3+modern
+	   \-- folk_sisby_kaleido-config 0.3.3+1.3.2
+	- easyanvils 26.3.1
+	- easymagic 26.3.1
+	- easyshulkerboxes 26.3.4
+	   \-- iteminteractions 26.3.5
+	- fabric-api 0.166.2+26.3
+	   |-- fabric-advancement-api-v1 1.0.1+38c7a2d55d
+	   |-- fabric-api-base 2.0.6+fcdff87f5d
+	   |-- fabric-api-lookup-api-v1 2.0.24+3434d6d95d
+	   |-- fabric-biome-api-v1 20.2.0+423307765d
+	   |-- fabric-block-api-v1 3.1.0+0ae6f9115d
+	   |-- fabric-block-getter-api-v2 2.0.9+3434d6d95d
+	   |-- fabric-command-api-v2 3.1.2+fcdff87f5d
+	   |-- fabric-content-registries-v0 15.0.7+74ed1ea55d
+	   |-- fabric-convention-tags-v2 4.10.5+187b64905d
+	   |-- fabric-crash-report-info-v1 1.0.7+fcdff87f5d
+	   |-- fabric-creative-tab-api-v1 5.0.22+fcdff87f5d
+	   |-- fabric-data-attachment-api-v1 2.2.35+af2d4d095d
+	   |-- fabric-data-generation-api-v1 27.4.3+187b64905d
+	   |-- fabric-debug-api-v1 1.0.5+5af7744b5d
+	   |-- fabric-dimensions-v1 5.1.20+5af7744b5d
+	   |-- fabric-entity-events-v1 6.0.4+3434d6d95d
+	   |-- fabric-events-interaction-v0 5.3.10+b9b88df45d
+	   |-- fabric-game-rule-api-v1 4.0.10+3434d6d95d
+	   |-- fabric-item-api-v1 14.8.1+8f511c9f5d
+	   |-- fabric-lifecycle-events-v1 4.1.9+ffef5f675d
+	   |-- fabric-loot-api-v3 4.0.9+4068fd645d
+	   |-- fabric-menu-api-v1 2.0.31+ed66f0a35d
+	   |-- fabric-message-api-v1 7.1.0+3e5b46335d
+	   |-- fabric-networking-api-v1 6.4.1+c58129785d
+	   |-- fabric-object-builder-api-v1 24.1.13+e2f63d3e5d
+	   |-- fabric-particles-v1 5.0.28+3434d6d95d
+	   |-- fabric-permission-api-v1 1.0.8+fcdff87f5d
+	   |-- fabric-recipe-api-v1 10.0.12+b9b88df45d
+	   |-- fabric-registry-sync-v0 8.0.5+1ca9f6365d
+	   |-- fabric-rendering-fluids-v1 6.0.6+3434d6d95d
+	   |-- fabric-resource-conditions-api-v1 6.2.1+fd3b1d565d
+	   |-- fabric-resource-loader-v0 3.3.27+4fc5413f5d
+	   |-- fabric-resource-loader-v1 3.1.0+5af7744b5d
+	   |-- fabric-serialization-api-v1 2.0.8+bb0d41e65d
+	   |-- fabric-tag-api-v1 2.1.11+fcdff87f5d
+	   |-- fabric-transfer-api-v1 8.0.27+c8357e785d
+	   \-- fabric-transitive-access-wideners-v1 8.1.17+e2f63d3e5d
+	- fabric-language-kotlin 1.14.2+kotlin.2.4.21
+	   |-- org_jetbrains_kotlin_kotlin-reflect 2.4.21
+	   |-- org_jetbrains_kotlin_kotlin-stdlib 2.4.21
+	   |-- org_jetbrains_kotlin_kotlin-stdlib-jdk7 2.4.21
+	   |-- org_jetbrains_kotlin_kotlin-stdlib-jdk8 2.4.21
+	   |-- org_jetbrains_kotlinx_atomicfu-jvm 0.33.0
+	   |-- org_jetbrains_kotlinx_kotlinx-coroutines-core-jvm 1.11.0
+	   |-- org_jetbrains_kotlinx_kotlinx-coroutines-jdk8 1.11.0
+	   |-- org_jetbrains_kotlinx_kotlinx-datetime-jvm 0.8.0
+	   |-- org_jetbrains_kotlinx_kotlinx-io-bytestring-jvm 0.9.1
+	   |-- org_jetbrains_kotlinx_kotlinx-io-core-jvm 0.9.1
+	   |-- org_jetbrains_kotlinx_kotlinx-serialization-cbor-jvm 1.11.0
+	   |-- org_jetbrains_kotlinx_kotlinx-serialization-core-jvm 1.11.0
+	   \-- org_jetbrains_kotlinx_kotlinx-serialization-json-jvm 1.11.0
+	- fabricloader 0.20.1
+	   \-- mixinextras 0.5.5
+	- fastback 0.35.0+26.3.0
+	   |-- com_googlecode_javaewah_javaewah 1.2.3
+	   |-- fabric-permissions-api-v0 0.7.0
+	   |-- net_i2p_crypto_eddsa 0.3.0
+	   |-- org_apache_sshd_sshd-common 2.16.0
+	   |-- org_apache_sshd_sshd-core 2.16.0
+	   |-- org_eclipse_jgit_org_eclipse_jgit 7.4.0.202509020913-r
+	   |-- org_eclipse_jgit_org_eclipse_jgit_ssh_apache 7.4.0.202509020913-r
+	   \-- server_translations_api 3.2.0+26.3
+	- fastitemframes 26.3.0
+	- ferritecore 9.0.0
+	- forgeconfigapiport 26.3.1
+	   |-- com_electronwill_night-config_core 3.8.4
+	   \-- com_electronwill_night-config_toml 3.8.4
+	- fzzy_config 0.7.7+fix3+26.3
+	   |-- blue_endless_jankson 1.2.3
+	   |-- fabric-permissions-api-v0 0.7.0
+	   \-- net_peanuuutz_tomlkt_tomlkt-jvm 0.3.7
+	- getittogetherdrops 1.5.1
+	- gpumemleakfix 26.3-1.9
+	- iceberg 1.4.3.1
+	- imfast 1.0.6
+	- jade 26.3.5+fabric
+	- jamlib 2.3.3+26.3.x
+	- java 25
+	- konkrete 1.11.1
+	- krypton 0.3.2
+	   \-- com_velocitypowered_velocity-native 3.4.0-SNAPSHOT
+	- letmedespawn 1.26.11.1
+	- lithium 0.26.4+mc26.3
+	- lootr 1.25.42.124
+	- maxhealthfix 26.3.0.1
+	- minecraft 26.3
+	- mixintrace 1.0
+	- modernfix 5.27.20-build.2
+	- neruina 3.3.5
+	   |-- org_apache_httpcomponents_httpclient 4.5
+	   |-- org_apache_httpcomponents_httpcore 4.4
+	   \-- org_kohsuke_github-api 2.0-rc.6
+	- netherportalfix 26.3.0.1
+	- packetfixer 3.3.6
+	- placeholder-api 3.2.0+26.3
+	- prickle 26.3.0.2
+	- puzzleslib 26.3.18
+	- resourcefulconfig 6.0.2
+	- rightclickharvest 4.7.1+26.3.x
+	- servercore 1.5.21+26.3
+	   |-- org_yaml_snakeyaml 2.7
+	   |-- space_arim_dazzleconf_dazzleconf-core 1.3.0-M2
+	   \-- space_arim_dazzleconf_dazzleconf-ext-snakeyaml 1.3.0-M2
+	- smoothchunk 26.1-4.4
+	- sound_physics_remastered 1.5.4+26.3
+	- spark 1.10.187
+	   \-- fabric-permissions-api-v0 0.7.0
+	- structure_layout_optimizer 1.1.5+26.3-fabric
+	- structureessentials 26.3-5.1
+	- subtle_effects 1.15.3
+	   \-- com_moulberry_mixinconstraints 1.1.0
+	- terrablender 26.3.0.0.9
+	- trade_cycling 1.0.23+26.3
+	- trashslot 26.3.0.2
+	- visualworkbench 26.3.0
+	- voicechat 2.6.27+26.3
+	   \-- voicechat_api 2.6.27
+	- yet_another_config_lib_v3 3.9.7+26.3-fabric
+	   |-- com_twelvemonkeys_common_common-image 3.12.0
+	   |-- com_twelvemonkeys_common_common-io 3.12.0
+	   |-- com_twelvemonkeys_common_common-lang 3.12.0
+	   |-- com_twelvemonkeys_imageio_imageio-core 3.12.0
+	   |-- com_twelvemonkeys_imageio_imageio-metadata 3.12.0
+	   \-- com_twelvemonkeys_imageio_imageio-webp 3.12.0
+[13:34:40] [main/INFO]: No flag found, running a usual copy
+[13:34:40] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/runner/work/MMCraft/MMCraft/.ci-cache/runs/1795268077926-1/server/libraries/net/fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/sponge-mixin-0.17.5+mixin.0.8.7.jar Service=Knot/Fabric Env=SERVER
+[13:34:41] [main/WARN]: Reference map 'baguettelib.refmap.json' for baguettelib.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/WARN]: Reference map 'baguettelib.refmap.json' for baguettelib.fabric.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/WARN]: Reference map 'carryon.refmap.json' for carryon.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/WARN]: Reference map 'clumps.refmap.json' for clumps.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/INFO]: Preloading Debugify
+[13:34:41] [main/INFO]: Loaded configuration file for Lithium: 170 options available, 0 override(s) found.
+[13:34:41] [main/WARN]: Reference map 'mixintrace-refmap.json' for mixintrace.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/INFO]: Loaded configuration file for ModernFix 5.27.20-build.2: 67 options available, 4 override(s) found
+[13:34:41] [main/WARN]: Option 'mixin.feature.measure_time' overriden (by user configuration) to 'false'
+[13:34:41] [main/WARN]: Option 'mixin.feature.snapshot_easter_egg' overriden (by user configuration) to 'false'
+[13:34:41] [main/WARN]: Option 'mixin.feature.branding' overriden (by user configuration) to 'false'
+[13:34:41] [main/WARN]: Option 'mixin.feature.remove_telemetry' overriden (by user configuration) to 'false'
+[13:34:41] [main/INFO]: Applying Nashorn fix
+[13:34:41] [main/WARN]: Reference map 'modernfix.refmap.json' for modernfix-fabric.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/WARN]: Reference map 'modernfix.refmap.json' for modernfix-common.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/WARN]: Reference map 'yet_another_config_lib_v3.refmap.json' for yacl.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/WARN]: Reference map 'yet_another_config_lib_v3.refmap.json' for yacl-fabric.mixins.json could not be read. If this is a development environment you can ignore this message
+[13:34:41] [main/WARN]: Error loading class: com/simibubi/create/content/schematics/SchematicPrinter (java.lang.ClassNotFoundException: com/simibubi/create/content/schematics/SchematicPrinter)
+[13:34:42] [main/INFO]: Loaded config for: structureessentials.json
+[13:34:42] [main/INFO]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[13:34:43] [main/INFO]: ModernFix reached bootstrap stage (4.720 s after launch)
+[13:34:43] [main/INFO]: Loading Generated Config Loaders...
+[13:34:43] [main/INFO]: Loaded 'neruina'
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.joml.MemUtil$MemUtilUnsafe (file:/home/runner/work/MMCraft/MMCraft/.ci-cache/runs/1795268077926-1/server/libraries/org/joml/joml/1.10.9/joml-1.10.9.jar)
+WARNING: Please consider reporting this to the maintainers of class org.joml.MemUtil$MemUtilUnsafe
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[13:34:44] [main/WARN]: Method overwrite conflict for getTemperature in modernfix-common.mixins.json:perf.remove_biome_temperature_cache.BiomeMixin from mod modernfix, previously written by net.caffeinemc.mods.lithium.mixin.world.temperature_cache.BiomeMixin. Skipping method.
+[13:34:47] [main/INFO]: Almanac initialized
+[13:34:47] [main/INFO]: BaguetteLib loaded on Fabric!
+[13:34:47] [main/INFO]: Mod proxy balm:permissions resolved as net.blay09.mods.balm.fabric.platform.compatibility.permissions.internal.FabricPermissionsAPIIntegration@4ddb7723
+[13:34:47] [main/INFO]: Better Compatibility Checker starting
+[13:34:47] [main/INFO]: Better Compatibility Checker setup
+[13:34:47] [main/INFO]: biomemusic mod initialized
+[13:34:47] [main/INFO]: Loading Collective version 8.87.
+[13:34:47] [main/WARN]: @Redirect conflict. Skipping krypton.mixins.json:shared.network.pipeline.encryption.ServerLoginPacketListenerImplMixin from mod krypton->@Redirect::onKey$initializeVelocityCipher(ILjava/security/Key;)Ljavax/crypto/Cipher; with priority 1000, already redirected by e4mc.mixins.json:ServerLoginPacketListenerImplMixin from mod e4mc->@Redirect::getCipher(ILjava/security/Key;)Ljavax/crypto/Cipher; with priority 1000
+[13:34:47] [main/WARN]: @Redirect conflict. Skipping krypton.mixins.json:shared.network.pipeline.encryption.ServerLoginPacketListenerImplMixin from mod krypton->@Redirect::onKey$initializeVelocityCipher(ILjava/security/Key;)Ljavax/crypto/Cipher; with priority 1000, already redirected by e4mc.mixins.json:ServerLoginPacketListenerImplMixin from mod e4mc->@Redirect::getCipher(ILjava/security/Key;)Ljavax/crypto/Cipher; with priority 1000
+[13:34:47] [main/INFO]: Loaded config for: cupboard.json
+[13:34:47] [main/INFO]: Enabled 0 bug fixes: []
+[13:34:47] [main/INFO]: Successfully Debugify'd your game!
+[13:34:47] [main/INFO]: Constructing components for easyanvils:common
+[13:34:48] [main/INFO]: Constructing components for easymagic:common
+[13:34:48] [main/INFO]: Constructing components for easyshulkerboxes:common
+[13:34:48] [main/INFO]: Constructing components for fastitemframes:common
+[13:34:48] [main/INFO]: Constructing components for iteminteractions:common
+[13:34:48] [main/INFO]: Initializing JamLib on Fabric
+[13:34:48] [main/INFO]: [KONKRETE] Loading v1.11.1 in server-side mode on FABRIC!
+[13:34:48] [main/INFO]: [KONKRETE] Server-side modules initialized and ready to use!
+[13:34:48] [main/INFO]: Compression will use libdeflate (Linux x86_64), encryption will use OpenSSL 3.x.x (Linux x86_64)
+[13:34:48] [main/INFO]: LetMeDespawn initializing on Fabric (production)
+[13:34:48] [main/INFO]: Packet Fixer 3.3.6 Fabric has been initialized!
+[13:34:48] [main/INFO]: Constructing components for puzzleslib:common
+[13:34:48] [main/INFO]: Initializing Right Click Harvest on FABRIC
+[13:34:48] [main/INFO]: [ServerCore] Loaded V1.5.21+26.3!
+[13:34:48] [main/INFO]: structureessentials mod initialized
+[13:34:48] [main/INFO]: Constructing components for visualworkbench:common
+[13:34:48] [main/INFO]: [voicechat] Compatibility version 20
+[13:34:48] [main/INFO]: [voicechat] Loading plugins
+[13:34:48] [main/INFO]: [voicechat] Loaded 1 plugin(s)
+[13:34:48] [main/INFO]: [voicechat] Initializing plugins
+[13:34:48] [main/INFO]: Initializing Simple Voice Chat integration
+[13:34:48] [main/INFO]: [voicechat] Initialized 1 plugin(s)
+[13:34:48] [main/INFO]: [voicechat] Registering events for 'sound_physics_remastered'
+[13:34:48] [main/ERROR]: Failed to start the minecraft server
+java.lang.RuntimeException: Could not execute entrypoint stage 'main' due to errors, provided by 'controlify' at 'dev.isxander.controlify.fabric.ControlifyBootstrap'!
+	at net.fabricmc.loader.impl.FabricLoaderImpl.lambda$invokeEntrypoints$0(FabricLoaderImpl.java:418)
+	at net.fabricmc.loader.impl.util.ExceptionUtil.gatherExceptions(ExceptionUtil.java:33)
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:416)
+	at net.fabricmc.loader.impl.game.minecraft.Hooks.startServer(Hooks.java:63)
+	at knot//net.minecraft.server.Main.main(Main.java:114)
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72)
+	at net.fabricmc.loader.impl.launch.knot.KnotServer.main(KnotServer.java:23)
+	at net.fabricmc.loader.impl.launch.server.FabricServerLauncher.main(FabricServerLauncher.java:69)
+	at net.fabricmc.installer.ServerLauncher.main(ServerLauncher.java:69)
+Caused by: java.lang.BootstrapMethodError: java.lang.RuntimeException: Mixin transformation of net.minecraft.server.network.ServerLoginPacketListenerImpl failed
+	at knot//dev.isxander.controlify.server.ControlifyHandshake.setupOnServer(ControlifyHandshake.java:32)
+	at knot//dev.isxander.controlify.server.ControlifyServer.onInitialize(ControlifyServer.java:29)
+	at knot//dev.isxander.controlify.fabric.ControlifyBootstrap.onInitialize(ControlifyBootstrap.java:34)
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:414)
+	... 7 more
+Caused by: java.lang.RuntimeException: Mixin transformation of net.minecraft.server.network.ServerLoginPacketListenerImpl failed
+	at net.fabricmc.loader.impl.launch.knot.KnotClassDelegate.getPostMixinClassByteArray(KnotClassDelegate.java:441)
+	at net.fabricmc.loader.impl.launch.knot.KnotClassDelegate.tryLoadClass(KnotClassDelegate.java:337)
+	at net.fabricmc.loader.impl.launch.knot.KnotClassDelegate.loadClass(KnotClassDelegate.java:232)
+	at net.fabricmc.loader.impl.launch.knot.KnotClassLoader.loadClass(KnotClassLoader.java:119)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+	... 11 more
+Caused by: org.spongepowered.asm.mixin.transformer.throwables.MixinTransformerError: An unexpected critical error was encountered
+	at org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:380)
+	at org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:237)
+	at org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClassBytes(MixinTransformer.java:202)
+	at net.fabricmc.loader.impl.launch.knot.KnotClassDelegate.getPostMixinClassByteArray(KnotClassDelegate.java:436)
+	... 15 more
+Caused by: org.spongepowered.asm.mixin.injection.throwables.InjectionError: Critical injection failure: Redirector onKey$initializeVelocityCipher(ILjava/security/Key;)Ljavax/crypto/Cipher; in krypton.mixins.json:shared.network.pipeline.encryption.ServerLoginPacketListenerImplMixin from mod krypton failed injection check, (0/1) succeeded. Scanned 0 target(s). No refMap loaded.
+	at org.spongepowered.asm.mixin.injection.struct.InjectionInfo.postInject(InjectionInfo.java:526)
+	at org.spongepowered.asm.mixin.transformer.MixinTargetContext.applyInjections(MixinTargetContext.java:1482)
+	at org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyInjections(MixinApplicatorStandard.java:832)
+	at org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.lambda$runApplicatorPass$7(MixinApplicatorStandard.java:362)
+	at org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.processMixins(MixinApplicatorStandard.java:381)
+	at org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.runApplicatorPass(MixinApplicatorStandard.java:360)
+	at org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.apply(MixinApplicatorStandard.java:240)
+	at org.spongepowered.asm.mixin.transformer.TargetClassContext.apply(TargetClassContext.java:437)
+	at org.spongepowered.asm.mixin.transformer.TargetClassContext.applyMixins(TargetClassContext.java:418)
+	at org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:351)
+	... 18 more
