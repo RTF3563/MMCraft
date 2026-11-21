@@ -1,0 +1,3945 @@
+{
+  "formatVersion": 1,
+  "name": "MMCraft",
+  "packVersion": "26.3.1.4",
+  "minecraft": "26.3",
+  "fabricLoader": "0.20.1",
+  "publishedAt": "2026-11-21T00:03:42.359Z",
+  "changelog": [
+    "[26.3.1.4] 2026-11-21 · Minecraft 26.3",
+    "  · Presence Footsteps 1.14.0+26.3 → 1.14.1+26.3",
+    "[26.3.1.3] 2026-11-20 · Minecraft 26.3",
+    "  · Lithium mc26.3-0.26.3-fabric → mc26.3-0.26.4-fabric",
+    "[26.3.1.2] 2026-11-19 · Minecraft 26.3",
+    "  · Carry On: 주민만 들 수 있음 (가축·골렘·알레이 등은 끈으로 옮기기) || Carry On: only villagers can be picked up (move other mobs with a lead)",
+    "[26.3.1.1] 2026-11-19 · Minecraft 26.3",
+    "  · Sound Physics Remastered fabric-1.5.2+26.3 → fabric-1.5.4+26.3",
+    "[26.3.1.0] 2026-11-18 · Minecraft 26.3",
+    "  · 제거: Essential Mod",
+    "[26.3.0.1] 2026-11-18 · Minecraft 26.3",
+    "  · Config Manager 1.1.3 → 1.1.4",
+    "  · Subtle Effects 1.15.2 → 1.15.3",
+    "[26.3.0.0] 2026-11-17 · Minecraft 26.3",
+    "  · 팩 버전 표기 변경: 0.1.6 → 26.3.0.0 (마크 버전.모드 추가·삭제.모드 업데이트)",
+    "[0.1.6] 2026-11-17 · Minecraft 26.3",
+    "  · 첫 실행 시 Fabulously Optimized 환영 화면 표시 안 함",
+    "[0.1.5] 2026-11-15 · Minecraft 26.3",
+    "  · Collective 26.3.0-8.86-fabric+forge+neo → 26.3.0-8.87-fabric+forge+neo",
+    "  · JamLib 2.3.2+26.3.x → 2.3.3+26.3.x",
+    "  · RightClickHarvest 4.7.0+26.3.x → 4.7.1+26.3.x",
+    "[0.1.4] 2026-11-15 · Minecraft 26.3",
+    "  · 새 모드: Essential Mod"
+  ],
+  "mods": [
+    {
+      "projectId": "4I1XuqiY",
+      "slug": "entity-model-features",
+      "name": "[EMF] Entity Model Features",
+      "versionId": "vF6qLXsA",
+      "versionNumber": "3.3.12-fabric-26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "entity_model_features-3.3.12-26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/4I1XuqiY/versions/vF6qLXsA/entity_model_features-3.3.12-26.3-fabric.jar",
+      "sha1": "2d076285c7e0671165fc86a827e62ce88ddcd201",
+      "sha512": "4572fc065e757264947aff35a96d17d5e45d4b43e8e385b9a207f5380a8f43da5dbf8e10f30a7bc7cc4c0c8f7999717b4dd22d325667bdf8a0de6e839ad81efc",
+      "size": 665386,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "BVzZfTc1",
+      "slug": "entitytexturefeatures",
+      "name": "[ETF] Entity Texture Features",
+      "versionId": "svwZ2o4d",
+      "versionNumber": "7.2.7-fabric-26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "entity_texture_features-7.2.7-26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/BVzZfTc1/versions/svwZ2o4d/entity_texture_features-7.2.7-26.3-fabric.jar",
+      "sha1": "29f48f42d72007ce13b4678fac5b2ef5986879e4",
+      "sha512": "69193c58d4d05e08fea9afa34cc47563e9b9e95aa2da276441085ade44ed36f8123b9cc1a2938f9ecac9aea6fd9ceb51120dd20f7284337a3bb592bc3b904336",
+      "size": 798322,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "zV5r3pPn",
+      "slug": "3dskinlayers",
+      "name": "3D Skin Layers",
+      "versionId": "gjM2TO0L",
+      "versionNumber": "1.11.4",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "skinlayers3d-fabric-1.11.4-mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/zV5r3pPn/versions/gjM2TO0L/skinlayers3d-fabric-1.11.4-mc26.3.jar",
+      "sha1": "1eef5b7a4b931c236c117def1c6b867be0443116",
+      "sha512": "1a93ba9f726f8053e111abbe225f67b85e74bdfb78955711218ef103e670bc2c0f011f5911bf725686b79a1b85cecbb1ba733bf1b2eaa2856e53c4f842680627",
+      "size": 1892299,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "9NM0dXub",
+      "slug": "advancement-plaques",
+      "name": "Advancement Plaques",
+      "versionId": "CWKBEIsY",
+      "versionNumber": "1.7.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "AdvancementPlaques-26.3-fabric-1.7.3.jar",
+      "url": "https://cdn.modrinth.com/data/9NM0dXub/versions/CWKBEIsY/AdvancementPlaques-26.3-fabric-1.7.3.jar",
+      "sha1": "cfe3e213ad29d4d91ba8b9ea05311a0f05e94f72",
+      "sha512": "9f8b65c611335d0b1a63b671660bd9e35d4719d3ffda57b27133bc8c1ff351a4ca8d61dcf9f0ec5b1068834ea6b8403f1ef73b798cab7524b29f32694eacbb76",
+      "size": 196090,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "Gi02250Z",
+      "slug": "almanac",
+      "name": "Almanac",
+      "versionId": "mSuvUaBg",
+      "versionNumber": "1.26.11.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3",
+        "26.4-snapshot-1",
+        "26.4-snapshot-2",
+        "26.4-snapshot-3",
+        "26.4-snapshot-4",
+        "26.4-snapshot-5",
+        "26.4-snapshot-6",
+        "26.4-snapshot-7"
+      ],
+      "fileName": "almanac-fabric-26.3-1.26.11.1.jar",
+      "url": "https://cdn.modrinth.com/data/Gi02250Z/versions/mSuvUaBg/almanac-fabric-26.3-1.26.11.1.jar",
+      "sha1": "cc47bd0e0dd428952aefe730c3ef0f0ee6019d39",
+      "sha512": "70f9481e1e067ea6950a74dfecd753eeb9d4d3b5c965d64aeef84a8a0771e4d18ed2f90cdf4b5b0dd3c18d5fc015bb713758c091fdc11e81b64153cd2ce6cb90",
+      "size": 438706,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "fM515JnW",
+      "slug": "ambientsounds",
+      "name": "AmbientSounds",
+      "versionId": "LFUkYKC1",
+      "versionNumber": "6.3.11",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "AmbientSounds_FABRIC_v6.3.11_mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/fM515JnW/versions/LFUkYKC1/AmbientSounds_FABRIC_v6.3.11_mc26.3.jar",
+      "sha1": "fff553cf5aef69026b1b25d1435da39e9097a2f3",
+      "sha512": "bd042fec99c1178f5521166f4a0284a2d5d9780e43a20404b62933f3870bfa957ec30c038173df14ce615b095e73b5a78484a416d8b02c8aeadf2973f53426d0",
+      "size": 84825097,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "xEyZuswh",
+      "slug": "animaticarefabricated",
+      "name": "Animatica Refabricated",
+      "versionId": "doj27VCh",
+      "versionNumber": "0.6.3+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "animatica-0.6.3+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/xEyZuswh/versions/doj27VCh/animatica-0.6.3%2B26.3.jar",
+      "sha1": "c24b269d5cb523800bce90920de13ce7f042ba80",
+      "sha512": "e4e7e824803a9bd946318575ca4d1b55f78cb588fd08f621000deaa89bac2579d3d73aa410e3969bba709fac41c15cf1b71bb9e8c2217d904139b584924a043f",
+      "size": 117502,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "EsAfCjCV",
+      "slug": "appleskin",
+      "name": "AppleSkin",
+      "versionId": "PHjDtQay",
+      "versionNumber": "3.0.10+mc26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "appleskin-fabric-mc26.3-3.0.10.jar",
+      "url": "https://cdn.modrinth.com/data/EsAfCjCV/versions/PHjDtQay/appleskin-fabric-mc26.3-3.0.10.jar",
+      "sha1": "3d19e40c5f97186857db98e622c01c2cd0030497",
+      "sha512": "17d257af419b7530aa8617c2e8c0e4bbfabcf888f26655790e0188e7957e0bcd931f85f9a4c69fd27e889dee5082cf7b2b8741a14a6ed4425e9ef4bfe13a8b8c",
+      "size": 180194,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "lOOpEntO",
+      "slug": "attributefix",
+      "name": "AttributeFix",
+      "versionId": "zJLURVLx",
+      "versionNumber": "26.3.0.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "AttributeFix-fabric-MC26.3-26.3.0.1.jar",
+      "url": "https://cdn.modrinth.com/data/lOOpEntO/versions/zJLURVLx/AttributeFix-fabric-MC26.3-26.3.0.1.jar",
+      "sha1": "8563a9c958a1534cb935ee2eb220170c6b9f0219",
+      "sha512": "06658aee4c9943738663cb465ab0e68737c971d8544c2fd3e84aedb6a64a5f17949498492cafdacc9ba70185bae4e68d4825a390473c06eb8a3ed06bd983b202",
+      "size": 20980,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "g96Z4WVZ",
+      "slug": "badoptimizations",
+      "name": "BadOptimizations",
+      "versionId": "Sp0ctspw",
+      "versionNumber": "2.4.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "BadOptimizations-2.4.1-26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/g96Z4WVZ/versions/Sp0ctspw/BadOptimizations-2.4.1-26.3-fabric.jar",
+      "sha1": "4cc25ce6217326ff14169f5358921773297e9475",
+      "sha512": "048a0979807afb96bae7801b7445746c985081bb55fab9b80b286036234a9869cc84f83c40ab77a2600b7e06ad44178ee17935b706b751c9b38f87ebc6e180f8",
+      "size": 60760,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "OfKzpbRU",
+      "slug": "baguettelib",
+      "name": "BaguetteLib",
+      "versionId": "T7PHIuOE",
+      "versionNumber": "2.0.8",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "baguettelib-26.3-Fabric-2.0.8.jar",
+      "url": "https://cdn.modrinth.com/data/OfKzpbRU/versions/T7PHIuOE/baguettelib-26.3-Fabric-2.0.8.jar",
+      "sha1": "9a7395f94864ee022de8fa00c5506690652320fd",
+      "sha512": "d20b4f1483deb4031404885f45bb96788b891b60dcc6b4917586c993c6cbae385ad7cd45cfe8b05e9f57985f697b5ac090457474bce95ef04039713f6be77d4a",
+      "size": 106523,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "MBAkmtvl",
+      "slug": "balm",
+      "name": "Balm",
+      "versionId": "MYj31XNG",
+      "versionNumber": "26.3.0.3+fabric-26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "balm-fabric-26.3-26.3.0.3.jar",
+      "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/MYj31XNG/balm-fabric-26.3-26.3.0.3.jar",
+      "sha1": "1b44d97048c1c2e9cc7e0a03c00f5cb117463a60",
+      "sha512": "aaf07f5b94f7015c87df7b242f3f45f0729fb3f72d887745ad5c5ceb31eb071e425254009158774101676d6480f31c832dd60860d79da5b661cc10b84241c319",
+      "size": 1213047,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "Q2OqKxDG",
+      "slug": "better-advancements",
+      "name": "Better Advancements",
+      "versionId": "FQp3HIDr",
+      "versionNumber": "0.6.0.81",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "BetterAdvancements-Fabric-26.3-0.6.0.81.jar",
+      "url": "https://cdn.modrinth.com/data/Q2OqKxDG/versions/FQp3HIDr/BetterAdvancements-Fabric-26.3-0.6.0.81.jar",
+      "sha1": "e4e244f7e737c728ff2142e28e97c5cff87e0811",
+      "sha512": "54eea156ca2052d7bfecc1d706103d79fdd0b070d29c01a7a01987d898aa534e0c34dee65adfb74a6b16f25c5b1c9945441d5d703363808078c56ea526146d6d",
+      "size": 105930,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "ONZm0H7Y",
+      "slug": "better-block-entities",
+      "name": "Better Block Entities",
+      "versionId": "FU2tstk7",
+      "versionNumber": "1.4.0+mc26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "bbe-fabric-1.4.0+mc26.3-mod.jar",
+      "url": "https://cdn.modrinth.com/data/ONZm0H7Y/versions/FU2tstk7/bbe-fabric-1.4.0%2Bmc26.3-mod.jar",
+      "sha1": "ef6cb9b2a7c2074e35a5994953f773e043070df3",
+      "sha512": "061404c7a546fcf97b1e95c84be6538634ef8a64c38c50ab52413bc30eb3ca631d70469ec9a5ec6e701bbfbbd9779d65a3a70e359e80d8c36449ff2a2d286cab",
+      "size": 207605,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "ZucWZEBV",
+      "slug": "better-climbing",
+      "name": "Better Climbing",
+      "versionId": "dUxGZmcn",
+      "versionNumber": "6-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "better_climbing-fabric-6.jar",
+      "url": "https://cdn.modrinth.com/data/ZucWZEBV/versions/dUxGZmcn/better_climbing-fabric-6.jar",
+      "sha1": "c8dedd82b1303cca947ddd52e97a8d2cab397374",
+      "sha512": "00a472345f6fedfab5b256b3694c629edf250062473fd0a14a27a693a732930d1462db30b61b887a9e7029917be204b94a7e13429a026df61848d2133f8720b9",
+      "size": 7419,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "KJhXPbHQ",
+      "slug": "better-compatibility-checker",
+      "name": "Better Compatibility Checker",
+      "versionId": "oW0YYfkC",
+      "versionNumber": "26.3.0.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "better-compatability-checker-fabric-26.3.0.1.jar",
+      "url": "https://cdn.modrinth.com/data/KJhXPbHQ/versions/oW0YYfkC/better-compatability-checker-fabric-26.3.0.1.jar",
+      "sha1": "42aab05450186436e606f55d8716421a4eb6c5b5",
+      "sha512": "cacb53bc820632c7a4f59c9b17d206338604c238cdd196ae4b648ddbb00a5a3a1fe712290b5d677bde8604d0842a32056fcf0963c35704aedf3eaac6d0b80939",
+      "size": 30678,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "tPLE214j",
+      "slug": "betterdays",
+      "name": "Better Days",
+      "versionId": "nGUdicIW",
+      "versionNumber": "26.3-4.1.1.7-FABRIC",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "betterdays-26.3-fabric-4.1.1.7-FABRIC.jar",
+      "url": "https://cdn.modrinth.com/data/tPLE214j/versions/nGUdicIW/betterdays-26.3-fabric-4.1.1.7-FABRIC.jar",
+      "sha1": "89d26730902cd52755e85d477b15ee8c1421e707",
+      "sha512": "dc61c6579feec503dc5940fc085843606a125d82e1b5144bab48002c5541f901d0ebc3a3c0e9d29086f76a3f3b50fc0cb9b8eed414d41349f1f841ec3f6ddbbb",
+      "size": 973004,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "kqJFAPU9",
+      "slug": "better-mount-hud",
+      "name": "Better Mount HUD",
+      "versionId": "M3Fe5t0L",
+      "versionNumber": "1.3.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "bettermounthud-1.3.1.jar",
+      "url": "https://cdn.modrinth.com/data/kqJFAPU9/versions/M3Fe5t0L/bettermounthud-1.3.1.jar",
+      "sha1": "f86040d5010c7aad1c677c7a7fefe52d3b386abd",
+      "sha512": "c7fff6ddc463178f7154d433a9dfe21443732d1f70f450a5e03860f631adb2f6a445d72fb59ac017f014add4881edf59d9960e9163d6d497d117bd16a8ae5295",
+      "size": 20780,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "Lvv4SHrK",
+      "slug": "better-than-mending",
+      "name": "Better Than Mending",
+      "versionId": "SydvTww2",
+      "versionNumber": "2.3.0",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "BetterThanMending-2.3.0-merged.jar",
+      "url": "https://cdn.modrinth.com/data/Lvv4SHrK/versions/SydvTww2/BetterThanMending-2.3.0-merged.jar",
+      "sha1": "de0c2e98e8ebb907bede012679c7b3c024e848d6",
+      "sha512": "cd540aa7a436186e669cd733b46b6ae2e3403dc1978577d479bbaa654a8c71233eba17f1bcf9510a2fcd1991d708273f77dec61b2b2c2d94064863f15392fb36",
+      "size": 29294,
+      "client": "optional",
+      "server": "required"
+    },
+    {
+      "projectId": "m5T5xmUy",
+      "slug": "bettergrassify",
+      "name": "BetterGrassify",
+      "versionId": "8qcmuwZa",
+      "versionNumber": "1.8.8+fabric.26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "BetterGrassify-1.8.8+fabric.26.3.jar",
+      "url": "https://cdn.modrinth.com/data/m5T5xmUy/versions/8qcmuwZa/BetterGrassify-1.8.8%2Bfabric.26.3.jar",
+      "sha1": "626f74d3265d140f80ebb5ca1703f43ba07ff1bd",
+      "sha512": "14cd361bb1f56d207a3e811a25d4af9bfc76d52bcd7bd9aad73ca8f334a7226ff3cb69d9890d4fc3cdd83eb4b630077b36870dcaff8149be178207ee2a9ea90d",
+      "size": 89214,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "cf:840873",
+      "slug": "cf-biome-music",
+      "name": "Biome Music",
+      "versionId": "cf:8906107",
+      "versionNumber": "biomemusic-fabric-26.3-4.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "biomemusic-fabric-26.3-4.3.jar",
+      "url": "https://edge.forgecdn.net/files/8906/107/biomemusic-fabric-26.3-4.3.jar",
+      "sha1": "32f3c21d2505b1c3e82cc10b4c49cb27640ffb90",
+      "sha512": "",
+      "size": 46305,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "BdKIyOLe",
+      "slug": "boat-item-view",
+      "name": "Boat Item View",
+      "versionId": "IBhsOJlh",
+      "versionNumber": "26.3-0.0.11-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "boatiview-fabric-0.0.11-26.3.jar",
+      "url": "https://cdn.modrinth.com/data/BdKIyOLe/versions/IBhsOJlh/boatiview-fabric-0.0.11-26.3.jar",
+      "sha1": "230bac67e9283f3f11d5dcf63dfcf5719e9b0afc",
+      "sha512": "1d8f405f3b585a0d7f7d8a6ed77ced62950c9a9bd534427805111d71091ae8b67c2fe4e82144cf0319b2d1e7e50f2d051818df0aa4582b574313d95531b84b0a",
+      "size": 1061984,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "lO3s8hjs",
+      "slug": "bridging-mod",
+      "name": "Bridging Mod",
+      "versionId": "qRuZJe5U",
+      "versionNumber": "2.7.0+26.3.fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "BridgingMod-2.7.0+26.3.fabric-release.jar",
+      "url": "https://cdn.modrinth.com/data/lO3s8hjs/versions/qRuZJe5U/BridgingMod-2.7.0%2B26.3.fabric-release.jar",
+      "sha1": "2a0833c87725752eb4e8a3cb3df126eeb50877c4",
+      "sha512": "a8241b5df1402f7447e43a65a99880ff75170ba683453c400a1e2888ff647474645a3ecadcc823c16aca2b009006ab4cc6c7ef5299e24408ddcf550b2321ded7",
+      "size": 5944084,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "orXAsira",
+      "slug": "cape-provider",
+      "name": "Cape Provider",
+      "versionId": "lnHTo4mY",
+      "versionNumber": "6.0.0",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "cape-provider-6.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/orXAsira/versions/lnHTo4mY/cape-provider-6.0.0.jar",
+      "sha1": "1a766a2c83161ff2abf333862f001695d287a3a7",
+      "sha512": "07828637512433db6fb4d27bb33c19ceda7706e441579a669ebe958c020039a96bf268b72f8e6e222ef98edd5d27b13e68ef2c4c61a9976c64ee95e02d2f57e1",
+      "size": 229038,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "joEfVgkn",
+      "slug": "carry-on",
+      "name": "Carry On",
+      "versionId": "9UKSKr1K",
+      "versionNumber": "2.12.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "carryon-fabric-26.3-2.12.2.jar",
+      "url": "https://cdn.modrinth.com/data/joEfVgkn/versions/9UKSKr1K/carryon-fabric-26.3-2.12.2.jar",
+      "sha1": "d9b2a58314ac174d34c98e6ed9d3816bf06d5789",
+      "sha512": "36e7c693e3788b4395a5100cf4460b8d1ef16e8783af4f7c78dd83bb1f33b66e08659fa4a33f81a6023bedae1e9741a59b3c3263e17d97ad8a36695486ef1ae2",
+      "size": 380139,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "Wb5oqrBJ",
+      "slug": "chat-heads",
+      "name": "Chat Heads",
+      "versionId": "i3gcElvQ",
+      "versionNumber": "1.3.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "chat_heads-1.3.2-fabric-26.3.jar",
+      "url": "https://cdn.modrinth.com/data/Wb5oqrBJ/versions/i3gcElvQ/chat_heads-1.3.2-fabric-26.3.jar",
+      "sha1": "cf4eec23f6bc4b3ce7c3c20308694beb5f4c5edf",
+      "sha512": "2e18d30d38fde2417d9b18a6a7065333f80313e6b73430a82b657ecf4322127587dd0f63da90f93d718ffeef67f104c56c1ef169cf2cde362c11ab2cdfefcc47",
+      "size": 98686,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "tN4E9NfV",
+      "slug": "chat-reporting-helper",
+      "name": "Chat Reporting Helper",
+      "versionId": "fEeReREe",
+      "versionNumber": "6.2",
+      "versionType": "release",
+      "gameVersions": [
+        "1.20.2",
+        "1.20.3",
+        "1.20.4",
+        "1.20.5",
+        "1.20.6",
+        "1.21",
+        "1.21.1",
+        "1.21.10",
+        "1.21.11",
+        "1.21.2",
+        "1.21.3",
+        "1.21.4",
+        "1.21.5",
+        "1.21.6",
+        "1.21.7",
+        "1.21.8",
+        "1.21.9",
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "Chat Reporting Helper.zip",
+      "url": "https://cdn.modrinth.com/data/tN4E9NfV/versions/fEeReREe/Chat%20Reporting%20Helper.zip",
+      "sha1": "fe52ddaf19663c0cf6bf8bab12ff17abdf25622f",
+      "sha512": "aa96f74c7838cf687fbd175dca07ebc6a012de525701d55ca7867484cfc8e983001db99294de158343b64021df25e280e56a433f33d1bc162181091bc3395970",
+      "size": 74278,
+      "client": "required",
+      "server": "unsupported",
+      "kind": "resourcepack"
+    },
+    {
+      "projectId": "cf:511733",
+      "slug": "cf-clickable-advancements",
+      "name": "Clickable advancements",
+      "versionId": "cf:8929530",
+      "versionNumber": "clickadv-fabric-26.3-3.9",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "clickadv-fabric-26.3-3.9.jar",
+      "url": "https://edge.forgecdn.net/files/8929/530/clickadv-fabric-26.3-3.9.jar",
+      "sha1": "74691f87629f601c3eee78cb4dc9f601b12c19fc",
+      "sha512": "",
+      "size": 22408,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "cf:888790",
+      "slug": "cf-client-crafting",
+      "name": "Client Crafting",
+      "versionId": "cf:8002356",
+      "versionNumber": "clientcrafting-fabric-26.1-2.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "clientcrafting-fabric-26.1-2.1.jar",
+      "url": "https://edge.forgecdn.net/files/8002/356/clientcrafting-fabric-26.1-2.1.jar",
+      "sha1": "1f7fc7da3ef84e954f81afa4e0fa6f46714a7f2c",
+      "sha512": "",
+      "size": 11422,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "K0AkAin6",
+      "slug": "clientsort",
+      "name": "Client Sort",
+      "versionId": "UWMryUad",
+      "versionNumber": "3.104.1+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "clientsort-fabric-3.104.1+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/K0AkAin6/versions/UWMryUad/clientsort-fabric-3.104.1%2B26.3.jar",
+      "sha1": "96cbf8e292a1c5325f0050af1091ea778b967578",
+      "sha512": "99554db1c60c149f0fa0e6238d397d6cff2408bcfbdf111f9f2e5c701fa4db3d5e516cd5a5248319f64dda6a6676f350e2d29932f35cb2ad5340c13d682f04ec",
+      "size": 356994,
+      "client": "required",
+      "server": "optional"
+    },
+    {
+      "projectId": "vPNqo58Q",
+      "slug": "client-tweaks",
+      "name": "Client Tweaks",
+      "versionId": "7fKN7OpP",
+      "versionNumber": "26.3.0.1+fabric-26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "clienttweaks-fabric-26.3-26.3.0.1.jar",
+      "url": "https://cdn.modrinth.com/data/vPNqo58Q/versions/7fKN7OpP/clienttweaks-fabric-26.3-26.3.0.1.jar",
+      "sha1": "041a601ac811073f5552dd5ff2ac5b75b700f6af",
+      "sha512": "e80cfcb4c5a2a9f12b7f21aca0b70168a5cb0dbfe846e3e0531b3bb5ac1753740bb2e5c948d3bcd9f3329c0850f63a1a8ee801b3308ec149ec1a9041c708dd06",
+      "size": 282566,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "9s6osm5g",
+      "slug": "cloth-config",
+      "name": "Cloth Config API",
+      "versionId": "fg2uyxOW",
+      "versionNumber": "26.3.159+fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "cloth-config-fabric-26.3.159.jar",
+      "url": "https://cdn.modrinth.com/data/9s6osm5g/versions/fg2uyxOW/cloth-config-fabric-26.3.159.jar",
+      "sha1": "9a5cce069380a2047250831dcb19f4ef1b15872d",
+      "sha512": "8924e19d41845096724fa10f3717bc51964a0edbbbcad0ff1e6c6187a398b08f356e49579a657c2dc44a7f92e3850771f3ca70bf8c1f654de60425163b91dbb1",
+      "size": 1135009,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "Wnxd13zP",
+      "slug": "clumps",
+      "name": "Clumps",
+      "versionId": "J4I1wxJZ",
+      "versionNumber": "26.3.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "Clumps-fabric-26.3-26.3.2.jar",
+      "url": "https://cdn.modrinth.com/data/Wnxd13zP/versions/J4I1wxJZ/Clumps-fabric-26.3-26.3.2.jar",
+      "sha1": "86d6618f772320bb5e66b4696396a450d5cb845e",
+      "sha512": "8c166ae97e1999d0f213d0a181d6ef87b99648016c92c9aa1414d2c2e24364b12549569cd7e247a3d675df703ae6a8a88fc175d3f527818c710578408508c8ab",
+      "size": 20154,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "e0M1UDsY",
+      "slug": "collective",
+      "name": "Collective",
+      "versionId": "27TLnjkk",
+      "versionNumber": "26.3.0-8.87-fabric+forge+neo",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "collective-26.3.0-8.87.jar",
+      "url": "https://cdn.modrinth.com/data/e0M1UDsY/versions/27TLnjkk/collective-26.3.0-8.87.jar",
+      "sha1": "9f67f1e2e3a13dcdeb62ea1f4935528124766a19",
+      "sha512": "bae145cc2c540e610ec1fdf52326d6655bfce3a91fc2b342eefeb978752a7162dfe3f5825686f175a51692978698b70fb88d415ccf0567ee24ff8a052baeeb1e",
+      "size": 1666400,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "jlNms3Jp",
+      "slug": "configmanager",
+      "name": "Config Manager",
+      "versionId": "okecULrz",
+      "versionNumber": "1.1.4",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "ConfigManager-fabric-26.3-1.1.4.jar",
+      "url": "https://cdn.modrinth.com/data/jlNms3Jp/versions/okecULrz/ConfigManager-fabric-26.3-1.1.4.jar",
+      "sha1": "13fe50ecc8aba1e684e5d30c0287bfb868d135c0",
+      "sha512": "afa99b575ec46f79929710dbca2b2afab1567a217753a91f33b6d27d35734070cb1af2e509e602850d7848985686284d4dcd7211c7a1b8048bee663b33e24de6",
+      "size": 87391,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "1IjD5062",
+      "slug": "continuity",
+      "name": "Continuity",
+      "versionId": "Jt2sCWTQ",
+      "versionNumber": "3.0.1+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "continuity-3.0.1+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/1IjD5062/versions/Jt2sCWTQ/continuity-3.0.1%2B26.3.jar",
+      "sha1": "63d51781b2c87e3b4b4ca98a133db8c98d3f2afb",
+      "sha512": "1ec1e3b2f73c26b19445d664822a8936e9076f4d8855a2ed5fac19786daa8da42da8fdc9526c4a53c227a82819a87ad8e73d5b4fc003f6519c50454c33014f04",
+      "size": 1002033,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "DOUdJVEm",
+      "slug": "controlify",
+      "name": "Controlify (Controller support)",
+      "versionId": "fo76vL20",
+      "versionNumber": "3.5.3+mc26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "controlify-3.5.3+mc26.3-universal.jar",
+      "url": "https://cdn.modrinth.com/data/DOUdJVEm/versions/fo76vL20/controlify-3.5.3%2Bmc26.3-universal.jar",
+      "sha1": "9df91163e9a325c83215df29bf743bd0e4aa544f",
+      "sha512": "cd4e64a9621dff200329b249dc63fc4542ce554db16c75c4b04cfa7495bf84e1a4bca0f89a7a9d4d425f6b6f23c8df52ab8ce323ee18ae49c6cf24858697bbf7",
+      "size": 6410187,
+      "client": "required",
+      "server": "optional"
+    },
+    {
+      "projectId": "xv94TkTM",
+      "slug": "controlling",
+      "name": "Controlling",
+      "versionId": "V6AbRm67",
+      "versionNumber": "26.3.4",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "Controlling-fabric-26.3-26.3.4.jar",
+      "url": "https://cdn.modrinth.com/data/xv94TkTM/versions/V6AbRm67/Controlling-fabric-26.3-26.3.4.jar",
+      "sha1": "c08b9b1ab6e5850c869ae4c22aa8205d164f7304",
+      "sha512": "a3b4d3f5d764421c247c61251a0ee60a612dd2c2df35a998341b910f2e502a514b20aad3cb47df0a202a62e84edaf512bb27331406553e6ea9203410e9c04751",
+      "size": 87230,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "DMu0oBKf",
+      "slug": "crafting-tweaks",
+      "name": "Crafting Tweaks",
+      "versionId": "Ub10ZKbE",
+      "versionNumber": "26.3.0.2+fabric-26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "craftingtweaks-fabric-26.3-26.3.0.2.jar",
+      "url": "https://cdn.modrinth.com/data/DMu0oBKf/versions/Ub10ZKbE/craftingtweaks-fabric-26.3-26.3.0.2.jar",
+      "sha1": "766a1cfed61d3e803a65e73525a8a0b19f6afbf7",
+      "sha512": "c8357538a77fe133e39799fecdfdfe083a45ee30caf794d3ef29033709748f4feb9169172850fc248c88df37865529b8690b4aeb56ce5e23b7cda7726a88b99d",
+      "size": 266402,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "ix1qq8Ux",
+      "slug": "crash-assistant",
+      "name": "Crash Assistant",
+      "versionId": "alR3tamq",
+      "versionNumber": "1.11.14",
+      "versionType": "release",
+      "gameVersions": [
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "CrashAssistant-fabric-26.2-26.3-1.11.14.jar",
+      "url": "https://cdn.modrinth.com/data/ix1qq8Ux/versions/alR3tamq/CrashAssistant-fabric-26.2-26.3-1.11.14.jar",
+      "sha1": "dea53a10e5fbfaacd18e212a0eb0fe328b3e9467",
+      "sha512": "eab56ff4773821ea74c16987a986032e0d41119078efed17f66e4d6f1e19ab43e1e465463b09386644c4ae73942909f29ff725736e2ea1ad6de9b8313080de31",
+      "size": 3464190,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "OsZiaDHq",
+      "slug": "creativecore",
+      "name": "CreativeCore",
+      "versionId": "pB8O6fTf",
+      "versionNumber": "2.14.25",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "CreativeCore_FABRIC_v2.14.25_mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/OsZiaDHq/versions/pB8O6fTf/CreativeCore_FABRIC_v2.14.25_mc26.3.jar",
+      "sha1": "4d28a1ccab6a6d6709472ee3fb23c6e06f291830",
+      "sha512": "850a061691e57815ba9ab5df9c6ff2ab2a452496660059fec0c6fdeb10cee18b3fd67b3f7b7c5aea5725db5da1df2df68a0b5d9cc04c0ba251524aabac2f4890",
+      "size": 1422746,
+      "client": "required",
+      "server": "optional"
+    },
+    {
+      "projectId": "ETlrkaYF",
+      "slug": "cubes-without-borders",
+      "name": "Cubes Without Borders",
+      "versionId": "26KCwNI9",
+      "versionNumber": "5.0.0+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "cwb-5.0.0+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/ETlrkaYF/versions/26KCwNI9/cwb-5.0.0%2B26.3.jar",
+      "sha1": "7e75cee129623fd6549df2915413e4afc36acf39",
+      "sha512": "abd2338408c3e46f02ef8741379d02a4bf34e6cf952d707f6f3cb145b9333c20b80bc787c03432a292d61e82a9453b9ebecd0ba3c7d50450b5087322914c1efc",
+      "size": 95121,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "cf:326652",
+      "slug": "cf-cupboard",
+      "name": "Cupboard",
+      "versionId": "cf:8890593",
+      "versionNumber": "cupboard-fabric-26.3-4.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "cupboard-fabric-26.3-4.2.jar",
+      "url": "https://edge.forgecdn.net/files/8890/593/cupboard-fabric-26.3-4.2.jar",
+      "sha1": "a3d53b259c44513fd27d1a1ccc998824c574c0c2",
+      "sha512": "",
+      "size": 38725,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "QwxR6Gcd",
+      "slug": "debugify",
+      "name": "Debugify",
+      "versionId": "FMaS2nZn",
+      "versionNumber": "26.3.0.0",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "debugify-26.3.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/QwxR6Gcd/versions/FMaS2nZn/debugify-26.3.0.0.jar",
+      "sha1": "62876ccaaaaad48c04499e4cf211433dc6c6e53b",
+      "sha512": "921a2f31531990df93af4099cd7bece26886b7fc38021642ae32032e435b8686a0ee208dba4eb1ed0057e6e0b3332f990fb77778781afccfe0e52d28dfb07c26",
+      "size": 355344,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "WEg59z5b",
+      "slug": "default-options",
+      "name": "Default Options",
+      "versionId": "YluujUg3",
+      "versionNumber": "26.3.0.1+fabric-26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "defaultoptions-fabric-26.3-26.3.0.1.jar",
+      "url": "https://cdn.modrinth.com/data/WEg59z5b/versions/YluujUg3/defaultoptions-fabric-26.3-26.3.0.1.jar",
+      "sha1": "b2a8ceea8bbf13b9e2531ba08bc8fc8028eae675",
+      "sha512": "d7a06faf92b1a1c7154abde1fc19a35c24978ae7a52064a35fa3352cb46c0eae3e8a7682eb02872c6eeab89a1e50af090312d95166b605f9a92bf9c8b349e378",
+      "size": 108208,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "JrvR9OHr",
+      "slug": "double-doors",
+      "name": "Double Doors",
+      "versionId": "KicqUZ57",
+      "versionNumber": "26.3.0-7.5-fabric+forge+neo",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "doubledoors-26.3.0-7.5.jar",
+      "url": "https://cdn.modrinth.com/data/JrvR9OHr/versions/KicqUZ57/doubledoors-26.3.0-7.5.jar",
+      "sha1": "6db35c1bf0f721fdd2efb98986de2987eb85dbf0",
+      "sha512": "0aa88eb3d71975f05d11cee347fc02367aa9c6d7962d0dcb2d0b701c4b4a2a525c183de3a21df7f5a0eeb3260dc64a1b9de9d8bf121f88d88cacb0f0db944353",
+      "size": 71619,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "LQ3K71Q1",
+      "slug": "dynamic-fps",
+      "name": "Dynamic FPS",
+      "versionId": "Jwq069rR",
+      "versionNumber": "3.11.10",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "dynamic-fps-3.11.10+minecraft-26.3.0-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/LQ3K71Q1/versions/Jwq069rR/dynamic-fps-3.11.10%2Bminecraft-26.3.0-fabric.jar",
+      "sha1": "a4860c9480f0ce1a468e1e4c254214b1f97e19b3",
+      "sha512": "7976d11411babfa3ac0c38898f26ee6192f22a4f595b637eeae3cc5185f326c0e4b9fd7d00b3d7e8d020dd861295f0df52f9a9d7c67e88946d0ba9fff4a9f894",
+      "size": 189474,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "qANg5Jrr",
+      "slug": "e4mc",
+      "name": "e4mc",
+      "versionId": "RNDvrMAd",
+      "versionNumber": "6.2.3-fabric-modern",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "e4mc-fabric-6.2.3-modern.jar",
+      "url": "https://cdn.modrinth.com/data/qANg5Jrr/versions/RNDvrMAd/e4mc-fabric-6.2.3-modern.jar",
+      "sha1": "78a4feb50b8cb67a80ca172a56e85c9cd79d9fbb",
+      "sha512": "4e5dac0458cd533346d7a9572582a19f2f775371027ff0bfe445e025c2fa16ce22d9da924e73f64806373f82257e32b0e264cb0c29feaaa40fb03b6ff2cae8c9",
+      "size": 663905,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "OZBR5JT5",
+      "slug": "easy-anvils",
+      "name": "Easy Anvils",
+      "versionId": "Unluz4cP",
+      "versionNumber": "26.3.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "easyanvils-v26.3.1-mc26.3.x+fabric.jar",
+      "url": "https://cdn.modrinth.com/data/OZBR5JT5/versions/Unluz4cP/easyanvils-v26.3.1-mc26.3.x%2Bfabric.jar",
+      "sha1": "5ecc428a87752385bd587e66f4e26500a5ba14f0",
+      "sha512": "3a3b71fbb8b1777fa893357fdb3f632684e52a5c1ce5c774c1a11ba27120de9a5e5dda853728debeebfd7ab560aaef7f0700fe0f99a6900ffcd80b71b2889184",
+      "size": 115499,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "9hx3AbJM",
+      "slug": "easy-magic",
+      "name": "Easy Magic",
+      "versionId": "74oaolkD",
+      "versionNumber": "26.3.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "easymagic-v26.3.1-mc26.3.x+fabric.jar",
+      "url": "https://cdn.modrinth.com/data/9hx3AbJM/versions/74oaolkD/easymagic-v26.3.1-mc26.3.x%2Bfabric.jar",
+      "sha1": "0671ac037931177f2cf626530d2f266ddf732d5d",
+      "sha512": "f2de64daa2b5f9ddd93f3147e0ff6a6ebecff7f4a9758a2e80f9d3170cf22ac6569603bda0fcdef52314cf2306c15ac15eda8a0199a8b03089fece8beffc594d",
+      "size": 123456,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "gA5euN8S",
+      "slug": "easy-shulker-boxes",
+      "name": "Easy Shulker Boxes",
+      "versionId": "qauAnBpV",
+      "versionNumber": "26.3.4",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "easyshulkerboxes-v26.3.4-mc26.3.x+fabric.jar",
+      "url": "https://cdn.modrinth.com/data/gA5euN8S/versions/qauAnBpV/easyshulkerboxes-v26.3.4-mc26.3.x%2Bfabric.jar",
+      "sha1": "9c5f23c4277245c6b5a907044edee40f677df4a2",
+      "sha512": "6107b3939f2a3de5c2285e4ec1dff133af862228e89ffb6b49be66b4374d9a05a306647ca3d6e20da60d3db0047e480522591679cfea66801b22a61b5053d054",
+      "size": 654846,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "UVtY3ZAC",
+      "slug": "enchantment-descriptions",
+      "name": "Enchantment Descriptions",
+      "versionId": "uZf2qbql",
+      "versionNumber": "26.3.0.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "EnchantmentDescriptions-fabric-MC26.3-26.3.0.2.jar",
+      "url": "https://cdn.modrinth.com/data/UVtY3ZAC/versions/uZf2qbql/EnchantmentDescriptions-fabric-MC26.3-26.3.0.2.jar",
+      "sha1": "df05cffc9b065262262e649dd90da0defb70f31a",
+      "sha512": "143438ec287a5b591c64d527714d499086d20b3c8d87df35728249ab35cebaa2eba885e458bd3a9ca8b349be2ffb497308507c8bbce0e251437f43ab02d376e7",
+      "size": 81219,
+      "client": "required",
+      "server": "optional"
+    },
+    {
+      "projectId": "NNAgCjsB",
+      "slug": "entityculling",
+      "name": "Entity Culling",
+      "versionId": "UWpkLRV5",
+      "versionNumber": "1.12.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "entityculling-fabric-1.12.1-mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/NNAgCjsB/versions/UWpkLRV5/entityculling-fabric-1.12.1-mc26.3.jar",
+      "sha1": "de9005580599906b55ff241bdf8cb27da999939a",
+      "sha512": "c56e2a19fa98b8ee85d7f46b74966a272f03ec9a8edacd4a6eb629970f19fd4d2a9bddeacb8405f9abdb790a40895244927a28cf5dbbe4dcb65a0b307f493fcb",
+      "size": 1522184,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "P7dR8mSH",
+      "slug": "fabric-api",
+      "name": "Fabric API",
+      "versionId": "Zns5SSRA",
+      "versionNumber": "0.166.2+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "fabric-api-0.166.2+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/P7dR8mSH/versions/Zns5SSRA/fabric-api-0.166.2%2B26.3.jar",
+      "sha1": "65636253571429971f25f5619692e6c1a6362028",
+      "sha512": "fb686a9fa923248328107a12498229d6951e316257f18b7d0e4cbd6885ba447ed50a44076a8a5ba47cfe2043b329db3587ab000aeab1face26b2587a5d4ba6b5",
+      "size": 1797523,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "Ha28R6CL",
+      "slug": "fabric-language-kotlin",
+      "name": "Fabric Language Kotlin",
+      "versionId": "SKW1BTL3",
+      "versionNumber": "1.14.2+kotlin.2.4.21",
+      "versionType": "release",
+      "gameVersions": [
+        "1.14",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.15",
+        "1.15.1",
+        "1.15.2",
+        "1.16",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5",
+        "1.17",
+        "1.17.1",
+        "1.18",
+        "1.18.1",
+        "1.18.2",
+        "1.19",
+        "1.19.1",
+        "1.19.2",
+        "1.19.3",
+        "1.19.4",
+        "1.20",
+        "1.20.1",
+        "1.20.2",
+        "1.20.3",
+        "1.20.4",
+        "1.20.5",
+        "1.20.6",
+        "1.21",
+        "1.21.1",
+        "1.21.10",
+        "1.21.11",
+        "1.21.2",
+        "1.21.3",
+        "1.21.4",
+        "1.21.5",
+        "1.21.6",
+        "1.21.7",
+        "1.21.8",
+        "1.21.9",
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "fabric-language-kotlin-1.14.2+kotlin.2.4.21.jar",
+      "url": "https://cdn.modrinth.com/data/Ha28R6CL/versions/SKW1BTL3/fabric-language-kotlin-1.14.2%2Bkotlin.2.4.21.jar",
+      "sha1": "f1d4ab6ecd54d9782521333a87eb50724ecb03e0",
+      "sha512": "7fb475c4a7e7bdf8d0aca4b5798a58a354c51443d5b1fbde3e8cf34dfbf7191ef4238b5f07d08ec9490ec180b371624523326c3ad45d4ed2b2be541de9407e5d",
+      "size": 8142878,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "WhbRG4iK",
+      "slug": "fallingleaves",
+      "name": "Falling Leaves",
+      "versionId": "5i0SxXxj",
+      "versionNumber": "2.0.8+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "fallingleaves-2.0.8+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/WhbRG4iK/versions/5i0SxXxj/fallingleaves-2.0.8%2B26.3.jar",
+      "sha1": "029c64703879734d7d325449852e0bf9309f3b8c",
+      "sha512": "43e536b1a7a0f642e1b0f070d82ef4572a390b543098af37d347eab3b6c0408c1ff78a800cafc211bb0568e9476468d607f57f08a8c45ea349555aea44e05b7f",
+      "size": 181764,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "FsoeTIV0",
+      "slug": "fast-item-frames",
+      "name": "Fast Item Frames",
+      "versionId": "iClvG6J5",
+      "versionNumber": "26.3.0",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "fastitemframes-v26.3.0-mc26.3.x+fabric.jar",
+      "url": "https://cdn.modrinth.com/data/FsoeTIV0/versions/iClvG6J5/fastitemframes-v26.3.0-mc26.3.x%2Bfabric.jar",
+      "sha1": "462da542fa73b44fd121ea84670d5c0d71df36e5",
+      "sha512": "f4ac11ea4c71add00a464d283d783d3d5d97f8e45ecdf31ab1e690db5f7252ee804f35636ba2ee0e245c2f44fb13ab1144230795c0b2c56b52335b17331bf614",
+      "size": 99387,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "x1hIzbuY",
+      "slug": "fastquit",
+      "name": "FastQuit",
+      "versionId": "ZZ5dfboC",
+      "versionNumber": "3.1.5+mc26.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "fastquit-3.1.5+mc26.2.jar",
+      "url": "https://cdn.modrinth.com/data/x1hIzbuY/versions/ZZ5dfboC/fastquit-3.1.5%2Bmc26.2.jar",
+      "sha1": "0977eb0a35e1a1602bc9306ddbbb9177734131f0",
+      "sha512": "cb6e3547e3fd3c6df75cfa8bf948ded35e4ed7ccb81c401184c4f02c4b0694a141c673b238605e8719b4b48d2ba90616a3b921344cde2d68b58da3e33edca477",
+      "size": 63310,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "uXXizFIs",
+      "slug": "ferrite-core",
+      "name": "FerriteCore",
+      "versionId": "d5ddUdiB",
+      "versionNumber": "9.0.0-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "ferritecore-9.0.0-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/uXXizFIs/versions/d5ddUdiB/ferritecore-9.0.0-fabric.jar",
+      "sha1": "eac76ff0f3753422c61b2c44487d0d195d88d4bc",
+      "sha512": "d81fa97e11784c19d42f89c2f433831d007603dd7193cee45fa177e4a6a9c52b384b198586e04a0f7f63cd996fed713322578bde9a8db57e1188854ae5cbe584",
+      "size": 72677,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "cf:882495",
+      "slug": "cf-fix-gpu-memory-leak",
+      "name": "fix GPU memory leak",
+      "versionId": "cf:8910991",
+      "versionNumber": "gpumemleakfix-fabric-26.3-1.9",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "gpumemleakfix-fabric-26.3-1.9.jar",
+      "url": "https://edge.forgecdn.net/files/8910/991/gpumemleakfix-fabric-26.3-1.9.jar",
+      "sha1": "f5ba48d34bc369083e9271dcb9201df130580e7c",
+      "sha512": "",
+      "size": 6246,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "ohNO6lps",
+      "slug": "forge-config-api-port",
+      "name": "Forge Config API Port",
+      "versionId": "JpKvrr9J",
+      "versionNumber": "26.3.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "ForgeConfigAPIPort-v26.3.1-mc26.3.x-Fabric.jar",
+      "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/JpKvrr9J/ForgeConfigAPIPort-v26.3.1-mc26.3.x-Fabric.jar",
+      "sha1": "a0d802d2cb010a5054c72f1ccf248433b6e0bafb",
+      "sha512": "b9339c21e14beec2eae0ca215317284bcaacef72e1d1dee8b3dfbe2de0eefaa758a172446df85419b6534557c479abe972d7d21f4ec194f2d436f9ed4329cb9f",
+      "size": 609574,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "XeEZ3fK2",
+      "slug": "freecam",
+      "name": "Freecam",
+      "versionId": "lwrkvqym",
+      "versionNumber": "1.5.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "freecam-fabric-1.5.1+mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/XeEZ3fK2/versions/lwrkvqym/freecam-fabric-1.5.1%2Bmc26.3.jar",
+      "sha1": "507cb204ffc411c81f94c890370a54d04ff59efb",
+      "sha512": "bc7bf23c41e5c3ddb43f4b455ff7d4d061cff8b574ff33aef0450a2c5ab9acd992020a9ffe6c0478993248861ee1232a85f7d64f19ad9c4e1f37d6cbdfbcb3b1",
+      "size": 2010574,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "hYykXjDp",
+      "slug": "fzzy-config",
+      "name": "Fzzy Config",
+      "versionId": "YkOumqzV",
+      "versionNumber": "0.7.7+fix3+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "fzzy_config-0.7.7+fix3+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/hYykXjDp/versions/YkOumqzV/fzzy_config-0.7.7%2Bfix3%2B26.3.jar",
+      "sha1": "373b6365bb9f447d2810c151ec2f698ee789366f",
+      "sha512": "bbf47ab921fec1215d6e59ab0d875b565c22bbf039ae985b6e64313412b66835c443006c428ac9b8ef7ba396a4e0aa2bb0d65126c95a595bc56376655cb1c9ee",
+      "size": 2375413,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "T0OUgf8P",
+      "slug": "get-it-together-drops",
+      "name": "Get It Together, Drops!",
+      "versionId": "BOGqc3kp",
+      "versionNumber": "v1.5.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "getittogetherdrops-fabric-26.1.1-1.5.1.jar",
+      "url": "https://cdn.modrinth.com/data/T0OUgf8P/versions/BOGqc3kp/getittogetherdrops-fabric-26.1.1-1.5.1.jar",
+      "sha1": "585b823a54bab112cdc905689513a2f31500c80e",
+      "sha512": "9a3baea44ee6dfef6957027798f7aae672c3c18c54076c181b9bb3190c26fe09f1e54b3cd130f16290e770f3f64398a5d5dd7637043fe4aa012d049631d50d7f",
+      "size": 82997,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "PaUMOeP0",
+      "slug": "im-fast",
+      "name": "I'm Fast",
+      "versionId": "Utpunxwi",
+      "versionNumber": "1.0.6",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "imfast-FABRIC-26.3-1.0.6.jar",
+      "url": "https://cdn.modrinth.com/data/PaUMOeP0/versions/Utpunxwi/imfast-FABRIC-26.3-1.0.6.jar",
+      "sha1": "b51c53e0f7ad23413b627841eb019711671ba365",
+      "sha512": "6617e6438e56240d47baa7a89a71644bfff6b5da4d99efd019352d26194850593461a13ee7405de0b97dc9204adcb9b9a3e27143277336a58fc3a5f19433ebe2",
+      "size": 2909,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "5faXoLqX",
+      "slug": "iceberg",
+      "name": "Iceberg",
+      "versionId": "zhVGUJyW",
+      "versionNumber": "1.4.3.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "Iceberg-26.3-fabric-1.4.3.1.jar",
+      "url": "https://cdn.modrinth.com/data/5faXoLqX/versions/zhVGUJyW/Iceberg-26.3-fabric-1.4.3.1.jar",
+      "sha1": "e65d856fdfa925045b99283b60ba002dcca7e332",
+      "sha512": "22ab9c3394a289b16463c00116c44013e421bfca16f5370b92f32a193675322a9f47be47b21058721ecb2ce9ba534723bb1f39fd83e0c17dd0573d228a44ad4f",
+      "size": 361211,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "5ZwdcRci",
+      "slug": "immediatelyfast",
+      "name": "ImmediatelyFast",
+      "versionId": "3MP9UR23",
+      "versionNumber": "1.17.1+26.3-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "ImmediatelyFast-Fabric-1.17.1+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/5ZwdcRci/versions/3MP9UR23/ImmediatelyFast-Fabric-1.17.1%2B26.3.jar",
+      "sha1": "f565bbeb201f2305e81761429d3f1f47e1c3a321",
+      "sha512": "8e139589fd995bce3d485a34d92a07243964212f7ed2e4fc2f6de5b9a74d0f59b03252e7ce40c64e006cf3e21bed5de27b830d33ef048b286e041f6178ad8428",
+      "size": 99586,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "REfW2AEX",
+      "slug": "invmove",
+      "name": "InvMove",
+      "versionId": "wjZzQM0p",
+      "versionNumber": "0.9.6+26.3-fabric",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.3",
+        "26.4-snapshot-1",
+        "26.4-snapshot-2",
+        "26.4-snapshot-3",
+        "26.4-snapshot-4",
+        "26.4-snapshot-5",
+        "26.4-snapshot-6",
+        "26.4-snapshot-7"
+      ],
+      "fileName": "InvMove-0.9.6+26.3-Fabric.jar",
+      "url": "https://cdn.modrinth.com/data/REfW2AEX/versions/wjZzQM0p/InvMove-0.9.6%2B26.3-Fabric.jar",
+      "sha1": "c0a354ebdd86dfd920e7ffda22215e0a3a007be6",
+      "sha512": "992428998c7e05e287b0c36a094bd1404c984989c6cb08dc2101be125338ad4d513cfc39de6c254dd9a6cacd937e9ec986fb10d81f9a8d8157ab088f476b8774",
+      "size": 84265,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "YL57xq9U",
+      "slug": "iris",
+      "name": "Iris Shaders",
+      "versionId": "vTN4NRGW",
+      "versionNumber": "1.11.7+26.3-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "iris-fabric-1.11.7+mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/YL57xq9U/versions/vTN4NRGW/iris-fabric-1.11.7%2Bmc26.3.jar",
+      "sha1": "fa03640ba1e4ef2f7ae3619c6373a06e46d0ba2c",
+      "sha512": "d8d3312f77fc52a48e4a6cd836fda33669bdebcb4de0b8c0d30adc808b287330a533e0baef355cc1ce6336a26851d9775369a802a4666b7b7a6266af20088f42",
+      "size": 2850938,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "b1fMg6sH",
+      "slug": "item-borders",
+      "name": "Item Borders",
+      "versionId": "pVZMoGZS",
+      "versionNumber": "1.3.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "ItemBorders-26.3-fabric-1.3.3.jar",
+      "url": "https://cdn.modrinth.com/data/b1fMg6sH/versions/pVZMoGZS/ItemBorders-26.3-fabric-1.3.3.jar",
+      "sha1": "9ef1cf7e86deae89425bdbbad10429eacc3246ff",
+      "sha512": "434f79b4a7f3791a6646ddc7761050e7538b7558ad1ceb8ad8f03afd2367afad674c11c4caa2638e902a0242e6bb3646d0610ccac2e3c97fc46b3c1cef99d79d",
+      "size": 23010,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "cVNW5lr6",
+      "slug": "item-highlighter",
+      "name": "Item Highlighter",
+      "versionId": "aaau0F2w",
+      "versionNumber": "1.2.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "Highlighter-26.3-fabric-1.2.3.jar",
+      "url": "https://cdn.modrinth.com/data/cVNW5lr6/versions/aaau0F2w/Highlighter-26.3-fabric-1.2.3.jar",
+      "sha1": "a6345c4d5687de857eeeeb5eebc37b8c111385c7",
+      "sha512": "dc69485c9fb1679d35dab6b5e6842d10a59a8658906bfd9a287679e9347bb52ba577d8bcc1fff572e78aed7fa9c41885beb6430b05f0d2030e8eba4034597003",
+      "size": 29418,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "p8RJPJIC",
+      "slug": "ixeris",
+      "name": "Ixeris",
+      "versionId": "mj30lAl8",
+      "versionNumber": "4.6.11+26.3-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "Ixeris-4.6.11+26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/p8RJPJIC/versions/mj30lAl8/Ixeris-4.6.11%2B26.3-fabric.jar",
+      "sha1": "c45c38e918fa8565abe03904d366faac7ec6b229",
+      "sha512": "f7e63c8721c200c56c860188d142699db7b5133cc6354b536660016b26345b83375d0dd14b98971e48e96faa22c261f2a30ea444fe68237064d72f2b4c4ca345",
+      "size": 769078,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "nvQzSEkH",
+      "slug": "jade",
+      "name": "Jade 🔍",
+      "versionId": "71CTWqdE",
+      "versionNumber": "26.3.5+fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "Jade-mc26.3-Fabric-26.3.5.jar",
+      "url": "https://cdn.modrinth.com/data/nvQzSEkH/versions/71CTWqdE/Jade-mc26.3-Fabric-26.3.5.jar",
+      "sha1": "da61413c586c8918c14e2bbfdc808ce2d56ea9df",
+      "sha512": "2e7331e62eb6658268ae92dc42de8b469f50dd6c6a9d2546a6f649bae97c2cdfd8d4c1560948cf46269175d2c79c6c47a36a02685e39d476768d18fbb2a28703",
+      "size": 1092685,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "IYY9Siz8",
+      "slug": "jamlib",
+      "name": "JamLib",
+      "versionId": "nlVdNwtg",
+      "versionNumber": "2.3.3+26.3.x",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "jamlib-fabric-2.3.3-26.3.x.jar",
+      "url": "https://cdn.modrinth.com/data/IYY9Siz8/versions/nlVdNwtg/jamlib-fabric-2.3.3-26.3.x.jar",
+      "sha1": "3a54c1f53842ff332056f49f0c9e948d136dedd7",
+      "sha512": "c61d181a2c8c3b7851fd4f7efe58c5f2eae156354c6c3c67864213415eae025f93fbc6d6274578f414e786d86273d0d8c2f947f5df100207b6663ddacb13144d",
+      "size": 265518,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "J81TRJWm",
+      "slug": "konkrete",
+      "name": "Konkrete",
+      "versionId": "pQLA2B54",
+      "versionNumber": "1.11.1-26.3-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "konkrete_fabric_1.11.1_MC_26.3.jar",
+      "url": "https://cdn.modrinth.com/data/J81TRJWm/versions/pQLA2B54/konkrete_fabric_1.11.1_MC_26.3.jar",
+      "sha1": "61412064baed880464ad30ef54cba93be8dccd67",
+      "sha512": "ef6b12dbf3f616ba4089e706f27d76c543987f4a20509bf3def711ddb9279b94170c67228b9e44a2e2c189a80a7c9a5cd4c7e079281b7ac1cb0ec7d9c46b9aa8",
+      "size": 1214374,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "yBW8D80W",
+      "slug": "lambdynamiclights",
+      "name": "LambDynamicLights - Dynamic Lights",
+      "versionId": "rylKnJ4M",
+      "versionNumber": "4.13.0+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "lambdynamiclights-4.13.0+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/yBW8D80W/versions/rylKnJ4M/lambdynamiclights-4.13.0%2B26.3.jar",
+      "sha1": "18c8ab40f03219bfcf809a83db6e3958ed8bb866",
+      "sha512": "67c37ca7d619bd7f2b0dc02217070c20e34fb3bb3363d4e23f5ef9ca90b1b58adb223fab73639a3499d366497316f1eb297d2759f3ffb976467b4759f784619d",
+      "size": 1345715,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "uLbm7CG6",
+      "slug": "language-reload",
+      "name": "Language Reload",
+      "versionId": "QVn4cccd",
+      "versionNumber": "1.7.8+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "language-reload-1.7.8+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/uLbm7CG6/versions/QVn4cccd/language-reload-1.7.8%2B26.3.jar",
+      "sha1": "e6fd2df83d1d3d0f352a7e45eaf76f4551c136f2",
+      "sha512": "6366596875e9fa33b6b8119d08e5c18f3514662e319a735cedc8addb00bff4cf3179f3a33533b2070c1ddd776f23e6a5f22b69d0da0589f3091f0db9eead1d43",
+      "size": 79325,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "vE2FN5qn",
+      "slug": "lmd",
+      "name": "Let Me Despawn",
+      "versionId": "a3ISt6Ob",
+      "versionNumber": "1.26.11.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3",
+        "26.4-snapshot-1",
+        "26.4-snapshot-2",
+        "26.4-snapshot-3",
+        "26.4-snapshot-4",
+        "26.4-snapshot-5",
+        "26.4-snapshot-6",
+        "26.4-snapshot-7"
+      ],
+      "fileName": "letmedespawn-fabric-26.3-1.26.11.1.jar",
+      "url": "https://cdn.modrinth.com/data/vE2FN5qn/versions/a3ISt6Ob/letmedespawn-fabric-26.3-1.26.11.1.jar",
+      "sha1": "d6ca307b58f5f51efa82c675d71fd5f90e310287",
+      "sha512": "fde85df1fe143dde0bcc8ff48a5525cb2b7cccb9be944883654c9fad1b6b875b1bafcf784d4963f2fa171e44c69e4bb361afd8dac4a1ea33e60b58ba1194ca41",
+      "size": 30356,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "gvQqBUqZ",
+      "slug": "lithium",
+      "name": "Lithium",
+      "versionId": "Lal8mJGR",
+      "versionNumber": "mc26.3-0.26.4-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "lithium-fabric-0.26.4+mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/gvQqBUqZ/versions/Lal8mJGR/lithium-fabric-0.26.4%2Bmc26.3.jar",
+      "sha1": "b87fcae581c1ff1b3aac8314004c9d7616f90827",
+      "sha512": "033f85813b0bcafe848a55dd741b9b1a30685dcdf774a922507bf63716b16bfd0fc12856ffc4ca3c76a36f6dc73310a7dfdc4b6dc9e35c21a4482627b1d30b85",
+      "size": 921530,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "EltpO5cN",
+      "slug": "lootr",
+      "name": "Lootr",
+      "versionId": "gVwn7m2v",
+      "versionNumber": "1.25.42.124",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "lootr-fabric-26.3-1.25.42.124.jar",
+      "url": "https://cdn.modrinth.com/data/EltpO5cN/versions/gVwn7m2v/lootr-fabric-26.3-1.25.42.124.jar",
+      "sha1": "34451e642ef673386359a584c4b83d381c69d252",
+      "sha512": "290786fd4af4011c4f09c425d262bacc80f6ef47e23fbf6424193c719b6045a70cae70308c95d30c5ab78bf1f5a3d089cc3b01db8cc4dacc1a74c0f2d70c245d",
+      "size": 1583342,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "qJDfP7WN",
+      "slug": "main-menu-credits",
+      "name": "Main Menu Credits",
+      "versionId": "swCvQBI6",
+      "versionNumber": "1.4.0+26.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "main-menu-credits-1.4.0+26.2-universal.jar",
+      "url": "https://cdn.modrinth.com/data/qJDfP7WN/versions/swCvQBI6/main-menu-credits-1.4.0%2B26.2-universal.jar",
+      "sha1": "d73b75eefb787769a965166793e0c9ed58e6de85",
+      "sha512": "5d718db852914a19bbb27c44e0b42b2fa33e2435fdc137e14244bdb84a92f1341cb1996cc3f0fa668c95460ca437ef0c930d5e6a9489991d3cf8b88a2abf8272",
+      "size": 31011,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "mH8wdmqr",
+      "slug": "max-health-fix",
+      "name": "Max Health Fix",
+      "versionId": "qfmhAY2M",
+      "versionNumber": "26.3.0.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "MaxHealthFix-fabric-MC26.3-26.3.0.1.jar",
+      "url": "https://cdn.modrinth.com/data/mH8wdmqr/versions/qfmhAY2M/MaxHealthFix-fabric-MC26.3-26.3.0.1.jar",
+      "sha1": "25b964699b861a41514fd189a0030799cd5b7e04",
+      "sha512": "6b33da5c448c71a7a6aca98a122dd8f9db34b88198e898c137f7612987bfa44d443e8d2f4e532d0003489c3991f120176119e6957c3543cfc3a61bf09209a583",
+      "size": 19014,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "Ok6FyXJ9",
+      "slug": "mixintrace-reborn",
+      "name": "MixinTrace Reborn",
+      "versionId": "j3SeQVjR",
+      "versionNumber": "1.0-26.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2"
+      ],
+      "fileName": "mixintrace-1.0-26.1-universal.jar",
+      "url": "https://cdn.modrinth.com/data/Ok6FyXJ9/versions/j3SeQVjR/mixintrace-1.0-26.1-universal.jar",
+      "sha1": "3b270bf23ffec81086c23a78dd473608640b0a96",
+      "sha512": "d1b4762208b4d056b1a4313dbf661a5116d5614c3d8f90ff64c1977a7581a438067869688b34bca6e1f8068ca47abddc599dcbd64760e30a7b33bf6f4b5b220c",
+      "size": 7167,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "mOgUt4GM",
+      "slug": "modmenu",
+      "name": "Mod Menu",
+      "versionId": "xckkBHD5",
+      "versionNumber": "21.0.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "modmenu-21.0.1.jar",
+      "url": "https://cdn.modrinth.com/data/mOgUt4GM/versions/xckkBHD5/modmenu-21.0.1.jar",
+      "sha1": "884ab621735264187ccbfc87017cf55bb54d47ee",
+      "sha512": "d00d52d5342728da13a6237f76c50fc5fd1c62d8112ae4e07726bbc64d2019a76130d6b2968765df81c6499225588eacee6681eebc13c0ada3cad91fc8ab2984",
+      "size": 862761,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "TjSm1wrD",
+      "slug": "modernfix-mvus",
+      "name": "ModernFix-mVUS",
+      "versionId": "pa9cAfYg",
+      "versionNumber": "5.27.20-build.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "modernfix-5.27.20-build.2.jar",
+      "url": "https://cdn.modrinth.com/data/TjSm1wrD/versions/pa9cAfYg/modernfix-5.27.20-build.2.jar",
+      "sha1": "b63337e801fbf2cb420a049d69220c56e083f514",
+      "sha512": "b586434056107aac4ef86e9351d66170dac65a45a1e5f8bd48fb931b3012ab2431b16476eb9c256773339e2b4c60f6f3e90a4709180f700b2aea59ff607f4243",
+      "size": 1168784,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "8qkXwOnk",
+      "slug": "morechathistory",
+      "name": "More Chat History",
+      "versionId": "qpDhYv1Y",
+      "versionNumber": "2.0.0",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "morechathistory-2.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/8qkXwOnk/versions/qpDhYv1Y/morechathistory-2.0.0.jar",
+      "sha1": "6ce97845f93090dd7556b6e64bb7d63e126b83b4",
+      "sha512": "e85558f3effe8baee6394b61f48981989d22e181a3b8772c0f521022914d4c3603785e0e23a8df4a5e6ce9407c6abb8cf7d73183901908227a5623daadf30d67",
+      "size": 3773,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "51shyZVL",
+      "slug": "moreculling",
+      "name": "More Culling",
+      "versionId": "5jIORlSK",
+      "versionNumber": "1.9.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "moreculling-fabric-26.3-1.9.1.jar",
+      "url": "https://cdn.modrinth.com/data/51shyZVL/versions/5jIORlSK/moreculling-fabric-26.3-1.9.1.jar",
+      "sha1": "2c768b910eb1cb3fcb880bcacc7dbf9c0678ce06",
+      "sha512": "93ae8cfe7b07391ca2966a86a60798fe7f37c2092545ed52a74d01a405b66cc5ecb236e303dc5c966a5d1ac20480e88c4f35b1d7b75a31c790a32bf58551a909",
+      "size": 297173,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "aC3cM3Vq",
+      "slug": "mouse-tweaks",
+      "name": "Mouse Tweaks",
+      "versionId": "LeMuMhLv",
+      "versionNumber": "26.3-2.31-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "MouseTweaks-fabric-mc26.3-2.31.jar",
+      "url": "https://cdn.modrinth.com/data/aC3cM3Vq/versions/LeMuMhLv/MouseTweaks-fabric-mc26.3-2.31.jar",
+      "sha1": "65c0f5588900e7ade476164ec4915bfab52c129a",
+      "sha512": "61c011308b5d1d0b2163473cbbc1ad0f1b3ac873b77e3e9ff67ccb437a946fbe5f34077281ebd2b91647324969d319f6499ac4b319cfcb9ea027bac47a52c081",
+      "size": 74569,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "nPZr02ET",
+      "slug": "netherportalfix",
+      "name": "NetherPortalFix",
+      "versionId": "RC1fmH8z",
+      "versionNumber": "26.3.0.1+fabric-26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "netherportalfix-fabric-26.3-26.3.0.1.jar",
+      "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/RC1fmH8z/netherportalfix-fabric-26.3-26.3.0.1.jar",
+      "sha1": "931aa21198cdff436adecc90cbf73de8f16b0d67",
+      "sha512": "3e30a398702f49e6336870951bc7d64a650a370190dbab058e927aeb6a3bf398947497ae8e1750a3b52cbcdf751d5d9b6a78896313d342d16cbe204613703bb1",
+      "size": 215448,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "MPCX6s5C",
+      "slug": "not-enough-animations",
+      "name": "Not Enough Animations",
+      "versionId": "bznXVEiI",
+      "versionNumber": "1.12.7",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "notenoughanimations-fabric-1.12.7-mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/MPCX6s5C/versions/bznXVEiI/notenoughanimations-fabric-1.12.7-mc26.3.jar",
+      "sha1": "34c07d208e1b7e35b9723322266eb415fd60f1bf",
+      "sha512": "56983d1591b382e0fc2689f639eab9b92a9c3c27cf5269cdcf0363f43c603698c7efa1f4bd287ec939232c179e44297d8130267500df3099d13e853a5c4bb63d",
+      "size": 1866974,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "JuksLGBQ",
+      "slug": "optigui",
+      "name": "OptiGUI",
+      "versionId": "rRPZGCYn",
+      "versionNumber": "2.3.0-beta.11+26.3",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "optigui-2.3.0-beta.11+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/JuksLGBQ/versions/rRPZGCYn/optigui-2.3.0-beta.11%2B26.3.jar",
+      "sha1": "97a312e0a545814a0bb83b3dc8e897abac720525",
+      "sha512": "e973a9a54774ec1bc5a6d7009feb3816b0179ae0f41a56ad0fb331734f96c157f35e68375b858c729ecfe45885c2d198a7301b658ffeee34770429b0de61520f",
+      "size": 609584,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "pYFUU6cq",
+      "slug": "particular-reforged",
+      "name": "Particular ✨ Reforged",
+      "versionId": "L9QVxoJh",
+      "versionNumber": "1.6.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "particular-26.3-Fabric-1.6.1.jar",
+      "url": "https://cdn.modrinth.com/data/pYFUU6cq/versions/L9QVxoJh/particular-26.3-Fabric-1.6.1.jar",
+      "sha1": "e55f73a0ed9f0c54a6470f117b4202ffb2c1bbfd",
+      "sha512": "c4e988ea5f17078da5f92a05f258da33871f4e633254a8696f9c630152bfe2d87de14f7735a87ef257f0b4cecd2402e18014db32386377d32cf5714df423d069",
+      "size": 374548,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "3qAYkBMB",
+      "slug": "polytone",
+      "name": "Polytone",
+      "versionId": "qM0zPlR5",
+      "versionNumber": "26.3-6.8.6-alpha",
+      "versionType": "alpha",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "polytone-26.3-6.8.6-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/3qAYkBMB/versions/qM0zPlR5/polytone-26.3-6.8.6-fabric.jar",
+      "sha1": "8762bac6ce639a519884d8dd686ac78642329cca",
+      "sha512": "f50370557e24f5404f17b6c055d35a3e4540f6d0dc9b9b406afc4d0f1f8a14a33b7993b747bb9e7d92f7c83d818493b1082858cf2f85b06d476107577af9a087",
+      "size": 1681327,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "rcTfTZr3",
+      "slug": "presence-footsteps",
+      "name": "Presence Footsteps",
+      "versionId": "PV68dcBA",
+      "versionNumber": "1.14.1+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3-rc-3",
+        "26.3"
+      ],
+      "fileName": "PresenceFootsteps-1.14.1+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/rcTfTZr3/versions/PV68dcBA/PresenceFootsteps-1.14.1%2B26.3.jar",
+      "sha1": "99f525f3c138fb9c3ee0e13e940181899f7aeaea",
+      "sha512": "de521483f351059ffd4ec0d4d88a91e8a0a9d3fc1f0246eec733527d4f3c73c78815a70c7e683c68bad32ee1e739118d52b2da66a2733805f863c1bda1acd70c",
+      "size": 5765525,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "aaRl8GiW",
+      "slug": "prickle",
+      "name": "Prickle",
+      "versionId": "aPdekuq6",
+      "versionNumber": "26.3.0.2",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "PrickleMC-fabric-MC26.3-26.3.0.2.jar",
+      "url": "https://cdn.modrinth.com/data/aaRl8GiW/versions/aPdekuq6/PrickleMC-fabric-MC26.3-26.3.0.2.jar",
+      "sha1": "30321451a787179cd9df0c01373cc5cb8c4fe2e1",
+      "sha512": "8ac58d09d441e6c88c39b3e1f069ae674959c991389e35b27fa1f3e3a18ea1424d095697751e5618dd296b4eb120fe622ada7cd2214fd6bcfb2cafe398f9bffb",
+      "size": 85386,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "1OE8wbN0",
+      "slug": "prism-lib",
+      "name": "Prism",
+      "versionId": "ETN2U7Rc",
+      "versionNumber": "1.1.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "Prism-26.3-fabric-1.1.3.jar",
+      "url": "https://cdn.modrinth.com/data/1OE8wbN0/versions/ETN2U7Rc/Prism-26.3-fabric-1.1.3.jar",
+      "sha1": "91852e4f48ccc0bffe216ba000115c10a4afd84a",
+      "sha512": "fe6c9760c85ca6157e3219b1d61004ab8b2190a5ae9ccd1475a4ed2eec121dcf6c02883bb7575b4a31667c4f2d477d92081656c582f5274ee85a262fa9fb874f",
+      "size": 60462,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "3IuO68q1",
+      "slug": "puzzle",
+      "name": "Puzzle",
+      "versionId": "zLgrUpvu",
+      "versionNumber": "2.3.1+26.3-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "puzzle-fabric-2.3.1+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/3IuO68q1/versions/zLgrUpvu/puzzle-fabric-2.3.1%2B26.3.jar",
+      "sha1": "323a50c8f8385d366985d1e67f73d3c595199448",
+      "sha512": "677ee8736eb6a00e3e8ac2b4e60e5771d3c6ca3e44f73b099b78cfef22b5ffc3b851ef931f902d8a668648cb6261ee1c531d8a607e2603e81230c3e132dc3fb8",
+      "size": 97291,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "QAGBst4M",
+      "slug": "puzzles-lib",
+      "name": "Puzzles Lib",
+      "versionId": "TZ0hp2h3",
+      "versionNumber": "26.3.18",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "puzzleslib-v26.3.18-mc26.3.x+fabric.jar",
+      "url": "https://cdn.modrinth.com/data/QAGBst4M/versions/TZ0hp2h3/puzzleslib-v26.3.18-mc26.3.x%2Bfabric.jar",
+      "sha1": "3819387e2da9c584b5e34df6c31d903b3deb21ba",
+      "sha512": "98c3ce53f06871d1d735efd6fd4a3e968f48808d83c1e4863d599db8e1b8f44e178334aafbf5a4d5a7f003931e5aa7a8bddba4ad56f86857d0990f3d5d22de9a",
+      "size": 1095082,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "Bh37bMuy",
+      "slug": "reeses-sodium-options",
+      "name": "Reese's Sodium Options",
+      "versionId": "EfchygKx",
+      "versionNumber": "mc26.3-2.2.5+fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "reeses-sodium-options-fabric-2.2.5+mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/Bh37bMuy/versions/EfchygKx/reeses-sodium-options-fabric-2.2.5%2Bmc26.3.jar",
+      "sha1": "305aa813172358eb5e95d0a7af02a44326261226",
+      "sha512": "9c6f335618c1ec03cf9030cd88cdc32be5457bf4fbabd49c76ed68df53530730cf4681ec3742f2c6efbd48cb2b784f24c636977a95d78df62af1214ec5488be0",
+      "size": 258082,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "ZP7xHXtw",
+      "slug": "rrls",
+      "name": "Remove Reloading Screen",
+      "versionId": "CAVJGGfj",
+      "versionNumber": "5.2.8+mc26.3",
+      "versionType": "alpha",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "rrls-5.2.8+mc.26.3.jar",
+      "url": "https://cdn.modrinth.com/data/ZP7xHXtw/versions/CAVJGGfj/rrls-5.2.8%2Bmc.26.3.jar",
+      "sha1": "2b86b92f9c3ad773f5c7d751cee0512ebaccaf60",
+      "sha512": "642eea5dac162c7273f2426cbe3c38d7239a4630924ce05e91ea43bb1e8bca4d780594c4bd8728bd9239eda6859c167b79e6dee3cdb4ed3f0b118186c4e311a9",
+      "size": 117764,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "ZDCwiIc3",
+      "slug": "renice-shot",
+      "name": "Renice Shot",
+      "versionId": "cqRSJ7PC",
+      "versionNumber": "1.2.1+mc26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "renice-shot-1.2.1+mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/ZDCwiIc3/versions/cqRSJ7PC/renice-shot-1.2.1%2Bmc26.3.jar",
+      "sha1": "224e9c47d9234549a589b46b9680be53b3697a65",
+      "sha512": "566ae63254768869e3b4f706f8296adc8d6b5dc48a7aa129ed32776840a7c7ea1434913f13f4899ade579edf20bbcd737c0332bff0b255ce9f39a461287bbe24",
+      "size": 51804,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "Cnejf5xM",
+      "slug": "rightclickharvest",
+      "name": "RightClickHarvest",
+      "versionId": "JqbL9uGG",
+      "versionNumber": "4.7.1+26.3.x",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "rightclickharvest-fabric-4.7.1-26.3.x.jar",
+      "url": "https://cdn.modrinth.com/data/Cnejf5xM/versions/JqbL9uGG/rightclickharvest-fabric-4.7.1-26.3.x.jar",
+      "sha1": "cad0c0723bf4e52ddaf0abab680d16756714fadd",
+      "sha512": "fdb4de2b7dbd55ba3b3de9c27c3648948d29b95a398be0f33fb6c3cb4795f8779c6a3088b02034b7889235d03a3c38cc01e0b00797419b9f504aed2944040325",
+      "size": 279835,
+      "client": "unsupported",
+      "server": "required"
+    },
+    {
+      "projectId": "fuuu3xnx",
+      "slug": "searchables",
+      "name": "Searchables",
+      "versionId": "wV79bLRS",
+      "versionNumber": "1.0.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "Searchables-fabric-26.3-1.0.3.jar",
+      "url": "https://cdn.modrinth.com/data/fuuu3xnx/versions/wV79bLRS/Searchables-fabric-26.3-1.0.3.jar",
+      "sha1": "2712ba020dd0d373fb39c399c89497340e290117",
+      "sha512": "70d4b55990beaa0a5902d8d1b92243430a0e3abaab177dd2273c0996fba6eac566f727802f78be3a9498feac71f7e83b500d0844ae30f33666cf90ee7f167b35",
+      "size": 79857,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "cf:582327",
+      "slug": "cf-smooth-chunk-save",
+      "name": "Server Performance - Smooth Chunk Save",
+      "versionId": "cf:9255078",
+      "versionNumber": "smoothchunk-fabric-26.1-4.4",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "smoothchunk-fabric-26.1-4.4.jar",
+      "url": "https://edge.forgecdn.net/files/9255/78/smoothchunk-fabric-26.1-4.4.jar",
+      "sha1": "f8837e2fb93ce5da656092ae967148976498ed3a",
+      "sha512": "",
+      "size": 16975,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "PE656UHx",
+      "slug": "simple-hud-enhanced",
+      "name": "Simple HUD Enhanced",
+      "versionId": "zV7Skn9n",
+      "versionNumber": "4.7.5",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "simple-hud-enhanced+26.3-4.7.5.jar",
+      "url": "https://cdn.modrinth.com/data/PE656UHx/versions/zV7Skn9n/simple-hud-enhanced%2B26.3-4.7.5.jar",
+      "sha1": "bf04acbe5ba938e69d892c84afab614b1c422a2b",
+      "sha512": "cc1d32e8ccbcf4dcd72b20f612b01ca7731b76381e9f171066734150561b3d03d0fae444f564d5bacfe8a455b28515f9ad568e50212674979cab4a8b0d949314",
+      "size": 1171946,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "9eGKb6K1",
+      "slug": "simple-voice-chat",
+      "name": "Simple Voice Chat",
+      "versionId": "x9jLR94Q",
+      "versionNumber": "fabric-2.6.27+26.3",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "voicechat-fabric-2.6.27+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/x9jLR94Q/voicechat-fabric-2.6.27%2B26.3.jar",
+      "sha1": "23442735927fe3839650196c0656eb82b0322d87",
+      "sha512": "f2de66761c0f249bb0f9a4b348f98b97ab4e89d3ed3fd37638420364b7431b757933aa08c0cc3e7ba3dd85a602d6c2de313c2309fc587e93cabf31fc5f6df27e",
+      "size": 5611159,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "DWuwk8aA",
+      "slug": "skyboxify",
+      "name": "Skyboxify",
+      "versionId": "LSewIGOo",
+      "versionNumber": "3.4",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "skyboxify-3.4+26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/DWuwk8aA/versions/LSewIGOo/skyboxify-3.4%2B26.3-fabric.jar",
+      "sha1": "b24b18f87c6301aef4812f6d0e769b2d7c7bbd1f",
+      "sha512": "b63f0b7fe627b36a65428e24118ff8604fa0fa31f5cff8a7d2aac8d8f77bbf091433a84c3bbe87ce8d5d83876d45c5b4158ec344a53c5136802690230c0469f6",
+      "size": 306236,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "ydZic5r4",
+      "slug": "smooth-swapping",
+      "name": "Smooth Swapping",
+      "versionId": "TYYQn5Mn",
+      "versionNumber": "0.9.11-26.3",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "smoothswapping-0.9.11-26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/ydZic5r4/versions/TYYQn5Mn/smoothswapping-0.9.11-26.3-fabric.jar",
+      "sha1": "2c58662fe1873bb084cfd949e69ce66e232998cb",
+      "sha512": "bbff9cd78c1c566907b4ffa97d37d43d56eb96c6d58dc566a3954998a91a0cf708e014bd635eeda14e3956e9c3feb9ce34bbca1643a46aa1d7fbe4c88e3e80ee",
+      "size": 67614,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "AANobbMI",
+      "slug": "sodium",
+      "name": "Sodium",
+      "versionId": "bAZQdGpg",
+      "versionNumber": "mc26.3-0.9.2-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "sodium-fabric-0.9.2+mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/AANobbMI/versions/bAZQdGpg/sodium-fabric-0.9.2%2Bmc26.3.jar",
+      "sha1": "9acfe851e36f4fb27d7c5baa224e8bd4e0334283",
+      "sha512": "f3f260f204b8ce5e8777c2c73f537956755ec61f3817b0b78b5e5568e8aa40f14891f146475075109747665c7c88a45ca0ca9a8df3c68d79c58ecdaa8d8c4b93",
+      "size": 1908068,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "PtjYWJkn",
+      "slug": "sodium-extra",
+      "name": "Sodium Extra",
+      "versionId": "fs5l9Q1U",
+      "versionNumber": "mc26.3-0.9.5+fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "sodium-extra-fabric-0.9.5+mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/PtjYWJkn/versions/fs5l9Q1U/sodium-extra-fabric-0.9.5%2Bmc26.3.jar",
+      "sha1": "f0201a1b67f3405de7152fec484228db45dcbece",
+      "sha512": "785632a8e0081a207124ad72f0862216902b89f40d4133d91b9f9553c0fe345478685630505eaba2fd6e49fdcc388414dd1ad9694cd15a0c29a8fbe0bec8d022",
+      "size": 481973,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "EIa1eiMm",
+      "slug": "sodium-shadowy-path-blocks",
+      "name": "Sodium Shadowy Path Blocks (SSPB)",
+      "versionId": "gobiZrtK",
+      "versionNumber": "8.0.0-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "sodium-shadowy-path-blocks-fabric-8.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/EIa1eiMm/versions/gobiZrtK/sodium-shadowy-path-blocks-fabric-8.0.0.jar",
+      "sha1": "9d5d153d39700683ffbf62afd0e965eb86113382",
+      "sha512": "20525c70a74242ef182e48ed16077f768a0f4d6b4b4ca6fd8cffcd93866c217de7d61af0c7cfe63c7330e0fd7c8ad6bb6c6b1fcc3605a59f9229e20718f4a0ee",
+      "size": 70232,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "qyVF9oeo",
+      "slug": "sound-physics-remastered",
+      "name": "Sound Physics Remastered",
+      "versionId": "29UOgzLw",
+      "versionNumber": "fabric-1.5.4+26.3",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "sound-physics-remastered-fabric-1.5.4+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/qyVF9oeo/versions/29UOgzLw/sound-physics-remastered-fabric-1.5.4%2B26.3.jar",
+      "sha1": "7b5241deca8a6e7a9535cb381ae8fc2da45569a8",
+      "sha512": "dcd812a812ce04d87dbab0bf24fc42ef6a3ddd8150a98e45c78963bb0bfaf6cba6b9464101cf8a8d4d9551bc4ae0c300913b99715eaff787aba744a3c08317f2",
+      "size": 205629,
+      "client": "required",
+      "server": "optional"
+    },
+    {
+      "projectId": "l6YH9Als",
+      "slug": "spark",
+      "name": "spark",
+      "versionId": "e3hsPc1o",
+      "versionNumber": "1.10.187-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.1",
+        "26.1.1",
+        "26.1.2",
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "spark-1.10.187-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/l6YH9Als/versions/e3hsPc1o/spark-1.10.187-fabric.jar",
+      "sha1": "0940b4089affdfca37d6b6d0ea5ecae4dbd8fe98",
+      "sha512": "c74bf5d5a16b2445ec6ea717eac756412b272a8015e91f91a7bf5a27e6f2f99c4a11878d434510f941f37b0344b3a7d1ba0dd6c34e80642762c48fb6e9a93894",
+      "size": 3838499,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "cf:832882",
+      "slug": "cf-structure-essentials-forge-fabric",
+      "name": "Structure Essentials",
+      "versionId": "cf:9278616",
+      "versionNumber": "structureessentials-fabric-26.3-5.1",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "structureessentials-fabric-26.3-5.1.jar",
+      "url": "https://edge.forgecdn.net/files/9278/616/structureessentials-fabric-26.3-5.1.jar",
+      "sha1": "7f3fbd1c82766656e92ae463e1a8638f7548c483",
+      "sha512": "",
+      "size": 60104,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "4q8UOK1d",
+      "slug": "subtle-effects",
+      "name": "Subtle Effects",
+      "versionId": "igsrd43g",
+      "versionNumber": "1.15.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "SubtleEffects-fabric-26.3-1.15.3.jar",
+      "url": "https://cdn.modrinth.com/data/4q8UOK1d/versions/igsrd43g/SubtleEffects-fabric-26.3-1.15.3.jar",
+      "sha1": "d7edf939fcc721f88f2058062c8e67d67e475dbd",
+      "sha512": "8f8dec70514af9a5622cec5dbeb464d5c2435017d8212a3af6f8f91907177b97875ed2fbcd362193f16320023c0773e55cd916486088fa260c787f69a14a4b4d",
+      "size": 3546137,
+      "client": "required",
+      "server": "optional"
+    },
+    {
+      "projectId": "kkmrDlKT",
+      "slug": "terrablender",
+      "name": "TerraBlender",
+      "versionId": "xirJYe1V",
+      "versionNumber": "26.3.0.0.9",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "TerraBlender-fabric-26.3-26.3.0.0.9.jar",
+      "url": "https://cdn.modrinth.com/data/kkmrDlKT/versions/xirJYe1V/TerraBlender-fabric-26.3-26.3.0.0.9.jar",
+      "sha1": "6f9aebaa6c59cf0ff9929b5b0a952caa37f0ca7c",
+      "sha512": "183f809fe992aaaaf4d84c594730b95b392338caf17b690debbb14434b23b46f5923cfcc5aecb81368ea06a299503a3738dcf942b7f179abd000f1312cf2cbdb",
+      "size": 358202,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "eXts2L7r",
+      "slug": "placeholder-api",
+      "name": "Text Placeholder API",
+      "versionId": "lXytLqWj",
+      "versionNumber": "3.2.0+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3",
+        "26.3-pre-3"
+      ],
+      "fileName": "placeholder-api-3.2.0+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/eXts2L7r/versions/lXytLqWj/placeholder-api-3.2.0%2B26.3.jar",
+      "sha1": "4c455faa6333dbaef72cedbb91fe4a2a03176741",
+      "sha512": "eb2bb31e51068aad2581b7864ea7b11b1209ba1c2b27551cd5837d9b312b818b73bb47c06374b46b99b73401c62c6b6c115f702c55aed6afd467ad8ad6448de4",
+      "size": 254959,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "qpPoAL6m",
+      "slug": "trade-cycling",
+      "name": "Trade Cycling",
+      "versionId": "FKbMeHEw",
+      "versionNumber": "fabric-1.0.23+26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "trade-cycling-fabric-1.0.23+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/qpPoAL6m/versions/FKbMeHEw/trade-cycling-fabric-1.0.23%2B26.3.jar",
+      "sha1": "b4dedc2e9941caf7ebf08c9352f49a5ceb317cdf",
+      "sha512": "5a1a29ac015f1a0ee702db24c28df9191617e3f1e00f31af5e40ba55a05c33088d6f426290684e48f83b32d17ded92a1db6bd355f6af231609f847e5fe483aa2",
+      "size": 554933,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "yfDziwn1",
+      "slug": "translations-for-sodium",
+      "name": "Translations for Sodium",
+      "versionId": "Coni1sOB",
+      "versionNumber": "v8.24.0",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3",
+        "26.2",
+        "26.1.2",
+        "26.1.1",
+        "26.1",
+        "1.21.11",
+        "1.21.10",
+        "1.21.9",
+        "1.21.8",
+        "1.21.7",
+        "1.21.6",
+        "1.21.5",
+        "1.21.4",
+        "1.21.3",
+        "1.21.2",
+        "1.21.1",
+        "1.21",
+        "1.20.6",
+        "1.20.5",
+        "1.20.4",
+        "1.20.3",
+        "1.20.2",
+        "1.20.1",
+        "1.20"
+      ],
+      "fileName": "SodiumTranslations.zip",
+      "url": "https://cdn.modrinth.com/data/yfDziwn1/versions/Coni1sOB/SodiumTranslations.zip",
+      "sha1": "a526b35a67647fd144d03001562544d55cd1f161",
+      "sha512": "6091a3fa5f13b73b9ca0c86a4b661e5473d2f373981e0336ec7cd76488fb840daf1a022413528cee394fdf810ec0ee4c4cbee810bd4ca0d86b921aae55a90507",
+      "size": 289760,
+      "client": "required",
+      "server": "unsupported",
+      "kind": "resourcepack"
+    },
+    {
+      "projectId": "vRYk0bv7",
+      "slug": "trashslot",
+      "name": "TrashSlot",
+      "versionId": "q7WqRzFd",
+      "versionNumber": "26.3.0.2+fabric-26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "trashslot-fabric-26.3-26.3.0.2.jar",
+      "url": "https://cdn.modrinth.com/data/vRYk0bv7/versions/q7WqRzFd/trashslot-fabric-26.3-26.3.0.2.jar",
+      "sha1": "1d174d7e9bedf902a009f532b12d5a6ac2e58777",
+      "sha512": "645c6d48e90ceb4e21373a9dba77c56544ab386d2ae2ed3e83fdadab126038e6778ce12007cb012c71d6455c8af7c61eab8d4fe82038d5a6e64d4dad77f271ac",
+      "size": 149404,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "kfqD1JRw",
+      "slug": "visual-workbench",
+      "name": "Visual Workbench",
+      "versionId": "rcsB2H1O",
+      "versionNumber": "26.3.0",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "visualworkbench-v26.3.0-mc26.3.x+fabric.jar",
+      "url": "https://cdn.modrinth.com/data/kfqD1JRw/versions/rcsB2H1O/visualworkbench-v26.3.0-mc26.3.x%2Bfabric.jar",
+      "sha1": "06f606064a00bd6246bc39a330742c83c4d2bfdd",
+      "sha512": "52006eaa57053a2f6cba75a0032a81d179f1a47cc4982e391ea5a380179b9b7aaf349afcd5ac3344dcd05e1b0e224f91cf6b1a1135698a7685f1321470966ad0",
+      "size": 64535,
+      "client": "required",
+      "server": "required"
+    },
+    {
+      "projectId": "rI0hvYcd",
+      "slug": "visuality",
+      "name": "Visuality",
+      "versionId": "BNe9kpJ7",
+      "versionNumber": "0.7.15+26.3",
+      "versionType": "beta",
+      "gameVersions": [
+        "26.2",
+        "26.3"
+      ],
+      "fileName": "visuality-0.7.15+26.3.jar",
+      "url": "https://cdn.modrinth.com/data/rI0hvYcd/versions/BNe9kpJ7/visuality-0.7.15%2B26.3.jar",
+      "sha1": "9c6c1554114150464716b8a82da8a8872ea3db8e",
+      "sha512": "90145cad547d329d5134eabbf45c7f35b1d0ce3ff2bcef8a1b187dc33723121b1a235c0cc259043588835b0cb7b31cba4aa84d738be810f0ea073308bec2eb4a",
+      "size": 81970,
+      "client": "required",
+      "server": "unsupported"
+    },
+    {
+      "projectId": "1eAoo2KR",
+      "slug": "yacl",
+      "name": "YetAnotherConfigLib (YACL)",
+      "versionId": "s9SjoFu1",
+      "versionNumber": "3.9.7+26.3-fabric",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "yet_another_config_lib_v3-3.9.7+26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/1eAoo2KR/versions/s9SjoFu1/yet_another_config_lib_v3-3.9.7%2B26.3-fabric.jar",
+      "sha1": "e54d86dd4a78f95cd6ec0309d96fae01e661c00d",
+      "sha512": "f3957028dd31cae78f08aee3e768f61bd12c4c8423257d357bc3c1a2172047c769d37901f99775c7ffff1e5ee794025dc72738b2869cab06f1c2811841d68b24",
+      "size": 1125377,
+      "client": "optional",
+      "server": "optional"
+    },
+    {
+      "projectId": "w7ThoJFB",
+      "slug": "zoomify",
+      "name": "Zoomify (Zoom)",
+      "versionId": "RUBpNu00",
+      "versionNumber": "2.17.0+mc26.3",
+      "versionType": "release",
+      "gameVersions": [
+        "26.3"
+      ],
+      "fileName": "zoomify-2.17.0+mc26.3-universal.jar",
+      "url": "https://cdn.modrinth.com/data/w7ThoJFB/versions/RUBpNu00/zoomify-2.17.0%2Bmc26.3-universal.jar",
+      "sha1": "7f18090fea4a2ddae01e032d09629d14fa381d3f",
+      "sha512": "1c5bc8e46a3575847584bb6993034dbe7d8060be32ee676c473d36bd4bbbc4df21d03a8f3b3f8904e42312667e9716050cca2cf7a098c8ebf6985d52eea4d637",
+      "size": 579146,
+      "client": "required",
+      "server": "unsupported"
+    }
+  ],
+  "overrides": [
+    {
+      "path": "config/BBEConfig.json",
+      "sha1": "fbd464a04b876ca5a72107fd36bc49965c42ec31",
+      "size": 109,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/BBEConfig.json"
+    },
+    {
+      "path": "config/MouseTweaks.cfg",
+      "sha1": "651b3e4db2d430dc1da3566b2984b264061a6794",
+      "size": 135,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/MouseTweaks.cfg"
+    },
+    {
+      "path": "config/NoChatReports/NCR-Client.json",
+      "sha1": "71120f8cdebbd0c953de70cb93439cfa0ed04f59",
+      "size": 477,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/NoChatReports/NCR-Client.json"
+    },
+    {
+      "path": "config/NoChatReports/NCR-Common.json",
+      "sha1": "5fe17cdf0f39e1ef3787a6d479ca7c683ccb7cf1",
+      "size": 96,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/NoChatReports/NCR-Common.json"
+    },
+    {
+      "path": "config/PaginatedAdvancements.json5",
+      "sha1": "38969898c8090d9f9ba729256fcedc4298f49b6a",
+      "size": 284,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/PaginatedAdvancements.json5"
+    },
+    {
+      "path": "config/advancementplaques.toml",
+      "sha1": "c34da18bdf45fe0e19089247f5be90f6b6415de4",
+      "size": 3020,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/advancementplaques.toml"
+    },
+    {
+      "path": "config/almanac/almanac.json5",
+      "sha1": "ab52321591b47732f1cf7b2e5fa412f0263e4a87",
+      "size": 1499,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/almanac/almanac.json5"
+    },
+    {
+      "path": "config/animatica.properties",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "size": 0,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/animatica.properties"
+    },
+    {
+      "path": "config/appleskin.json5",
+      "sha1": "a838f54303b91a5b03b748d31ef15d5b7169284a",
+      "size": 1218,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/appleskin.json5"
+    },
+    {
+      "path": "config/attributefix/minecraft/air_drag_modifier.json",
+      "sha1": "e3f9cf465e92390bfd4c4de047b808f002eb3573",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/air_drag_modifier.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/armor.json",
+      "sha1": "50dd44b372aa1cff539c6aa7b4e95d5fab800a6f",
+      "size": 389,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/armor.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/armor_toughness.json",
+      "sha1": "50dd44b372aa1cff539c6aa7b4e95d5fab800a6f",
+      "size": 389,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/armor_toughness.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/attack_damage.json",
+      "sha1": "50dd44b372aa1cff539c6aa7b4e95d5fab800a6f",
+      "size": 389,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/attack_damage.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/attack_knockback.json",
+      "sha1": "50dd44b372aa1cff539c6aa7b4e95d5fab800a6f",
+      "size": 389,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/attack_knockback.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/attack_speed.json",
+      "sha1": "2563d62e3c55dc0b3eaa65183b251e02029e4e15",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/attack_speed.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/below_name_distance.json",
+      "sha1": "3ee2b5f031b72560e13aa117c3bed0bd9110927a",
+      "size": 383,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/below_name_distance.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/block_break_speed.json",
+      "sha1": "2563d62e3c55dc0b3eaa65183b251e02029e4e15",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/block_break_speed.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/block_interaction_range.json",
+      "sha1": "be72df575070529a730c4952c747461788217b37",
+      "size": 381,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/block_interaction_range.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/bounciness.json",
+      "sha1": "ce6ea6bb31f80df6adf02d2878ff57bc29937150",
+      "size": 379,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/bounciness.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/burning_time.json",
+      "sha1": "2563d62e3c55dc0b3eaa65183b251e02029e4e15",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/burning_time.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/camera_distance.json",
+      "sha1": "a96c33a8377874f4e84e774abfa2a507c89ef938",
+      "size": 381,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/camera_distance.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/entity_interaction_range.json",
+      "sha1": "be72df575070529a730c4952c747461788217b37",
+      "size": 381,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/entity_interaction_range.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/explosion_knockback_resistance.json",
+      "sha1": "ce6ea6bb31f80df6adf02d2878ff57bc29937150",
+      "size": 379,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/explosion_knockback_resistance.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/fall_damage_multiplier.json",
+      "sha1": "b6d7ad2357c5eac69ed7a8838d8fd53375c71353",
+      "size": 383,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/fall_damage_multiplier.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/flying_speed.json",
+      "sha1": "2563d62e3c55dc0b3eaa65183b251e02029e4e15",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/flying_speed.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/follow_range.json",
+      "sha1": "e3f9cf465e92390bfd4c4de047b808f002eb3573",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/follow_range.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/friction_modifier.json",
+      "sha1": "e3f9cf465e92390bfd4c4de047b808f002eb3573",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/friction_modifier.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/gravity.json",
+      "sha1": "1d5ed055862c47949066a20d3ed5826f712371f6",
+      "size": 381,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/gravity.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/jump_strength.json",
+      "sha1": "a96c33a8377874f4e84e774abfa2a507c89ef938",
+      "size": 381,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/jump_strength.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/knockback_resistance.json",
+      "sha1": "2392680ca78a75c6670c95d8236c0e290e182423",
+      "size": 381,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/knockback_resistance.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/luck.json",
+      "sha1": "588408d9fec5021933d07a1bade0ba5e6eb233aa",
+      "size": 393,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/luck.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/max_absorption.json",
+      "sha1": "e3f9cf465e92390bfd4c4de047b808f002eb3573",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/max_absorption.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/max_health.json",
+      "sha1": "7ec2381eea9f9462324a4182fc7fd504bcebb2fb",
+      "size": 389,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/max_health.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/mining_efficiency.json",
+      "sha1": "2563d62e3c55dc0b3eaa65183b251e02029e4e15",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/mining_efficiency.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/movement_efficiency.json",
+      "sha1": "ce6ea6bb31f80df6adf02d2878ff57bc29937150",
+      "size": 379,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/movement_efficiency.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/movement_speed.json",
+      "sha1": "2563d62e3c55dc0b3eaa65183b251e02029e4e15",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/movement_speed.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/name_tag_distance.json",
+      "sha1": "3ee2b5f031b72560e13aa117c3bed0bd9110927a",
+      "size": 383,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/name_tag_distance.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/oxygen_bonus.json",
+      "sha1": "2563d62e3c55dc0b3eaa65183b251e02029e4e15",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/oxygen_bonus.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/safe_fall_distance.json",
+      "sha1": "588408d9fec5021933d07a1bade0ba5e6eb233aa",
+      "size": 393,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/safe_fall_distance.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/scale.json",
+      "sha1": "aae7e2890c973fad151ac37ed1ba7866dfbdf524",
+      "size": 387,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/scale.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/sneaking_speed.json",
+      "sha1": "ce6ea6bb31f80df6adf02d2878ff57bc29937150",
+      "size": 379,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/sneaking_speed.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/spawn_reinforcements.json",
+      "sha1": "ce6ea6bb31f80df6adf02d2878ff57bc29937150",
+      "size": 379,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/spawn_reinforcements.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/step_height.json",
+      "sha1": "168fec0e5f12bc91e259dec9fd2bc9267e385f69",
+      "size": 381,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/step_height.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/submerged_mining_speed.json",
+      "sha1": "675ec9e987ac72658f05d4883deed2a724ac19e4",
+      "size": 381,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/submerged_mining_speed.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/sweeping_damage_ratio.json",
+      "sha1": "ce6ea6bb31f80df6adf02d2878ff57bc29937150",
+      "size": 379,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/sweeping_damage_ratio.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/tempt_range.json",
+      "sha1": "e3f9cf465e92390bfd4c4de047b808f002eb3573",
+      "size": 385,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/tempt_range.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/water_movement_efficiency.json",
+      "sha1": "ce6ea6bb31f80df6adf02d2878ff57bc29937150",
+      "size": 379,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/water_movement_efficiency.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/waypoint_receive_range.json",
+      "sha1": "ac2265c3312e298060656675691d3c582274295b",
+      "size": 383,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/waypoint_receive_range.json"
+    },
+    {
+      "path": "config/attributefix/minecraft/waypoint_transmit_range.json",
+      "sha1": "ac2265c3312e298060656675691d3c582274295b",
+      "size": 383,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/attributefix/minecraft/waypoint_transmit_range.json"
+    },
+    {
+      "path": "config/badoptimizations.txt",
+      "sha1": "9d854dd9d0ad9270a66195599c8ac650852b2bfb",
+      "size": 3540,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/badoptimizations.txt"
+    },
+    {
+      "path": "config/bcc-common.json",
+      "sha1": "325cea68357f6b0b4f97e27244cc2146853abdcc",
+      "size": 408,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/bcc-common.json"
+    },
+    {
+      "path": "config/betteradvancements.json",
+      "sha1": "5dda9b4b4344438cfbe7733a71d95f0cecfec7f1",
+      "size": 684,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/betteradvancements.json"
+    },
+    {
+      "path": "config/betterdays-client.toml",
+      "sha1": "167aa8696068a56262432add530b147c8b37f202",
+      "size": 1044,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/betterdays-client.toml"
+    },
+    {
+      "path": "config/betterdays-common.toml",
+      "sha1": "fd312af137c0c5d53acace5dffa6c4088e06ae21",
+      "size": 10818,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/betterdays-common.toml"
+    },
+    {
+      "path": "config/bettergrass.json",
+      "sha1": "76d28e7b8c661b60db5b22bcb99a8d0f8d40191e",
+      "size": 786,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/bettergrass.json"
+    },
+    {
+      "path": "config/biomemusic.json",
+      "sha1": "7b05cc3647c8dd875313967068af8236e876afcd",
+      "size": 2386,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/biomemusic.json"
+    },
+    {
+      "path": "config/boatiview/client.toml",
+      "sha1": "7d081e50567407ac76540cebe35b095f3a648f80",
+      "size": 140,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/boatiview/client.toml"
+    },
+    {
+      "path": "config/bridgingmod.json",
+      "sha1": "7290877a4b8df40407a6208925472fa1c62cdd80",
+      "size": 836,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/bridgingmod.json"
+    },
+    {
+      "path": "config/cape-provider/config.json",
+      "sha1": "cc86add969dfef32da8d9249cc0f4f9594011e44",
+      "size": 496,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/cape-provider/config.json"
+    },
+    {
+      "path": "config/carryon-client.json",
+      "sha1": "230a24c37ce9db2d6a3766f1ffd3a158e898807e",
+      "size": 796,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/carryon-client.json"
+    },
+    {
+      "path": "config/carryon-common.json",
+      "sha1": "e1f40255ec3cef53c52522eb17c7001d7dc9f3cf",
+      "size": 11265,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/carryon-common.json"
+    },
+    {
+      "path": "config/chat_heads.json5",
+      "sha1": "3bd6eaec122056f9b3caee95e05fa6a7093a1c3a",
+      "size": 249,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/chat_heads.json5"
+    },
+    {
+      "path": "config/clickadv.json",
+      "sha1": "b8e15766ee597ac525c4dda52a1a664794b786cf",
+      "size": 612,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/clickadv.json"
+    },
+    {
+      "path": "config/clientsort-server.json",
+      "sha1": "4a36c1968fef84b1b6fa88674b606e1cd070d063",
+      "size": 1220,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/clientsort-server.json"
+    },
+    {
+      "path": "config/clientsort.json",
+      "sha1": "9ed979e7a796e0a293dd1df3332ad5fdf91bdd37",
+      "size": 5853,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/clientsort.json"
+    },
+    {
+      "path": "config/clienttweaks-common.toml",
+      "sha1": "d6c6c5dec4ac9f051cb6026ec1341c19b4b24257",
+      "size": 4481,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/clienttweaks-common.toml"
+    },
+    {
+      "path": "config/continuity.json",
+      "sha1": "cf257d0b5056c2b9fb88f9300d8c27a56a639a6a",
+      "size": 61,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/continuity.json"
+    },
+    {
+      "path": "config/controlify/controlify.json",
+      "sha1": "731fc68a2a782878539f3ce52e7f6d488738fc43",
+      "size": 563,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/controlify/controlify.json"
+    },
+    {
+      "path": "config/controlify/profile-1.json",
+      "sha1": "d7b51cb79b00045e8d3429935add23e65dc37575",
+      "size": 2184,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/controlify/profile-1.json"
+    },
+    {
+      "path": "config/controlify/profile-1.lock",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "size": 0,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/controlify/profile-1.lock"
+    },
+    {
+      "path": "config/craftingtweaks-common.toml",
+      "sha1": "fe254b19e28cbc91befeec1baae24b343c884547",
+      "size": 1143,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/craftingtweaks-common.toml"
+    },
+    {
+      "path": "config/crash_assistant/config.toml",
+      "sha1": "246b52e3f5f08e59d46f2270f4fce3bd58edda5b",
+      "size": 24157,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/config.toml"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/be_by.json",
+      "sha1": "216f68e41873823f337a2aa2cc93f78f87d4cf07",
+      "size": 6311,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/be_by.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/en_us.json",
+      "sha1": "55a83fbf4aa24b069243f8d3faf7f3f9e6677710",
+      "size": 9321,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/en_us.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/es_es.json",
+      "sha1": "a3a9b3e5a70b5eeb4f8fae93a5cdb65b627646a7",
+      "size": 6434,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/es_es.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/es_ve.json",
+      "sha1": "e4c3045f86db5dba55f9d2ae6245914872f5f71d",
+      "size": 6413,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/es_ve.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/et_ee.json",
+      "sha1": "c96950cc9bbf72730aff1c17915eaa3263dbe047",
+      "size": 8678,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/et_ee.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/fr_fr.json",
+      "sha1": "12207a38a14f92b5ba5ee71c36632b14ec4f3fd6",
+      "size": 5527,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/fr_fr.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/he_il.json",
+      "sha1": "233ca845d6bbcbf3bd91d066c2ee1e5f42d7da60",
+      "size": 10167,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/he_il.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/it_it.json",
+      "sha1": "c9acc08866ef927864b839cd4b0c44a1f0b6bc45",
+      "size": 6360,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/it_it.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/ms_my.json",
+      "sha1": "b2f7c3218da8c3b725f4566e5315187a3168b356",
+      "size": 9537,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/ms_my.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/pl_pl.json",
+      "sha1": "63c3b60b4464a13fb1fd6929b8d0a653e23b33e3",
+      "size": 6759,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/pl_pl.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/ro_ro.json",
+      "sha1": "9a296724b872ab564f0af7445449601e5e29f901",
+      "size": 5943,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/ro_ro.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/ru_ru.json",
+      "sha1": "9d14fa81b5941d0524b3593ddb3c8ec13941cf5c",
+      "size": 9126,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/ru_ru.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/uk_ua.json",
+      "sha1": "ddc6ae686324c139b5d51e925f121e897486b28c",
+      "size": 12456,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/uk_ua.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/vi_vn.json",
+      "sha1": "eada79df55d25658e2fc3448abfa70ce4570c017",
+      "size": 7593,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/vi_vn.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/zh_cn.json",
+      "sha1": "679af78217e149c1f4d24efda7de274a1b0a2b6f",
+      "size": 5502,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/zh_cn.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/zh_tw.json",
+      "sha1": "f3e46bafccb4e5a1524c0e018d36e226cbe22a25",
+      "size": 8800,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/zh_tw.json"
+    },
+    {
+      "path": "config/crash_assistant/crash_assistant_localization_overrides/zlm_arab.json",
+      "sha1": "381efabbcc20bcbbfa816d0351a5afec159410f5",
+      "size": 9526,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/crash_assistant_localization_overrides/zlm_arab.json"
+    },
+    {
+      "path": "config/crash_assistant/scripts/log_analysis/blame-mods.jexl",
+      "sha1": "fb8abb6e7ff674685f6a89019f1967a2e724d147",
+      "size": 6571,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/crash_assistant/scripts/log_analysis/blame-mods.jexl"
+    },
+    {
+      "path": "config/creativecore-client.json",
+      "sha1": "2ac12a74fc6c40a697dfeb4ee9eda22e9241a6b7",
+      "size": 23,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/creativecore-client.json"
+    },
+    {
+      "path": "config/creativecore.json",
+      "sha1": "b97078641402978a24ffe8af190038943b99438a",
+      "size": 274,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/creativecore.json"
+    },
+    {
+      "path": "config/cupboard.json",
+      "sha1": "eb126f493318b72b9af3676234bae75a0e782671",
+      "size": 1364,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/cupboard.json"
+    },
+    {
+      "path": "config/cwb.json",
+      "sha1": "92f25bba74a6036c3d399e75624bd2524788fb6c",
+      "size": 232,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/cwb.json"
+    },
+    {
+      "path": "config/debugify.json",
+      "sha1": "345847488461cc0e7da7518e6e019a8918c53589",
+      "size": 133,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/debugify.json"
+    },
+    {
+      "path": "config/defaultoptions-common.toml",
+      "sha1": "e70e1332d84f0d89ec7366d8369d0c7a57cda493",
+      "size": 699,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/defaultoptions-common.toml"
+    },
+    {
+      "path": "config/defaultoptions/keybindings.txt",
+      "sha1": "9ec40c7c6fa7502c4fad37880c3ebe2d2347ac07",
+      "size": 6930,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/defaultoptions/keybindings.txt"
+    },
+    {
+      "path": "config/defaultoptions/options.txt",
+      "sha1": "7d9aa73b7f4cad20064bf9ff0401b631c1311b8a",
+      "size": 3229,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/defaultoptions/options.txt"
+    },
+    {
+      "path": "config/dungeonconfig/dungeonconfig.json5",
+      "sha1": "bea84d597f9727a8644001d7019462fec9e52806",
+      "size": 1007,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/dungeonconfig/dungeonconfig.json5"
+    },
+    {
+      "path": "config/dynamic_fps.json",
+      "sha1": "673750cd8cf6896467451122af6354fc1c6deae0",
+      "size": 253,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/dynamic_fps.json"
+    },
+    {
+      "path": "config/e4mc/e4mc.toml",
+      "sha1": "f0ca8e010d15a954260fc905c2f9a1b9fb50e1c4",
+      "size": 1225,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/e4mc/e4mc.toml"
+    },
+    {
+      "path": "config/easyanvils-client.toml",
+      "sha1": "0c638c6035a77323f0a92cfb606f973b2649b4f0",
+      "size": 93,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/easyanvils-client.toml"
+    },
+    {
+      "path": "config/easyanvils-server.toml",
+      "sha1": "41ddcdc20adf95b5524698ea18060d0b159356d7",
+      "size": 3846,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/easyanvils-server.toml"
+    },
+    {
+      "path": "config/easymagic-client.toml",
+      "sha1": "29a60d323e02b2d6f9617bd7cf2b53203179d0a3",
+      "size": 1171,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/easymagic-client.toml"
+    },
+    {
+      "path": "config/easymagic-server.toml",
+      "sha1": "9e5638b3668973d449185b2380a895aca68e9d3e",
+      "size": 2548,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/easymagic-server.toml"
+    },
+    {
+      "path": "config/enchdesc.json",
+      "sha1": "ce0f40fc45bd689b0a12923817b548b730e63a6e",
+      "size": 2186,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/enchdesc.json"
+    },
+    {
+      "path": "config/entity_model_features.json",
+      "sha1": "051282e31300ffde932d2a025db3fbe20ff3eb97",
+      "size": 1340,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/entity_model_features.json"
+    },
+    {
+      "path": "config/entity_texture_features.json",
+      "sha1": "6723c320bee10baf5587990283380008d75ac440",
+      "size": 1444,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/entity_texture_features.json"
+    },
+    {
+      "path": "config/entityculling.json",
+      "sha1": "71d872172923ba0b593d8654bfd596f9520ddc8b",
+      "size": 2248,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/entityculling.json"
+    },
+    {
+      "path": "config/etf_warnings.json",
+      "sha1": "1573fc320a363b30a1a5e4cae1d4596ec177085d",
+      "size": 28,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/etf_warnings.json"
+    },
+    {
+      "path": "config/fabric_loader_dependencies.json",
+      "sha1": "431e9e7f941b65f5742a6b420ae6700f201c8260",
+      "size": 171,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/fabric_loader_dependencies.json"
+    },
+    {
+      "path": "config/fallingleaves2.json",
+      "sha1": "2aed469dfffb743c696d921e67833bb39fb8efed",
+      "size": 674,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/fallingleaves2.json"
+    },
+    {
+      "path": "config/fastitemframes-client.toml",
+      "sha1": "54cfcd842b25f5e4f67cb8202aff9d452844627a",
+      "size": 572,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/fastitemframes-client.toml"
+    },
+    {
+      "path": "config/fastitemframes-server.toml",
+      "sha1": "5d1d34525786fc7d59231fef287eaa43ac0efa0a",
+      "size": 302,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/fastitemframes-server.toml"
+    },
+    {
+      "path": "config/fastquit.toml",
+      "sha1": "7ed819e0bb5eabeecbb698a705eeeed3f4721fa4",
+      "size": 123,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/fastquit.toml"
+    },
+    {
+      "path": "config/ferritecore.mixin.properties",
+      "sha1": "aafd66bf7a4957b81edab38a7d9dd791dd8b44b5",
+      "size": 815,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/ferritecore.mixin.properties"
+    },
+    {
+      "path": "config/forgeconfigapiport.toml",
+      "sha1": "945e388c4165af7ad3ffa3bfcd89c1f0ccb14451",
+      "size": 523,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/forgeconfigapiport.toml"
+    },
+    {
+      "path": "config/fzzy_config/keybinds.toml",
+      "sha1": "f808afa706d9a4934612b20e1efd513416a0e8f1",
+      "size": 6403,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/fzzy_config/keybinds.toml"
+    },
+    {
+      "path": "config/getittogetherdrops-server.toml",
+      "sha1": "9ab2dfb5069d111b7af8d067d22814dfed2cbf58",
+      "size": 332,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/getittogetherdrops-server.toml"
+    },
+    {
+      "path": "config/highlighter.toml",
+      "sha1": "1270672989da7ae5480b843c6d16076b5f326f46",
+      "size": 716,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/highlighter.toml"
+    },
+    {
+      "path": "config/immediatelyfast.json",
+      "sha1": "f1c3588297242ea9ab494c9519088cc28c714ddf",
+      "size": 951,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/immediatelyfast.json"
+    },
+    {
+      "path": "config/invmove.json",
+      "sha1": "ee06b8de0645f2b1279014cdb25609ed91d23305",
+      "size": 449,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/invmove.json"
+    },
+    {
+      "path": "config/invmove/unrecognized.json",
+      "sha1": "ceb166e0cc8ff37c0925790795ddc9d7d6f481a0",
+      "size": 320,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/invmove/unrecognized.json"
+    },
+    {
+      "path": "config/invmove/vanilla.json",
+      "sha1": "7e61582390a414c78c7c8183e006179f0c833b3d",
+      "size": 1092,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/invmove/vanilla.json"
+    },
+    {
+      "path": "config/iris-excluded.json",
+      "sha1": "20bd3420b5c911402ac289c154b56ac1dd8f84ba",
+      "size": 31,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/iris-excluded.json"
+    },
+    {
+      "path": "config/iris.properties",
+      "sha1": "6dc5684ae9bd450bb5b106f30b00e310ba461583",
+      "size": 305,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/iris.properties"
+    },
+    {
+      "path": "config/isxander-main-menu-credits.json",
+      "sha1": "12e538ca1813848c9b91880dd69ba6e035ab76a2",
+      "size": 522,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/isxander-main-menu-credits.json"
+    },
+    {
+      "path": "config/itemborders.toml",
+      "sha1": "c1080641edd3817a60afb070ff8a216135d1e3bd",
+      "size": 4709,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/itemborders.toml"
+    },
+    {
+      "path": "config/iteminteractions-client.toml",
+      "sha1": "f262e4a358c97864df67814f7aee433333062590",
+      "size": 3358,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/iteminteractions-client.toml"
+    },
+    {
+      "path": "config/iteminteractions-server.toml",
+      "sha1": "f4eef835ac7e4c075ae02b3bbbc7659335f04346",
+      "size": 473,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/iteminteractions-server.toml"
+    },
+    {
+      "path": "config/ixeris.toml",
+      "sha1": "12145c603cd90e56000ef7853e2147f46c7fbfb0",
+      "size": 2346,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/ixeris.toml"
+    },
+    {
+      "path": "config/jade/hide-blocks.json",
+      "sha1": "d1d11e6927e1e0d04606ffe33469b71496af5682",
+      "size": 173,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/hide-blocks.json"
+    },
+    {
+      "path": "config/jade/hide-entities.json",
+      "sha1": "18deffb200e3959c68cb77a9b257a7e6a0b1ef73",
+      "size": 267,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/hide-entities.json"
+    },
+    {
+      "path": "config/jade/hide-mob-effects.json",
+      "sha1": "d68c2ed2462331dd22446dc64e6ca0969e4ba73c",
+      "size": 156,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/hide-mob-effects.json"
+    },
+    {
+      "path": "config/jade/jade.json",
+      "sha1": "7bee3501a6f583b2eb11f9efa18a46242882c131",
+      "size": 3770,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/jade.json"
+    },
+    {
+      "path": "config/jade/profiles/1/jade.json",
+      "sha1": "4297d6898ce9cc31a2387cb3e760a8dd1052fe44",
+      "size": 3549,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/profiles/1/jade.json"
+    },
+    {
+      "path": "config/jade/profiles/2/jade.json",
+      "sha1": "717c811d9d9c9f40323e0d5a8194236ec9df3039",
+      "size": 3559,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/profiles/2/jade.json"
+    },
+    {
+      "path": "config/jade/profiles/3/jade.json",
+      "sha1": "deac003f35ebbf918db9ef4512b3dc440710b3d5",
+      "size": 3502,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/profiles/3/jade.json"
+    },
+    {
+      "path": "config/jade/server-plugin-overrides.json",
+      "sha1": "bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f",
+      "size": 2,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/server-plugin-overrides.json"
+    },
+    {
+      "path": "config/jade/sort-order.json",
+      "sha1": "9a36d260f4c06510428d9193f9df8ac717b82304",
+      "size": 2193,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jade/sort-order.json"
+    },
+    {
+      "path": "config/jamlib/known_suspicious_jars.txt",
+      "sha1": "44f0dd06d126a7326ae61f1fe30ae67947ba557c",
+      "size": 169,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/jamlib/known_suspicious_jars.txt"
+    },
+    {
+      "path": "config/lambdynlights.toml",
+      "sha1": "7b639d6e9bb013db50ed4e074003cacf147f4f69",
+      "size": 161,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/lambdynlights.toml"
+    },
+    {
+      "path": "config/languagereload.json",
+      "sha1": "939ceea4c5c498dde6d5d7c284ea42f16495ffa3",
+      "size": 206,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/languagereload.json"
+    },
+    {
+      "path": "config/letmedespawn/letmedespawn.json5",
+      "sha1": "986f0f77dae34b3fad5649a5c41ac928ee766455",
+      "size": 1449,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/letmedespawn/letmedespawn.json5"
+    },
+    {
+      "path": "config/lithium.properties",
+      "sha1": "38f2993a7d80d0a6a25eb6182bd6898af24a16eb",
+      "size": 267,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/lithium.properties"
+    },
+    {
+      "path": "config/lootr-client.jsonc",
+      "sha1": "437fa5258ea62dbc9e63d4cf8533dfd262c9471a",
+      "size": 1533,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/lootr-client.jsonc"
+    },
+    {
+      "path": "config/lootr-common.jsonc",
+      "sha1": "0b0ca61b2115173acfcc0570134c1a26650fa7f4",
+      "size": 10419,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/lootr-common.jsonc"
+    },
+    {
+      "path": "config/maxhealthfix.json",
+      "sha1": "834d659ba82896ccaf7678c40e513e64f8cc453d",
+      "size": 132,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/maxhealthfix.json"
+    },
+    {
+      "path": "config/midnightlib.json",
+      "sha1": "7f635f0ca44379ba78c7390728700e36e7e0c050",
+      "size": 30,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/midnightlib.json"
+    },
+    {
+      "path": "config/modernfix-mixins.properties",
+      "sha1": "ef4ccc34b6535c24bc4f69db424765b9e1e49695",
+      "size": 4419,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modernfix-mixins.properties"
+    },
+    {
+      "path": "config/modmenu.json",
+      "sha1": "f93480251d26f5b1507d0c642cf60b42355aa2a9",
+      "size": 812,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modmenu.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/BBEConfig.json",
+      "sha1": "fbd464a04b876ca5a72107fd36bc49965c42ec31",
+      "size": 109,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/BBEConfig.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/NoChatReports/NCR-Client.json",
+      "sha1": "71120f8cdebbd0c953de70cb93439cfa0ed04f59",
+      "size": 477,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/NoChatReports/NCR-Client.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/NoChatReports/NCR-Common.json",
+      "sha1": "5fe17cdf0f39e1ef3787a6d479ca7c683ccb7cf1",
+      "size": 96,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/NoChatReports/NCR-Common.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/PaginatedAdvancements.json5",
+      "sha1": "38969898c8090d9f9ba729256fcedc4298f49b6a",
+      "size": 284,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/PaginatedAdvancements.json5"
+    },
+    {
+      "path": "config/modpack_defaults/config/bettergrass.json",
+      "sha1": "5b395e8cc4d6a327c54ccd07c34f45d9cde23c6f",
+      "size": 37,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/bettergrass.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/cape-provider/config.json",
+      "sha1": "66bacb70a64b039e14d34c81d85c445fb78f68b4",
+      "size": 428,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/cape-provider/config.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/config.toml",
+      "sha1": "246b52e3f5f08e59d46f2270f4fce3bd58edda5b",
+      "size": 24157,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/config.toml"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/be_by.json",
+      "sha1": "216f68e41873823f337a2aa2cc93f78f87d4cf07",
+      "size": 6311,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/be_by.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/en_us.json",
+      "sha1": "9edd76d2210c880010fcaf6845d4c99ac9363535",
+      "size": 9694,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/en_us.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/es_es.json",
+      "sha1": "e4c3045f86db5dba55f9d2ae6245914872f5f71d",
+      "size": 6413,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/es_es.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/es_ve.json",
+      "sha1": "e4c3045f86db5dba55f9d2ae6245914872f5f71d",
+      "size": 6413,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/es_ve.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/et_ee.json",
+      "sha1": "c96950cc9bbf72730aff1c17915eaa3263dbe047",
+      "size": 8678,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/et_ee.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/fr_fr.json",
+      "sha1": "12207a38a14f92b5ba5ee71c36632b14ec4f3fd6",
+      "size": 5527,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/fr_fr.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/he_il.json",
+      "sha1": "233ca845d6bbcbf3bd91d066c2ee1e5f42d7da60",
+      "size": 10167,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/he_il.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/it_it.json",
+      "sha1": "05d8b6ada7ae4211dd650cfd96ab127ca50945ff",
+      "size": 6454,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/it_it.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ms_my.json",
+      "sha1": "b6e8bcbf6771b7fbba9a800618d6c736d93c6b8a",
+      "size": 9601,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ms_my.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/pl_pl.json",
+      "sha1": "63c3b60b4464a13fb1fd6929b8d0a653e23b33e3",
+      "size": 6759,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/pl_pl.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ro_ro.json",
+      "sha1": "9a296724b872ab564f0af7445449601e5e29f901",
+      "size": 5943,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ro_ro.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ru_ru.json",
+      "sha1": "173bcf4afa8219762ad98722cd6323af152cbe47",
+      "size": 9553,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ru_ru.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/uk_ua.json",
+      "sha1": "ddc6ae686324c139b5d51e925f121e897486b28c",
+      "size": 12456,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/uk_ua.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/vi_vn.json",
+      "sha1": "eada79df55d25658e2fc3448abfa70ce4570c017",
+      "size": 7593,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/vi_vn.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/zh_cn.json",
+      "sha1": "c605501a12c0c2c007bab2fd2d74fb97eb1f22e1",
+      "size": 5548,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/zh_cn.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/zh_tw.json",
+      "sha1": "f3e46bafccb4e5a1524c0e018d36e226cbe22a25",
+      "size": 8800,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/zh_tw.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/zlm_arab.json",
+      "sha1": "d4c2336c512184b559ac2f4f7a77f872e41e4508",
+      "size": 9590,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/zlm_arab.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/crash_assistant/scripts/log_analysis/blame-mods.jexl",
+      "sha1": "fb8abb6e7ff674685f6a89019f1967a2e724d147",
+      "size": 6571,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/crash_assistant/scripts/log_analysis/blame-mods.jexl"
+    },
+    {
+      "path": "config/modpack_defaults/config/cwb.json",
+      "sha1": "c9ee29b90b5a1223d2a3aa8b52d906eacc4bfe9e",
+      "size": 162,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/cwb.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/debugify.json",
+      "sha1": "345847488461cc0e7da7518e6e019a8918c53589",
+      "size": 133,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/debugify.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/dynamic_fps.json",
+      "sha1": "673750cd8cf6896467451122af6354fc1c6deae0",
+      "size": 253,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/dynamic_fps.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/entity_texture_features.json",
+      "sha1": "91418752e836cd2ea9deffaf9bd5f6fc9e9242ec",
+      "size": 148,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/entity_texture_features.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/fabric_loader_dependencies.json",
+      "sha1": "431e9e7f941b65f5742a6b420ae6700f201c8260",
+      "size": 171,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/fabric_loader_dependencies.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/fastquit.toml",
+      "sha1": "e00665ee16327466c894add52e398209d98d67a7",
+      "size": 99,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/fastquit.toml"
+    },
+    {
+      "path": "config/modpack_defaults/config/iris.properties",
+      "sha1": "443d5e09dd50778bb73e6a2632bf1a0a6353a2aa",
+      "size": 73,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/iris.properties"
+    },
+    {
+      "path": "config/modpack_defaults/config/isxander-main-menu-credits.json",
+      "sha1": "12e538ca1813848c9b91880dd69ba6e035ab76a2",
+      "size": 522,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/isxander-main-menu-credits.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/lambdynlights.toml",
+      "sha1": "7b639d6e9bb013db50ed4e074003cacf147f4f69",
+      "size": 161,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/lambdynlights.toml"
+    },
+    {
+      "path": "config/modpack_defaults/config/midnightlib.json",
+      "sha1": "7f635f0ca44379ba78c7390728700e36e7e0c050",
+      "size": 30,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/midnightlib.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/modernfix-mixins.properties",
+      "sha1": "907bc173ae1fa8702f980bdc58c1f8aa7f8588b1",
+      "size": 139,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/modernfix-mixins.properties"
+    },
+    {
+      "path": "config/modpack_defaults/config/modmenu.json",
+      "sha1": "f93480251d26f5b1507d0c642cf60b42355aa2a9",
+      "size": 812,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/modmenu.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/moreculling.toml",
+      "sha1": "c7017390d2593c4d6c0093055a4b450986937eda",
+      "size": 539,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/moreculling.toml"
+    },
+    {
+      "path": "config/modpack_defaults/config/reeses_sodium_options.json",
+      "sha1": "4cf3bb53cc7fd92b8c1f7cb8ca7052256efb3f5f",
+      "size": 647,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/reeses_sodium_options.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/renice-shot.properties",
+      "sha1": "e87106195458b9c25dada790d80e863c2d8363c2",
+      "size": 167,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/renice-shot.properties"
+    },
+    {
+      "path": "config/modpack_defaults/config/rrls.toml",
+      "sha1": "9eaaf526cbb9d996a7a2637cf47ccb99252b8f8c",
+      "size": 1000,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/rrls.toml"
+    },
+    {
+      "path": "config/modpack_defaults/config/sodium-extra-options.json",
+      "sha1": "c88cc0fc6cf296330fc0e50d86ff3e6d36264559",
+      "size": 53,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/sodium-extra-options.json"
+    },
+    {
+      "path": "config/modpack_defaults/config/sodium-shadowy-path-blocks-options.json",
+      "sha1": "f8106ae861e984db693434f54a191e599ce3bc83",
+      "size": 92,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/config/sodium-shadowy-path-blocks-options.json"
+    },
+    {
+      "path": "config/modpack_defaults/debug-profile.json",
+      "sha1": "5c46a5c48fccf27ad6be72134728153b0280773f",
+      "size": 645,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/debug-profile.json"
+    },
+    {
+      "path": "config/modpack_defaults/options.txt",
+      "sha1": "0e45c36ad4c74d98faaaaceb0243648a65fdda16",
+      "size": 1011,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/modpack_defaults/options.txt"
+    },
+    {
+      "path": "config/moreculling.toml",
+      "sha1": "27b14c9d32bfd361b5ba9687f73766220f30481d",
+      "size": 494,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/moreculling.toml"
+    },
+    {
+      "path": "config/notenoughanimations.json",
+      "sha1": "94adfc50f01a8c0719b38b1c55818984ee8831a8",
+      "size": 3273,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/notenoughanimations.json"
+    },
+    {
+      "path": "config/particular-common.toml",
+      "sha1": "549180f0a60582e763f7841a9701aa39042dce2c",
+      "size": 11840,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/particular-common.toml"
+    },
+    {
+      "path": "config/presencefootsteps/updater.json",
+      "sha1": "75c10c3afddf1b1665036da06cd9c74d2ae84007",
+      "size": 68,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/presencefootsteps/updater.json"
+    },
+    {
+      "path": "config/presencefootsteps/userconfig.json5",
+      "sha1": "d56eaee31aa36ceb2ff582b08e612675d2e291ab",
+      "size": 3341,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/presencefootsteps/userconfig.json5"
+    },
+    {
+      "path": "config/puzzle.json",
+      "sha1": "d81534a66e3fcce21386843a53c581427d43c158",
+      "size": 340,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/puzzle.json"
+    },
+    {
+      "path": "config/reeses_sodium_options.json",
+      "sha1": "4cf3bb53cc7fd92b8c1f7cb8ca7052256efb3f5f",
+      "size": 647,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/reeses_sodium_options.json"
+    },
+    {
+      "path": "config/renice-shot.properties",
+      "sha1": "e87106195458b9c25dada790d80e863c2d8363c2",
+      "size": 167,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/renice-shot.properties"
+    },
+    {
+      "path": "config/resourceful-config-web.json",
+      "sha1": "7436089404d0e4e61b1d5f1e0163e6e3dff1e90d",
+      "size": 196,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/resourceful-config-web.json"
+    },
+    {
+      "path": "config/rightclickharvest.json5",
+      "sha1": "22eb8db23a5f0bf00773dca85d7285b8297e9f90",
+      "size": 662,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/rightclickharvest.json5"
+    },
+    {
+      "path": "config/rrls.toml",
+      "sha1": "9eaaf526cbb9d996a7a2637cf47ccb99252b8f8c",
+      "size": 1000,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/rrls.toml"
+    },
+    {
+      "path": "config/serilum/collective.json",
+      "sha1": "c92ebcfb9fec122ec7bcbb61ecc48838d697579c",
+      "size": 3147,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/serilum/collective.json"
+    },
+    {
+      "path": "config/serilum/doubledoors.json",
+      "sha1": "ec0ea94fbfd8722e7eecf6ebbbbba6e6af25e643",
+      "size": 1649,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/serilum/doubledoors.json"
+    },
+    {
+      "path": "config/simplehudenhanced.toml",
+      "sha1": "b430fed4ad180d003b4056459f7bade70e60ebe5",
+      "size": 2389,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/simplehudenhanced.toml"
+    },
+    {
+      "path": "config/skinlayers.json",
+      "sha1": "9552e0366319f47881639dbcb36713bbfad98a58",
+      "size": 497,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/skinlayers.json"
+    },
+    {
+      "path": "config/skyboxify.json",
+      "sha1": "96e59ba83ba2be2379d024211fe0e82271b9346f",
+      "size": 176,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/skyboxify.json"
+    },
+    {
+      "path": "config/smoothchunk.json",
+      "sha1": "e5d8586ff617720107b4dfe7217bd0a7d6736ba4",
+      "size": 1175,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/smoothchunk.json"
+    },
+    {
+      "path": "config/smoothswapping.json",
+      "sha1": "6c5a1dcd7563025dc5d52423023ed7d0298eb767",
+      "size": 164,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/smoothswapping.json"
+    },
+    {
+      "path": "config/sodium-extra-options.json",
+      "sha1": "379cd7bc8df9b642e269d0093aa14e6de47ab556",
+      "size": 2043,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sodium-extra-options.json"
+    },
+    {
+      "path": "config/sodium-extra.properties",
+      "sha1": "e90b2514226a0624cf42112b42477f9872598b89",
+      "size": 360,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sodium-extra.properties"
+    },
+    {
+      "path": "config/sodium-fingerprint.json",
+      "sha1": "f456a22dd6d5b4d56c1966fe03895e4036f5c7d9",
+      "size": 427,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sodium-fingerprint.json"
+    },
+    {
+      "path": "config/sodium-mixins.properties",
+      "sha1": "5455463ee999b945c1cff8ae90f2b705e19fb86c",
+      "size": 258,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sodium-mixins.properties"
+    },
+    {
+      "path": "config/sodium-options.json",
+      "sha1": "190ec9d2a37f2095228f24af290b40cdb099ff32",
+      "size": 743,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sodium-options.json"
+    },
+    {
+      "path": "config/sodium-shadowy-path-blocks-options.json",
+      "sha1": "da9a475c98d7275c3e9c3899fabde3835def8d35",
+      "size": 105,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sodium-shadowy-path-blocks-options.json"
+    },
+    {
+      "path": "config/sound_physics_remastered/occlusion.properties",
+      "sha1": "63e8843f243c38bc7aa44d99ce4f562991890350",
+      "size": 4831,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sound_physics_remastered/occlusion.properties"
+    },
+    {
+      "path": "config/sound_physics_remastered/reflectivity.properties",
+      "sha1": "95feb43eb67757038518212b08739cb39bb9763e",
+      "size": 4713,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sound_physics_remastered/reflectivity.properties"
+    },
+    {
+      "path": "config/sound_physics_remastered/sound_rates.properties",
+      "sha1": "33bdbc0f626cfb86f1b22bc56530fd4fb7e941ef",
+      "size": 79666,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sound_physics_remastered/sound_rates.properties"
+    },
+    {
+      "path": "config/sound_physics_remastered/soundphysics.properties",
+      "sha1": "d28f5f62aebcbe96ce0ad333b8cb8298776d20f8",
+      "size": 5104,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/sound_physics_remastered/soundphysics.properties"
+    },
+    {
+      "path": "config/spark/config.json",
+      "sha1": "33b6644f61573b11848cde9419529737418e0207",
+      "size": 117,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/spark/config.json"
+    },
+    {
+      "path": "config/spark/tmp-client/about.txt",
+      "sha1": "a63da50166561c948dc39484f0d88990cdbe29a0",
+      "size": 585,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/spark/tmp-client/about.txt"
+    },
+    {
+      "path": "config/spark/tmp/about.txt",
+      "sha1": "a63da50166561c948dc39484f0d88990cdbe29a0",
+      "size": 585,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/spark/tmp/about.txt"
+    },
+    {
+      "path": "config/structureessentials.json",
+      "sha1": "e90869eb308ec1d6c4a7ba572c10e16f3cbc8e19",
+      "size": 3935,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/structureessentials.json"
+    },
+    {
+      "path": "config/subtle_effects/blocks.toml",
+      "sha1": "6ba93e805b2d5d654383dc927d5906d5b111ab0e",
+      "size": 4582,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/subtle_effects/blocks.toml"
+    },
+    {
+      "path": "config/subtle_effects/entities.toml",
+      "sha1": "0fe41362f6a5c094051eecc9858e5077eeaae980",
+      "size": 4289,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/subtle_effects/entities.toml"
+    },
+    {
+      "path": "config/subtle_effects/environment.toml",
+      "sha1": "90f16b67bd33b5ae191a659711c42c3660d2d4b3",
+      "size": 2503,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/subtle_effects/environment.toml"
+    },
+    {
+      "path": "config/subtle_effects/general.toml",
+      "sha1": "066b750584c04b78911e51d32aabcdfaaa9c3c77",
+      "size": 1353,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/subtle_effects/general.toml"
+    },
+    {
+      "path": "config/subtle_effects/items.toml",
+      "sha1": "2c2d5ff1a46e2c61fb529b966e9f9af22b18616a",
+      "size": 1119,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/subtle_effects/items.toml"
+    },
+    {
+      "path": "config/terrablender.toml",
+      "sha1": "194a663d21fe1df84f7230013c470329088fa710",
+      "size": 988,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/terrablender.toml"
+    },
+    {
+      "path": "config/trade_cycling/trade_cycling.properties",
+      "sha1": "73fb5fa0a709a38efcb4baaef2c05bf39208c5a8",
+      "size": 39,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/trade_cycling/trade_cycling.properties"
+    },
+    {
+      "path": "config/transition.json",
+      "sha1": "8b50cd4b9956dc3443acd38e47f80e23ff7712f5",
+      "size": 97,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/transition.json"
+    },
+    {
+      "path": "config/trashslot-common.toml",
+      "sha1": "53e131b29740881ce261b299002143ba24ec9ef5",
+      "size": 755,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/trashslot-common.toml"
+    },
+    {
+      "path": "config/trender.json",
+      "sha1": "1ecd2edb27bfbc69f24e0cd52d3a22f98bdce8f0",
+      "size": 47,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/trender.json"
+    },
+    {
+      "path": "config/visuality.json",
+      "sha1": "2ff3954215c795113af89a94d88392486abb3d37",
+      "size": 1045,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/visuality.json"
+    },
+    {
+      "path": "config/visualworkbench-client.toml",
+      "sha1": "b7d8269a7e4818e06d467cd1bab75e92f2fdc960",
+      "size": 515,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/visualworkbench-client.toml"
+    },
+    {
+      "path": "config/visualworkbench-server.toml",
+      "sha1": "ebbc742bb76c36579818d1c3113e7ac816a4a736",
+      "size": 148,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/visualworkbench-server.toml"
+    },
+    {
+      "path": "config/voicechat/category-volumes.properties",
+      "sha1": "c9f8fd05a81e609071657f5c4c27d5cd377c5b12",
+      "size": 46,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/voicechat/category-volumes.properties"
+    },
+    {
+      "path": "config/voicechat/player-volumes.properties",
+      "sha1": "c77eeb6fb16c2844e9bbcf19667d30c9401212d5",
+      "size": 44,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/voicechat/player-volumes.properties"
+    },
+    {
+      "path": "config/voicechat/translations.properties",
+      "sha1": "383e00e7dd0d5f00daa2ffcfd24c939d255dc7e3",
+      "size": 1182,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/voicechat/translations.properties"
+    },
+    {
+      "path": "config/voicechat/username-cache.json",
+      "sha1": "bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f",
+      "size": 2,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/voicechat/username-cache.json"
+    },
+    {
+      "path": "config/voicechat/voicechat-client.properties",
+      "sha1": "fd035ec60ee7f8485c31595a3e4544b3d58f99d0",
+      "size": 5060,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/voicechat/voicechat-client.properties"
+    },
+    {
+      "path": "config/voicechat/voicechat-server.properties",
+      "sha1": "59d4362a0e83b06ec06fc18baace4430d977cfea",
+      "size": 3212,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/voicechat/voicechat-server.properties"
+    },
+    {
+      "path": "config/whitenoise-client.toml",
+      "sha1": "b6947d513c4b21e5b0bc663ba7bc04b1052c40d5",
+      "size": 346,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/whitenoise-client.toml"
+    },
+    {
+      "path": "config/yacl.json5",
+      "sha1": "622920f29084efcd3a8d0b2a0ea0756fece182d2",
+      "size": 250,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/yacl.json5"
+    },
+    {
+      "path": "config/zoomify.json",
+      "sha1": "d9a9878c8753f2580a0b43eb6afd7c6dfec31902",
+      "size": 708,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/config/zoomify.json"
+    },
+    {
+      "path": "resourcepacks/Mod Menu Helper.zip",
+      "sha1": "d21aeab19cfadf9ee64687f983773ec6a7ec20bd",
+      "size": 89883,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/resourcepacks/Mod%20Menu%20Helper.zip"
+    },
+    {
+      "path": "resourcepacks/VanillaTweaks_r839694_MC26.3.x.zip",
+      "sha1": "42f82e24e6363fa7490b11fb8afcf4c8bf07419d",
+      "size": 2028976,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/resourcepacks/VanillaTweaks_r839694_MC26.3.x.zip"
+    },
+    {
+      "path": "shaderpacks/MC-Vibrant-Shader_v1.0.zip",
+      "sha1": "195ad45ff70272a66b02efb09a35977a79e63af2",
+      "size": 576579,
+      "url": "https://raw.githubusercontent.com/RTF3563/MMCraft/5b389e2905bbe0a1c3580ed17f2753f604821498/pack/overrides/shaderpacks/MC-Vibrant-Shader_v1.0.zip"
+    }
+  ]
+}
