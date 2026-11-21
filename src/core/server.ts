@@ -28,9 +28,9 @@ export interface ServerInstallState extends InstallState {
   fabricInstaller?: string;
 }
 
-/** 서버에 넣을 모드: 서버에서 안 돌아가는 것(클라이언트 전용)과 리소스팩 제외 */
-export function serverMods(index: { mods: PackMod[] }): PackMod[] {
-  return index.mods.filter((m) => m.server !== "unsupported" && m.kind !== "resourcepack");
+/** 서버에 넣을 모드: 팩 모드 중 클라이언트 전용·리소스팩을 뺀 것 + 서버 전용 모드 */
+export function serverMods(index: { mods: PackMod[]; serverOnlyMods?: PackMod[] }): PackMod[] {
+  return [...index.mods, ...(index.serverOnlyMods ?? [])].filter((m) => m.server !== "unsupported" && m.kind !== "resourcepack");
 }
 
 /** 서버에 넣을 설정 파일: config/ 아래만 (리소스팩·셰이더는 플레이어용) */

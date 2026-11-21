@@ -168,3 +168,20 @@ test("팩 버전 올리기", () => {
   assert.equal(nextPackVersion("26.3.2.5", "26.4", [A], [A]), "26.4.0.0"); // 마크 버전 업
   assert.equal(nextPackVersion("26.4.0.0", "26.4.1", [A], [A]), "26.4.1.0.0");
 });
+
+test("서버 전용 모드: 업데이트해도 표시 유지, 서버 전용 모드만 쓰는 라이브러리도 서버 전용", async () => {
+  const chunky1 = ver("chunky", "1.0", ["26.3"], "release", [req("api"), req("srvlib")]);
+  const chunky2 = ver("chunky", "1.1", ["26.3"], "release", [req("api"), req("srvlib")]);
+  const normal = ver("normal", "1.0", ["26.3"], "release", [req("api")]);
+  const api = ver("api", "1.0", ["26.3"]);
+  const srvlib = ver("srvlib", "1.0", ["26.3"]);
+  const current = [{ ...packMod(chunky1), serverOnly: true }, packMod(normal)];
+  const p = await plan("26.3", current, provider([chunky1, chunky2, normal, api, srvlib]), policy, {}, "update");
+  assert.equal(p.ok, true);
+  const get = (id: string) => p.mods.find((m) => m.projectId === id)!;
+  assert.equal(get("chunky").versionNumber, "1.1");
+  assert.equal(get("chunky").serverOnly, true, "새 버전으로 바뀌어도 서버 전용 유지");
+  assert.equal(get("srvlib").serverOnly, true, "서버 전용 모드만 쓰는 라이브러리 → 서버 전용");
+  assert.equal(get("api").serverOnly, undefined, "일반 모드도 쓰는 라이브러리 → 플레이어에게도 설치");
+  assert.equal(get("normal").serverOnly, undefined);
+});

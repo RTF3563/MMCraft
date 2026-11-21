@@ -40,7 +40,8 @@ async function makeProvider(mods: PackMod[]): Promise<Provider> {
 function changeLines(changes: Change[], removed: PackMod[]): string[] {
   const lines: string[] = [];
   for (const c of changes) {
-    lines.push(c.from ? `${c.name} ${c.from} → ${c.to}` : `새 모드: ${c.name} ${c.to}`);
+    const so = c.mod.serverOnly ? " (서버 전용)" : "";
+    lines.push(c.from ? `${c.name} ${c.from} → ${c.to}${so}` : `새 모드: ${c.name} ${c.to}${so}`);
     for (const d of c.deps) lines.push(`새 라이브러리: ${d.name} ${d.versionNumber} (${c.name}에 필요)`);
   }
   for (const r of removed) lines.push(`제거: ${r.name} (더 이상 필요 없는 라이브러리)`);

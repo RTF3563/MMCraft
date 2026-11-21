@@ -137,11 +137,13 @@ export async function plan(
     }
     const project = await projectOf(m);
     const mod = toPackMod(project, v);
+    if (m.serverOnly) mod.serverOnly = true;
     chosen.set(m.projectId, { mod, version: v, changed: v.id !== m.versionId });
   }
 
   // 2) 필요한 의존 모드 채우기 (누가 필요로 하는지 기록)
   const requiredBy = new Map<string, Set<string>>();
+  const requiredById = new Map<string, Set<string>>(); // 의존 모드 → 요구한 모드 id (서버 전용 판정용)
   const depOwner = new Map<string, string>(); // 새 의존 모드 → 처음 요구한 모드
   const queue = [...chosen.keys()];
   const incompatible: [string, string][] = [];
@@ -162,6 +164,8 @@ export async function plan(
       if (depProject && depKind === "mod" && !depProject.loaders.includes("fabric") && !depProject.loaders.includes("quilt")) continue;
       if (!requiredBy.has(d.project_id)) requiredBy.set(d.project_id, new Set());
       requiredBy.get(d.project_id)!.add(entry.mod.name);
+      if (!requiredById.has(d.project_id)) requiredById.set(d.project_id, new Set());
+      requiredById.get(d.project_id)!.add(id);
       if (chosen.has(d.project_id)) continue;
       const existing = byId.get(d.project_id);
       const versions = await provider.versions(d.project_id, mc, loaderFor(depKind));
@@ -196,11 +200,25 @@ export async function plan(
   }
 
   // 5) 결과 정리
+  // 서버 전용 모드만 필요로 하는 라이브러리는 서버 전용 (플레이어 PC에 넣을 필요 없음)
+  const serverOnly = new Set([...chosen].filter(([, c]) => c.mod.serverOnly && topLevel.some((t) => t.projectId === c.mod.projectId)).map(([id]) => id));
+  for (let changed = true; changed; ) {
+    changed = false;
+    for (const [id, reqs] of requiredById) {
+      if (serverOnly.has(id) || topLevel.some((t) => t.projectId === id) || !chosen.has(id)) continue;
+      if ([...reqs].every((r) => serverOnly.has(r))) {
+        serverOnly.add(id);
+        changed = true;
+      }
+    }
+  }
   for (const [id, c] of chosen) {
     const isTop = topLevel.some((t) => t.projectId === id);
     const mod = { ...c.mod };
     if (!isTop) mod.dependencyOf = [...(requiredBy.get(id) ?? [])].sort();
     else delete mod.dependencyOf;
+    if (serverOnly.has(id)) mod.serverOnly = true;
+    else delete mod.serverOnly;
     result.mods.push(mod);
   }
   for (const [id, c] of chosen) {

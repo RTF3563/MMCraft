@@ -31,12 +31,13 @@ type AddItem = string | { modrinth?: string; curseforge?: string };
 const REQUESTS = path.join(PACK_DIR, "requests.json");
 /** upgrade: 베타까지 허용해서 가장 새 버전으로 (다른 모드가 새 버전을 요구할 때) */
 /** use: {"모드주소": "previous" 또는 "버전 번호"} → 그 버전으로 바꾸고, 지금 버전은 보류 목록에 (자동 업데이트가 다시 올리지 않게) */
-function readRequests(): { add: AddItem[]; remove: string[]; inspect: string[]; test: boolean; upgrade: string[]; use: Record<string, string>; reason: string } {
+/** serverAdd: add와 같지만 서버 전용 (서버 런처만 설치, 플레이어 PC에는 안 넣음) */
+function readRequests(): { add: AddItem[]; serverAdd: AddItem[]; remove: string[]; inspect: string[]; test: boolean; upgrade: string[]; use: Record<string, string>; reason: string } {
   try {
     const r = JSON.parse(fs.readFileSync(REQUESTS, "utf8"));
-    return { add: r.add ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [], test: !!r.test, upgrade: r.upgrade ?? [], use: r.use ?? {}, reason: r.reason ?? "" };
+    return { add: r.add ?? [], serverAdd: r.serverAdd ?? [], remove: r.remove ?? [], inspect: r.inspect ?? [], test: !!r.test, upgrade: r.upgrade ?? [], use: r.use ?? {}, reason: r.reason ?? "" };
   } catch {
-    return { add: [], remove: [], inspect: [], test: false, upgrade: [], use: {}, reason: "" };
+    return { add: [], serverAdd: [], remove: [], inspect: [], test: false, upgrade: [], use: {}, reason: "" };
   }
 }
 
@@ -119,7 +120,7 @@ async function main() {
     const lines = fs.existsSync(log) ? fs.readFileSync(log, "utf8").split(/\r?\n/).map((l) => l.replace(/<\/?log4j:[^>]*>|<!\[CDATA\[|\]\]>/g, "").trimEnd()).filter((l) => /Loading \d+ mods|resolution|Reason|Backend library|OpenGL|GL_RENDERER|Renderer|Created: .*atlas|Sound engine|FATAL|Crash|Stopping/i.test(l)).slice(0, 40) : ["(로그 없음)"];
     say([`### 현재 팩 테스트: ${r.ok ? "통과" : "실패"} (${r.stage}: ${r.reason})`, "```", ...lines.map((l) => l.slice(0, 300)), "```"]);
   }
-  const fromFile = req.add.length + req.remove.length + req.upgrade.length + Object.keys(req.use).length > 0;
+  const fromFile = req.add.length + req.serverAdd.length + req.remove.length + req.upgrade.length + Object.keys(req.use).length > 0;
   const held = readHeld();
   for (const [slug, want] of Object.entries(req.use)) {
     const i = mods.findIndex((m) => m.slug === slug);
@@ -134,7 +135,7 @@ async function main() {
     if (!entry.badVersions.some((b) => b.versionId === m.versionId)) {
       entry.badVersions.push({ versionId: m.versionId, versionNumber: m.versionNumber, minecraft: pack.minecraft, reason: req.reason || "직접 보류", date: new Date().toISOString().slice(0, 10) });
     }
-    mods[i] = toPackMod(proj, pick, m.dependencyOf);
+    mods[i] = { ...toPackMod(proj, pick, m.dependencyOf), ...(m.serverOnly ? { serverOnly: true } : {}) };
     lines.push(`${m.name} ${m.versionNumber} → ${pick.version_number} (${req.reason || "직접 지정"})`);
   }
   for (const slug of req.upgrade) {
@@ -147,13 +148,16 @@ async function main() {
     const proj = await provider.project(m.projectId);
     if (!best || !proj) { errors.push(`${m.name}: 받을 수 있는 새 버전 없음`); continue; }
     if (best.id === m.versionId) { errors.push(`${m.name}: 이미 가장 새 버전`); continue; }
-    mods[i] = toPackMod(proj, best, m.dependencyOf);
+    mods[i] = { ...toPackMod(proj, best, m.dependencyOf), ...(m.serverOnly ? { serverOnly: true } : {}) };
     lines.push(`${m.name} ${m.versionNumber} → ${best.version_number}`);
   }
   const removeList = [...parseList(process.env.REMOVE_MODS), ...req.remove];
-  const addList: { mr: string; cf?: string }[] = [
-    ...parseList(process.env.ADD_MODS).map((x) => ({ mr: x })),
-    ...req.add.map((a) => (typeof a === "string" ? { mr: a } : { mr: a.modrinth ?? a.curseforge ?? "", cf: a.curseforge })),
+  const toItem = (a: AddItem, serverOnly: boolean) =>
+    typeof a === "string" ? { mr: a, serverOnly } : { mr: a.modrinth ?? a.curseforge ?? "", cf: a.curseforge, serverOnly };
+  const addList: { mr: string; cf?: string; serverOnly: boolean }[] = [
+    ...parseList(process.env.ADD_MODS).map((x) => ({ mr: x, serverOnly: false })),
+    ...req.add.map((a) => toItem(a, false)),
+    ...req.serverAdd.map((a) => toItem(a, true)),
   ].filter((a) => a.mr);
 
   for (const slug of removeList) {
@@ -164,7 +168,9 @@ async function main() {
     delete cfg.map[m.slug]; // CurseForge 연결 정보도 정리
     lines.push(`제거: ${m.name}`);
   }
-  for (const { mr: slug, cf: cfSlug } of addList) {
+  for (const { mr: slug, cf: cfSlug, serverOnly } of addList) {
+    const so = serverOnly ? { serverOnly: true } : {};
+    const soLabel = serverOnly ? " (서버 전용)" : "";
     const p = await getProject(slug);
     if (!p) {
       // Modrinth에 없으면 CurseForge 전용으로
@@ -175,9 +181,9 @@ async function main() {
       cfg.only.push(cfSlug ?? slug);
       mods.push({
         projectId: cfProjectId(cf.id), slug: `cf-${cf.slug}`, name: cf.name, versionId: "", versionNumber: "", versionType: "release",
-        gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: "optional", server: "optional",
+        gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: "optional", server: "optional", ...so,
       } as PackMod);
-      lines.push(`새 모드: ${cf.name} (CurseForge)`);
+      lines.push(`새 모드: ${cf.name} (CurseForge)${soLabel}`);
       continue;
     }
     // CurseForge에도 같은 모드가 있으면 지원 버전 정보를 함께 확인
@@ -189,9 +195,9 @@ async function main() {
     mods.push({
       projectId: p.id, slug: p.slug, name: p.title, versionId: "", versionNumber: "", versionType: "release",
       gameVersions: [], fileName: "", url: "", sha1: "", sha512: "", size: 0, client: p.client_side, server: p.server_side,
-      ...(kind === "resourcepack" ? { kind } : {}),
+      ...(kind === "resourcepack" ? { kind } : {}), ...so,
     } as PackMod);
-    lines.push(`새 모드: ${p.title}`);
+    lines.push(`새 모드: ${p.title}${soLabel}`);
   }
   if (errors.length) say(["## ⚠ 확인 필요", ...errors.map((e) => `- ${e}`)]);
   writeCurseForge(cfg);
@@ -218,13 +224,13 @@ async function main() {
     out("changed", "false");
     process.exit(1);
   }
-  for (const m of finalMods) if (m.dependencyOf?.length && !mods.some((x) => x.projectId === m.projectId)) lines.push(`새 라이브러리: ${m.name}`);
+  for (const m of finalMods) if (m.dependencyOf?.length && !mods.some((x) => x.projectId === m.projectId)) lines.push(`새 라이브러리: ${m.name}${m.serverOnly ? " (서버 전용)" : ""}`);
   pack.version = nextPackVersion(pack.version, pack.minecraft, readMods(), finalMods);
   writePack(pack);
   writeMods(finalMods);
   writeHeld(held);
   addChangelog({ version: pack.version, minecraft: pack.minecraft, date: new Date().toISOString().slice(0, 10), lines });
-  if (fromFile) fs.writeFileSync(REQUESTS, JSON.stringify({ add: [], remove: [] }, null, 2) + "\n");
+  if (fromFile) fs.writeFileSync(REQUESTS, JSON.stringify({ add: [], serverAdd: [], remove: [] }, null, 2) + "\n");
   say([`## ✅ 팩 ${pack.version}`, ...lines.map((l) => `- ${l}`), ...[...notes].map((n) => `- (CurseForge) ${n}`)]);
   out("changed", "true");
 }

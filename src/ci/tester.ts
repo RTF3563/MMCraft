@@ -196,7 +196,7 @@ export async function clientTest(input: TestInput, workDir: string, prep: Awaite
   const gameDir = path.join(workDir, "client");
   const layout = new Layout(CI_HOME, gameDir);
   await installVersion(layout, prep.resolved);
-  await putMods(gameDir, input.mods);
+  await putMods(gameDir, input.mods.filter((m) => !m.serverOnly)); // 서버 전용 모드는 플레이어 PC에 안 들어감
   await copyDir(files.overrides(), gameDir);
   const javaExe = javaExecutable(path.dirname(path.dirname(prep.javaExe)), prep.platform, false);
   // CI 검사 전용 오프라인 실행 (실제 런처에서는 Microsoft 로그인만 사용)
