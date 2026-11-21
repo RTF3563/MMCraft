@@ -359,3 +359,18 @@ test("서버 쪽 변경 없는 팩 업데이트는 재시작 안 함 · 꺼져 �
     h.cleanup();
   }
 });
+
+test("서버 전용 모드: 서버에는 설치, 플레이어 목록에는 없음", async () => {
+  const { clientMods } = await import("../core/pack");
+  const idx = base({ serverOnlyMods: [{ ...mod("chunky", "optional", "optional"), serverOnly: true }] });
+  assert.ok(serverMods(idx).some((m) => m.name === "chunky"));
+  assert.ok(!clientMods(idx).some((m) => m.name === "chunky"));
+  // 지문에도 들어가서 서버 전용 모드만 바뀌어도 재시작
+  const state = { ...emptyState(), packVersion: "26.3.0.0", minecraft: "26.3", fabricLoader: "0.20.1", fingerprint: serverFingerprint(idx) };
+  const changed = base({ packVersion: "26.3.0.1", serverOnlyMods: [{ ...mod("chunky", "optional", "optional", "new"), serverOnly: true }] });
+  assert.equal(classifyServerUpdate(state, changed), "restart");
+  // 팩 원본(mods.json)처럼 한 목록에 섞여 있어도 서버 전용만 플레이어에서 빠짐
+  const mixed = base({ mods: [...base().mods, { ...mod("fastback", "unsupported", "required"), serverOnly: true }] });
+  assert.ok(!clientMods(mixed).some((m) => m.name === "fastback"));
+  assert.ok(serverMods(mixed).some((m) => m.name === "fastback"));
+});

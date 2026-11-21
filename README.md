@@ -19,7 +19,7 @@ MMCraft 모드팩 전용 Windows 런처 + 서버 런처 + 모드 자동 업데�
 
 | 기능 | 방식 |
 |---|---|
-| 서버 모드 구성 | 팩 모드 중 **클라이언트 전용(서버 unsupported)·리소스팩 자동 제외**, 설정은 `config/`만. Fabric 서버·Java 자동 설치 (자동 테스트 서버와 같은 규칙) |
+| 서버 모드 구성 | 팩 모드 중 **클라이언트 전용(서버 unsupported)·리소스팩 자동 제외** + **서버 전용 모드**, 설정은 `config/`만. Fabric 서버·Java 자동 설치 (자동 테스트 서버와 같은 규칙) |
 | 업데이트 감지 | 플레이어 런처와 같은 `pack-dist` index.json을 **5분마다** 확인 |
 | 업데이트 흐름 | 서버를 켠 채로 새 파일 미리 받기 → 접속자에게 공지 + **30초 카운트다운** → `kick @a` (밴 아님, 사유: "서버 업데이트가 있습니다. MMCraft를 재실행하여 업데이트를 진행해 주세요.") → 정지 → **월드 백업** → 모드·설정 교체 → 자동 재시작. 접속자가 없으면 카운트다운 없이 바로 |
 | 재시작 없는 업데이트 | 클라이언트 전용 모드·리소스팩만 바뀐 팩은 서버 쪽이 같으므로 재시작하지 않고 버전 기록만 바꿈 |
@@ -32,6 +32,7 @@ MMCraft 모드팩 전용 Windows 런처 + 서버 런처 + 모드 자동 업데�
 
 - 데이터: `%APPDATA%\.mmcraft-server` (Java·캐시·설정), 서버 폴더 기본값 `%APPDATA%\.mmcraft-server\server` (설정에서 바꿀 수 있음)
 - 원래 쓰던 서버 폴더를 고르면 처음 설치 때 기존 mods는 `mods-before-mmcraft-<시각>`으로 옮기고 월드·server.properties는 그대로 씀. 그 뒤 직접 넣은 모드는 건드리지 않음
+- **서버 전용 모드**: `pack/mods.json`에서 `"serverOnly": true`인 모드. 자동 업데이트·마크 버전 업·실행 테스트(서버 쪽)는 다른 모드와 똑같이 처리하고, index.json에는 `serverOnlyMods`로 따로 나가서 **서버 런처만 설치** (플레이어 런처·사이트 모드 목록에는 안 나옴). 추가는 `pack/requests.json`의 `"serverAdd"` (형식은 `add`와 같음). 서버 전용 모드만 쓰는 라이브러리도 자동으로 서버 전용
 - 소스: `src/server-launcher` (화면 `renderer/`), 서버 설치 공용 코드 `src/core/server.ts`, 서버 관리(시작·크래시·업데이트 순서) `src/server-launcher/manager.ts`
 - 런처 배포와 함께 나감: `package.json` version을 올리면 **런처 배포** 워크플로가 두 설치 파일을 같은 Releases에 올림
 
@@ -57,7 +58,7 @@ https://mmcraft.dpdns.org/ (`site/`, GitHub Pages + 무료 도메인 DigitalPlat
 |---|---|
 | 처음 한 번: CurseForge 목록 → Modrinth로 옮기기 | **CurseForge 가져오기** → Run workflow. 결과: `pack/import/import-report.md` |
 | 지금 바로 업데이트 확인 | **자동 업데이트** → Run workflow (평소엔 매일 자동) |
-| 모드 추가·삭제 | **모드 추가·삭제** → Modrinth/CurseForge 주소 입력, 또는 `pack/requests.json`에 적어 push (테스트 통과 시 배포, 처리 후 비워짐) |
+| 모드 추가·삭제 | **모드 추가·삭제** → Modrinth/CurseForge 주소 입력, 또는 `pack/requests.json`에 적어 push (테스트 통과 시 배포, 처리 후 비워짐). 서버 전용은 `"serverAdd"` |
 | 설정 파일만 고쳐서 배포 | `pack/overrides` 수정 후 push → **팩 수정 배포** 자동 실행 |
 | 런처 새 버전 | `package.json` version 올려서 push → **런처 배포** 자동 실행 |
 

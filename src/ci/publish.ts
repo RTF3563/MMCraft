@@ -21,7 +21,9 @@ async function walk(dir: string, base = dir): Promise<string[]> {
 async function main() {
   const sha = process.env.PACK_COMMIT ?? execSync("git rev-parse HEAD").toString().trim();
   const pack = readPack();
-  const mods = applyInstallNames(readMods());
+  const all = applyInstallNames(readMods());
+  const mods = all.filter((m) => !m.serverOnly);
+  const serverOnlyMods = all.filter((m) => m.serverOnly);
   const overrides: PackOverride[] = [];
   const root = files.overrides();
   for (const rel of await walk(root)) {
@@ -45,11 +47,12 @@ async function main() {
     mods,
     overrides,
     ...(pack.jvmArgs?.length ? { jvmArgs: pack.jvmArgs } : {}),
+    ...(serverOnlyMods.length ? { serverOnlyMods } : {}),
   };
   const outDir = path.resolve("out", "pack-dist");
   await fs.promises.mkdir(outDir, { recursive: true });
   await fs.promises.writeFile(path.join(outDir, "index.json"), JSON.stringify(index, null, 2));
-  console.log(`index.json: 팩 ${pack.version}, Minecraft ${pack.minecraft}, 모드 ${mods.length}개, 설정 파일 ${overrides.length}개`);
+  console.log(`index.json: 팩 ${pack.version}, Minecraft ${pack.minecraft}, 모드 ${mods.length}개 + 서버 전용 ${serverOnlyMods.length}개, 설정 파일 ${overrides.length}개`);
 }
 
 main().catch((e) => {

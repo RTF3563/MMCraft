@@ -30,6 +30,8 @@ export interface PackMod {
   dependencyOf?: string[];
   /** 모드(jar) 또는 리소스팩(zip). 없으면 모드 */
   kind?: "mod" | "resourcepack";
+  /** 서버 전용: 서버 런처만 설치 (플레이어 PC에는 안 넣음, index.json에서는 serverOnlyMods에 들어감) */
+  serverOnly?: boolean;
 }
 
 /** game 폴더 기준 설치 위치 ("mods/x.jar", "resourcepacks/y.zip") */
@@ -56,6 +58,8 @@ export interface PackIndex {
   overrides: PackOverride[];
   /** 게임 실행 때 꼭 넣어야 하는 Java 옵션 (모드 호환용) */
   jvmArgs?: string[];
+  /** 서버 런처만 설치하는 서버 전용 모드 (옛 런처는 이 칸을 모르므로 플레이어 PC에 들어가지 않음) */
+  serverOnlyMods?: PackMod[];
 }
 
 export interface InstallState {
@@ -110,7 +114,7 @@ export async function fetchPackIndexCached(layout: Layout, url = PACK_INDEX_URL)
 
 /** 플레이어 PC에 설치할 것: 모드·리소스팩 전부 (싱글플레이는 내장 서버도 돌리므로 서버용 모드도 필요) */
 export function clientMods(index: PackIndex): PackMod[] {
-  return index.mods;
+  return index.mods.filter((m) => !m.serverOnly);
 }
 
 /** 예전 상태 파일은 키가 파일명만 있음 → mods/ 로 간주 */
