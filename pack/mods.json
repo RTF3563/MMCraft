@@ -1800,18 +1800,18 @@
     "projectId": "rcTfTZr3",
     "slug": "presence-footsteps",
     "name": "Presence Footsteps",
-    "versionId": "UUNiN7Tm",
-    "versionNumber": "1.14.0+26.3",
+    "versionId": "PV68dcBA",
+    "versionNumber": "1.14.1+26.3",
     "versionType": "release",
     "gameVersions": [
-      "26.3",
-      "26.3-rc-3"
+      "26.3-rc-3",
+      "26.3"
     ],
-    "fileName": "PresenceFootsteps-1.14.0+26.3.jar",
-    "url": "https://cdn.modrinth.com/data/rcTfTZr3/versions/UUNiN7Tm/PresenceFootsteps-1.14.0%2B26.3.jar",
-    "sha1": "2747a6c39d42ef4024a26bb43fc17be5f1eb86b5",
-    "sha512": "70525da0c631f50608b67ecdfe62fd9410fdec7bc95510946716a6465cc109fe6b93be7c75022c47a0036f9954ff5912567a393e1356a75940e9b1da5580698b",
-    "size": 5760504,
+    "fileName": "PresenceFootsteps-1.14.1+26.3.jar",
+    "url": "https://cdn.modrinth.com/data/rcTfTZr3/versions/PV68dcBA/PresenceFootsteps-1.14.1%2B26.3.jar",
+    "sha1": "99f525f3c138fb9c3ee0e13e940181899f7aeaea",
+    "sha512": "de521483f351059ffd4ec0d4d88a91e8a0a9d3fc1f0246eec733527d4f3c73c78815a70c7e683c68bad32ee1e739118d52b2da66a2733805f863c1bda1acd70c",
+    "size": 5765525,
     "client": "required",
     "server": "unsupported"
   },
