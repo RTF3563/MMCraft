@@ -118,6 +118,21 @@ h2 { margin: 0 0 20px; font-family: var(--pixel); font-weight: 700; font-size: 2
 .steps strong { display: block; font-family: var(--pixel); font-size: 12px; margin-bottom: 4px; text-shadow: var(--shadow-text); }
 .steps span { color: var(--ink-dim); font-size: 15px; }
 
+.server { display: grid; grid-template-columns: 112px 1fr; gap: 24px; align-items: start; padding: 22px 24px 24px; }
+.server-icon { width: 112px; height: 112px; filter: drop-shadow(4px 4px 0 rgba(0,0,0,.35)); }
+.server-body p { margin: 0 0 10px; color: var(--ink-dim); font-size: 15px; max-width: 46em; }
+.server-points { margin: 0 0 18px; padding: 0; list-style: none; color: var(--ink-dim); font-size: 15px; }
+.server-points li { position: relative; padding-left: 20px; margin-bottom: 4px; }
+.server-points li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; background: var(--green-hi); border: 2px solid var(--line); }
+.server-dl {
+  display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 20px;
+  font-family: var(--pixel); font-weight: 700; font-size: 16px; text-decoration: none; color: #fff; text-shadow: var(--shadow-text);
+  background: var(--btn); border: 2px solid var(--line); box-shadow: inset 2px 2px 0 var(--btn-hi), inset -2px -4px 0 var(--btn-lo);
+}
+.server-dl:hover { background: #7f8fb8; box-shadow: inset 2px 2px 0 #b8c6ee, inset -2px -4px 0 #45507a; }
+.server-dl svg { width: 16px; height: 16px; }
+.server-meta { display: block; margin-top: 10px; font-size: 13px; color: var(--ink-muted); }
+
 .mods-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 12px; }
 .mods-head h2 { margin: 0; }
 .search { width: min(300px, 100%); padding: 8px 10px; font: 12px var(--pixel); color: #fff; background: #000; border: 2px solid #a0a0a0; }
@@ -150,6 +165,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .facts div:nth-child(3) { margin-left: 0; }
   .facts div:nth-child(n+3) { margin-top: -2px; }
   .duties { grid-template-columns: 1fr; }
+  .server { grid-template-columns: 1fr; }
+  .server-icon { width: 72px; height: 72px; }
   section { padding-top: 56px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .splash { animation: none; } }
@@ -162,6 +179,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <nav>
       <a href="#duties" data-t="nav.what">런처 소개</a>
       <a href="#install" data-t="nav.install">설치 방법</a>
+      <a href="#server" data-t="nav.server">서버 열기</a>
       <a href="#mods" data-t="nav.mods">모드 목록</a>
       <span class="lang" role="group" aria-label="Language">
         <button class="mc-btn" data-lang="ko" aria-pressed="true">한국어</button>
@@ -186,7 +204,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </a>
       <div class="cta-meta">
         <span id="dl-meta" data-t="cta.meta">무료 · Windows 10/11 (64비트)</span><br />
-        <a href="https://github.com/RTF3563/MMCraft/releases" data-t="cta.all">이전 버전 보기</a>
+        <a href="https://github.com/RTF3563/MMCraft/releases" data-t="cta.all">이전 버전 보기</a> ·
+        <a href="#server" data-t="cta.server">서버 런처 다운로드</a>
       </div>
     </div>
   </div>
@@ -227,6 +246,26 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </ol>
   </section>
 
+  <section id="server" class="wrap">
+    <h2 data-t="server.title">MMCraft 서버 열기</h2>
+    <div class="server panel">
+      <img class="server-icon" src="server-icon.png" alt="" />
+      <div class="server-body">
+        <p data-t="server.p">서버용 Windows PC에 서버 런처를 설치하면, 플레이어 런처와 같은 팩 버전으로 서버가 스스로 업데이트합니다. 서버 PC에는 MMCraft(플레이어 런처)가 없어도 됩니다.</p>
+        <ul class="server-points">
+          <li data-t="server.p1">클라이언트 전용 모드는 자동으로 빼고, Fabric 서버도 자동으로 설치</li>
+          <li data-t="server.p2">새 팩이 나오면 접속자에게 공지 → 30초 뒤 킥 → 월드 백업 → 업데이트 → 자동 재시작</li>
+          <li data-t="server.p3">크래시가 나면 자동으로 다시 켜고, 짧은 시간에 반복되면 멈추고 알림</li>
+        </ul>
+        <a id="dl-server" class="server-dl" href="https://github.com/RTF3563/MMCraft/releases/latest/download/MMCraft-Server-Setup.exe" download>
+          <svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M3 0h2v4h2v1H6v1H5v1H3V6H2V5H1V4h2zM0 7h8v1H0z"/></svg>
+          <span data-t="server.download">서버 런처 다운로드</span>
+        </a>
+        <span class="server-meta" data-t="server.meta">Windows 10/11 (64비트) · 처음 실행할 때 Minecraft EULA 동의가 필요합니다</span>
+      </div>
+    </div>
+  </section>
+
   <section id="mods" class="wrap">
     <div class="mods-head">
       <h2 data-t="mods.title">들어 있는 모드</h2>
@@ -262,9 +301,15 @@ const REPO = "RTF3563/MMCraft";
 const INDEX = `https://raw.githubusercontent.com/${REPO}/pack-dist/index.json`;
 const T = {
   en: {
-    "nav.what": "The launcher", "nav.install": "Install", "nav.mods": "Mods",
+    "nav.what": "The launcher", "nav.install": "Install", "nav.server": "Host a server", "nav.mods": "Mods",
     "hero.title": "The Minecraft you know, just a little more. Performance, quality-of-life and atmosphere mods in one pack — the launcher installs and updates it all.", "splash": "A little more!",
-    "cta.download": "Download for Windows", "cta.meta": "Free · Windows 10/11 (64-bit)", "cta.all": "Previous versions",
+    "cta.download": "Download for Windows", "cta.meta": "Free · Windows 10/11 (64-bit)", "cta.all": "Previous versions", "cta.server": "Server launcher",
+    "server.title": "Host an MMCraft server",
+    "server.p": "Install the server launcher on your server's Windows PC and the server updates itself to the same pack version as the player launcher. MMCraft (the player launcher) doesn't need to be on that PC.",
+    "server.p1": "Client-only mods are left out and the Fabric server is installed automatically",
+    "server.p2": "When a new pack is out: tell players → kick after 30s → back up the world → update → restart automatically",
+    "server.p3": "Restarts by itself after a crash, and stops and tells you if it keeps crashing",
+    "server.download": "Download server launcher", "server.meta": "Windows 10/11 (64-bit) · You'll be asked to agree to the Minecraft EULA on first run",
     "fact.mc": "Minecraft", "fact.pack": "Pack version", "fact.mods": "Mods", "fact.updated": "Last updated",
     "duties.title": "What the launcher does for you",
     "d1.t": "Daily automatic updates", "d1.p": "New mod versions are tested by actually starting a server and the game. Only combinations that work reach you, so you're up to date every time you open it.",
@@ -362,7 +407,8 @@ fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
   .then((rel) => {
     // 고정 이름 파일이 없던 옛 버전일 때만 실제 파일 주소로 바꿈
     const exes = (rel.assets || []).filter((a) => /\.exe$/i.test(a.name));
-    if (exes.length && !exes.some((a) => a.name === "MMCraft-Setup.exe")) document.getElementById("dl").href = exes[0].browser_download_url;
+    const player = exes.filter((a) => !/Server/i.test(a.name));
+    if (player.length && !exes.some((a) => a.name === "MMCraft-Setup.exe")) document.getElementById("dl").href = player[0].browser_download_url;
     state.version = (rel.tag_name || "").replace(/^v/, "");
     applyLang();
   })

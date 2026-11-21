@@ -1,6 +1,6 @@
 # MMCraft 런처
 
-MMCraft 모드팩 전용 Windows 런처 + 모드 자동 업데이트 시스템.
+MMCraft 모드팩 전용 Windows 런처 + 서버 런처 + 모드 자동 업데이트 시스템.
 
 ## 무엇을 하나
 | 기능 | 방식 |
@@ -12,6 +12,28 @@ MMCraft 모드팩 전용 Windows 런처 + 모드 자동 업데이트 시스템.
 | 런처 자체 업데이트 | 런처를 켤 때마다(그리고 켜 둔 동안 30분마다) 확인 → 새 버전이 있으면 자동으로 받아 **스스로 재시작해서 적용** (게임 중이면 게임을 끈 뒤) |
 | 언어 | 한국어 / English (설정 → 언어, 기본은 컴퓨터 언어를 따름. 설치 프로그램도 두 언어) |
 | 팩 자동 업데이트 | 런처를 켜면 새 팩을 바로 확인하고 **플레이를 누르지 않아도 미리 받아 둠** (마크 버전 업이면 월드 백업 먼저) |
+
+## 서버 런처 (MMCraft Server)
+서버 전용 Windows PC에서 MMCraft 서버를 여는 창 있는 앱. 서버 PC에 플레이어 런처는 없어도 됩니다.
+설치 파일: Releases의 `MMCraft-Server-Setup.exe` (사이트의 **서버 런처 다운로드** 버튼)
+
+| 기능 | 방식 |
+|---|---|
+| 서버 모드 구성 | 팩 모드 중 **클라이언트 전용(서버 unsupported)·리소스팩 자동 제외**, 설정은 `config/`만. Fabric 서버·Java 자동 설치 (자동 테스트 서버와 같은 규칙) |
+| 업데이트 감지 | 플레이어 런처와 같은 `pack-dist` index.json을 **5분마다** 확인 |
+| 업데이트 흐름 | 서버를 켠 채로 새 파일 미리 받기 → 접속자에게 공지 + **30초 카운트다운** → `kick @a` (밴 아님, 사유: "서버 업데이트가 있습니다. MMCraft를 재실행하여 업데이트를 진행해 주세요.") → 정지 → **월드 백업** → 모드·설정 교체 → 자동 재시작. 접속자가 없으면 카운트다운 없이 바로 |
+| 재시작 없는 업데이트 | 클라이언트 전용 모드·리소스팩만 바뀐 팩은 서버 쪽이 같으므로 재시작하지 않고 버전 기록만 바꿈 |
+| 크래시 자동 재시작 | 크래시·알 수 없는 종료 → 5초 뒤 재시작. **10분 안에 3번**이면 멈추고 Windows 알림. 정지 버튼·`stop` 명령·게임 안 `/stop`은 재시작 안 함 |
+| 월드 유지 | 월드는 건드리지 않음. 업데이트마다 `서버 폴더\backups`에 백업 (최근 5개) |
+| 화면 | 콘솔 로그, 접속자 목록, 시작/정지/재시작, 명령어 입력창(↑↓ 기록), 메모리·포트·서버 폴더·Java 옵션 설정, 한국어/English |
+| 처음 실행 | Minecraft EULA 동의 (`eula.txt`) |
+| Windows 시작 시 자동 실행 | 설정에서 켜기 (**기본 꺼짐**). 켜면 Windows 로그인 때 런처가 뜨고 서버도 시작 |
+| 서버 런처 자체 업데이트 | 플레이어 런처와 같은 Releases(`server.yml`)로 확인 → **접속자가 없을 때** 서버를 잠깐 끄고 업데이트 → 다시 켬 |
+
+- 데이터: `%APPDATA%\.mmcraft-server` (Java·캐시·설정), 서버 폴더 기본값 `%APPDATA%\.mmcraft-server\server` (설정에서 바꿀 수 있음)
+- 원래 쓰던 서버 폴더를 고르면 처음 설치 때 기존 mods는 `mods-before-mmcraft-<시각>`으로 옮기고 월드·server.properties는 그대로 씀. 그 뒤 직접 넣은 모드는 건드리지 않음
+- 소스: `src/server-launcher` (화면 `renderer/`), 서버 설치 공용 코드 `src/core/server.ts`, 서버 관리(시작·크래시·업데이트 순서) `src/server-launcher/manager.ts`
+- 런처 배포와 함께 나감: `package.json` version을 올리면 **런처 배포** 워크플로가 두 설치 파일을 같은 Releases에 올림
 
 ## 팩 버전 규칙
 `<마크 버전>.<모드 추가·삭제>.<모드 업데이트>` (예: `26.3.0.0`)
@@ -27,6 +49,7 @@ https://mmcraft.dpdns.org/ (`site/`, GitHub Pages + 무료 도메인 DigitalPlat
 - `src/core` 설치·실행·동기화 (런처와 자동 테스트가 같은 코드 사용)
 - `src/ci` 자동 업데이트·테스트·배포
 - `src/launcher` Electron 런처 (UI: `renderer/`)
+- `src/server-launcher` Electron 서버 런처 (UI: `renderer/`)
 - 플레이어 PC 데이터: `%APPDATA%\.mmcraft` (`game\saves` = 월드, `backups` = 월드 백업)
 
 ## 운영 (GitHub → Actions 탭)
@@ -57,6 +80,8 @@ Mojang 승인이 필요합니다 → `docs/로그인-승인-신청.md`
 npm install
 npm test          # 단위 테스트
 npm start         # 런처 실행
-npm run dist:win  # 설치 파일 (Windows)
+npm run start:server  # 서버 런처 실행
+npm run dist:win      # 런처 설치 파일 (Windows)
+npm run dist:server   # 서버 런처 설치 파일 (Windows)
 ```
 글꼴: Galmuri11, Pretendard (SIL OFL 1.1, `renderer/fonts`).

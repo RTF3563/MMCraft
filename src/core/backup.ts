@@ -4,15 +4,28 @@ import { Layout } from "./paths";
 
 /** 월드(saves) 폴더 통째로 백업. 마크 버전이 오르기 전에 반드시 실행 */
 export async function backupSaves(layout: Layout, label: string, keep = 5): Promise<string | null> {
-  if (!fs.existsSync(layout.saves)) return null;
-  const entries = await fs.promises.readdir(layout.saves);
-  if (entries.length === 0) return null;
+  return backupFolders(layout, [layout.saves], label, keep);
+}
+
+/**
+ * 폴더들을 backups/<시각>_<이름>/ 아래로 복사 (서버는 월드 폴더들). 비어 있으면 null.
+ * 최근 keep개만 남김
+ */
+export async function backupFolders(layout: Layout, folders: string[], label: string, keep = 5): Promise<string | null> {
+  const existing: string[] = [];
+  for (const f of folders) {
+    if (fs.existsSync(f) && (await fs.promises.readdir(f)).length > 0) existing.push(f);
+  }
+  if (existing.length === 0) return null;
   const stamp = new Date().toISOString().replace(/[:T]/g, "-").slice(0, 19);
-  const dest = path.join(layout.backups, `${stamp}_${label.replace(/[^\w.\-]/g, "_")}`, "saves");
-  await fs.promises.mkdir(path.dirname(dest), { recursive: true });
-  await fs.promises.cp(layout.saves, dest, { recursive: true, errorOnExist: false, force: true });
+  const dir = path.join(layout.backups, `${stamp}_${label.replace(/[^\w.\-]/g, "_")}`);
+  for (const f of existing) {
+    const dest = path.join(dir, path.basename(f));
+    await fs.promises.mkdir(dir, { recursive: true });
+    await fs.promises.cp(f, dest, { recursive: true, errorOnExist: false, force: true });
+  }
   await pruneBackups(layout, keep);
-  return path.dirname(dest);
+  return dir;
 }
 
 export async function listBackups(layout: Layout): Promise<string[]> {

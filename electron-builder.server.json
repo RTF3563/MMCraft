@@ -1,0 +1,43 @@
+{
+  "appId": "com.rtf3563.mmcraft.server",
+  "productName": "MMCraft Server",
+  "artifactName": "MMCraft-Server-Setup-${version}.${ext}",
+  "extraMetadata": {
+    "name": "mmcraft-server-launcher",
+    "productName": "MMCraft Server",
+    "description": "MMCraft 서버 런처",
+    "main": "dist/server-launcher/main.js"
+  },
+  "directories": {
+    "output": "release",
+    "buildResources": "build"
+  },
+  "files": [
+    "dist/core/**",
+    "dist/server-launcher/**",
+    "package.json"
+  ],
+  "win": {
+    "target": "nsis",
+    "icon": "build/server-icon.png"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "shortcutName": "MMCraft Server",
+    "multiLanguageInstaller": true,
+    "installerLanguages": ["ko_KR", "en_US"],
+    "language": "1042"
+  },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "RTF3563",
+      "repo": "MMCraft",
+      "releaseType": "draft",
+      "channel": "server"
+    }
+  ]
+}

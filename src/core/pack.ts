@@ -1,11 +1,12 @@
 import * as fs from "fs";
 import * as path from "path";
-import { DownloadItem, downloadAll, getJson, hashFile, Progress } from "./http";
+import { DownloadItem, downloadAll, getJson, hashFile, isValid, Progress } from "./http";
 import { Layout } from "./paths";
 import { compareMcVersions } from "./minecraft";
 import { tr } from "./i18n";
 
-export const PACK_INDEX_URL = "https://raw.githubusercontent.com/RTF3563/MMCraft/pack-dist/index.json";
+/** 팩 정보 주소 (MMCRAFT_PACK_INDEX_URL: 시험용 팩을 볼 때만) */
+export const PACK_INDEX_URL = process.env.MMCRAFT_PACK_INDEX_URL || "https://raw.githubusercontent.com/RTF3563/MMCraft/pack-dist/index.json";
 
 export type Side = "required" | "optional" | "unsupported" | "unknown";
 
@@ -90,6 +91,23 @@ export async function fetchPackIndex(url = PACK_INDEX_URL): Promise<PackIndex> {
   return index;
 }
 
+/** 팩 정보 받기. 인터넷이 안 되면 마지막으로 받은 것 (online: false) */
+export async function fetchPackIndexCached(layout: Layout, url = PACK_INDEX_URL): Promise<{ index: PackIndex | null; online: boolean }> {
+  const cacheFile = path.join(layout.cache, "index.json");
+  try {
+    const index = await fetchPackIndex(url);
+    await fs.promises.mkdir(layout.cache, { recursive: true });
+    await fs.promises.writeFile(cacheFile, JSON.stringify(index));
+    return { index, online: true };
+  } catch {
+    try {
+      return { index: JSON.parse(await fs.promises.readFile(cacheFile, "utf8")), online: false };
+    } catch {
+      return { index: null, online: false };
+    }
+  }
+}
+
 /** 플레이어 PC에 설치할 것: 모드·리소스팩 전부 (싱글플레이는 내장 서버도 돌리므로 서버용 모드도 필요) */
 export function clientMods(index: PackIndex): PackMod[] {
   return index.mods;
@@ -117,15 +135,52 @@ function safeJoin(root: string, rel: string): string {
   return dest;
 }
 
+export interface SyncOptions {
+  /** 설치할 모드 (기본: 플레이어용 전부) */
+  mods?: PackMod[];
+  /** 설치할 설정 파일 (기본: 전부) */
+  overrides?: PackOverride[];
+  /** 미리 받아 둔 파일 폴더 (<sha1> 이름). 있으면 다시 받지 않고 복사 */
+  cacheDir?: string;
+}
+
+/** 미리 받아 두기: cacheDir/<sha1> (서버를 끄기 전에 받아서 멈춰 있는 시간을 줄임) */
+export async function prefetch(items: { url: string; sha1: string; size: number }[], cacheDir: string, onProgress?: Progress, label?: string) {
+  await downloadAll(
+    items.map((i) => ({ url: i.url, dest: path.join(cacheDir, i.sha1), sha1: i.sha1, size: i.size })),
+    onProgress,
+    8,
+    label,
+  );
+}
+
+async function primeFromCache(items: DownloadItem[], cacheDir: string | undefined) {
+  if (!cacheDir) return;
+  for (const it of items) {
+    if (!it.sha1) continue;
+    const cached = path.join(cacheDir, it.sha1);
+    if (!fs.existsSync(cached) || (await isValid(it))) continue;
+    await fs.promises.mkdir(path.dirname(it.dest), { recursive: true });
+    await fs.promises.copyFile(cached, it.dest);
+  }
+}
+
 /**
  * 모드·설정 파일을 팩 목록에 맞춤.
  * - 런처가 넣은 모드 중 빠진 것은 삭제, 새 것은 받기
  * - 설정 파일은 팩 쪽 파일이 바뀌었을 때만 덮어씀 (플레이어가 바꾼 설정은 팩이 바꾸지 않는 한 유지)
  * - saves(월드)는 절대 건드리지 않음
  */
-export async function syncPack(layout: Layout, index: PackIndex, state: InstallState, onProgress?: Progress): Promise<InstallState> {
+export async function syncPack(
+  layout: Layout,
+  index: PackIndex,
+  state: InstallState,
+  onProgress?: Progress,
+  opts: SyncOptions = {},
+): Promise<InstallState> {
   await fs.promises.mkdir(layout.mods, { recursive: true });
-  const mods = clientMods(index);
+  const mods = opts.mods ?? clientMods(index);
+  const overrides = opts.overrides ?? index.overrides;
 
   const downloads: DownloadItem[] = mods.map((m) => ({
     url: m.url,
@@ -133,6 +188,7 @@ export async function syncPack(layout: Layout, index: PackIndex, state: InstallS
     sha1: m.sha1,
     size: m.size,
   }));
+  await primeFromCache(downloads, opts.cacheDir);
   await downloadAll(downloads, onProgress, 8, tr("label.mods"));
 
   const wanted = new Set(mods.map(installPath));
@@ -145,7 +201,7 @@ export async function syncPack(layout: Layout, index: PackIndex, state: InstallS
   // 설정·리소스팩 등
   const newOverrides: Record<string, string> = {};
   const toFetch: DownloadItem[] = [];
-  for (const o of index.overrides) {
+  for (const o of overrides) {
     const dest = safeJoin(layout.game, o.path);
     newOverrides[o.path] = o.sha1;
     const exists = fs.existsSync(dest);
@@ -155,6 +211,7 @@ export async function syncPack(layout: Layout, index: PackIndex, state: InstallS
       toFetch.push({ url: o.url, dest, sha1: o.sha1, size: o.size });
     }
   }
+  await primeFromCache(toFetch, opts.cacheDir);
   await downloadAll(toFetch, onProgress, 8, tr("label.configs"));
 
   // 팩에서 빠진 설정 파일: 플레이어가 안 바꿨으면 삭제
@@ -165,6 +222,7 @@ export async function syncPack(layout: Layout, index: PackIndex, state: InstallS
   }
 
   return {
+    ...state,
     packVersion: index.packVersion,
     minecraft: index.minecraft,
     fabricLoader: index.fabricLoader,

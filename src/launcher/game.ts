@@ -9,7 +9,7 @@ import { installVersion, resolveVersion } from "../core/minecraft";
 import { ensureJava } from "../core/java";
 import { buildLaunchCommand } from "../core/launch";
 import {
-  classifyUpdate, fetchPackIndex, loadState, PackIndex, saveState, syncPack, UpdateKind, unmanagedMods,
+  classifyUpdate, fetchPackIndexCached, loadState, saveState, syncPack, UpdateKind, unmanagedMods,
 } from "../core/pack";
 import { backupSaves } from "../core/backup";
 import { Account } from "./auth";
@@ -57,22 +57,7 @@ export interface Status {
 
 export type ProgressFn = (p: { label: string; done: number; total: number }) => void;
 
-const indexCache = (layout: Layout) => path.join(layout.cache, "index.json");
-
-async function getIndex(layout: Layout): Promise<{ index: PackIndex | null; online: boolean }> {
-  try {
-    const index = await fetchPackIndex();
-    fs.mkdirSync(layout.cache, { recursive: true });
-    fs.writeFileSync(indexCache(layout), JSON.stringify(index));
-    return { index, online: true };
-  } catch {
-    try {
-      return { index: JSON.parse(fs.readFileSync(indexCache(layout), "utf8")), online: false };
-    } catch {
-      return { index: null, online: false };
-    }
-  }
-}
+const getIndex = (layout: Layout) => fetchPackIndexCached(layout);
 
 export async function getStatus(layout: Layout): Promise<Status> {
   const state = await loadState(layout);
