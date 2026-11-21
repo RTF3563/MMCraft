@@ -8,6 +8,7 @@ import { FABRIC_META, getVersionManifest, installVersion, resolveVersion, Versio
 import { ensureJava, javaExecutable } from "../core/java";
 import { buildLaunchCommand } from "../core/launch";
 import { installPath, PackMod } from "../core/pack";
+import { serverMods } from "../core/server";
 import { applyInstallNames, files, readPack } from "./source";
 
 export const CI_HOME = path.resolve(process.env.MMCRAFT_CI_HOME ?? ".ci-cache");
@@ -169,7 +170,7 @@ export async function serverTest(input: TestInput, workDir: string, javaExe: str
     url: `${FABRIC_META}/versions/loader/${input.minecraft}/${input.fabricLoader}/${installer}/server/jar`,
     dest: jar,
   });
-  await putMods(dir, input.mods.filter((m) => m.server !== "unsupported" && m.kind !== "resourcepack"));
+  await putMods(dir, serverMods(input));
   await copyDir(path.join(files.overrides(), "config"), path.join(dir, "config"));
   await fs.promises.writeFile(path.join(dir, "eula.txt"), "eula=true\n");
   await fs.promises.writeFile(
