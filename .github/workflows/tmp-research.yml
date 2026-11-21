@@ -1,0 +1,16 @@
+# 임시: 서버 모드 후보 조사 (조사 후 브랜치째 삭제)
+name: 임시 서버 모드 조사
+on:
+  push:
+    branches: [tmp/server-mod-research]
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tmp/research.mjs
