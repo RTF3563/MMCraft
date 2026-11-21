@@ -82,6 +82,14 @@ a { color: inherit; }
 .download:hover { background: #4aa432; }
 .download:active { box-shadow: inset 2px 4px 0 var(--green-lo); padding-top: 4px; }
 .download svg { width: 20px; height: 20px; }
+/* 서버 런처 전용 버튼: 회색 입체 버튼 (플레이어용 초록 버튼과 구분) */
+.download.server-btn {
+  font-size: 18px; padding: 0 22px 0 14px; text-shadow: var(--shadow-text);
+  background: var(--btn); box-shadow: inset 2px 2px 0 var(--btn-hi), inset -2px -6px 0 var(--btn-lo);
+}
+.download.server-btn:hover { background: #7f8fb8; box-shadow: inset 2px 2px 0 #b8c6ee, inset -2px -6px 0 #45507a; }
+.download.server-btn:active { box-shadow: inset 2px 4px 0 var(--btn-lo); }
+.download.server-btn img { width: 36px; height: 36px; }
 .cta-meta { font-family: var(--pixel); font-size: 12px; text-shadow: var(--shadow-text); line-height: 1.8; }
 .cta-meta a { color: var(--ink-dim); }
 
@@ -202,10 +210,14 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M3 0h2v4h2v1H6v1H5v1H3V6H2V5H1V4h2zM0 7h8v1H0z"/></svg>
         <span data-t="cta.download">Windows용 다운로드</span>
       </a>
+      <a id="dl-server-hero" class="download server-btn" href="https://github.com/RTF3563/MMCraft/releases/latest/download/MMCraft-Server-Setup.exe" download>
+        <img src="server-icon.png" alt="" />
+        <span data-t="cta.serverDownload">서버 런처 다운로드</span>
+      </a>
       <div class="cta-meta">
         <span id="dl-meta" data-t="cta.meta">무료 · Windows 10/11 (64비트)</span><br />
         <a href="https://github.com/RTF3563/MMCraft/releases" data-t="cta.all">이전 버전 보기</a> ·
-        <a href="#server" data-t="cta.server">서버 런처 다운로드</a>
+        <a href="#server" data-t="cta.serverAbout">서버 런처란?</a>
       </div>
     </div>
   </div>
@@ -303,7 +315,7 @@ const T = {
   en: {
     "nav.what": "The launcher", "nav.install": "Install", "nav.server": "Host a server", "nav.mods": "Mods",
     "hero.title": "The Minecraft you know, just a little more. Performance, quality-of-life and atmosphere mods in one pack — the launcher installs and updates it all.", "splash": "A little more!",
-    "cta.download": "Download for Windows", "cta.meta": "Free · Windows 10/11 (64-bit)", "cta.all": "Previous versions", "cta.server": "Server launcher",
+    "cta.download": "Download for Windows", "cta.meta": "Free · Windows 10/11 (64-bit)", "cta.all": "Previous versions", "cta.serverDownload": "Download server launcher", "cta.serverAbout": "What's the server launcher?",
     "server.title": "Host an MMCraft server",
     "server.p": "Install the server launcher on your server's Windows PC and the server updates itself to the same pack version as the player launcher. MMCraft (the player launcher) doesn't need to be on that PC.",
     "server.p1": "Client-only mods are left out and the Fabric server is installed automatically",
