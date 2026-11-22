@@ -46,5 +46,17 @@
         "date": "2026-11-21"
       }
     ]
+  },
+  "51shyZVL": {
+    "name": "More Culling",
+    "badVersions": [
+      {
+        "versionId": "loquqFkT",
+        "versionNumber": "1.9.2",
+        "minecraft": "26.3",
+        "reason": "클라이언트 실행 실패: 게임이 중간에 종료됨 (코드 1)",
+        "date": "2026-11-22"
+      }
+    ]
   }
 }
