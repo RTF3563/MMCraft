@@ -1,15 +1,15 @@
 {
   "add": [
-    { "modrinth": "packet-fixer", "curseforge": "packet-fixer" },
-    { "modrinth": "neruina", "curseforge": "neruina" },
-    { "modrinth": "structure-layout-optimizer", "curseforge": "structure-layout-optimizer" },
-    { "modrinth": "krypton", "curseforge": "krypton" },
-    { "modrinth": "alternate-current", "curseforge": "alternate-current" }
+    "pick-up-notifier",
+    "status-effect-bars",
+    "held-item-info",
+    "betterf3",
+    "fast-ip-ping",
+    "fresh-animations",
+    "chunks-fade-in",
+    "bobby",
+    "leaves-be-gone"
   ],
-  "serverAdd": [
-    { "modrinth": "chunky", "curseforge": "chunky-pregenerator" },
-    { "modrinth": "servercore", "curseforge": "servercore" },
-    { "modrinth": "fastback", "curseforge": "fastback" }
-  ],
+  "serverAdd": [],
   "remove": []
 }

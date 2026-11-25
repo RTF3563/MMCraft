@@ -66,7 +66,7 @@ damageTiltStrength:1.0
 highContrast:false
 highContrastBlockOutline:false
 narratorHotkey:true
-resourcePacks:["serilum_mod_translations","vanilla","file/SodiumTranslations.zip","file/Chat Reporting Helper.zip","file/Mod Menu Helper.zip","continuity:glass_pane_culling_fix","continuity:default","file/VanillaTweaks_r839694_MC26.3.x.zip"]
+resourcePacks:["serilum_mod_translations","vanilla","file/SodiumTranslations.zip","file/Chat Reporting Helper.zip","file/Mod Menu Helper.zip","continuity:glass_pane_culling_fix","continuity:default","file/VanillaTweaks_r839694_MC26.3.x.zip","file/FreshAnimations.zip"]
 incompatibleResourcePacks:[]
 lastServer:
 lang:ko_kr
