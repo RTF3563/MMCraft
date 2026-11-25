@@ -1,35 +1,5 @@
 {
-  "add": [
-    {
-      "modrinth": "packet-fixer",
-      "curseforge": "packet-fixer"
-    },
-    {
-      "modrinth": "neruina",
-      "curseforge": "neruina"
-    },
-    {
-      "modrinth": "structure-layout-optimizer",
-      "curseforge": "structure-layout-optimizer"
-    },
-    {
-      "modrinth": "alternate-current",
-      "curseforge": "alternate-current"
-    }
-  ],
-  "serverAdd": [
-    {
-      "modrinth": "chunky",
-      "curseforge": "chunky-pregenerator"
-    },
-    {
-      "modrinth": "servercore",
-      "curseforge": "servercore"
-    },
-    {
-      "modrinth": "fastback",
-      "curseforge": "fastback"
-    }
-  ],
+  "add": [],
+  "serverAdd": [],
   "remove": []
 }

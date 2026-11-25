@@ -97,6 +97,24 @@
     "server": "required"
   },
   {
+    "projectId": "r0v8vy1s",
+    "slug": "alternate-current",
+    "name": "Alternate Current",
+    "versionId": "nSBWPz6x",
+    "versionNumber": "mc26.3-1.9.0",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "alternate-current-mc26.3-1.9.0.jar",
+    "url": "https://cdn.modrinth.com/data/r0v8vy1s/versions/nSBWPz6x/alternate-current-mc26.3-1.9.0.jar",
+    "sha1": "1316efc4195fbf152f8521542bc2435bd588ddb6",
+    "sha512": "347fa8d0338a7e113c0cde70306d05037dbf9fc1e33c476159b4f5cf7b4fce8d3798d820ebf0e0dedd8450417802cb3a030bdcbecaf509961a83b2e43a469ad5",
+    "size": 52230,
+    "client": "unsupported",
+    "server": "required"
+  },
+  {
     "projectId": "fM515JnW",
     "slug": "ambientsounds",
     "name": "AmbientSounds",
@@ -576,6 +594,29 @@
     "server": "unsupported"
   },
   {
+    "projectId": "fALzjamp",
+    "slug": "chunky",
+    "name": "Chunky",
+    "versionId": "86FKD9qx",
+    "versionNumber": "1.5.66",
+    "versionType": "release",
+    "gameVersions": [
+      "26.1",
+      "26.1.1",
+      "26.1.2",
+      "26.2",
+      "26.3"
+    ],
+    "fileName": "Chunky-Fabric-1.5.66.jar",
+    "url": "https://cdn.modrinth.com/data/fALzjamp/versions/86FKD9qx/Chunky-Fabric-1.5.66.jar",
+    "sha1": "f78eca46c3882ee637d3ba3982da217776f55fc7",
+    "sha512": "6f0323daa69d61bd3b3fbe9d8b713664d9b7c69182183f8dcff6362b43783639778a96e32215dbfd329588f06b60a5d93656dbb1d391c660db203482aa972d5e",
+    "size": 442176,
+    "client": "optional",
+    "server": "optional",
+    "serverOnly": true
+  },
+  {
     "projectId": "cf:511733",
     "slug": "cf-clickable-advancements",
     "name": "Clickable advancements",
@@ -724,6 +765,31 @@
     "size": 87391,
     "client": "unsupported",
     "server": "required"
+  },
+  {
+    "projectId": "lGffrQ3O",
+    "slug": "configurable",
+    "name": "Configurable",
+    "versionId": "y638mir1",
+    "versionNumber": "3.5.3",
+    "versionType": "release",
+    "gameVersions": [
+      "26.1",
+      "26.1.1",
+      "26.1.2",
+      "26.2",
+      "26.3"
+    ],
+    "fileName": "configurable-3.5.3+26.3-fabric.jar",
+    "url": "https://cdn.modrinth.com/data/lGffrQ3O/versions/y638mir1/configurable-3.5.3%2B26.3-fabric.jar",
+    "sha1": "71ef18bf3125c32766ab3ee144f174ea24f06253",
+    "sha512": "f2a1ce585751632513e84784b3ec792f04db823ad2e36d6e1d6c0f35dcb847671e652c49ff9ae6225ff668efd52b857b94d39f1ed88887d85c493280091e15a5",
+    "size": 543473,
+    "client": "optional",
+    "server": "optional",
+    "dependencyOf": [
+      "Neruina - Ticking Entity Fixer"
+    ]
   },
   {
     "projectId": "1IjD5062",
@@ -1154,6 +1220,25 @@
     "size": 181764,
     "client": "required",
     "server": "unsupported"
+  },
+  {
+    "projectId": "ZHKrK8Rp",
+    "slug": "fastback",
+    "name": "Fast Backups",
+    "versionId": "RvW6Ltl7",
+    "versionNumber": "0.35.0+26.3.0",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "fastback-fabric-0.35.0+26.3.0.jar",
+    "url": "https://cdn.modrinth.com/data/ZHKrK8Rp/versions/RvW6Ltl7/fastback-fabric-0.35.0%2B26.3.0.jar",
+    "sha1": "f485f25356c9e5a17f0174a863be7bd6b8c210eb",
+    "sha512": "ffb1ce48d51afa755d4614b406603221ac04160dd6b9ab798e092fc7c80f9075b70dfcb23b004f9673e600a8e5178abe69b43fb7ad78cba46df2902b782f8064",
+    "size": 5598532,
+    "client": "unsupported",
+    "server": "required",
+    "serverOnly": true
   },
   {
     "projectId": "9mtu0sUO",
@@ -1838,6 +1923,24 @@
     "server": "unsupported"
   },
   {
+    "projectId": "1s5x833P",
+    "slug": "neruina",
+    "name": "Neruina - Ticking Entity Fixer",
+    "versionId": "R4j8DpFN",
+    "versionNumber": "3.3.5",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "neruina-3.3.5+26.3-fabric.jar",
+    "url": "https://cdn.modrinth.com/data/1s5x833P/versions/R4j8DpFN/neruina-3.3.5%2B26.3-fabric.jar",
+    "sha1": "6cc0ee8c598bdc68c45679d7ca28ad36cc1b4139",
+    "sha512": "f6825a3092ad1939e6cba6cef4de30fc51f26d7086464bad08916e8e33661807b10f3cfcff4025a0bb0f953c94c1acf78f886e29746d2ddc38ce953226b9a27a",
+    "size": 1811429,
+    "client": "optional",
+    "server": "optional"
+  },
+  {
     "projectId": "nPZr02ET",
     "slug": "netherportalfix",
     "name": "NetherPortalFix",
@@ -1890,6 +1993,24 @@
     "size": 609584,
     "client": "required",
     "server": "unsupported"
+  },
+  {
+    "projectId": "c7m1mi73",
+    "slug": "packet-fixer",
+    "name": "Packet Fixer",
+    "versionId": "dTKbGYbb",
+    "versionNumber": "3.3.6",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "PacketFixer-fabric-3.3.6.jar",
+    "url": "https://cdn.modrinth.com/data/c7m1mi73/versions/dTKbGYbb/PacketFixer-fabric-3.3.6.jar",
+    "sha1": "a71fcdee677e23583da12b9237ab165ae7a0c8b0",
+    "sha512": "8d3139b150ef591c62b086f553be212bc72eb4a32b0b1f8bb5cc069a9b79a85046d31b1147e5aaff23e4b69bb92c76445d41884657a7b652def25e2b73d61613",
+    "size": 32477,
+    "client": "optional",
+    "server": "optional"
   },
   {
     "projectId": "pYFUU6cq",
@@ -2091,6 +2212,27 @@
     "server": "unsupported"
   },
   {
+    "projectId": "M1953qlQ",
+    "slug": "resourceful-config",
+    "name": "Resourceful Config",
+    "versionId": "t3odHyFJ",
+    "versionNumber": "6.0.2",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "ResourcefulConfig-6.0.2.jar",
+    "url": "https://cdn.modrinth.com/data/M1953qlQ/versions/t3odHyFJ/ResourcefulConfig-6.0.2.jar",
+    "sha1": "c66b02799463e57baf8c9fa8979b2cf167e284b8",
+    "sha512": "916bafc4df592d15f269db169c16d604d2c7e726fb3c4230caeff0fc5c53ef1bfd30e80dce34ffcc32cdc210544333c121351f5da50a27bf0e9c794e58575025",
+    "size": 444092,
+    "client": "optional",
+    "server": "optional",
+    "dependencyOf": [
+      "Structure Layout Optimizer"
+    ]
+  },
+  {
     "projectId": "Cnejf5xM",
     "slug": "rightclickharvest",
     "name": "RightClickHarvest",
@@ -2147,6 +2289,25 @@
     "size": 16975,
     "client": "optional",
     "server": "optional"
+  },
+  {
+    "projectId": "4WWQxlQP",
+    "slug": "servercore",
+    "name": "ServerCore",
+    "versionId": "YNdFPSov",
+    "versionNumber": "1.5.21+26.3",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "servercore-fabric-1.5.21+26.3.jar",
+    "url": "https://cdn.modrinth.com/data/4WWQxlQP/versions/YNdFPSov/servercore-fabric-1.5.21%2B26.3.jar",
+    "sha1": "5d8957f5dcee0f2f13c52e1ca649fd88fa20c1d1",
+    "sha512": "6d12803a0d42eb619ac3bbd4b6eab7fc585e3ab9cadf32cee4656c8326a25f110e9952fc59b1356d55b3a252d6e61cf5d983207a0480322580cd4287e536d28e",
+    "size": 899475,
+    "client": "unsupported",
+    "server": "required",
+    "serverOnly": true
   },
   {
     "projectId": "PE656UHx",
@@ -2350,6 +2511,24 @@
     "size": 60104,
     "client": "optional",
     "server": "optional"
+  },
+  {
+    "projectId": "ayPU0OHc",
+    "slug": "structure-layout-optimizer",
+    "name": "Structure Layout Optimizer",
+    "versionId": "TNDMLvM0",
+    "versionNumber": "1.1.5+26.3-fabric",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "structure_layout_optimizer-1.1.5+26.3-fabric.jar",
+    "url": "https://cdn.modrinth.com/data/ayPU0OHc/versions/TNDMLvM0/structure_layout_optimizer-1.1.5%2B26.3-fabric.jar",
+    "sha1": "281bb7a953fe41c5ed06380e75da98409ce27f90",
+    "sha512": "e7a10a7558061aa42dd34543d4278eb9d8dceb08e86d23a369fbc37cae0bfa0e234ef2d195a699b446d1f0373dad2ba013e0986d8e9d43daaa53035ca5350400",
+    "size": 103483,
+    "client": "unsupported",
+    "server": "required"
   },
   {
     "projectId": "4q8UOK1d",

@@ -1,5 +1,21 @@
 [
   {
+    "version": "26.3.3.0",
+    "minecraft": "26.3",
+    "date": "2026-11-25",
+    "lines": [
+      "새 모드: Packet Fixer",
+      "새 모드: Neruina - Ticking Entity Fixer",
+      "새 모드: Structure Layout Optimizer",
+      "새 모드: Alternate Current",
+      "새 모드: Chunky (서버 전용)",
+      "새 모드: ServerCore (서버 전용)",
+      "새 모드: Fast Backups (서버 전용)",
+      "새 라이브러리: Configurable",
+      "새 라이브러리: Resourceful Config"
+    ]
+  },
+  {
     "version": "26.3.2.0",
     "minecraft": "26.3",
     "date": "2026-11-25",
