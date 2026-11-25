@@ -1,5 +1,21 @@
 [
   {
+    "version": "26.3.2.0",
+    "minecraft": "26.3",
+    "date": "2026-11-25",
+    "lines": [
+      "새 모드: Pick Up Notifier",
+      "새 모드: Status Effect Bars",
+      "새 모드: Held Item Info",
+      "새 모드: BetterF3",
+      "새 모드: Fast IP Ping",
+      "새 모드: Fresh Animations",
+      "새 모드: Chunks fade in",
+      "새 모드: Bobby",
+      "새 모드: Leaves Be Gone"
+    ]
+  },
+  {
     "version": "26.3.1.6",
     "minecraft": "26.3",
     "date": "2026-11-22",

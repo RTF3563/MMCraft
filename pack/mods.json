@@ -356,6 +356,24 @@
     "server": "required"
   },
   {
+    "projectId": "8shC1gFX",
+    "slug": "betterf3",
+    "name": "BetterF3",
+    "versionId": "XB7u4eSf",
+    "versionNumber": "20.0.0",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "BetterF3-20.0.0-Fabric-26.3.jar",
+    "url": "https://cdn.modrinth.com/data/8shC1gFX/versions/XB7u4eSf/BetterF3-20.0.0-Fabric-26.3.jar",
+    "sha1": "418b70684cf0e5a48c861216c86ae97949bc39f7",
+    "sha512": "1e78531358f690404efe98b26de1024284078596785420a92ff5dba052003064e87537936c006c3c58470ccdc2ed6ae69a65f26ca534366e90d97470f2973118",
+    "size": 719577,
+    "client": "required",
+    "server": "unsupported"
+  },
+  {
     "projectId": "m5T5xmUy",
     "slug": "bettergrassify",
     "name": "BetterGrassify",
@@ -406,6 +424,24 @@
     "sha1": "230bac67e9283f3f11d5dcf63dfcf5719e9b0afc",
     "sha512": "1d8f405f3b585a0d7f7d8a6ed77ced62950c9a9bd534427805111d71091ae8b67c2fe4e82144cf0319b2d1e7e50f2d051818df0aa4582b574313d95531b84b0a",
     "size": 1061984,
+    "client": "required",
+    "server": "unsupported"
+  },
+  {
+    "projectId": "M08ruV16",
+    "slug": "bobby",
+    "name": "Bobby",
+    "versionId": "J7YnfCss",
+    "versionNumber": "5.2.16+mc26.3",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "bobby-5.2.16+mc26.3.jar",
+    "url": "https://cdn.modrinth.com/data/M08ruV16/versions/J7YnfCss/bobby-5.2.16%2Bmc26.3.jar",
+    "sha1": "0f4243dcc8298a109b5af511f959660b1a1a97db",
+    "sha512": "f9ed86c48eb095b0e35f6f16abd376ad8dd3d2a5cd336fe8907d0562c9ecd1e0c7af35fc5afed121e1385fc14e41cc5f915ca986c3e19434f5c278cc0664b444",
+    "size": 867268,
     "client": "required",
     "server": "unsupported"
   },
@@ -520,6 +556,24 @@
     "client": "required",
     "server": "unsupported",
     "kind": "resourcepack"
+  },
+  {
+    "projectId": "JaNmzvA8",
+    "slug": "chunks-fade-in",
+    "name": "Chunks fade in",
+    "versionId": "ANQgilrG",
+    "versionNumber": "v3.0.29-26.3-fabric",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "chunksfadein-fabric-3.0.29-26.3.jar",
+    "url": "https://cdn.modrinth.com/data/JaNmzvA8/versions/ANQgilrG/chunksfadein-fabric-3.0.29-26.3.jar",
+    "sha1": "779ffd2842dba71d221c2eb2c105955fbde58979",
+    "sha512": "65c5976c95bc2132e2a7264e0cb72af7eae83f1fffa3afcb7d3b7fd26e75339c322e406f374be1b97322c7c166edc8e90f6521b53f109f9bdb5f384c738a0475",
+    "size": 460379,
+    "client": "required",
+    "server": "unsupported"
   },
   {
     "projectId": "cf:511733",
@@ -1102,6 +1156,24 @@
     "server": "unsupported"
   },
   {
+    "projectId": "9mtu0sUO",
+    "slug": "fast-ip-ping",
+    "name": "Fast IP Ping",
+    "versionId": "N6hOHbOO",
+    "versionNumber": "v1.0.12-mc26.3",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "fast-ip-ping-v1.0.12-mc26.3.jar",
+    "url": "https://cdn.modrinth.com/data/9mtu0sUO/versions/N6hOHbOO/fast-ip-ping-v1.0.12-mc26.3.jar",
+    "sha1": "7db094c0a3f4c0d272d41c800838c57fe6bb823e",
+    "sha512": "b81e57aff8e161d75a1ca84576db89c7a0d874da50eb7f8ca17c3391bf75be2243db3d56a76294abdf84bca81eb78bb2613c380f4ab70f0f2c7119f08703b813",
+    "size": 11310,
+    "client": "required",
+    "server": "unsupported"
+  },
+  {
     "projectId": "FsoeTIV0",
     "slug": "fast-item-frames",
     "name": "Fast Item Frames",
@@ -1215,6 +1287,29 @@
     "server": "unsupported"
   },
   {
+    "projectId": "50dA9Sha",
+    "slug": "fresh-animations",
+    "name": "Fresh Animations",
+    "versionId": "xfE3qfr5",
+    "versionNumber": "1.11.2",
+    "versionType": "release",
+    "gameVersions": [
+      "26.1",
+      "26.1.1",
+      "26.1.2",
+      "26.2",
+      "26.3"
+    ],
+    "fileName": "FreshAnimations_v1.11.2_26.1+.zip",
+    "url": "https://cdn.modrinth.com/data/50dA9Sha/versions/xfE3qfr5/FreshAnimations_v1.11.2_26.1%2B.zip",
+    "sha1": "8176a3c13963aac2adc1f12214ceabfc45127ab2",
+    "sha512": "c0a529479b9e43465d8b5c5f939711fded92d92fd26053b75fcbe0560046e23655f2d429d108b286cbfceb0470960b5a519ac2311ab108899b7529b76a9e9e30",
+    "size": 778725,
+    "client": "required",
+    "server": "unsupported",
+    "kind": "resourcepack"
+  },
+  {
     "projectId": "hYykXjDp",
     "slug": "fzzy-config",
     "name": "Fzzy Config",
@@ -1252,6 +1347,24 @@
     "size": 82997,
     "client": "unsupported",
     "server": "required"
+  },
+  {
+    "projectId": "tEcWzCZz",
+    "slug": "held-item-info",
+    "name": "Held Item Info",
+    "versionId": "4rTrB3O6",
+    "versionNumber": "1.9.3",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "held-item-info-1.9.3.jar",
+    "url": "https://cdn.modrinth.com/data/tEcWzCZz/versions/4rTrB3O6/held-item-info-1.9.3.jar",
+    "sha1": "190d00465d0445b901ff80a3396c7b775e047d1e",
+    "sha512": "25c929a0be5f6af5c0b6549c150083d14c9ed39be24a46b2aafda62e82f0e992d19d426ccbc0990a99364bc675b74289b3cbff87b7ebdfd6033a36248057aaa5",
+    "size": 83067,
+    "client": "required",
+    "server": "unsupported"
   },
   {
     "projectId": "PaUMOeP0",
@@ -1493,6 +1606,24 @@
     "size": 79325,
     "client": "required",
     "server": "unsupported"
+  },
+  {
+    "projectId": "AVq17PqV",
+    "slug": "leaves-be-gone",
+    "name": "Leaves Be Gone",
+    "versionId": "Ttuy044k",
+    "versionNumber": "26.3.0",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "leavesbegone-v26.3.0-mc26.3.x+fabric.jar",
+    "url": "https://cdn.modrinth.com/data/AVq17PqV/versions/Ttuy044k/leavesbegone-v26.3.0-mc26.3.x%2Bfabric.jar",
+    "sha1": "a0d33c0e9a6ba5a53cb4af42deb8426ee45767e3",
+    "sha512": "8b9ac3bd8fb28cf4c1c06ec3d1f4c33b86993461e298fc4517e017518d22b0588fb4ac8a1daa8d6f8f6a74406bc69dcdbc8f39714d7b303d03bdd17e4336ccc2",
+    "size": 42796,
+    "client": "unsupported",
+    "server": "required"
   },
   {
     "projectId": "vE2FN5qn",
@@ -1777,6 +1908,24 @@
     "size": 374548,
     "client": "required",
     "server": "unsupported"
+  },
+  {
+    "projectId": "ZX66K16c",
+    "slug": "pick-up-notifier",
+    "name": "Pick Up Notifier",
+    "versionId": "veV20ScD",
+    "versionNumber": "26.3.0",
+    "versionType": "release",
+    "gameVersions": [
+      "26.3"
+    ],
+    "fileName": "pickupnotifier-v26.3.0-mc26.3.x+fabric.jar",
+    "url": "https://cdn.modrinth.com/data/ZX66K16c/versions/veV20ScD/pickupnotifier-v26.3.0-mc26.3.x%2Bfabric.jar",
+    "sha1": "565e3f384e1d972cb4b7717e40673edff2b79217",
+    "sha512": "fbf854580d3a9cbc3a91ca4d2f806aeb53c594d03a3a4dc677b23ab602948da75bcbb9d4665c7840f046417881df6d885bcf77105978228c387bae18e0a1e09c",
+    "size": 72607,
+    "client": "required",
+    "server": "optional"
   },
   {
     "projectId": "3qAYkBMB",
@@ -2164,6 +2313,25 @@
     "size": 3838499,
     "client": "optional",
     "server": "optional"
+  },
+  {
+    "projectId": "x02cBj9Y",
+    "slug": "status-effect-bars",
+    "name": "Status Effect Bars",
+    "versionId": "aAXJqboy",
+    "versionNumber": "1.0.12",
+    "versionType": "release",
+    "gameVersions": [
+      "26.2",
+      "26.3"
+    ],
+    "fileName": "status-effect-bars-1.0.12.jar",
+    "url": "https://cdn.modrinth.com/data/x02cBj9Y/versions/aAXJqboy/status-effect-bars-1.0.12.jar",
+    "sha1": "f29719c3101ebe009dae76bca5215cf7482f8b9c",
+    "sha512": "fc82971d4e91b3e1c0e2919267f16fb29d0690ca1765bae160628b7e6d8552c4c724143b6172e27b4b9d7c8e70fc64bdf428b60e954fa6adc7ae56a6af5abf0b",
+    "size": 44942,
+    "client": "required",
+    "server": "unsupported"
   },
   {
     "projectId": "cf:832882",

@@ -1,15 +1,5 @@
 {
-  "add": [
-    "pick-up-notifier",
-    "status-effect-bars",
-    "held-item-info",
-    "betterf3",
-    "fast-ip-ping",
-    "fresh-animations",
-    "chunks-fade-in",
-    "bobby",
-    "leaves-be-gone"
-  ],
+  "add": [],
   "serverAdd": [],
   "remove": []
 }
