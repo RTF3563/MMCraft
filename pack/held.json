@@ -58,5 +58,17 @@
         "date": "2026-11-22"
       }
     ]
+  },
+  "w7ThoJFB": {
+    "name": "Zoomify (Zoom)",
+    "badVersions": [
+      {
+        "versionId": "x1VV74PR",
+        "versionNumber": "2.17.1+mc26.3",
+        "minecraft": "26.3",
+        "reason": "클라이언트 실행 실패: 게임이 중간에 종료됨 (코드 1)",
+        "date": "2026-11-27"
+      }
+    ]
   }
 }
