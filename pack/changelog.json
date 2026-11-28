@@ -1,5 +1,13 @@
 [
   {
+    "version": "26.3.3.3",
+    "minecraft": "26.3",
+    "date": "2026-11-28",
+    "lines": [
+      "BadOptimizations 2.4.1 → 3.0.1"
+    ]
+  },
+  {
     "version": "26.3.3.2",
     "minecraft": "26.3",
     "date": "2026-11-27",
